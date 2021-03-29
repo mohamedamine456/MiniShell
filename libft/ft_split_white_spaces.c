@@ -4,25 +4,25 @@ int		count_words(char *str)
 {
 	int i;
 	int nb_words;
-	t_flags fl;
+	t_escapes escp;
 
 	i = 0;
-	fl = (t_flags){0, 0, 0, 0, 0, 0};
+	escp = (t_escapes){0, 0, 0};
 	nb_words = 0;
 	if (str == NULL)
 		return (0);
 	while (str[i] != '\0')
 	{
-		fl = check_flags(fl, str[i]);
-		if (fl.b_s == 0 && fl.d_q % 2 == 0 && fl.s_q % 2 == 0)
+		escp = ft_check_escapes(escp, str[i]);
+		if (escp.b_s == 0 && escp.d_q % 2 == 0 && escp.s_q % 2 == 0)
 		{
 			if (!ft_isspace(str[i]) && (ft_isspace(str[i + 1]) || str[i + 1] == '\0'))
 				nb_words++;
 			if (str[i + 1] == '\0')		// in case all quotes are closed
 				return (nb_words);
 		}
-		if (str[i] != '\\' && fl.b_s == 1)
-			fl.b_s = 0;
+		if (str[i] != '\\' && escp.b_s == 1)
+			escp.b_s = 0;
 		i++;
 	}
 	return (nb_words + 1); // if a quote is not closed
@@ -31,17 +31,17 @@ int		count_words(char *str)
 int		is_word(char *str, int begin)
 {
 	int		i;
-	t_flags	fl;
+	t_escapes	escp;
 
 	i = begin;
-	fl = (t_flags){0, 0, 0, 0, 0, 0};
+	escp = (t_escapes){0, 0, 0};
 	while (str[i] != '\0')
 	{
-		fl = check_flags(fl, str[i]);
-		if (ft_isspace(str[i + 1]) && fl.b_s == 0 && fl.d_q % 2 == 0 && fl.s_q % 2 == 0)
+		escp = ft_check_escapes(escp, str[i]);
+		if (ft_isspace(str[i + 1]) && escp.b_s == 0 && escp.d_q % 2 == 0 && escp.s_q % 2 == 0)
 			break;
-		if (str[i] != '\\' && fl.b_s == 1)
-			fl.b_s = 0;
+		if (str[i] != '\\' && escp.b_s == 1)
+			escp.b_s = 0;
 		i++;
 	}
 	return (i - begin + 1);

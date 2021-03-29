@@ -4,7 +4,7 @@
  * Test if a character is in the string
 */
 
-int		char_in_string(char c, char *str)
+int		ft_char_in_string(char c, char *str)
 {
 	int	i;
 
