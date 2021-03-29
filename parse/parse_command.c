@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 17:59:18 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/03/29 18:36:10 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/03/29 18:55:38 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		parse_command(char *line, char **envp)
 	{
 		n_s = ft_next_separator(line + i);
 		tmp_part = ft_substr(line, i, n_s);
+		tmp_part = ft_remove_spaces(tmp_part);
 		tab = ft_resize_tab(tab, ft_strdup(tmp_part));
 		i += n_s;
 		//put_part_to_command(tmp_part, line[i], &cmd);
