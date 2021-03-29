@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/03/29 14:56:32 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef LIBFT_H
+# define LIBFT_H
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <ctype.h>
+
+int				ft_strlen(const char *s);
+void			ft_putnbr(int n);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_strcmp(const char *s1, const char *s2);
+int				ft_isspace(char c);
+int				ft_isalnum(int c);
+int				ft_isalpha(int c);
+int				ft_isdigit(int c);
+char			*ft_strstr(const char *haystack, const char *needle);
+int				ft_strstri(const char *haystack, const char *needle);
+int				char_in_string(char c, char *str);
+void			*ft_memmove(void *dest, const void *src, size_t n);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
+char			*ft_strdup(const char *s1);
+char			*ft_strjoin(char *s1, char const *s2);
+char			**ft_split(char const *s, char c);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+void			ft_free_args(char **args);
+int				ft_size_args(char **tab);
+int				next_space(char *str);
+char			*remove_spaces(char *str);
+char			**ft_split_white_spaces(char *str);
+//t_escapes		check_escapes(t_escapes es, char c);
+int				char_to_func(char c);
+int				ft_str_in_args(char *str, char **args);
+
+#endif
