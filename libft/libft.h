@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/03/29 16:39:18 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/03/29 18:04:39 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 void			ft_free_args(char **args);
 int				ft_size_args(char **tab);
 int				ft_next_space(char *str);
+int				ft_next_separator(char *str);
 char			*ft_remove_spaces(char *str);
 char			**ft_split_white_spaces(char *str);
 t_escapes		ft_check_escapes(t_escapes escp, char c);
 int				ft_char_to_func(char c);
 int				ft_str_in_args(char *str, char **args);
+char			**ft_resize_tab(char **old, char *chaine);
+void			ft_print_args(char **args);
 
 #endif
