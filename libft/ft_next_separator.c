@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_command.c                                  :+:      :+:    :+:   */
+/*   ft_next_separator.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 15:04:10 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/03/29 16:48:48 by mlachheb         ###   ########.fr       */
+/*   Created: 2021/03/29 16:15:37 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/03/29 16:47:00 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "libft.h"
 
-int		parse_command(char *line, char **envp)
+int		ft_next_separator(char *str)
 {
 	int			i;
+	char		*tmp;
 	t_escapes	escp;
-	int			n_s;		//next separator
 
 	i = 0;
-	n_s = 0;
-	escp = (t_escape){0, 0, 0};
-	if (line == NULL)
-		return (1);
+	tmp = NULL;
+	escp = (t_escapes){0, 0, 0};
 	while (str[i] != '\0')
 	{
-
+		escp = ft_check_escapes(escp, str[i]);
+		if (ft_isseparator(str[i]) && escp.s_q % 2 == 0
+				&& escp.d_q % 2 == 0 && escp.b_s == 0)
+		{
+			tmp = ft_substr(str, 0, i);
+			if (ft_strcmp(tmp, ""))
+			{
+				free(tmp);
+				break ;
+			}
+			free(tmp);
+		}
+		if (str[i] != '\\' && escp.b_s == 1)
+			escp.b_s = 0;
+		i++;
 	}
+	return (i);
 }

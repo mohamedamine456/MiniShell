@@ -6,12 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/03/29 15:27:49 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/03/29 16:39:18 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define SEPARATORS " \t\v\b><|;"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -26,6 +27,7 @@ int				ft_isspace(char c);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
+int				ft_isseparator(int c);
 char			*ft_strstr(const char *haystack, const char *needle);
 int				ft_strstri(const char *haystack, const char *needle);
 int				ft_char_in_string(char c, char *str);
