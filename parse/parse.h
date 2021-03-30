@@ -3,6 +3,7 @@
 # define SEPARATORS " \t\v\b><|;"
 # include "../libft/libft.h"
 # include "parse_structs.h"
+# include "../structs.h"
 
 int			parse_command(char *line, char **envp);
 

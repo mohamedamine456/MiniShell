@@ -7,5 +7,6 @@
 # include <stdio.h>
 # include "get_next_line/get_next_line.h"
 # include "parse/parse.h"
+# include "structs.h"
 
 #endif
