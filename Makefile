@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/03/29 18:28:36 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/03/30 09:37:29 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC)
 all: $(NAME)
 
 $(NAME):
+	make fclean -C libft/
 	make -C libft/
 	gcc -Wall -Wextra -Werror -c $(SRC)
 	ar rc $(LIB_NAME) $(OBJSRC)
@@ -44,6 +45,7 @@ fclean:
 re: fclean all
 
 sanitize:
+	make fclean -C libft/
 	make -C libft/
 	gcc -Wall -Wextra -Werror -fsanitize=address -c $(SRC)
 	ar rc $(LIB_NAME) $(OBJSRC)
@@ -51,6 +53,7 @@ sanitize:
 	gcc -g -Wall -Wextra -Werror -fsanitize=address $(MAIN) $(LIB_NAME) $(LIBFT) -o $(NAME)
 
 noflags:
+	make fclean -C libft/
 	make -C libft/
 	gcc -c -g $(SRC)
 	ar rc $(LIB_NAME) $(OBJSRC)
