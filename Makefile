@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/03/30 09:37:29 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/03/30 16:55:34 by eel-orch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libft/libft.a
 NAME = Minishell
 MAIN = minishell.c
 
-PARSE_SRC = parse/parse_command.c
+PARSE_SRC = parse/*.c
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC)
 
