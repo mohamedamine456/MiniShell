@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 17:59:18 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/03/30 10:49:14 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/03/30 11:11:24 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,16 @@ int		parse_command(char *line, char **envp)
 		{
 			if (!ft_isspace(line[i]))
 			{
+				free(tmp_part);
 				tmp_part = ft_substr(line, i, 1);
 				tab = ft_resize_tab(tab, ft_strdup(tmp_part));
 			}
 			i++;
 		}
 		//put_part_to_command(tmp_part, line[i], &cmd);
+		free(tmp_part);
 	}
 	ft_print_args(tab);
+	ft_free_args(tab);
 	return (0);
 }
