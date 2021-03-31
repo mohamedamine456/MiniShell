@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 11:07:18 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/03/31 11:09:22 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/03/31 11:34:10 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_is_string(const char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (ft_isdigit(str[i]) != 1)
+		if (ft_isalpha(str[i]) != 1)
 			return (-1);
 		i++;
 	}
