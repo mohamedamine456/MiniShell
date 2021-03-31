@@ -26,6 +26,11 @@ int			is_option(char *str, char *name);
 char		**replace_tab_env(char **tab_cmd, char **envp);
 char		*replace_str(char *str, char **envp);
 char		*trim_replace(char *str, char **envp);
+char		*search_env(char *str, char **envp);
+
+char		*rep_spec(char *str, char **envp, int *i);
+char		*rep_alpha(char *str, char **envp, int *i);
+char		*rep_digit(char *str, char **envp, int *i);
 
 t_cmd		*new_cmd(t_cmd cmd);
 void		print_cmd(t_cmd cmd);
