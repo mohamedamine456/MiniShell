@@ -14,7 +14,7 @@ OBJ_SRC = ft_char_in_string.o ft_char_to_func.o ft_check_escapes.o\
 		  ft_resize_tab.o ft_size_args.o ft_split.o ft_split_white_spaces.o\
 		  ft_str_in_args.o ft_strcmp.o ft_strdup.o ft_strjoin.o ft_strlcat.o\
 		  ft_strlcpy.o ft_strlen.o ft_strncmp.o ft_strstr.o ft_strstri.o\
-		  ft_substr.o ft_isescape.o ft_is_string.o ft_isinput.o ft_isoutput.c\
+		  ft_substr.o ft_isescape.o ft_is_string.o ft_isinput.o ft_isoutput.o\
 
 NAME = libft.a
 
