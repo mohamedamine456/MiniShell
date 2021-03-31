@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 17:59:18 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/03/30 15:34:48 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/03/31 09:01:16 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		parse_command(char *line, char **envp)
 {
-	//t_cmd		*cmd;
 	int			i;
 	int			n_s;		//next separator
 	char		*tmp_part;
@@ -23,7 +22,6 @@ int		parse_command(char *line, char **envp)
 	i = 0;
 	n_s = 0;
 	tab = NULL;
-	//cmd = initialize_cmd();
 	if (line == NULL)
 		return (1);
 	while (line[i] != '\0')
@@ -44,9 +42,9 @@ int		parse_command(char *line, char **envp)
 			}
 			i++;
 		}
-		//put_part_to_command(tmp_part, line[i], &cmd);
 		free(tmp_part);
 	}
+	tab = clean_tab_cmd(tab);
 	ft_print_args(tab);
 	ft_free_args(tab);
 	return (0);

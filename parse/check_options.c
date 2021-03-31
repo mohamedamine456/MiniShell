@@ -1,11 +1,4 @@
-# include "../libft/libft.h"
-# define ECHO_OPTIONS "neE"
-# define PWD_OPTIONS "LP"
-# define ENV_OPTIONS "iPSuv"
-# define CD_OPTIONS "LPe@"
-# define EXPORT_OPTIONS "fnp"
-# define UNSET_OPTIONS "fvn"
-# define COMMANDS "echo cd pwd export unset env exit"
+# include "parse.h"
 
 int		check_by_options(char *str, char *options)
 {

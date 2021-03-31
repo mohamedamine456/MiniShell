@@ -27,7 +27,7 @@ char		*clean_str(char *str)
 			else if (str[i] == '\\' && ((escp.b_s == 0 && escp.d_q % 2 == 0) || escp.s_q % 2 == 1))
 				new[j++] = str[i];
 			else if (str[i] == '\\' && escp.b_s == 1 &&
-					escp.d_q % 2 == 1 && !ft_char_in_string(str[i + 1], "\"\`$"))
+					escp.d_q % 2 == 1 && !ft_char_in_string(str[i + 1], "\"`$"))
 				new[j++] = str[i];
 		}
 		if (str[i] != '\\' && escp.b_s == 1)
@@ -39,7 +39,7 @@ char		*clean_str(char *str)
 	return (new);
 }
 
-char		**clean_tab_cmd(char **tab_cmd, char **envp)
+char		**clean_tab_cmd(char **tab_cmd)
 {
 	int		i;
 	char	*tmp;
