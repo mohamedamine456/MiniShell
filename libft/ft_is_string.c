@@ -6,13 +6,13 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 11:07:18 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/03/31 11:34:10 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:18:50 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_is_string(const char *str)
+int	ft_is_string(char *str)
 {
 	int i;
 

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/03/30 18:14:27 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:17:31 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ int				ft_char_to_func(char c);
 int				ft_str_in_args(char *str, char **args);
 char			**ft_resize_tab(char **old, char *chaine);
 void			ft_print_args(char **args);
-
+int				ft_isoutput(char *str);
+int				ft_isinput(char c);
+int				ft_is_string(char *str);
 #endif

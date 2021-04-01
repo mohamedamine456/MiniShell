@@ -35,4 +35,5 @@ char		*rep_digit(char *str, char **envp, int *i);
 t_cmd		*new_cmd(t_cmd cmd);
 void		print_cmd(t_cmd cmd);
 void		cmd_add_back(t_cmd **cmd, t_cmd *new);
+int			cmd_size(void *list, int type);
 #endif

@@ -6,13 +6,13 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 11:38:16 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/03/31 11:41:27 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:06:18 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isoutput(const char *str)
+int ft_isoutput(char *str)
 {
 	int i;
 
