@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/01 18:45:25 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/02 19:41:43 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,49 @@
 
 void	add_cmd_name(char **cmd_name, char *name)
 {
-	//*cmd_name = ft_strdup(name);
+	*cmd_name = ft_strdup(name);
 }
 
-void	add_cmd_output(t_cmd **cmd, char *str, char *file)
+void	add_output_back(t_output **output, t_output *new)
+{
+	static int i = 0;
+	t_output *tmp;
+	if (*output == NULL)
+		*output = new;
+	else
+	{
+		tmp = *output;
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = new;
+		i++;
+		printf("\n\n\n%d\n", i);
+	}
+}
+
+void	add_cmd_output(t_cmd *cmd, char *str, char *file)
 {
 	int			i;
-	int			which_redir;
+	int			which_output;
 	t_output	*tmp;
+		
 	i = 0;
-	which_redir = ft_isoutput(str);
-	while (tmp != NULL)
-		tmp = tmp->next;
-	(*cmd)->output->file = ft_strdup(file);
-	(*cmd)->output = (t_output *)malloc(sizeof(t_output));
-	if (which_redir == 2)
-		(*cmd)->output->type = DOUBLE_REDIRECTION;
+	which_output = ft_isoutput(str);
+	tmp = new_output();
+	tmp->file = ft_strdup(file);
+	if (which_output == 2)
+		tmp->type = DOUBLE_REDIRECTION;
 	else
-		(*cmd)->output->type = SIMPLE_REDIRECTION;
-	tmp->next = NULL;
+		tmp->type = SIMPLE_REDIRECTION;
+	add_output_back(&(cmd->output), tmp);
 }
+
 
 int 	ft_ispipe(char *str)
 {
 	if (str[0] == '|')
 		return (1);
 	return (-1);
-}
-
-void	init_cmd(t_cmd *cmd)
-{
-	cmd->option = NULL;
-	cmd->name = NULL;
-	cmd->args = NULL;
-	cmd->input = NULL;
-	cmd->output = NULL;
 }
 
 void	add_cmd_args(char ***args, char *tab)
@@ -61,10 +69,10 @@ void	add_cmd_input(t_cmd **cmd, char *file)
 	t_input *tmp;
 	int 	i;
 
-	tmp = (*cmd)->input;
+	tmp = last_input(*cmd);
 	while (tmp != NULL)
 		tmp = tmp->next;
-	tmp = (t_input *)malloc(sizeof(t_input));
+	tmp = new_input();
 	tmp->file = ft_strdup(file);
 	tmp->next = NULL;
 }
@@ -72,29 +80,27 @@ void	add_cmd_input(t_cmd **cmd, char *file)
 t_cmd	*fill_command(char **tab)
 {
 	t_cmd	*cmd;
+	t_cmd	*pars;
 	int		i;
 
 	i = 0;
-	cmd = (t_cmd *)malloc(sizeof(t_cmd *));
-	init_cmd(cmd);
+	pars = new_cmd();
+	int t = 0;
 	while (tab[i] != NULL)
 	{
-		if (ft_is_string(tab[i]) != -1 && cmd->name == NULL)
-		{
-			write(1,"ll\n", 3);
-			add_cmd_name(&(cmd->name), tab[i]);
-			write(1, "ll\n", 3);	
-		}
-		else if (ft_is_string(tab[i]) != -1 && cmd->name != NULL)
-			add_cmd_args(&(cmd->args), tab[i]);
+		if (ft_is_string(tab[i]) != -1 && pars->name == NULL)
+			add_cmd_name(&(pars->name), tab[i]);
+		else if (ft_is_string(tab[i]) != -1 && pars->name != NULL)
+		 	add_cmd_args(&(pars->args), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
 		{
-			add_cmd_output(&cmd, tab[i], tab[i + 1]);
+			t++;
+			add_cmd_output(pars, tab[i], tab[i + 1]);
 			i++;
 		}
 		else if (ft_isinput(*tab[i]) != -1)
 		{
-			add_cmd_input(&cmd,tab[i + 1]);
+			add_cmd_input(&pars,tab[i + 1]);
 			i++;
 		}
 		else if (ft_ispipe(tab[i]) != -1)
@@ -102,14 +108,19 @@ t_cmd	*fill_command(char **tab)
 		if (tab[i] != NULL)
 			i++;
 	}
+	printf("cmd->output->type == %s cmd->output->file %s", pars->output->file, pars->output->next->file);
+
 	return (cmd);
 }
 
 int main()
 {
 	int i;
-	char *str = "echo > file";
+	char *str = "echo > file > file2 | cat -e";
 	char **tab = ft_split(str, 32);
 	t_cmd *cmd;
-	fill_command(tab);
+	cmd = fill_command(tab);
+	//printf("%p ||| %p", cmd->output, cmd->output->next);
+	//printf("%p\n", cmd->output);
+	//print_cmd(*cmd);
 }

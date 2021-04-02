@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 11:19:55 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/02 11:20:01 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/02 19:31:33 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,3 +20,4 @@ t_output *new_output(void)
 	*new_output = (t_output){0, 0, 0};
 	return (new_output);
 }
+//CCcccv00@@@
