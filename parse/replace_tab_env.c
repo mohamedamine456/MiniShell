@@ -41,7 +41,7 @@ char	*trim_replace(char *str, char **envp)
 		{
 			if (ft_isalpha(str[i + 1]) || str[i + 1] == '_')
 				str = replace_env(str, envp, &i);
-			else if (str[i + 1] == '?')
+            else if (str[i + 1] == '?')
 				str = replace_return(str, &i);
 			else if (ft_char_in_string(str[i + 1], "\'\"") && escp.d_q % 2 == 0)
 			{

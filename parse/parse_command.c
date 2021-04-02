@@ -1,12 +1,10 @@
 #include "parse.h"
 
-char    **cut_line(char *line);
-char    *cut_separator(char *line, int *i);
-
 int		parse_command(char *line, char **envp)
 {
 	char **tab;
 	tab = cut_line(line);
+    tab = replace_tab_env(tab, envp);
 	tab = clean_tab_cmd(tab);
 	ft_print_args(tab);
 	ft_free_args(tab);

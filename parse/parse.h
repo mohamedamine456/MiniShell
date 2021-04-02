@@ -14,6 +14,8 @@
 # include "cmd.h"
 
 int			parse_command(char *line, char **envp);
+char        **cut_line(char *line);
+char        *cut_separator(char *line, int *i);
 
 
 char		**clean_tab_cmd(char **tab_cmd);
@@ -24,9 +26,10 @@ char		*name_to_option(char *name);
 int			is_option(char *str, char *name);
 
 char		**replace_tab_env(char **tab_cmd, char **envp);
-char		*replace_str(char *str, char **envp);
 char		*trim_replace(char *str, char **envp);
 char		*search_env(char *str, char **envp);
+char        *replace_env(char *str, char **envp, int *i);
+char        *replace_return(char *str, int *i);
 
 char		*rep_spec(char *str, char **envp, int *i);
 char		*rep_alpha(char *str, char **envp, int *i);
@@ -41,4 +44,5 @@ t_output 	*new_output(void);
 t_output 	*last_output(t_cmd *cmd);
 t_input		*last_input(t_cmd *cmd);
 t_input		*new_input(void);
+
 #endif
