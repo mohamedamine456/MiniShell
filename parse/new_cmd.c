@@ -12,12 +12,16 @@
 
 #include "parse.h"
 
-t_cmd *new_cmd(t_cmd content)
+t_cmd *new_cmd(void)
 {
 	t_cmd *new_cmd;
 
 	new_cmd = (t_cmd *)malloc(sizeof(t_cmd));
-	*new_cmd = content;
+	new_cmd->option = NULL;
+	new_cmd->name = NULL;
+	new_cmd->args = NULL;
+	new_cmd->input = NULL;
+	new_cmd->output = NULL;
 	new_cmd->next = NULL;
 	return (new_cmd);
 }
