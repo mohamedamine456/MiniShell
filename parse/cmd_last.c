@@ -12,7 +12,7 @@
 
 #include "parse.h"
 
-t_cmd *last_cmd(t_cmd *cmd)
+t_cmd *cmd_last(t_cmd *cmd)
 {
 	t_cmd *tmp;
 
