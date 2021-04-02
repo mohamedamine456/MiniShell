@@ -14,11 +14,11 @@
 
 t_output *last_output(t_cmd *cmd)
 {
-	t_cmd		*last_cmd;
 	t_output	*tmp;
 
-	last_cmd = cmd_last(cmd);
-	tmp = last_cmd->output;
+	tmp = cmd->output;
+	if (tmp == NULL)
+		return (NULL);
 	while (tmp)
 		tmp = tmp->next;
 	return (tmp);

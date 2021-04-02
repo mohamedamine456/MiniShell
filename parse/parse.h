@@ -32,8 +32,13 @@ char		*rep_spec(char *str, char **envp, int *i);
 char		*rep_alpha(char *str, char **envp, int *i);
 char		*rep_digit(char *str, char **envp, int *i);
 
-t_cmd		*new_cmd(t_cmd cmd);
+t_cmd		*new_cmd(void);
+t_cmd		*cmd_last(t_cmd *cmd);
 void		print_cmd(t_cmd cmd);
 void		cmd_add_back(t_cmd **cmd, t_cmd *new);
 int			cmd_size(void *list, int type);
+t_output 	*new_output(void);
+t_output 	*last_output(t_cmd *cmd);
+t_input		*last_input(t_cmd *cmd);
+t_input		*new_input(void);
 #endif

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_last.c                                         :+:      :+:    :+:   */
+/*   last_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 18:27:56 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/03/30 16:49:03 by eel-orch         ###   ########.fr       */
+/*   Created: 2021/04/02 11:45:46 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/04/02 11:45:47 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-t_cmd *cmd_last(t_cmd *cmd)
+t_input *last_input(t_cmd *cmd)
 {
-	t_cmd *tmp;
+	t_input	*tmp;
 
-	tmp = cmd;
+	tmp = cmd->input;
 	if (tmp == NULL)
 		return (NULL);
 	while (tmp->next != NULL)
