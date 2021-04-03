@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/03 14:26:34 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:17:39 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ t_cmd	*fill_command(char **tab)
 int main()
 {
 	int i;
-	char *str = "echo -n -c okeey  > file1 > file2 < file3 | > file5";
+	char *str = "ls -n -c hello okeey  > file1 >> file2 < file3 | grep ls > file5";
 	char **tab = ft_split(str, 32);
 	t_cmd *cmd;
 	cmd = fill_command(tab);

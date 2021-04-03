@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 13:27:36 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/03 13:34:47 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:15:57 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		is_option(char *str, char *name)
 		ft_free_args(tab_cmds);
 		return (-1);
 	}
-	if (!check_by_options(str + 1, name_to_option(name)))
-		return (0);
+	else if (!check_by_options(str + 1, name_to_option(name)))
+		return (-1);
 	return (1);
 }
