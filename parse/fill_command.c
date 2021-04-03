@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/02 19:41:43 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/03 14:26:34 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	add_input_back(t_input **input, t_input *new)
     }
 }
 
-//hamza haris
-//check this out
 
 void	add_output_back(t_output **output, t_output *new)
 {
@@ -101,9 +99,10 @@ t_cmd	*fill_command(char **tab)
 	cmd = pars;
 	while (tab[i] != NULL)
 	{
-		//manage options after this if
 		if (ft_is_string(tab[i]) != -1 && pars->name == NULL)
 			add_cmd_name(&(pars->name), tab[i]);
+		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1)
+			add_cmd_options(&(pars->option), tab[i]);
 		else if (ft_is_string(tab[i]) != -1 && pars->name != NULL)
 		 	add_cmd_args(&(pars->args), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
@@ -111,7 +110,10 @@ t_cmd	*fill_command(char **tab)
 		else if (ft_isinput(*tab[i]) != -1)
 			add_cmd_input(pars,tab[i + 1]);
 		else if (ft_ispipe(tab[i]) != -1)
+		{
+			pars->next = new_cmd();
 			pars = pars->next;
+		}
 		if (tab[i] != NULL)
 			i++;
 	}
@@ -121,11 +123,12 @@ t_cmd	*fill_command(char **tab)
 int main()
 {
 	int i;
-	char *str = "echo > file > file2 | cat -e";
+	char *str = "echo -n -c okeey  > file1 > file2 < file3 | > file5";
 	char **tab = ft_split(str, 32);
 	t_cmd *cmd;
 	cmd = fill_command(tab);
 	//printf("%p ||| %p", cmd->output, cmd->output->next);
 	//printf("%p\n", cmd->output);
-	//print_cmd(*cmd);
+	print_cmd(*cmd);
+	print_cmd(*(cmd->next));
 }
