@@ -34,13 +34,6 @@ void	add_cmd_output(t_cmd *cmd, char *str, char *file)
 	add_output_back(&(cmd->output), tmp);
 }
 
-int 	ft_ispipe(char *str)
-{
-	if (str[0] == '|')
-		return (1);
-	return (-1);
-}
-
 void	add_cmd_args(char ***args, char *tab)
 {
 	*args = ft_resize_tab(*args, tab);

@@ -53,4 +53,6 @@ void			ft_print_args(char **args);
 int				ft_isoutput(char *str);
 int				ft_isinput(char c);
 int				ft_is_string(char *str);
+int 			ft_ispipe(char *str);
+
 #endif
