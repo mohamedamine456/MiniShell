@@ -98,7 +98,7 @@ t_cmd	*fill_command(char **tab)
 
 	i = 0;
 	pars = new_cmd();
-	int t = 0;
+	cmd = pars;
 	while (tab[i] != NULL)
 	{
 		//manage options after this if
@@ -107,23 +107,14 @@ t_cmd	*fill_command(char **tab)
 		else if (ft_is_string(tab[i]) != -1 && pars->name != NULL)
 		 	add_cmd_args(&(pars->args), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
-		{
-			t++;
 			add_cmd_output(pars, tab[i], tab[i + 1]);
-			i++;
-		}
 		else if (ft_isinput(*tab[i]) != -1)
-		{
 			add_cmd_input(pars,tab[i + 1]);
-			i++;
-		}
 		else if (ft_ispipe(tab[i]) != -1)
-			break;// add new cmd to next;
+			pars = pars->next;
 		if (tab[i] != NULL)
 			i++;
 	}
-	printf("cmd->output->type == %s cmd->output->file %s", pars->output->file, pars->output->next->file);
-
 	return (cmd);
 }
 
