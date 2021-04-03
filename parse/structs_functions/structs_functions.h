@@ -1,6 +1,6 @@
 #ifndef STRUCTS_FUNCTIONS_H
 # define STRUCTS_FUNCTIONS_H
-# include "../parse/parse.h"
+# include "../parse.h"
 
 void		add_back_cmd(t_cmd **cmds, t_cmd *new);
 void		clear_cmds(t_cmd **cmds);

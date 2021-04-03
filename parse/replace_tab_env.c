@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 19:53:47 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/02 19:53:54 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/03 10:23:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*trim_replace(char *str, char **envp)
 				i--;
 			}
 		}
+		if (str[i] != '\\' && escp.b_s == 1)
+			escp.b_s = 0;
 		i++;
 	}
 	return (str);
@@ -99,13 +101,13 @@ char	*replace_env(char *str, char **envp, int *i)
 		j++;
 	}
 	new_str = ft_substr(str, 0, *i);
-	tmp = ft_substr(str, *i + 1	, j);
+	tmp = ft_substr(str, *i + 1	, j - 1);
 	tmp = search_env(tmp, envp);
 	if (tmp == NULL)
 		tmp = ft_strdup("");
 	new_str = ft_strjoin(new_str, tmp);
 	free(tmp);
-	tmp = ft_substr(str, *i + j + 1, ft_strlen(str) - *i - j - 1);
+	tmp = ft_substr(str, *i + j, ft_strlen(str) - *i - j);
 	new_str = ft_strjoin(new_str, tmp);
 	free(str);
 	free(tmp);

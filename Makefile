@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/04/01 15:08:03 by eel-orch         ###   ########.fr        #
+#    Updated: 2021/04/03 09:54:52 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,14 @@ MAIN = minishell.c
 PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c parse/cmd_add_back.c\
 			parse/cmd_functions_test.c parse/cmd_last.c\
 			parse/free_cmd.c parse/new_cmd.c parse/parse_command.c\
-			parse/print_cmd.c parse/replace_tab_env.c parse/replace_functions.c\
-			parse/fill_command.c
+			parse/print_cmd.c parse/replace_tab_env.c parse/fill_command.c
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC)
 
 PARSE_OBJSRC = parse_command.o cmd_add_back.o check_options.o cmd_functions_test.o\
 			   cmd_last.o  free_cmd.o new_cmd.o print_cmd.o\
-			   replace_tab_env.o clean_tab_cmd.o replace_functions.o fill_command.o\
+			   replace_tab_env.o clean_tab_cmd.o fill_command.o\
 
 GNL_OBJSRC = get_next_line.o
 OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC)
