@@ -45,8 +45,6 @@ int			cmd_size(void *list, int type);
 void		add_cmd_options(char **old_option, char *new);
 int			is_option(char *str, char *name);
 t_output 	*new_output(void);
-t_output 	*last_output(t_cmd *cmd);
-t_input		*last_input(t_cmd *cmd);
 t_input		*new_input(void);
 
 #endif

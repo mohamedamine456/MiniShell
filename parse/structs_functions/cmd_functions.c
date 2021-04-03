@@ -30,9 +30,9 @@ void	clear_cmds(t_cmd **cmds)
 		if (cmd1->args != NULL)
 			ft_free_args(cmd1->args);
 		if (cmd1->input != NULL)
-			clear_input(&(cmd1->input));
+			clear_inputs(&(cmd1->input));
 		if (cmd1->output != NULL)
-			clear_output(&(cmd1->output));
+			clear_outputs(&(cmd1->output));
 		free(cmd1);
 		cmd1 = NULL;
 		cmd1 = cmd2;

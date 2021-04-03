@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/03 15:27:28 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:49:24 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,6 @@
 void	add_cmd_name(char **cmd_name, char *name)
 {
 	*cmd_name = ft_strdup(name);
-}
-
-void	add_input_back(t_input **input, t_input *new)
-{
-    t_input *tmp;
-
-    if (*input == NULL)
-	*input = new;
-    else
-    {
-	tmp = *input;
-	while (tmp->next != NULL)
-	    tmp = tmp->next;
-	tmp->next = new;
-    }
-}
-
-
-void	add_output_back(t_output **output, t_output *new)
-{
-	t_output *tmp;
-
-	if (*output == NULL)
-		*output = new;
-	else
-	{
-		tmp = *output;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
 }
 
 void	add_cmd_output(t_cmd *cmd, char *str, char *file)
@@ -129,7 +98,7 @@ t_cmd	*fill_command(char **tab)
 int main()
 {
 	int i;
-	char *str = "ls -n -c hello okeey  > file1 >> file2 < file3 | grep ls > file5";
+	char *str = "< file < file echo hello >> file >> file5 > file4 | grep h | grep f";
 	char **tab = ft_split(str, 32);
 	t_cmd *cmd;
 	cmd = fill_command(tab);

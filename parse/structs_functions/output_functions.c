@@ -1,16 +1,17 @@
 # include "structs_functions.h"
 
-void		addback_output(t_output **outputs, t_output *new)
+void	add_output_back(t_output **output, t_output *new)
 {
-	t_output *output;
+	t_output *tmp;
 
-	output = *outputs;
-	if (*outputs == NULL)
-		*outputs = new;
+	if (*output == NULL)
+		*output = new;
 	else
 	{
-		output = last_output(*outputs);
-		output->next = new;
+		tmp = *output;
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
 }
 

@@ -1,17 +1,18 @@
 # include "structs_functions.h"
 
-void		addback_input(t_input **inputs, t_input *new)
+void	add_input_back(t_input **input, t_input *new)
 {
-	t_input *input;
+    t_input *tmp;
 
-	input = *inputs;
-	if (*inputs == NULL)
-		*inputs = new;
-	else
-	{
-		input = last_input(*inputs);
-		input->next = new;
-	}
+    if (*input == NULL)
+	*input = new;
+    else
+    {
+	tmp = *input;
+	while (tmp->next != NULL)
+	    tmp = tmp->next;
+	tmp->next = new;
+    }
 }
 
 void		clear_inputs(t_input **inputs)
@@ -30,16 +31,6 @@ void		clear_inputs(t_input **inputs)
 		input1 = input2;
 	}
 	inputs = NULL;
-}
-
-t_input		*last_inputs(t_input *inputs)
-{
-	if (inputs != NULL)
-	{
-		while (inputs->next != NULL)
-		   inputs = inputs->next;
-	}
-	return (inputs);
 }
 
 t_input      *new_input()

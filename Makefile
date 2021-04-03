@@ -17,17 +17,21 @@ NAME = Minishell
 MAIN = minishell.c
 
 PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c parse/cmd_add_back.c\
-			parse/cmd_functions_test.c parse/cmd_last.c\
-			parse/free_cmd.c parse/new_cmd.c parse/parse_command.c\
-			parse/print_cmd.c parse/replace_tab_env.c parse/fill_command.c
+			parse/cmd_functions_test.c\
+			parse/free_cmd.c parse/parse_command.c\
+			parse/print_cmd.c parse/replace_tab_env.c parse/fill_command.c\
+			parse/structs_functions/cmd_functions.c \
+			parse/structs_functions/input_functions.c\
+			parse/structs_functions/output_functions.c\
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC)
 
-PARSE_OBJSRC = parse_command.o cmd_add_back.o check_options.o cmd_functions_test.o\
-			   cmd_last.o  free_cmd.o new_cmd.o print_cmd.o\
-			   replace_tab_env.o clean_tab_cmd.o fill_command.o\
-
+PARSE_OBJSRC =	parse_command.o cmd_add_back.o check_options.o cmd_functions_test.o\
+				free_cmd.o print_cmd.o\
+				replace_tab_env.o clean_tab_cmd.o fill_command.o\
+				cmd_functions.o input_functions.o output_functions.o
+				
 GNL_OBJSRC = get_next_line.o
 OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC)
 
