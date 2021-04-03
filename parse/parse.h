@@ -15,6 +15,7 @@
 # include "structs_functions/structs_functions.h"
 
 int			parse_command(char *line, char **envp);
+int			separate_command(char **tab_cmd);
 char        **cut_line(char *line);
 char        *cut_separator(char *line, int *i);
 
@@ -40,6 +41,7 @@ t_cmd		*new_cmd(void);
 t_cmd		*cmd_last(t_cmd *cmd);
 void		print_cmd(t_cmd cmd);
 
+t_cmd		*fill_command(char **tab);
 void		cmd_add_back(t_cmd **cmd, t_cmd *new);
 int			cmd_size(void *list, int type);
 void		add_cmd_options(char **old_option, char *new);

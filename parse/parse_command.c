@@ -2,14 +2,43 @@
 
 int		parse_command(char *line, char **envp)
 {
-	char **tab;
+	char	**tab;
+	int		ret;
+
 	tab = cut_line(line);
     tab = replace_tab_env(tab, envp);
 	tab = clean_tab_cmd(tab);
-	ft_print_args(tab);
+	ret = separate_command(tab);
+	//ft_print_args(tab);
 	ft_free_args(tab);
 	return (0);
 }
+
+int		separate_command(char **tab_cmd)
+{
+	t_cmd	*cmd;
+	char	**one_cmd;
+	int		i;
+
+	i = 0;
+	one_cmd = NULL;
+	while (tab_cmd != NULL && tab_cmd[i] != NULL)
+	{
+		if (ft_strcmp(tab_cmd[i], ";"))
+			one_cmd = ft_resize_tab(one_cmd, tab_cmd[i]);
+		else if (one_cmd != NULL || tab_cmd[i + 1] == NULL)
+		{
+			cmd = fill_command(one_cmd);
+			//execute_cmd(cmd);
+			ft_print_args(one_cmd);
+			ft_free_args(one_cmd);
+			one_cmd = NULL;
+		}
+		i++;
+	}
+	return (1);
+}
+
 char	**cut_line(char *line)
 {
 	int			i;
@@ -37,6 +66,7 @@ char	**cut_line(char *line)
 	}
 	return (tab);
 }
+
 char	*cut_separator(char *line, int *i)
 {
 	char	*tmp_part;
