@@ -25,16 +25,22 @@ int		separate_command(char **tab_cmd)
 	while (tab_cmd != NULL && tab_cmd[i] != NULL)
 	{
 		if (ft_strcmp(tab_cmd[i], ";"))
-			one_cmd = ft_resize_tab(one_cmd, tab_cmd[i]);
-		else if (one_cmd != NULL || tab_cmd[i + 1] == NULL)
+			one_cmd = ft_resize_tab(one_cmd, ft_strdup(tab_cmd[i]));
+		else if (one_cmd != NULL)
 		{
-			cmd = fill_command(one_cmd);
-			//execute_cmd(cmd);
+			// fill command
+			//execute command
 			ft_print_args(one_cmd);
+			write(1, "\n\n\n", 1);
 			ft_free_args(one_cmd);
 			one_cmd = NULL;
 		}
 		i++;
+	}
+	if (one_cmd != NULL)
+	{
+		ft_print_args(one_cmd);
+		ft_free_args(one_cmd);
 	}
 	return (1);
 }
