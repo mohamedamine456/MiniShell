@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/03 15:17:39 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:27:28 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,23 @@ t_cmd	*fill_command(char **tab)
 			add_cmd_name(&(pars->name), tab[i]);
 		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1)
 			add_cmd_options(&(pars->option), tab[i]);
-		else if (ft_is_string(tab[i]) != -1 && pars->name != NULL)
-		 	add_cmd_args(&(pars->args), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
+		{
 			add_cmd_output(pars, tab[i], tab[i + 1]);
+			i++;
+		}
 		else if (ft_isinput(*tab[i]) != -1)
+		{
 			add_cmd_input(pars,tab[i + 1]);
+			i++;
+		}
 		else if (ft_ispipe(tab[i]) != -1)
 		{
 			pars->next = new_cmd();
 			pars = pars->next;
 		}
+		else
+			add_cmd_args(&(pars->args), tab[i]);
 		if (tab[i] != NULL)
 			i++;
 	}
