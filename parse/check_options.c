@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 13:27:36 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/02 13:27:37 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/03 13:34:47 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int		is_option(char *str, char *name)
 
 	i = 1;
 	if (str == NULL || name == NULL || str[0] != '-')
-		return (0);
+		return (-1);
 	tab_cmds = ft_split(COMMANDS, ' ');
 	if (!ft_str_in_args(name, tab_cmds))
 	{
 		ft_free_args(tab_cmds);
-		return (1);
+		return (-1);
 	}
 	if (!check_by_options(str + 1, name_to_option(name)))
 		return (0);
