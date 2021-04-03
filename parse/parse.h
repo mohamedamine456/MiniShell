@@ -12,6 +12,7 @@
 # include "../libft/libft.h"
 # include "parse_structs.h"
 # include "cmd.h"
+# include "structs_functions/structs_functions.h"
 
 int			parse_command(char *line, char **envp);
 char        **cut_line(char *line);
@@ -38,6 +39,7 @@ char		*rep_digit(char *str, char **envp, int *i);
 t_cmd		*new_cmd(void);
 t_cmd		*cmd_last(t_cmd *cmd);
 void		print_cmd(t_cmd cmd);
+
 void		cmd_add_back(t_cmd **cmd, t_cmd *new);
 int			cmd_size(void *list, int type);
 t_output 	*new_output(void);
