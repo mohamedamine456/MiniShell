@@ -17,10 +17,28 @@ void	add_cmd_name(char **cmd_name, char *name)
 	*cmd_name = ft_strdup(name);
 }
 
+void	add_input_back(t_input **input, t_input *new)
+{
+    t_input *tmp;
+
+    if (*input == NULL)
+	*input = new;
+    else
+    {
+	tmp = *input;
+	while (tmp->next != NULL)
+	    tmp = tmp->next;
+	tmp->next = new;
+    }
+}
+
+//hamza haris
+//check this out
+
 void	add_output_back(t_output **output, t_output *new)
 {
-	static int i = 0;
 	t_output *tmp;
+
 	if (*output == NULL)
 		*output = new;
 	else
@@ -29,8 +47,6 @@ void	add_output_back(t_output **output, t_output *new)
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = new;
-		i++;
-		printf("\n\n\n%d\n", i);
 	}
 }
 
@@ -51,7 +67,6 @@ void	add_cmd_output(t_cmd *cmd, char *str, char *file)
 	add_output_back(&(cmd->output), tmp);
 }
 
-
 int 	ft_ispipe(char *str)
 {
 	if (str[0] == '|')
@@ -64,17 +79,15 @@ void	add_cmd_args(char ***args, char *tab)
 	*args = ft_resize_tab(*args, tab);
 }
 
-void	add_cmd_input(t_cmd **cmd, char *file)
+void	add_cmd_input(t_cmd *cmd, char *file)
 {
 	t_input *tmp;
-	int 	i;
 
-	tmp = last_input(*cmd);
-	while (tmp != NULL)
-		tmp = tmp->next;
+	tmp = (t_input *)malloc(sizeof(t_input));
 	tmp = new_input();
 	tmp->file = ft_strdup(file);
 	tmp->next = NULL;
+	add_input_back(&(cmd->input), tmp);
 }
 
 t_cmd	*fill_command(char **tab)
@@ -88,6 +101,7 @@ t_cmd	*fill_command(char **tab)
 	int t = 0;
 	while (tab[i] != NULL)
 	{
+		//manage options after this if
 		if (ft_is_string(tab[i]) != -1 && pars->name == NULL)
 			add_cmd_name(&(pars->name), tab[i]);
 		else if (ft_is_string(tab[i]) != -1 && pars->name != NULL)
@@ -100,11 +114,11 @@ t_cmd	*fill_command(char **tab)
 		}
 		else if (ft_isinput(*tab[i]) != -1)
 		{
-			add_cmd_input(&pars,tab[i + 1]);
+			add_cmd_input(pars,tab[i + 1]);
 			i++;
 		}
 		else if (ft_ispipe(tab[i]) != -1)
-			break;
+			break;// add new cmd to next;
 		if (tab[i] != NULL)
 			i++;
 	}
