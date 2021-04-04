@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/04 18:30:43 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/04 18:46:05 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_cmd	*fill_command(char **tab)
 	{
 		if (ft_is_string(tab[i]) != -1 && pars->name == NULL)
 			add_cmd_name(&(pars->name), tab[i]);
-		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1 && cmd->args == NULL)
+		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1 && cmd->args == NULL) // hacker man
 			add_cmd_options(&(pars->option), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
 		{
