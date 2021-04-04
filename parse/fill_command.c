@@ -81,7 +81,7 @@ t_cmd	*fill_command(char **tab)
 			pars = pars->next;
 		}
 		else
-			add_cmd_args(&(pars->args), tab[i]);
+			add_cmd_args(&(pars->args), ft_str(tab[i]));
 		if (tab[i] != NULL)
 			i++;
 	}
