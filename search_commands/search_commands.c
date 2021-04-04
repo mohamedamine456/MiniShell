@@ -11,6 +11,8 @@ char	*command_path(char *cmd_name, char **envp)
 	paths = tab_paths(envp);
 	paths = ft_strjoin_args(paths, ft_strdup("/"));
 	path = check_right_path(cmd_name, paths);
+	if (path == NULL)
+		path = ft_strdup("ERROR: Commad not found"); // in search for a way to inform it not found
 	ft_free_args(paths);
 	return (path);
 }
@@ -71,10 +73,16 @@ char	*check_right_path(char *cmd_name, char **paths)
 	return (NULL);
 }
 
-int main(int argc, char **argv, char **envp)
-{
-	char	*path;
-
-	path = command_path("python", envp);
-	printf("%s\n", path);
-}
+//int main(int argc, char **argv, char **envp)
+//{
+//	char	*path;
+//
+//	if (argv[1] != NULL)
+//	{
+//		path = command_path(argv[1], envp);
+//		printf("%s\n", path);
+//	}
+//	else
+//		printf("Enter a command to look for");
+//	return (0);
+//}
