@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/03 17:55:19 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/04 18:30:43 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_cmd	*fill_command(char **tab)
 	{
 		if (ft_is_string(tab[i]) != -1 && pars->name == NULL)
 			add_cmd_name(&(pars->name), tab[i]);
-		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1)
+		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1 && cmd->args == NULL)
 			add_cmd_options(&(pars->option), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
 		{
@@ -81,22 +81,22 @@ t_cmd	*fill_command(char **tab)
 			pars = pars->next;
 		}
 		else
-			add_cmd_args(&(pars->args), ft_str(tab[i]));
+			add_cmd_args(&(pars->args), ft_strdup(tab[i]));
 		if (tab[i] != NULL)
 			i++;
 	}
 	return (cmd);
 }
 
-//int main()
-//{
-//	int i;
-//	char *str = "< file < file echo hello >> file >> file5 > file4 | grep h | grep f";
-//	char **tab = ft_split(str, 32);
-//	t_cmd *cmd;
-//	cmd = fill_command(tab);
-//	//printf("%p ||| %p", cmd->output, cmd->output->next);
-//	//printf("%p\n", cmd->output);
-//	print_cmd(*cmd);
-//	print_cmd(*(cmd->next));
-//}
+int main()
+{
+	int i;
+	char *str = "echo -n hello -n world";
+	char **tab = ft_split(str, 32);
+	t_cmd *cmd;
+	cmd = fill_command(tab);
+	//printf("%p ||| %p", cmd->output, cmd->output->next);
+	//printf("%p\n", cmd->output);
+	print_cmd(*cmd);
+	//print_cmd(*(cmd->next));
+}
