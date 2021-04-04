@@ -11,6 +11,7 @@ char	*command_path(char *cmd_name, char **envp)
 	paths = tab_paths(envp);
 	paths = ft_strjoin_args(paths, ft_strdup("/"));
 	path = check_right_path(cmd_name, paths);
+	ft_free_args(paths);
 	return (path);
 }
 
@@ -41,7 +42,10 @@ char	**tab_paths(char **envp)
 		i++;
 	}
 	if (paths != NULL)
+	{
 		tab = ft_split(paths, ':');
+		free(paths);
+	}
 	return (tab);
 }
 
@@ -57,7 +61,7 @@ char	*check_right_path(char *cmd_name, char **paths)
 		return (NULL);
 	while (paths[i] != NULL)
 	{
-		path = ft_strjoin(ft_strdup(paths[i]), ft_strdup(cmd_name));
+		path = ft_strjoin(ft_strdup(paths[i]), cmd_name);
 		ret = lstat(path, &info);
 		if (ret == 0)
 			return (path);
@@ -71,6 +75,6 @@ int main(int argc, char **argv, char **envp)
 {
 	char	*path;
 
-	path = command_path("ls", envp);
+	path = command_path("python", envp);
 	printf("%s\n", path);
 }
