@@ -7,13 +7,11 @@
 char	*ft_remove_spaces(char *str)
 {
 	int		i;
-	int		j;
 	int		n_s;
 	char	*tmp;
 	char	*new;
 
 	i = 0;
-	j = 0;
 	n_s = 0;
 	new = ft_strdup("");
 	while (str[i] != '\0')
