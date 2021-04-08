@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:06:57 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/08 17:31:57 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/08 18:44:02 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 #define SIMPLE_REDIRECTION 	1
 #define DOUBLE_REDIRECTION	2
 
+typedef struct		s_escapes
+{
+	int				d_q;		//double_quote
+	int				s_q;		//simple_quote
+	int				b_s;		//back_slash
+}					t_escapes;
 
 typedef struct		s_output
 {

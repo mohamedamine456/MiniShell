@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/04 10:24:34 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/08 18:44:56 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <ctype.h>
-# include "../parse/parse_structs.h"
-
+# include "../parse/cmd.h"
 int				ft_strlen(const char *s);
 void			ft_putnbr(int n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);

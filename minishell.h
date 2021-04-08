@@ -12,7 +12,6 @@ typedef struct	s_general_data
 {
 	int		return_value;
 	char	**envp;
-	char	*shell_name;
-}				t_generl_data;
+}				t_general_data;
 
 #endif

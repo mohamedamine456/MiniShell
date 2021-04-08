@@ -10,7 +10,6 @@
 # define UNSET_OPTIONS "fvn"
 # define COMMANDS "echo cd pwd export unset env exit"
 # include "../libft/libft.h"
-# include "parse_structs.h"
 # include "cmd.h"
 # include "structs_functions/structs_functions.h"
 

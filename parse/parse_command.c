@@ -7,8 +7,14 @@ int		parse_command(char *line, char **envp)
 
 	tab = cut_line(line); // quotes error handling
 	//handl ; | >>>>>>>>> <<<<<<<
+	if (tab == NULL)
+		return (-1);
     tab = replace_tab_env(tab, envp);
+	if (tab == NULL)
+		return (-1);
 	tab = clean_tab_cmd(tab);
+	if (tab == NULL)
+		return (-1);
 	ret = separate_command(tab);
 	//ft_print_args(tab);
 	ft_free_args(tab);
