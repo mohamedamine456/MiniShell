@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/04/03 17:52:11 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/04/08 18:35:43 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ LIBFT = libft/libft.a
 NAME = Minishell
 MAIN = minishell.c
 
-PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c parse/cmd_add_back.c\
+PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c\
 			parse/cmd_functions_test.c parse/add_cmd_option.c\
-			parse/free_cmd.c parse/parse_command.c\
+			parse/parse_command.c\
 			parse/print_cmd.c parse/replace_tab_env.c parse/fill_command.c\
 			parse/structs_functions/cmd_functions.c \
 			parse/structs_functions/input_functions.c\
@@ -27,8 +27,8 @@ PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c parse/cmd_add_back.c\
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC)
 
-PARSE_OBJSRC =	parse_command.o cmd_add_back.o check_options.o cmd_functions_test.o\
-				free_cmd.o print_cmd.o add_cmd_option.o\
+PARSE_OBJSRC =	parse_command.o check_options.o cmd_functions_test.o\
+				print_cmd.o add_cmd_option.o\
 				replace_tab_env.o clean_tab_cmd.o fill_command.o\
 				cmd_functions.o input_functions.o output_functions.o
 				
