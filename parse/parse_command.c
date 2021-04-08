@@ -5,7 +5,8 @@ int		parse_command(char *line, char **envp)
 	char	**tab;
 	int		ret;
 
-	tab = cut_line(line);
+	tab = cut_line(line); // quotes error handling
+	//handl ; | >>>>>>>>> <<<<<<<
     tab = replace_tab_env(tab, envp);
 	tab = clean_tab_cmd(tab);
 	ret = separate_command(tab);

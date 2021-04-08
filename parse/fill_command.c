@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/04 18:46:05 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/08 12:09:00 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_cmd	*fill_command(char **tab)
 int main()
 {
 	int i;
-	char *str = "echo -n hello -n world";
+	char *str = "echo";
 	char **tab = ft_split(str, 32);
 	t_cmd *cmd;
 	cmd = fill_command(tab);

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:44:11 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/08 11:21:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/08 12:22:02 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,10 @@ int		open_inputs(t_input *inputs)
 {
 	int	old_fd;
 	int	new_fd;
+	int	tmp_fd;
 
 	old_fd = 0;
-	while (inputs != NULL)
-	{
-		new_fd = open(inputs->file, O_RDONLY, S_IRUSR);
-		if (new_fd == -1)
-			return (-1);
-		tmp_fd = dup(new_fd);
-		if (tmp_fd == -1 && errno != EBADF)
-			return (-1);
-		else
-		{
-		}
-	}
+	tmp_fd = dup(0);
+	if (tmp_fd == -1 && errno != EBADF)
+		return (-1);
 }
