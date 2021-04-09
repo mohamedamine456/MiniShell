@@ -4,5 +4,6 @@
 
 void	ft_echo(char **args, char *option, int *retv);
 void    ft_pwd(char **args, char *option, int *retv);
+void	ft_cd(char **args, char *option, int *retv);
 
 #endif
