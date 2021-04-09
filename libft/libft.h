@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/08 18:44:56 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/09 17:52:53 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int				ft_isinput(char c);
 int				ft_is_string(char *str);
 int 			ft_ispipe(char *str);
 char			**ft_strjoin_args(char **tab, char *str);
+char			*search_env(char *str, char **envp);
 
 #endif

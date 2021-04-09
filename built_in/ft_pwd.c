@@ -1,9 +1,8 @@
 #include "built_in.h"
 
-void	ft_pwd(char **args, char *option, int *retv)
+void	ft_pwd(t_builtin_vars var, int *retv)
 {
 	char	*curr_path;
-	int		size;
 
 	curr_path = getcwd(NULL, 0);
 	if (curr_path == NULL)

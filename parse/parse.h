@@ -28,7 +28,6 @@ int			is_option(char *str, char *name);
 
 char		**replace_tab_env(char **tab_cmd, char **envp);
 char		*trim_replace(char *str, char **envp);
-char		*search_env(char *str, char **envp);
 char        *replace_env(char *str, char **envp, int *i);
 char        *replace_return(char *str, int *i);
 
