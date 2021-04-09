@@ -1,6 +1,6 @@
 # include "built_in.h"
 
-int		ft_echo(char **args, char *option)
+void	ft_echo(char **args, char *option, int *retv)
 {
 	int i;
 
@@ -9,4 +9,8 @@ int		ft_echo(char **args, char *option)
 		write(1, args[i], ft_strlen(args[i]));
 	if (option != NULL)
 		write(1, "\n", 1);
+	if (errno == 0)
+		*retv = 0;
+	else
+		*retv == 1;
 }
