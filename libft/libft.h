@@ -55,5 +55,6 @@ int				ft_is_string(char *str);
 int 			ft_ispipe(char *str);
 char			**ft_strjoin_args(char **tab, char *str);
 char			*search_env(char *str, char **envp);
+int             ft_only_digits(char *str);
 
 #endif
