@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/09 17:52:53 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:01:18 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isseparator(int c);
 int				ft_isescape(char c);
+int				ft_isenv(char *env);
 char			*ft_strstr(const char *haystack, const char *needle);
 int				ft_strstri(const char *haystack, const char *needle);
 int				ft_char_in_string(char c, char *str);

@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   ft_isenv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/10 15:53:26 by mlachheb         ###   ########.fr       */
+/*   Created: 2021/04/10 14:57:27 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/10 15:00:10 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built_in.c"
+#include "libft.h"
 
-void	ft_cd(t_builtin_vars var, int *retv)
+int		ft_isenv(char *env)
 {
-	char	*dest_path;
+	int	i;
 
-	if (var.args != NULL && var.args[0] != NULL)
-		dest_path = ft_strdup(var.args[0]);
-	else
-		dest_path = search_env("HOME", var.envp);
-	if (dest_path != NULL)
+	i = 0;
+	while (env[i] != '\0')
 	{
-		if (chdir(dest_path) != 0)
-		{
-			*retv = 1;
-			//print_error(errno);
-		}
-		else
-		{
-			*retv = 0;
-			//change_pwdenv();
-		}
+		if (env[i] == '=')
+			return (1);
+		i++;
 	}
-	else
-	{
-		*retv = 1;
-		//print_error(error);
-	}
+	return (0);
 }

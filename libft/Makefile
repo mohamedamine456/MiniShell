@@ -6,7 +6,7 @@ SRC = ft_char_in_string.c ft_char_to_func.c ft_check_escapes.c\
 	  ft_str_in_args.c ft_strcmp.c ft_strdup.c ft_strjoin.c ft_strlcat.c\
 	  ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strstr.c ft_strstri.c\
 	  ft_substr.c ft_isescape.c ft_is_string.c ft_isinput.c\
-	  ft_isoutput.c ft_search_env.c
+	  ft_isoutput.c ft_search_env.c ft_isenv.c
 
 OBJ_SRC = ft_char_in_string.o ft_char_to_func.o ft_check_escapes.o\
 		  ft_free_args.o ft_isalnum.o ft_isalpha.o ft_isdigit.o ft_ispipe.o\
@@ -16,7 +16,7 @@ OBJ_SRC = ft_char_in_string.o ft_char_to_func.o ft_check_escapes.o\
 		  ft_str_in_args.o ft_strcmp.o ft_strdup.o ft_strjoin.o ft_strlcat.o\
 		  ft_strlcpy.o ft_strlen.o ft_strncmp.o ft_strstr.o ft_strstri.o\
 		  ft_substr.o ft_isescape.o ft_is_string.o ft_isinput.o\
-		  ft_isoutput.o ft_search_env.o
+		  ft_isoutput.o ft_search_env.o ft_isenv.o
 
 NAME = libft.a
 
