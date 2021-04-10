@@ -10,7 +10,7 @@ char	**ft_strjoin_args(char **tab, char *str)
 		return (NULL);
 	while (tab[i] != NULL)
 	{
-		tab[i] = ft_strjoin(tab[i],str);
+		tab[i] = ft_strjoin(tab[i], str);
 		i++;
 	}
 	free(str);

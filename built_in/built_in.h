@@ -18,4 +18,6 @@ void			ft_unset(t_builtin_vars var, int *retv);
 void			ft_env(t_builtin_vars var, int *retv);
 void			ft_export(t_builtin_vars var, int *retv);
 
+char			**remove_env(char *str, char **envp);
+
 #endif
