@@ -27,7 +27,7 @@ int main(int argc, char **args, char **envp)
 	}
 	write(1, "Write a word:", 13);
 	read(0, buff, 13);
-	write(1, "\nread\n", 6);
+	write(1, "\nread: ", 7);
 	write(1, buff, 13);
 	printf("\nc_iflag: %ld, c_oflag: %ld, c_cflag: %ld, c_lflag: %ld\n",
 			tp.c_iflag, tp.c_oflag, tp.c_cflag, tp.c_lflag);
