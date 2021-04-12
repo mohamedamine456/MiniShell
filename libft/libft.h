@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/10 15:01:18 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/12 15:06:00 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void			ft_print_args(char **args);
 int				ft_isoutput(char *str);
 int				ft_isinput(char c);
 int				ft_is_string(char *str);
-int 			ft_ispipe(char *str);
+int				ft_ispipe(char *str);
 char			**ft_strjoin_args(char **tab, char *str);
 char			*search_env(char *str, char **envp);
-int             ft_only_digits(char *str);
-int		ft_strlen_tab(char **tab);
+int				ft_only_digits(char *str);
+int				ft_strlen_tab(char **tab);
 
 #endif

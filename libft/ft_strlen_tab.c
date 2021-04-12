@@ -6,6 +6,6 @@ int ft_strlen_tab(char **tab)
 
     len = 0;
     while (tab[len] != NULL)
-	len++;
+		len++;
     return (len);
 }
