@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:58:03 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/10 10:58:21 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/12 18:02:18 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ char	*command_path(char *cmd_name, char **envp)
 	paths = tab_paths(envp);
 	paths = ft_strjoin_args(paths, ft_strdup("/"));
 	path = check_right_path(cmd_name, paths);
-	if (path == NULL)
-		path = ft_strdup("ERROR: Commad not found"); // in search for a way to inform it not found
 	ft_free_args(paths);
 	return (path);
 }
