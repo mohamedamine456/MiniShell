@@ -18,7 +18,7 @@ void	init_terminal_data()
 	char	*term_buffer;
 	int		success;
 
-	term_buffer = malloc(2048);
+	term_buffer = NULL;
 	termtype = getenv("TERM");
 	if (termtype == NULL)
 		fatal("Specify a terminal type in the env variables.\n");
