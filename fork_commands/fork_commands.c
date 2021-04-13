@@ -11,4 +11,6 @@ int		fork_commands(char *name, char **args, char **envp)
 	pid = fork();
 	if (pid == 0)
 		execve(path_cmd, args, envp);
+	else
+		wait(NULL);
 }
