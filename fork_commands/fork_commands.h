@@ -1,5 +1,5 @@
-#ifndef SEARCH_COMMANDS_H
-# define SEARCH_COMMANDS_H
+#ifndef FORK_COMMANDS_H
+# define FORK_COMMANDS_H
 # include "../libft/libft.h"
 # include <sys/stat.h>
 
