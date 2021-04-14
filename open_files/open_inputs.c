@@ -6,22 +6,21 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:44:11 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/08 17:45:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/14 14:27:15 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_files.h"
 
-int		open_inputs(t_input *inputs)
+int		open_inputs(t_input *inputs, int *stdin_fd)
 {
 	int	new_fd;
 	int	tmp_fd;
-	int stdin_fd;
 
 	if (inputs == NULL)
 		return (0);
-	stdin_fd = dup(0);
-	if (stdin_fd < 0)
+	*stdin_fd = dup(0);
+	if (*stdin_fd < 0)
 		return (-1);
 	while (inputs != NULL)
 	{

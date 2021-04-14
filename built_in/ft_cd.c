@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/10 19:40:21 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/14 13:00:22 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	if (dest_path != NULL)
 	{
 		if (chdir(dest_path) != 0)
-		{
-			*retv = 1;
-			//print_error(errno);	//Minishell: cd: dest_path No such file or directory
-		}
+			ft_builtin_errors(strerror(errno), retv);
 		else
 		{
 			*retv = 0;
@@ -34,8 +31,5 @@ void	ft_cd(t_builtin_vars var, int *retv)
 		}
 	}
 	else
-	{
-		*retv = 1;
-		//print_error(error); //MiniShell: cd: HOME not set
-	}
+		ft_builtin_error("MiniShell: cd: HOME not set");
 }

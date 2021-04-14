@@ -10,7 +10,10 @@ int main(int argc, char **argv, char **envp)
 {
 	char	*path_cmd;
 	pid_t	pid;
+	char	**tab;
 
+	tab = NULL;
+	tab = ft_resize_tab(tab, ft_strdup(""));
 	if (argc != 2)
 	{
 		write(1, "Error arguments.\n", 17);
@@ -22,12 +25,13 @@ int main(int argc, char **argv, char **envp)
 		pid = fork();
 		if (pid == 0)
 		{
-			execve(path_cmd, NULL, envp);
+			execve(path_cmd, tab, envp);
+			perror("execve:");
 		}
 		else
 		{
 			wait(NULL);
-			write(1, "all good from parent", 8);
+			write(1, "all good from parent", 20);
 			exit(0);
 		}
 	}

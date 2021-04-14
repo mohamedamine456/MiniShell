@@ -6,22 +6,21 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:25:29 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/08 17:46:17 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/14 14:27:46 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_files.h"
 
-int		open_outputs(t_output *outputs)
+int		open_outputs(t_output *outputs, int *stdout_fd)
 {
 	int	new_fd;
 	int	tmp_fd;
-	int	stdout_fd;
 
 	if (outputs == NULL)
 		return (0);
-	stdout_fd = dup(1);
-	if (stdout_fd < 0)
+	*stdout_fd = dup(1);
+	if (*stdout_fd < 0)
 		return (-1);
 	while (outputs != NULL)
 	{
