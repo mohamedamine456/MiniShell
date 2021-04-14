@@ -1,7 +1,7 @@
 
 #include "../libft/libft.h"
 
-void	sort_string(char **tab)
+void	sort_strings(char **tab)
 {
     char    *tmp;
     int	    index;
