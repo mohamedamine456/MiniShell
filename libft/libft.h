@@ -58,5 +58,6 @@ char			**ft_strjoin_args(char **tab, char *str);
 char			*search_env(char *str, char **envp);
 int				ft_only_digits(char *str);
 int				ft_strlen_tab(char **tab);
+char			**ft_strjoin_tables(char **str1, char **str2);
 
 #endif
