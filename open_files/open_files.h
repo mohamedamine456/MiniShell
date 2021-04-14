@@ -8,6 +8,7 @@
 
 int		open_inputs(t_input *inputs, int *stdin_fd);
 int		open_outputs(t_output *output, int *stdout_fd);
-int		open_in_out_files(t_cmd *cmd);
+int		open_in_out_files(t_cmd *cmd, int *stdin_fd, int *stdout_fd);
+int		close_files(int stdin_fd, int stdout_fd);
 
 #endif

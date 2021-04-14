@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_in_out_files.c                                :+:      :+:    :+:   */
+/*   close_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 14:21:09 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 14:45:43 by mlachheb         ###   ########.fr       */
+/*   Created: 2021/04/14 16:11:24 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/14 16:19:50 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_files.h"
 
-int		open_in_out_files(t_cmd *cmd, int *stdin_fd, int *stdout_fd)
+int		close_files(int stdin_fd, int stdout_fd)
 {
-	int		retv;
-
-	if (cmd != NULL)
-	{
-		retv = open_inputs(cmd->input, stdin_fd);
-		if (retv == -1)
-			return (-1);
-		retv = open_outputs(cmd->output, stdout_fd);
-		if (retv == -1)
-			return (-1);
-		return (0);
-	}
-	return (0);
+	if (dup2(0, stdin_fd) < 0)
+		return (-1);
+	if (close(stdin_fd) < 0)
+		return (-1);
+	if (dup2(1, stdout_fd) < 0)
+		return (-1);
+	if (close(stdout_fd) < 0)
+		return (-1);
 }
