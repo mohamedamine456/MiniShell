@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/15 16:19:41 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/15 16:52:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ t_flags reset_flags(t_flags fl, char c)
 		if (c != 27 && c != 91 && c != 'A' && c != 'B')
 			fl = (t_flags){0, 0, 0};
 	}
-	else if (compare_flags(fl, (t_flags){1, 1, 'A'}))
+	if (compare_flags(fl, (t_flags){1, 1, 'A'}))
 			fl = (t_flags){0, 0, 0};
-	else if (compare_flags(fl, (t_flags){1, 1, 'B'}))
+	if (compare_flags(fl, (t_flags){1, 1, 'B'}))
 			fl = (t_flags){0, 0, 0};
 	return (fl);
 }
