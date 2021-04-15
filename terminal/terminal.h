@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_jointabstr.c                                    :+:      :+:    :+:   */
+/*   terminal.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 17:33:15 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 17:33:19 by mlachheb         ###   ########.fr       */
+/*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/15 12:08:59 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef TERMINAL_H
+# define TERMINAL_H
+# include <fcntl.h>
+# include <termios.h>
+# include "../libft/libft.h"
+# define TRUE 1
 
-#include "libft.h"
+typedef struct termios	t_termios;
 
-char **ft_jointabstr(char **tab, char *str)
+typedef struct	s_flags
 {
-    char    **tmp_tab;
-    char    **new_tab;
-    int	    i;
+	int		esc;
+	int		l_br;
+	char	ltr;
+}				t_flags;
 
-    tmp_tab = (char **)malloc(sizeof(char *) * 2);
-    tmp_tab[0] = ft_strdup(str);
-    tmp_tab[1] = NULL;
-    new_tab = ft_strjoin_tables(tab, tmp_tab);
-    free(tmp_tab[0]);
-    free(tmp_tab);
-    return (new_tab);
-}
+char	*just_read();
+int		get_termios(t_termios *term);
+int		set_termios(t_termios *term, int flag);
+
+#endif

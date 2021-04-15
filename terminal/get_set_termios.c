@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_jointabstr.c                                    :+:      :+:    :+:   */
+/*   get_set_termios.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 17:33:15 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 17:33:19 by mlachheb         ###   ########.fr       */
+/*   Created: 2021/04/15 11:14:32 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/15 12:08:50 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "terminal.h"
 
-#include "libft.h"
-
-char **ft_jointabstr(char **tab, char *str)
+int	get_termios(t_termios *term)
 {
-    char    **tmp_tab;
-    char    **new_tab;
-    int	    i;
+	if (tcgetattr(0, term) == -1)
+		return (-1);
+	else
+		return (0);
+}
 
-    tmp_tab = (char **)malloc(sizeof(char *) * 2);
-    tmp_tab[0] = ft_strdup(str);
-    tmp_tab[1] = NULL;
-    new_tab = ft_strjoin_tables(tab, tmp_tab);
-    free(tmp_tab[0]);
-    free(tmp_tab);
-    return (new_tab);
+int	set_termios(t_termios *term, int flag)
+{
+	if (tcsetattr(0, flag, term) == -1)
+		return (-1);
+	else
+		return (0);
 }
