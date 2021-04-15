@@ -4,20 +4,15 @@ void	print_termios(t_termios term);
 
 char	*read_words()
 {
-	t_termios	term;
 	t_termios	orig;
 	char		*cmd_line;
 
-	if (!get_termios(&term))
-		print_termios(term);
-	orig = term;
-	//term.c_lflag &= ~ISIG;
-	//term.c_lflag &= ~FLUSHO;
-	if (!set_termios(&term, TCSAFLUSH))
-		print_termios(term);
 	write(1, "Minishell $> ", 13);
-	cmd_line = just_read();
-	write(1, cmd_line, ft_strlen(cmd_line));
+	if (!format_terminal(&orig))
+	{
+		cmd_line = just_read();
+		write(1, cmd_line, ft_strlen(cmd_line));
+	}
 	return (cmd_line);
 }
 
@@ -32,7 +27,14 @@ void	print_termios(t_termios term)
 int main(int argc, char **argv, char **envp)
 {
 	char *buff;
+	//t_flags fl;
 
+	//fl = (t_flags){0, 0, 0};
+	//if (compare_flags(fl, (t_flags){0, 1, 0}))
+	//	write(1, "equals\n", 7);
+	//else
+	//	write(1, "not\n", 4);
+	
 	buff = read_words();
 	return (0);
 }

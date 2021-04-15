@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_set_termios.c                                  :+:      :+:    :+:   */
+/*   format_terminal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 11:14:32 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/15 16:02:47 by mlachheb         ###   ########.fr       */
+/*   Created: 2021/04/15 15:51:51 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/15 16:16:29 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-int	get_termios(t_termios *term)
+int		format_terminal(t_termios *orig)
 {
-	if (tcgetattr(0, term) == -1)
+	t_termios term;
+
+	if (!get_termios(&term))
+	{
+		*orig = term;
+		term.c_lflag = ~(ICANON | ECHOCTL);
+		if (!set_termios(&term, TCSAFLUSH))
+			return (0);
 		return (-1);
-	else
-		return (0);
+	}
+	return (-1);
 }
 
-int	set_termios(t_termios *term, int flag)
+int		rest_terminal(t_termios *orig)
 {
-	if (tcsetattr(0, flag, term) == -1)
-		return (-1);
-	else
+	if (!set_termios(orig, TCSANOW))
 		return (0);
+	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:32:24 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/15 12:11:49 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/15 14:58:20 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*just_read()
 	char	*buff;
 	char	*tmp;
 	t_flags	fl;
+	int		arrow;
 
 	fl = (t_flags){0, 0, 0};
 	buff = ft_strdup("");
@@ -28,7 +29,7 @@ char	*just_read()
 			tmp[1] = '\0';
 			if (tmp[0] == '\n')
 				break ;
-			//fl = check_flags(fl, tmp[0]);
+			arrow = arrows_check(&fl, tmp[0]);
 			buff = ft_strjoin(buff, tmp);
 		}
 		else
@@ -38,18 +39,17 @@ char	*just_read()
 	return (buff);
 }
 
-t_flags		check_flags(t_flags fl, char c)
+int			arrows_check(t_flags *fl, char c)
 {
-	if (c == 27)
+	*fl = check_flags(*fl, c);
+	if (compare_flags(*fl, (t_flags){1, 1, 'A'}))
 	{
-		if (fl.esc == 0)
-			fl.esc = 1;
-		else
-			fl.esc = 0;
+		write(1, "UP\n", 3);
 	}
-	else if (c == 91 && fl.esc == 1)
-		fl.l_br = 1;
-	else if ((c == 'A' || c == 'B') && fl.esc == 1 && fl.l_br == 1)
-		fl.ltr = c;
-	return (fl);
+	else if (compare_flags(*fl, (t_flags){1, 1, 'B'}))
+	{
+		write(1, "DOWN\n", 5);
+	}
+	*fl = reset_flags(*fl, c);
+	return (1);
 }
