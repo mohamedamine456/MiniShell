@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/16 12:23:35 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:27:34 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ void	ft_cd(t_builtin_vars var, int *retv)
 			ft_builtin_errors("cd", errno, retv);
 		else
 		{
-			*retv = 0;
-			//change_pwdenv();
+			if (change_pwdenv(var.envp))
+				*retv = 0;
+			else
+				*retv = 1;
 		}
 	}
 	else
@@ -42,6 +44,7 @@ int		change_pwdenv(char ***envp)
 	int		i;
 	char	**tab;
 	char	*tmp;
+	char	*curr_path;
 
 	i = 0;
 	tab = *envp;
@@ -50,9 +53,16 @@ int		change_pwdenv(char ***envp)
 		tmp = ft_split(tab[i], '=');
 		if (!ft_strcmp(tmp[0], "PWD"))
 		{
-
+			ft_free_args(tmp);
+			curr_path = getcwd(NULL, 0);
+			if (curr_path != NULL)
+			{
+				(*envp)[i] = ft_strjoin(ft_strdup("PWD="), curr_path);
+				return (1);
+			}
 		}
+		ft_free_args(tmp);
+		i++;
 	}
+	return (0);
 }
-
-//continue changing PWD variable

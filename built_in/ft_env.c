@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 08:35:02 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/16 11:58:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:27:47 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_env(t_builtin_vars var, int *retv)
 		}
 		*retv = 0;
 	}
-	// protection of write when env fails
 }
 
 //int main(int argc, char **args, char **envp)

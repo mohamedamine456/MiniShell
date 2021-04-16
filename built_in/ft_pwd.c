@@ -7,8 +7,7 @@ void	ft_pwd(t_builtin_vars var, int *retv)
 	curr_path = getcwd(NULL, 0);
 	if (curr_path == NULL)
 	{
-		*retv = 1;
-		//print_error(errno);
+		ft_builtin_errors("pwd", errno, retv);
 	}
 	else
 	{
