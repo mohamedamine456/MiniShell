@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/16 10:33:50 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/16 12:23:35 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	if (dest_path != NULL)
 	{
 		if (chdir(dest_path) != 0)
-			ft_builtin_errors(strerror(errno), retv);
+			ft_builtin_errors("cd", errno, retv);
 		else
 		{
 			*retv = 0;
@@ -31,5 +31,28 @@ void	ft_cd(t_builtin_vars var, int *retv)
 		}
 	}
 	else
-		ft_builtin_error("MiniShell: cd: HOME not set");
+	{
+		write(1, "MiniShell: cd: HOME not set", 27);
+		*retv = 1;
+	}
 }
+
+int		change_pwdenv(char ***envp)
+{
+	int		i;
+	char	**tab;
+	char	*tmp;
+
+	i = 0;
+	tab = *envp;
+	while (tab != NULL && tab[i] != NULL)
+	{
+		tmp = ft_split(tab[i], '=');
+		if (!ft_strcmp(tmp[0], "PWD"))
+		{
+
+		}
+	}
+}
+
+//continue changing PWD variable
