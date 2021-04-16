@@ -7,9 +7,9 @@ char	*read_words()
 	t_termios	orig;
 	char		*cmd_line;
 
-	write(1, "Minishell $> ", 13);
 	if (!format_terminal(&orig))
 	{
+		write(1, "Minishell $> ", 13);
 		cmd_line = just_read();
 		write(1, cmd_line, ft_strlen(cmd_line));
 	}
