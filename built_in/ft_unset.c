@@ -2,18 +2,18 @@
 
 void    ft_unset(t_builtin_vars var, int *retv)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (var.args != NULL && var.envp != NULL && var.args[i] != NULL)
-    {
-        var.envp = remove_env(var.args[i], var.envp);
-        i++;
-    }
-    if (var.args != NULL && var.args[i] == NULL)
-        *retv = 0;
-    else
-        *retv = 1;
+	i = 0;
+	while (var.args != NULL && *(var.envp) != NULL && var.args[i] != NULL)
+	{
+		*(var.envp) = remove_env(var.args[i], *(var.envp));
+		i++;
+	}
+	if (var.args != NULL && var.args[i] == NULL)
+		*retv = 0;
+	else
+		*retv = 1;
 }
 
 char	**remove_env(char *str, char **envp)

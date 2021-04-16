@@ -6,11 +6,11 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 13:00:22 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:27:34 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built_in.c"
+#include "built_in.h"
 
 void	ft_cd(t_builtin_vars var, int *retv)
 {
@@ -19,17 +19,50 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	if (var.args != NULL && var.args[0] != NULL)
 		dest_path = ft_strdup(var.args[0]);
 	else
-		dest_path = search_env("HOME", var.envp);
+		dest_path = search_env("HOME", *(var.envp));
 	if (dest_path != NULL)
 	{
 		if (chdir(dest_path) != 0)
-			ft_builtin_errors(strerror(errno), retv);
+			ft_builtin_errors("cd", errno, retv);
 		else
 		{
-			*retv = 0;
-			//change_pwdenv();
+			if (change_pwdenv(var.envp))
+				*retv = 0;
+			else
+				*retv = 1;
 		}
 	}
 	else
-		ft_builtin_error("MiniShell: cd: HOME not set");
+	{
+		write(1, "MiniShell: cd: HOME not set", 27);
+		*retv = 1;
+	}
+}
+
+int		change_pwdenv(char ***envp)
+{
+	int		i;
+	char	**tab;
+	char	*tmp;
+	char	*curr_path;
+
+	i = 0;
+	tab = *envp;
+	while (tab != NULL && tab[i] != NULL)
+	{
+		tmp = ft_split(tab[i], '=');
+		if (!ft_strcmp(tmp[0], "PWD"))
+		{
+			ft_free_args(tmp);
+			curr_path = getcwd(NULL, 0);
+			if (curr_path != NULL)
+			{
+				(*envp)[i] = ft_strjoin(ft_strdup("PWD="), curr_path);
+				return (1);
+			}
+		}
+		ft_free_args(tmp);
+		i++;
+	}
+	return (0);
 }

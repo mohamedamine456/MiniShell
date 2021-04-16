@@ -18,14 +18,16 @@ void	ft_exit(t_builtin_vars var, int *retv)
         if (!ft_only_digits(var.args[0]))
         {
             number = 255;
-            //print_error(error);
+            write(1, "MiniShell: exit: ", 17);
+			write(1, var.args[0], ft_strlen(args[0]));
+			write(1, ": numeric argument required", 27);
             exit(number);
         }
         else
         {
             number = 0;
             *retv = 1;
-            //print_error(error); // too many arguments
+			write(1, "MiniShell: exit: too many arguments", 35);
         }
     }
 }

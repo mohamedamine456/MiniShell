@@ -1,6 +1,8 @@
 #ifndef BUILT_IN_H
 # define BUILT_IN_H
 # include <errno.h>
+# include <stdio.h>
+# include <string.h>
 # include "../libft/libft.h"
 # include "../minishell.h"
 # define ECHO 20
@@ -15,7 +17,7 @@ typedef struct	s_builtin_vars
 {
 	 char	**args;
 	 char	*option;
-	 char	**envp;
+	 char	***envp;
 }				t_builtin_vars;
 
 void			ft_echo(t_builtin_vars var, int *retv);
@@ -26,7 +28,9 @@ void			ft_unset(t_builtin_vars var, int *retv);
 void			ft_env(t_builtin_vars var, int *retv);
 void			ft_export(t_builtin_vars var, int *retv);
 
-int			exec_builtin(t_cmd cmd, char **envp);
+int				exec_builtin(t_cmd cmd, char **envp);
 char			**remove_env(char *str, char **envp);
+int				ft_look_path(char **envp);
+void			ft_builtin_errors(const char *name,int err, int *retv);
 
 #endif

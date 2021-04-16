@@ -6,15 +6,20 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:49:12 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 12:58:01 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:34:56 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-void	ft_builtin_errors(char *errorr, int *retv)
+void	ft_builtin_errors(const char *name ,int err, int *retv)
 {
+	char	*error_str;
+
+	error_str = strerror(err);
 	*retv = 1;
-	if (errorr != NULL)
-		write(1, errorr, ft_strlen(errorr));
+	write(1, "MiniShell: ", 11);
+	write(1, name, ft_strlen(name));
+	write(1, ": ", 2);
+	write(1, error_str, ft_strlen(error_str));
 }
