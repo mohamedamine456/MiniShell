@@ -25,9 +25,9 @@ int		open_outputs(t_output *outputs, int *stdout_fd)
 	while (outputs != NULL)
 	{
 		if (outputs->type == SIMPLE_REDIRECTION)
-			new_fd = open(outputs->file, O_WRONLY, S_IWUSR);
+			new_fd = open(outputs->file, O_WRONLY | O_CREAT, S_IWUSR);
 		else if (outputs->type == DOUBLE_REDIRECTION)
-			new_fd = open(outputs->file, O_WRONLY | O_APPEND, S_IWUSR);
+			new_fd = open(outputs->file, O_WRONLY | O_APPEND | O_CREAT, S_IWUSR);
 		if (new_fd < 0)
 			return (-1);
 		tmp_fd = dup2(new_fd, 1);
