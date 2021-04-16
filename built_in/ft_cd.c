@@ -6,11 +6,11 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 13:00:22 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/16 10:33:50 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built_in.c"
+#include "built_in.h"
 
 void	ft_cd(t_builtin_vars var, int *retv)
 {
@@ -19,7 +19,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	if (var.args != NULL && var.args[0] != NULL)
 		dest_path = ft_strdup(var.args[0]);
 	else
-		dest_path = search_env("HOME", var.envp);
+		dest_path = search_env("HOME", *(var.envp));
 	if (dest_path != NULL)
 	{
 		if (chdir(dest_path) != 0)

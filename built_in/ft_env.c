@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 08:35:02 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 13:29:01 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/16 10:37:12 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 void	ft_env(t_builtin_vars var, int *retv)
 {
 	int		i;
+	char	**envp;
 
 	i = 0;
-	while (var.envp != NULL && var.envp[i] != NULL)
+	envp = *(var.envp);
+	while (envp != NULL && envp[i] != NULL)
 	{
-		if (ft_isenv(var.envp[i]))
+		if (ft_isenv(envp[i]))
 		{
-			write(1, var.envp[i], ft_strlen(var.envp[i]));
-			if (var.envp[i + 1] != NULL)
+			write(1, envp[i], ft_strlen(envp[i]));
+			if (envp[i + 1] != NULL)
 				write(1, "\n", 1);
 		}
 		i++;
@@ -37,7 +39,7 @@ void	ft_env(t_builtin_vars var, int *retv)
 //	int retv;
 //
 //	var.args = NULL;
-//	var.envp = envp;
+//	var.envp = &envp;
 //	var.option = NULL;
 //	ft_env(var, &retv);
 //}
