@@ -24,6 +24,9 @@ void	get_data()
 	char	*tgoto_str;
 	char	*del_char;
 	char	*mv_one;
+	char	*dc;
+	char	*dm;
+	char	*ed;
 
 	//cl_str = tgetstr("cl", 0);
 	mv_one = tgetstr("le", 0);
@@ -34,18 +37,27 @@ void	get_data()
 	auto_wrap = tgetflag("am");
 	nb_col = tgetnum("li");
 	nb_rows = tgetnum("co");
+	dc = tgetstr("dc", 0);
+	dm = tgetstr("dm", 0);
+	ed = tgetstr("ed", 0);
 
 	write(1, "Minishell $> hello world", 24);
-	write(0, mv_one, ft_strlen(mv_one));
-	write(0, mv_one, ft_strlen(mv_one));
-	write(0, mv_one, ft_strlen(mv_one));
-	
-	write(0, ce_str, ft_strlen(ce_str));	
-	//write(1, cl_str, ft_strlen(cl_str));
+	tputs(mv_one, 1, ft_putchar);
+	tputs(mv_one, 1, ft_putchar);
+	tputs(mv_one, 1, ft_putchar);
+	tputs(mv_one, 1, ft_putchar);
+
+	tputs(dm, 1, ft_putchar);
+
+	tputs(ce_str, 1, ft_putchar);
+	tputs(mv_one, 1, ft_putchar);
+	tputs(dc, 1, ft_putchar);
+	tputs(ed, 1, ft_putchar);
+	//tputs(cl_str, 1, ft_putchar);
 	write(1, "\n", 1);
-	//write(1, del_line, ft_strlen(del_line));
+	//tputs(del_line, 1, ft_putchar);
 	//write(1, "\n", 1);
-	//write(1, cm_str, ft_strlen(cm_str));
+	//tputs(cm_str, 1, ft_putchar);
 	//write(1, "\n", 1);
 	//printf("{%s} {%s} {%d}\n", cl_str, cm_str, auto_wrap);
 	//printf("%d, %d\n", nb_col, nb_rows);

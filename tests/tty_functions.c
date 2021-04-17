@@ -1,5 +1,8 @@
 # include <termios.h>
 # include <unistd.h>
+# include <signal.h>
+# include <ctype.h>
+# include <errno.h>
 
 
 int		tty_set_cbreak(int fd, struct termios *prev_termios)
@@ -44,4 +47,42 @@ int		tty_set_raw(int fd, struct termios *prev_termios)
 	if (tsetattr(fd, TCSAFLUSH, &t) == -1)
 		return (-1);
 	return (0);
+}
+
+static struct termios user_termios;
+
+void	handler(int sig)
+{
+	if (tcsetattr(0, TCSAFLUSH, &user_termios) == -1)
+	{
+		write(1, "tcsetattr error\n", 16);
+		exit(1);
+	}
+	exit(0);
+}
+
+void	tstp_handler(int sig)
+{
+	struct	termios our_termios;
+
+	sigset_t tstp_mask, prev_mask;
+	struct sigaction sa;
+	int	saved_errno;
+
+	saved_errno = errno;
+	if (tgetattr(0, &our_termios) == -1)
+	{
+		write(1, "tcgetattr error\n", 16);
+		exit(1);
+	}
+	if (tcsetattr(0, TCAFLUSH, &user_termios) == -1)
+	{
+		write(1, "tcsetattr error\n", 16);
+		exit(1);
+	}
+	if (signal(SIGTSTP, SIG_DFL) == SIG_ERR)
+	{
+		write(1, "signal error\n", 12);
+		exit(1);
+	}
 }

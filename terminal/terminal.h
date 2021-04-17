@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 11:35:27 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/17 14:10:17 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,22 @@ typedef struct	s_flags
 	int		esc;
 	int		l_br;
 	char	ltr;
-	int		del;
 }				t_flags;
 
 char	*just_read();
 int		get_termios(t_termios *term);
 int		set_termios(t_termios *term, int flag);
 
-int		arrows_check(t_flags *fl, char c);
 char	*add_buffer(char *buff, char *tmp, t_flags *fl);
 
 int		compare_flags(t_flags fl1, t_flags fl2);
-t_flags	check_flags(t_flags fl, char c);
+int		check_flags(char c, t_flags *fl);
 t_flags	reset_flags(t_flags fl, char c);
+void	apply_flags(char **buff, char *tmp, t_flags fl);
 
 int		format_terminal(t_termios *orig);
-int		rest_terminal(t_termios *orig);
+int		reset_terminal(t_termios *orig);
+
+void	delete_char(char **buff);
 
 #endif

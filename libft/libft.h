@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/12 15:06:00 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/17 11:25:51 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_isspace(char c);
 int				ft_isalnum(int c);
+int				ft_putchar(int c);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isseparator(int c);
