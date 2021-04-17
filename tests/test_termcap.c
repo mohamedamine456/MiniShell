@@ -12,8 +12,43 @@ void	fatal(char *err)
 	exit(1);
 }
 
+int	get_termios(struct termios *term)
+{
+	if (tcgetattr(0, term) == -1)
+		return (-1);
+	else
+		return (0);
+}
+
+int	set_termios(struct termios *term, int flag)
+{
+	if (tcsetattr(0, flag, term) == -1)
+		return (-1);
+	else
+		return (0);
+}
+
+int		format_terminal(struct termios *orig)
+{
+	struct termios	term;
+
+	if (!get_termios(&term))
+	{
+		*orig = term;
+		term.c_lflag &= ~(ICANON | ECHOCTL);
+		term.c_cc[VMIN] = 1;
+		term.c_cc[VTIME] = 0;
+		if (!set_termios(&term, TCSAFLUSH))
+			return (0);
+		return (-1);
+	}
+	return (-1);
+}
+
 void	get_data()
 {
+	struct termios orig;
+	char	buff[2];
 	int		nb_col;
 	int		nb_rows;
 	int		auto_wrap;
@@ -25,8 +60,6 @@ void	get_data()
 	char	*del_char;
 	char	*mv_one;
 	char	*dc;
-	char	*dm;
-	char	*ed;
 
 	//cl_str = tgetstr("cl", 0);
 	mv_one = tgetstr("le", 0);
@@ -38,21 +71,17 @@ void	get_data()
 	nb_col = tgetnum("li");
 	nb_rows = tgetnum("co");
 	dc = tgetstr("dc", 0);
-	dm = tgetstr("dm", 0);
-	ed = tgetstr("ed", 0);
-
+	if (format_terminal(&orig) == -1)
+		exit(1);
 	write(1, "Minishell $> hello world", 24);
 	tputs(mv_one, 1, ft_putchar);
 	tputs(mv_one, 1, ft_putchar);
 	tputs(mv_one, 1, ft_putchar);
 	tputs(mv_one, 1, ft_putchar);
 
-	tputs(dm, 1, ft_putchar);
-
 	tputs(ce_str, 1, ft_putchar);
 	tputs(mv_one, 1, ft_putchar);
 	tputs(dc, 1, ft_putchar);
-	tputs(ed, 1, ft_putchar);
 	//tputs(cl_str, 1, ft_putchar);
 	write(1, "\n", 1);
 	//tputs(del_line, 1, ft_putchar);
