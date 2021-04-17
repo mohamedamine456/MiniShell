@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:51:51 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/16 15:18:11 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/17 12:43:52 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		format_terminal(t_termios *orig)
 {
-	t_termios term;
+	t_termios	term;
 
 	if (!get_termios(&term))
 	{

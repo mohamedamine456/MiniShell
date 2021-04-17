@@ -6,15 +6,17 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/16 15:27:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/17 11:35:27 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TERMINAL_H
 # define TERMINAL_H
+# include "../libft/libft.h"
 # include <fcntl.h>
 # include <termios.h>
-# include "../libft/libft.h"
+# include <curses.h>
+# include <term.h>
 # define TRUE 1
 
 typedef struct termios	t_termios;
