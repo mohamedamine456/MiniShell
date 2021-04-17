@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:32:24 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 14:30:04 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:20:26 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	*add_buffer(char *buff, char *tmp, t_flags *fl)
 	}
 	if (!check_flags(tmp[0], fl))
 	{
+		//write(1, tmp, 1);
 		buff = ft_strjoin(buff, tmp);
 		return (buff);
 	}

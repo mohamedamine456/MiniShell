@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:51:51 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 12:43:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/17 16:17:29 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int		format_terminal(t_termios *orig)
 	{
 		*orig = term;
 		term.c_lflag &= ~(ICANON | ECHOCTL);
+		term.c_iflag &= (BRKINT | ICRNL | IGNBRK | IGNCR
+				| INLCR | INPCK | ISTRIP | IXON | PARMRK);
+		term.c_cc[VMIN] = 1;
+		term.c_cc[VTIME] = 0;
 		if (!set_termios(&term, TCSAFLUSH))
 			return (0);
 		return (-1);

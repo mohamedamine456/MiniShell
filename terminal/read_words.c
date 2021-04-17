@@ -11,6 +11,7 @@ char	*read_words()
 	{
 		write(1, "Minishell $> ", 13);
 		cmd_line = just_read();
+		//write(1, "\n", 1);
 		write(1, cmd_line, ft_strlen(cmd_line));
 	}
 	return (cmd_line);
