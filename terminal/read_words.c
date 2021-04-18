@@ -11,7 +11,7 @@ char	*read_words()
 	{
 		write(1, "Minishell $> ", 13);
 		cmd_line = just_read();
-		//write(1, "\n", 1);
+		write(1, "\n", 1);
 		write(1, cmd_line, ft_strlen(cmd_line));
 	}
 	return (cmd_line);
@@ -34,8 +34,7 @@ int main(int argc, char **argv, char **envp)
 	//if (compare_flags(fl, (t_flags){0, 1, 0}))
 	//	write(1, "equals\n", 7);
 	//else
-	//	write(1, "not\n", 4);
-	
+	//	write(1, "not\n", 4);	
 	buff = read_words();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 14:10:17 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:47:57 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct	s_flags
 	char	ltr;
 }				t_flags;
 
+int		init_terminal_data();
+
+char	*read_line();
 char	*just_read();
 int		get_termios(t_termios *term);
 int		set_termios(t_termios *term, int flag);
