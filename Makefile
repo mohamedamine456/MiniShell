@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/04/09 17:53:11 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/04/18 17:42:04 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c\
 			parse/structs_functions/output_functions.c\
 
 GNL_SRC = get_next_line/get_next_line.c
-SRC = $(PARSE_SRC) $(GNL_SRC)
+SRC = $(PARSE_SRC) $(GNL_SRC) gener_history.c
 
 PARSE_OBJSRC =	parse_command.o check_options.o cmd_functions_test.o\
 				print_cmd.o add_cmd_option.o\
@@ -33,7 +33,7 @@ PARSE_OBJSRC =	parse_command.o check_options.o cmd_functions_test.o\
 				cmd_functions.o input_functions.o output_functions.o
 				
 GNL_OBJSRC = get_next_line.o
-OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC)
+OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) gener_history.o
 
 all: $(NAME)
 
