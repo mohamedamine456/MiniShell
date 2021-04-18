@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:32:24 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 15:20:26 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/18 15:15:37 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 char	*just_read(void)
 {
-	char	*buff;
+	char	*line;
 	char	*tmp;
 	t_flags	fl;
 
 	fl = (t_flags){0, 0, 0};
-	buff = ft_strdup("");
+	line = ft_strdup("");
 	tmp = malloc(2);
 	while (TRUE)
 	{
@@ -28,31 +28,40 @@ char	*just_read(void)
 			tmp[1] = '\0';
 			if (tmp[0] == '\n')
 				break ;
-			buff = add_buffer(buff, tmp, &fl);
+			line = add_buffer(line, tmp, &fl);
 		}
 		else
 			break ;
 	}
 	free(tmp);
-	return (buff);
+	return (line);
 }
 
-char	*add_buffer(char *buff, char *tmp, t_flags *fl)
+char	*add_buffer(char *line, char *tmp, t_flags *fl)
 {
-	if (tmp[0] == '\x7f')
+	if (tmp[0] == 4)
 	{
-		delete_char(&buff);
-		return (buff);
+		if (!ft_strcmp(line, ""))
+		{
+			free(line);
+			exit(0);
+		}
+		return (line);
 	}
-	if (!check_flags(tmp[0], fl))
+	else if (tmp[0] == 127)
+	{	
+		delete_char(&line);
+		return (line);
+	}
+	else if (!check_flags(tmp[0], fl))
 	{
-		//write(1, tmp, 1);
-		buff = ft_strjoin(buff, tmp);
-		return (buff);
+		write(1, tmp, 1);
+		line = ft_strjoin(line, tmp);
+		return (line);
 	}
 	else
 	{
-		//apply_flags(&buff, tmp, fl);
-		return (buff);
+		//apply_flags(&line, tmp, fl);
+		return (line);
 	}
 }

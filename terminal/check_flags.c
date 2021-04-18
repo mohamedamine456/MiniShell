@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 13:47:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/18 14:47:31 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		check_flags(char c, t_flags *fl)
 	else if ((c == 'A' || c == 'B') && fl->esc == 1 && fl->l_br == 1)
 	{
 		fl->ltr = c;
+		*fl = (t_flags){0, 0, 0}; //remove it and place it in apply_flag
 		return (1);
 	}
 	else

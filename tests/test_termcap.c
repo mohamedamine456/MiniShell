@@ -35,7 +35,7 @@ int		format_terminal(struct termios *orig)
 	if (!get_termios(&term))
 	{
 		*orig = term;
-		term.c_lflag &= ~(ICANON | ECHOCTL);
+		term.c_lflag &= ~(ICANON | ECHO);
 		term.c_cc[VMIN] = 1;
 		term.c_cc[VTIME] = 0;
 		if (!set_termios(&term, TCSAFLUSH))
@@ -109,9 +109,45 @@ void	init_terminal_data()
 		printf("terminal '%s' type is not defined.\n", termtype);
 }
 
+
+void	essay()
+{
+	char	*tmp;
+	char	*beg_line;
+	char	*clear;
+
+	tmp = malloc(2);
+	write(1, "MiniShell $> ", 13);
+	beg_line = tgetstr("cr", 0);
+	clear = tgetstr("dl", 0);
+	while (1)
+	{
+		if (read(0, tmp, 1) > 0)
+		{
+			tmp [1] = '\0';
+			if (tmp[0] == 127)
+			{
+				tputs(beg_line, 1, ft_putchar);
+				tputs(clear, 1, ft_putchar);
+			}
+			else
+			{
+				write(1, tmp, 1);
+			}
+		}
+	}
+	tputs(beg_line, 1, ft_putchar);
+	tputs(clear, 1, ft_putchar);
+	write(1, "Done", 4);
+}
+
 int main()
 {
+	struct termios	orig;
 	init_terminal_data();
-	get_data();
+	//get_data();
+	if (format_terminal(&orig) == -1)
+		exit(1);
+	essay();
 	return (0);
 }
