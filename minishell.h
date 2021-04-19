@@ -23,7 +23,7 @@ typedef struct	s_hisotry
 }				t_history;
 
 int				open_history(void);
-void			write_history(t_history hist, char *line);
+void			write_history(t_history *hist, char *line);
 t_history		read_history(int fd);
 
 #endif

@@ -9,15 +9,14 @@ int		open_history(void)
 	return (fd);
 }
 
-void    write_history(t_history hist, char *line)
-{	
-	if (hist.fd != -1)
+void	write_history(t_history *hist, char *line)
+{
+	if (hist->fd != -1)
 	{
-		write(hist.fd, line, ft_strlen(line));
-		write(hist.fd, "\n", 1);
+		write(hist->fd, line, ft_strlen(line));
+		write(hist->fd, "\n", 1);
 	}
-	hist.tab_hist = ft_resize_tab(hist.tab_hist, line);
-	hist.pos += 1;
+	hist->tab_hist = ft_resize_tab(hist->tab_hist, line);
 }
 
 t_history	read_history(int fd)
