@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/18 17:19:58 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/19 11:15:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ int		format_terminal(t_termios *orig);
 int		reset_terminal(t_termios *orig);
 
 void	delete_char(char **buff);
+void	quit_d(char *line);
+
+void    print_termios(t_termios term);
 
 #endif
