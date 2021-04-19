@@ -49,6 +49,7 @@ char	*add_buffer(char *line, char *tmp, t_flags *fl, t_history *hist)
 	}
 	else if (tmp[0] == 127)
 	{
+		hist->wr = 1;
 		delete_char(&line);
 		return (line);
 	}
