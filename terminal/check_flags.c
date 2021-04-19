@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/18 14:47:31 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/19 12:36:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ int		check_flags(char c, t_flags *fl)
 		fl->l_br = 1;
 		return (1);
 	}
-	else if ((c == 'A' || c == 'B') && fl->esc == 1 && fl->l_br == 1)
+	else if (ft_isalnum(c) && fl->esc == 1 && fl->l_br == 1)
 	{
 		fl->ltr = c;
-		*fl = (t_flags){0, 0, 0}; //remove it and place it in apply_flag
 		return (1);
 	}
 	else
@@ -40,32 +39,20 @@ int		check_flags(char c, t_flags *fl)
 	}
 }
 
-int		compare_flags(t_flags fl1, t_flags fl2)
+void	apply_flags(char **buff, char *tmp, t_flags *fl)
 {
-	if (fl1.esc != fl2.esc)
-		return (0);
-	else if (fl1.l_br != fl2.l_br)
-		return (0);
-	else if (fl1.ltr != fl2.ltr)
-		return (0);
-	return (1);
-}
-
-t_flags reset_flags(t_flags fl, char c)
-{
-	if (!compare_flags(fl, (t_flags){0, 0, 0}))
+	if (fl->esc == 1 && fl->l_br == 1 && ft_isalnum(fl->ltr))
 	{
-		if (c != 27 && c != 91 && c != 'A' && c != 'B')
-			fl = (t_flags){0, 0, 0};
+		if (fl->ltr == 'A')
+		{
+			clear_line();
+			write(1, "up", 2);
+		}
+		else if (fl->ltr == 'B')
+		{
+			clear_line();
+			write(1, "down", 4);
+		}
+		*fl = (t_flags){0, 0, 0};
 	}
-	if (compare_flags(fl, (t_flags){1, 1, 'A'}))
-			fl = (t_flags){0, 0, 0};
-	if (compare_flags(fl, (t_flags){1, 1, 'B'}))
-			fl = (t_flags){0, 0, 0};
-	return (fl);
-}
-
-void	apply_flags(char **buff, char *tmp, t_flags fl)
-{
-
 }

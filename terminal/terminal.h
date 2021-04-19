@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/19 11:15:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/19 12:36:03 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,14 @@ int		set_termios(t_termios *term, int flag);
 
 char	*add_buffer(char *buff, char *tmp, t_flags *fl);
 
-int		compare_flags(t_flags fl1, t_flags fl2);
 int		check_flags(char c, t_flags *fl);
-t_flags	reset_flags(t_flags fl, char c);
-void	apply_flags(char **buff, char *tmp, t_flags fl);
+void	apply_flags(char **buff, char *tmp, t_flags *fl);
 
 int		format_terminal(t_termios *orig);
 int		reset_terminal(t_termios *orig);
 
 void	delete_char(char **buff);
+void    clear_line(void);
 void	quit_d(char *line);
 
 void    print_termios(t_termios term);

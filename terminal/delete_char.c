@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/18 17:10:03 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/19 12:41:00 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,16 @@ void	delete_char(char **buff)
 		tputs(move_left, 1, ft_putchar);
 		tputs(del_one, 1, ft_putchar);
 	}
+}
+
+void	clear_line(void)
+{
+	char	*start_line;
+	char	*delete;
+
+	start_line = tgetstr("cr", 0);
+	delete = tgetstr("ce", 0);
+	tputs(start_line, 1, ft_putchar);
+	tputs(delete, 1, ft_putchar);
+	write(1, "MiniShell $> ", 13);
 }
