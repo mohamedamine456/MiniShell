@@ -1,6 +1,6 @@
 #include "terminal.h"
 
-char	*read_line(void)
+char	*read_line(t_history *hist)
 {
 	t_termios	orig;
 	char		*cmd_line;
@@ -8,13 +8,13 @@ char	*read_line(void)
 	if (!format_terminal(&orig))
 	{
 		write(1, "MiniShell $> ", 13);
-		cmd_line = just_read();
+		cmd_line = just_read(hist);
 		return (cmd_line);
 	}
 	return (NULL);
 }
 
-char	*just_read(void)
+char	*just_read(t_history *hist)
 {
 	char	*line;
 	char	*tmp;
@@ -30,7 +30,7 @@ char	*just_read(void)
 			tmp[1] = '\0';
 			if (tmp[0] == '\n')
 				break ;
-			line = add_buffer(line, tmp, &fl);
+			line = add_buffer(line, tmp, &fl, hist);
 		}
 		else
 			break ;
@@ -39,7 +39,7 @@ char	*just_read(void)
 	return (line);
 }
 
-char	*add_buffer(char *line, char *tmp, t_flags *fl)
+char	*add_buffer(char *line, char *tmp, t_flags *fl, t_history *hist)
 {
 	if (tmp[0] == 4)
 	{
@@ -60,15 +60,7 @@ char	*add_buffer(char *line, char *tmp, t_flags *fl)
 	}
 	else
 	{
-		apply_flags(&line, tmp, fl);
+		apply_flags(&line, tmp, fl, hist);
 		return (line);
 	}
-}
-
-void	print_termios(t_termios term)
-{
-	printf("\nc_iflag: %ld, c_oflag: %ld, c_cflag: %ld, c_lflag: %ld\n",
-		term.c_iflag, term.c_oflag, term.c_cflag, term.c_lflag);
-	printf("c_cc: %s, c_ispeed: %ld, c_ospeed: %ld\n",
-		term.c_cc, term.c_ispeed, term.c_ospeed);
 }

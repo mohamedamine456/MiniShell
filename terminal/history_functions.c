@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_set_termios.c                                  :+:      :+:    :+:   */
+/*   history_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 11:14:32 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/15 16:02:47 by mlachheb         ###   ########.fr       */
+/*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/19 15:06:20 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-int	get_termios(t_termios *term)
+void	up_arrow(t_history *hist)
 {
-	if (tcgetattr(0, term) == -1)
-		return (-1);
-	else
-		return (0);
-}
-
-int	set_termios(t_termios *term, int flag)
-{
-	if (tcsetattr(0, flag, term) == -1)
-		return (-1);
-	else
-		return (0);
+	if (hist->pos > 0)
+	{
+		clear_line();
+		write(1, hist->tab_hist[pos -1], ft_strlen(hist->tab_hist[pos - 1]));
+		hist->pos -= 1;
+	}
 }

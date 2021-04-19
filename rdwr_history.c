@@ -11,12 +11,17 @@ int		open_history(void)
 
 void	write_history(t_history *hist, char *line)
 {
-	if (hist->fd != -1)
+	if (ft_strcmp(line, ""))
 	{
-		write(hist->fd, line, ft_strlen(line));
-		write(hist->fd, "\n", 1);
+		if (hist->fd != -1)
+		{
+			write(hist->fd, line, ft_strlen(line));
+			write(hist->fd, "\n", 1);
+		}
+		hist->tab_hist = ft_resize_tab(hist->tab_hist, line);
+		hist->size += 1;
+		hist->pos += 1;
 	}
-	hist->tab_hist = ft_resize_tab(hist->tab_hist, line);
 }
 
 t_history	read_history(int fd)
@@ -25,17 +30,21 @@ t_history	read_history(int fd)
 	char		*line;
 
 	hist.tab_hist  = NULL;
-	hist.pos = 0;
+	hist.size = 0;
 	hist.fd = fd;
 	if (hist.fd != -1)
 	{
 		while (get_next_line(hist.fd, &line) > 0)
 		{
 			hist.tab_hist = ft_resize_tab(hist.tab_hist, line);
-			hist.pos += 1;
+			hist.size += 1;
 		}
-		hist.tab_hist = ft_resize_tab(hist.tab_hist, line);
-		hist.pos += 1;
+		if (ft_strcmp(line, ""))
+		{
+			hist.tab_hist = ft_resize_tab(hist.tab_hist, line);
+			hist.size += 1;	
+		}
+		hist.pos = hist.size;
 	}
 	return (hist);
 }

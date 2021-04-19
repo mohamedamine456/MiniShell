@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:51:51 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/18 17:18:13 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/19 14:29:08 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,20 @@ int		rest_terminal(t_termios *orig)
 	if (!set_termios(orig, TCSANOW))
 		return (0);
 	return (-1);
+}
+
+int	get_termios(t_termios *term)
+{
+	if (tcgetattr(0, term) == -1)
+		return (-1);
+	else
+		return (0);
+}
+
+int	set_termios(t_termios *term, int flag)
+{
+	if (tcsetattr(0, flag, term) == -1)
+		return (-1);
+	else
+		return (0);
 }

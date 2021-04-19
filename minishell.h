@@ -8,6 +8,7 @@
 # include "get_next_line/get_next_line.h"
 # include "parse/parse.h"
 # include "terminal/terminal.h"
+# include "structs.h"
 
 typedef struct	s_general_data
 {
@@ -15,12 +16,6 @@ typedef struct	s_general_data
 	char	**envp;
 }				t_general_data;
 
-typedef struct	s_hisotry
-{
-	int		fd;
-	char	**tab_hist;
-	int		pos;
-}				t_history;
 
 int				open_history(void);
 void			write_history(t_history *hist, char *line);

@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/04/19 11:32:18 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/04/19 14:29:49 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c\
 			parse/structs_functions/output_functions.c\
 
 TERMINAL_SRC = terminal/check_flags.c terminal/delete_char.c terminal/format_terminal.c\
-			   terminal/get_set_termios.c terminal/read_line.c terminal/quit_d.c
+			  terminal/read_line.c terminal/quit_d.c
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) rdwr_history.c
@@ -38,7 +38,7 @@ PARSE_OBJSRC =	parse_command.o check_options.o cmd_functions_test.o\
 				cmd_functions.o input_functions.o output_functions.o
 
 TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\
-			   get_set_termios.o read_line.o quit_d.o
+				  read_line.o quit_d.o
 
 GNL_OBJSRC = get_next_line.o
 OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) rdwr_history.o
