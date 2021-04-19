@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/19 14:39:21 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/19 16:42:32 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,12 @@ void    clear_line(void);
  */
 
 void	quit_d(char *line);
+
+/*
+ * prototypes for history_functions.c file
+ */
+
+void	up_arrow(t_history *hist, char **buff);
+void	down_arrow(t_history *hist, char **buff);
 
 #endif

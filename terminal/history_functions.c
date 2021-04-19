@@ -6,18 +6,35 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/19 15:06:20 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/19 16:42:31 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-void	up_arrow(t_history *hist)
+void	up_arrow(t_history *hist, char **buff)
 {
-	if (hist->pos > 0)
+	if (hist->pos > 0 && hist->wr == 0)
 	{
+		hist->wr = 0;
 		clear_line();
-		write(1, hist->tab_hist[pos -1], ft_strlen(hist->tab_hist[pos - 1]));
+		write(1, hist->tab_hist[hist->pos - 1], ft_strlen(hist->tab_hist[hist->pos - 1]));
+		free(*buff);
+		*buff = ft_strdup(hist->tab_hist[hist->pos - 1]);
 		hist->pos -= 1;
+	}
+
+}
+
+void	down_arrow(t_history *hist, char **buff)
+{
+	if (hist->pos < hist->size && hist->wr == 0)
+	{
+		hist->wr = 0;
+		clear_line();
+		write(1, hist->tab_hist[hist->pos], ft_strlen(hist->tab_hist[hist->pos]));
+		free(*buff);
+		*buff = ft_strdup(hist->tab_hist[hist->pos]);
+		hist->pos += 1;
 	}
 }

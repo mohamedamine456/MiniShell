@@ -26,7 +26,7 @@ char	*just_read(t_history *hist)
 	while (TRUE)
 	{
 		if (read(0, tmp, 1) > 0)
-		{
+		{	
 			tmp[1] = '\0';
 			if (tmp[0] == '\n')
 				break ;
@@ -54,6 +54,7 @@ char	*add_buffer(char *line, char *tmp, t_flags *fl, t_history *hist)
 	}
 	else if (!check_flags(tmp[0], fl))
 	{
+		hist->wr = 1;
 		write(1, tmp, 1);
 		line = ft_strjoin(line, tmp);
 		return (line);
