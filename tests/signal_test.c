@@ -7,13 +7,11 @@ void handler(int sig)
 {
 	if (sig == 2)
 	{
-		kill(0, sig);
-		//write(1, "SIGINT\n", 7);
+		write(1, "SIGINT\n", 7);
 	}
 	else if (sig == 3)
 	{
-		kill(0, sig);
-		//write(1, "SIGQUIT\n", 8);
+		write(1, "SIGQUIT\n", 8);
 	}
 }
 
@@ -33,22 +31,9 @@ int main()
 		write(1, "SIGQUIT ERROR\n", 14);
 		exit(1);
 	}
-	pid  = fork();
-	if (pid == 0)
+	while (1)
 	{
-		while (++i < 11)
-		{
-			printf("hello\n");
-			sleep(2);
-		}
-	}
-	else
-	{
-		wait(NULL);
-		while (1)
-		{
-			write(1, "hello\n", 6);
-			sleep(2);
-		}
+		write(1, "hello\n", 6);
+		sleep(2);
 	}
 }

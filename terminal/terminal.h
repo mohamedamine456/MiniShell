@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 11:37:56 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:00:15 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 
 typedef struct termios t_termios;
 
-typedef struct	s_flags
+typedef struct s_flags
 {
 	int		esc;
 	int		l_br;
 	char	ltr;
 }				t_flags;
 
-typedef struct	s_read_tools
+typedef struct s_read_tools
 {
 	char		*line;
 	char		*tmp;
@@ -55,7 +55,7 @@ void	apply_flags(char **buff, char *tmp, t_flags *fl, t_history *hist);
  * prototypes for format_terminal.c file
  */
 
-int		init_terminal_data();
+int		init_terminal_data(void);
 int		format_terminal(t_termios *orig);
 int		reset_terminal(t_termios *orig);
 int		get_termios(t_termios *term);
@@ -66,7 +66,7 @@ int		set_termios(t_termios *term, int flag);
  */
 
 void	delete_char(char **buff);
-void    clear_line(void);
+void	clear_line(void);
 
 /*
  * prototypes for quit_d.c file
