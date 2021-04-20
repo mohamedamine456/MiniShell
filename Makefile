@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/04/09 17:53:11 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/04/20 12:01:51 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,23 +24,32 @@ PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c\
 			parse/structs_functions/input_functions.c\
 			parse/structs_functions/output_functions.c\
 
+TERMINAL_SRC = terminal/check_flags.c terminal/delete_char.c terminal/format_terminal.c\
+			  terminal/read_line.c terminal/quit_delete.c terminal/history_functions.c
+
 GNL_SRC = get_next_line/get_next_line.c
-SRC = $(PARSE_SRC) $(GNL_SRC)
+SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) rdwr_history.c parse_execute.c
+
+
 
 PARSE_OBJSRC =	parse_command.o check_options.o cmd_functions_test.o\
 				print_cmd.o add_cmd_option.o\
 				replace_tab_env.o clean_tab_cmd.o fill_command.o\
 				cmd_functions.o input_functions.o output_functions.o
-				
+
+TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\
+				  read_line.o quit_delete.o history_functions.o
+
 GNL_OBJSRC = get_next_line.o
-OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC)
+OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) rdwr_history.o parse_execute.o
+
 
 all: $(NAME)
 
 $(NAME):
 	make fclean -C libft/
 	make -C libft/
-	gcc -Wall -Wextra -Werror -c $(SRC)
+	gcc -Wall -Wextra -Werror -c $(SRC) -ltermcap
 	ar rc $(LIB_NAME) $(OBJSRC)
 	ranlib $(LIB_NAME)
 	gcc -g -Wall -Wextra -Werror $(MAIN) $(LIB_NAME) $(LIBFT) -o $(NAME)
@@ -66,7 +75,7 @@ sanitize:
 noflags:
 	make fclean -C libft/
 	make -C libft/
-	gcc -c -g $(SRC)
+	gcc -c -g $(SRC) 
 	ar rc $(LIB_NAME) $(OBJSRC)
 	ranlib $(LIB_NAME)
-	gcc -g $(MAIN) $(LIB_NAME) $(LIBFT) -o $(NAME)
+	gcc -g $(MAIN) $(LIB_NAME) $(LIBFT) -ltermcap -o $(NAME)

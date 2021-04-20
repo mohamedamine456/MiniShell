@@ -13,8 +13,6 @@
 # include "cmd.h"
 # include "structs_functions/structs_functions.h"
 
-int			parse_command(char *line, char **envp);
-int			separate_command(char **tab_cmd);
 char        **cut_line(char *line);
 char        *cut_separator(char *line, int *i);
 

@@ -6,20 +6,21 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 14:10:17 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 11:37:56 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TERMINAL_H
 # define TERMINAL_H
 # include "../libft/libft.h"
+# include "../structs.h"
 # include <fcntl.h>
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
 # define TRUE 1
 
-typedef struct termios	t_termios;
+typedef struct termios t_termios;
 
 typedef struct	s_flags
 {
@@ -28,20 +29,57 @@ typedef struct	s_flags
 	char	ltr;
 }				t_flags;
 
-char	*just_read();
+typedef struct	s_read_tools
+{
+	char		*line;
+	char		*tmp;
+	t_flags		fl;
+}				t_read_tools;
+
+/*
+ * prototypes for read_line.c file
+ */
+
+char	*read_line(t_history *hist);
+char	*just_read(t_history *hist);
+char	*add_buffer(t_read_tools *rt, t_history *hist);
+
+/*
+ * prototypes for check_flags.c file
+ */
+
+int		check_flags(char c, t_flags *fl);
+void	apply_flags(char **buff, char *tmp, t_flags *fl, t_history *hist);
+
+/*
+ * prototypes for format_terminal.c file
+ */
+
+int		init_terminal_data();
+int		format_terminal(t_termios *orig);
+int		reset_terminal(t_termios *orig);
 int		get_termios(t_termios *term);
 int		set_termios(t_termios *term, int flag);
 
-char	*add_buffer(char *buff, char *tmp, t_flags *fl);
-
-int		compare_flags(t_flags fl1, t_flags fl2);
-int		check_flags(char c, t_flags *fl);
-t_flags	reset_flags(t_flags fl, char c);
-void	apply_flags(char **buff, char *tmp, t_flags fl);
-
-int		format_terminal(t_termios *orig);
-int		reset_terminal(t_termios *orig);
+/*
+ * prototypes for delete_char.c file
+ */
 
 void	delete_char(char **buff);
+void    clear_line(void);
+
+/*
+ * prototypes for quit_d.c file
+ */
+
+void	quit_d(t_read_tools *rt, t_history *hist);
+char	*quit_delete(t_read_tools *rt, t_history *hist);
+
+/*
+ * prototypes for history_functions.c file
+ */
+
+void	up_arrow(t_history *hist, char **buff);
+void	down_arrow(t_history *hist, char **buff);
 
 #endif

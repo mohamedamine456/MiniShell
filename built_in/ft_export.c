@@ -40,11 +40,24 @@ char	*to_var(char *arg)
 
 void	ft_export(t_builtin_vars var, int *retv)
 {
+<<<<<<< HEAD
 	char	**sorted_env;
 	char	**tmp;
 	int		i;
 
 	i = 0;
+=======
+    char	**sorted_env;
+    char	**tmp;
+    int		i;
+
+    i = 0;
+    *retv = 0;
+    if (var.args == NULL)
+    {
+	sorted_env = sort_strings(*(var.envp));
+	ft_print_args(sorted_env);
+>>>>>>> 57dc075c73b7b13e51514368dc14e621f9ecabb4
 	*retv = 0;
 	if (var.args == NULL)
 	{

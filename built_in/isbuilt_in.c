@@ -6,19 +6,19 @@ int isbuilt_in(char *cmd)
 
     i = -1;
     if ((i = ft_strcmp(cmd, "echo")) == 0)
-	return (ECHO);
+	return (O_ECHO);
     else if ((i = ft_strcmp(cmd, "export")) == 0)
-	return (EXPORT);
+	return (O_EXPORT);
     else if ((i = ft_strcmp(cmd, "env")) == 0)
-	return (ENV);
+	return (O_ENV);
     else if ((i = ft_strcmp(cmd, "exit")) == 0)
-	return (EXIT);
+	return (O_EXIT);
     else if ((i = ft_strcmp(cmd, "cd")) == 0)
-	return (CD);
+	return (O_CD);
     else if ((i = ft_strcmp(cmd, "unset")) == 0)
-	return (UNSET);
+	return (O_UNSET);
     else if ((i = ft_strcmp(cmd, "pwd")) == 0)
-	return (PWD); 
+	return (O_PWD); 
     return (-1);
 }
 
@@ -28,6 +28,6 @@ int main()
     int i;
 
     i = isbuilt_in(unset);
-    if (i == UNSET)
+    if (i == O_UNSET)
 	printf("true story");
 }
