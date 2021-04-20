@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 11:25:51 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/18 14:55:47 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ char			*search_env(char *str, char **envp);
 int				ft_only_digits(char *str);
 int				ft_strlen_tab(char **tab);
 char			**ft_strjoin_tables(char **str1, char **str2);
-char			 **ft_jointabstr(char **tab, char *str);
+char			**ft_jointabstr(char **tab, char *str);
 void			sort_strings(char **tab);
+char			**ft_tabdup(char **tab);
 
 #endif
