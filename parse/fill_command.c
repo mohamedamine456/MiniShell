@@ -88,6 +88,7 @@ t_cmd	*fill_command(char **tab)
 	return (cmd);
 }
 
+<<<<<<< HEAD
 //int main()
 //{
 //	int i;
@@ -100,3 +101,17 @@ t_cmd	*fill_command(char **tab)
 //	print_cmd(*cmd);
 //	//print_cmd(*(cmd->next));
 //}
+=======
+int main()
+{
+	int i;
+	char *str = "echo hello >file > file2 | grep word";
+	char **tab = ft_split(str, 32);
+	t_cmd *cmd;
+	cmd = fill_command(tab);
+	//printf("%p ||| %p", cmd->output, cmd->output->next);
+	//printf("%p\n", cmd->output);
+	print_cmd(*cmd);
+	//print_cmd(*(cmd->next));
+}
+>>>>>>> 64c8db8c2096b8de313e394caf73a21eb29bb772

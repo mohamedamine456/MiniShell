@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 13:40:38 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:58:07 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		execute_commands(char **tab_cmd)
 			one_cmd = ft_resize_tab(one_cmd, ft_strdup(tab_cmd[i]));
 		else if (one_cmd != NULL)
 		{
-			//cmd = fill_command(one_cmd);
+			cmd = fill_command(one_cmd);
 			//execute command	
 			ft_print_args(one_cmd);
 			write(1, "\n", 1);
