@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/04/19 16:41:03 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/04/20 12:01:51 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,10 @@ PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c\
 			parse/structs_functions/output_functions.c\
 
 TERMINAL_SRC = terminal/check_flags.c terminal/delete_char.c terminal/format_terminal.c\
-			  terminal/read_line.c terminal/quit_d.c terminal/history_functions.c
+			  terminal/read_line.c terminal/quit_delete.c terminal/history_functions.c
 
 GNL_SRC = get_next_line/get_next_line.c
-SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) rdwr_history.c
+SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) rdwr_history.c parse_execute.c
 
 
 
@@ -38,10 +38,10 @@ PARSE_OBJSRC =	parse_command.o check_options.o cmd_functions_test.o\
 				cmd_functions.o input_functions.o output_functions.o
 
 TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\
-				  read_line.o quit_d.o history_functions.o
+				  read_line.o quit_delete.o history_functions.o
 
 GNL_OBJSRC = get_next_line.o
-OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) rdwr_history.o
+OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) rdwr_history.o parse_execute.o
 
 
 all: $(NAME)

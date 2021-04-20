@@ -16,53 +16,41 @@ char	*read_line(t_history *hist)
 
 char	*just_read(t_history *hist)
 {
-	char	*line;
-	char	*tmp;
-	t_flags	fl;
+	t_read_tools	rt;
 
-	fl = (t_flags){0, 0, 0};
-	line = ft_strdup("");
-	tmp = malloc(2);
+	rt.fl = (t_flags){0, 0, 0};
+	rt.line = ft_strdup("");
+	rt.tmp = malloc(2);
 	while (TRUE)
 	{
-		if (read(0, tmp, 1) > 0)
+		if (read(0, rt.tmp, 1) > 0)
 		{	
-			tmp[1] = '\0';
-			if (tmp[0] == '\n')
+			rt.tmp[1] = '\0';
+			if (rt.tmp[0] == '\n')
 				break ;
-			line = add_buffer(line, tmp, &fl, hist);
+			rt.line = add_buffer(&rt, hist);
 		}
 		else
 			break ;
 	}
-	free(tmp);
-	return (line);
+	free(rt.tmp);
+	return (rt.line);
 }
 
-char	*add_buffer(char *line, char *tmp, t_flags *fl, t_history *hist)
+char	*add_buffer(t_read_tools *rt, t_history *hist)
 {
-	if (tmp[0] == 4)
-	{
-		if (!ft_strcmp(line, ""))
-			quit_d(line);
-		return (line);
-	}
-	else if (tmp[0] == 127)
+	if (rt->tmp[0] == 4 || rt->tmp[0] == 127)
+		return (quit_delete(rt, hist));
+	else if (!check_flags(rt->tmp[0], &(rt->fl)))
 	{
 		hist->wr = 1;
-		delete_char(&line);
-		return (line);
-	}
-	else if (!check_flags(tmp[0], fl))
-	{
-		hist->wr = 1;
-		write(1, tmp, 1);
-		line = ft_strjoin(line, tmp);
-		return (line);
+		write(1, rt->tmp, 1);
+		rt->line = ft_strjoin(rt->line, rt->tmp);
+		return (rt->line);
 	}
 	else
 	{
-		apply_flags(&line, tmp, fl, hist);
-		return (line);
+		apply_flags(&(rt->line), rt->tmp, &(rt->fl), hist);
+		return (rt->line);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/19 16:42:32 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 11:37:56 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,20 @@ typedef struct	s_flags
 	char	ltr;
 }				t_flags;
 
+typedef struct	s_read_tools
+{
+	char		*line;
+	char		*tmp;
+	t_flags		fl;
+}				t_read_tools;
+
 /*
  * prototypes for read_line.c file
  */
 
 char	*read_line(t_history *hist);
 char	*just_read(t_history *hist);
-char	*add_buffer(char *buff, char *tmp, t_flags *fl, t_history *hist);
+char	*add_buffer(t_read_tools *rt, t_history *hist);
 
 /*
  * prototypes for check_flags.c file
@@ -65,7 +72,8 @@ void    clear_line(void);
  * prototypes for quit_d.c file
  */
 
-void	quit_d(char *line);
+void	quit_d(t_read_tools *rt, t_history *hist);
+char	*quit_delete(t_read_tools *rt, t_history *hist);
 
 /*
  * prototypes for history_functions.c file

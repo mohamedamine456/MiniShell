@@ -1,56 +1,56 @@
 #include "parse.h"
 
-int		parse_command(char *line, char **envp)
-{
-	char	**tab;
-	int		ret;
-
-	tab = cut_line(line); // quotes error handling
-	//handl ; | >>>>>>>>> <<<<<<<
-	if (tab == NULL)
-		return (-1);
-    tab = replace_tab_env(tab, envp);
-	if (tab == NULL)
-		return (-1);
-	tab = clean_tab_cmd(tab);
-	if (tab == NULL)
-		return (-1);
-	ret = separate_command(tab);
-	//ft_print_args(tab);
-	ft_free_args(tab);
-	return (0);
-}
-
-int		separate_command(char **tab_cmd)
-{
-	t_cmd	*cmd;
-	char	**one_cmd;
-	int		i;
-
-	i = 0;
-	one_cmd = NULL;
-	while (tab_cmd != NULL && tab_cmd[i] != NULL)
-	{
-		if (ft_strcmp(tab_cmd[i], ";"))
-			one_cmd = ft_resize_tab(one_cmd, ft_strdup(tab_cmd[i]));
-		else if (one_cmd != NULL)
-		{
-			// fill command
-			//execute command
-			ft_print_args(one_cmd);
-			write(1, "\n\n\n", 1);
-			ft_free_args(one_cmd);
-			one_cmd = NULL;
-		}
-		i++;
-	}
-	if (one_cmd != NULL)
-	{
-		ft_print_args(one_cmd);
-		ft_free_args(one_cmd);
-	}
-	return (1);
-}
+//int		parse_command(char *line, char **envp)
+//{
+//	char	**tab;
+//	int		ret;
+//
+//	tab = cut_line(line); // quotes error handling
+//	//handl ; | >>>>>>>>> <<<<<<<
+//	if (tab == NULL)
+//		return (-1);
+//    tab = replace_tab_env(tab, envp);
+//	if (tab == NULL)
+//		return (-1);
+//	tab = clean_tab_cmd(tab);
+//	if (tab == NULL)
+//		return (-1);
+//	ret = separate_command(tab);
+//	//ft_print_args(tab);
+//	ft_free_args(tab);
+//	return (0);
+//}
+//
+//int		separate_command(char **tab_cmd)
+//{
+//	t_cmd	*cmd;
+//	char	**one_cmd;
+//	int		i;
+//
+//	i = 0;
+//	one_cmd = NULL;
+//	while (tab_cmd != NULL && tab_cmd[i] != NULL)
+//	{
+//		if (ft_strcmp(tab_cmd[i], ";"))
+//			one_cmd = ft_resize_tab(one_cmd, ft_strdup(tab_cmd[i]));
+//		else if (one_cmd != NULL)
+//		{
+//			// fill command
+//			//execute command
+//			ft_print_args(one_cmd);
+//			write(1, "\n\n\n", 1);
+//			ft_free_args(one_cmd);
+//			one_cmd = NULL;
+//		}
+//		i++;
+//	}
+//	if (one_cmd != NULL)
+//	{
+//		ft_print_args(one_cmd);
+//		ft_free_args(one_cmd);
+//	}
+//	return (1);
+//}
 
 char	**cut_line(char *line)
 {
@@ -58,6 +58,7 @@ char	**cut_line(char *line)
 	int			n_s;
 	char		*tmp_part;
 	char		**tab;
+
 	i = 0;
 	n_s = 0;
 	tab = NULL;
@@ -85,6 +86,7 @@ char	*cut_separator(char *line, int *i)
 	char	*tmp_part;
 	char	c;
 	int		j;
+
 	j = 0;
 	tmp_part = NULL;
 	if (ft_isseparator(line[*i]))
