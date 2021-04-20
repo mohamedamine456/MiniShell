@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 12:04:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 14:17:07 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int		parse_execute(char	*line, char **envp)
 	tab_cmd = cut_line(line);
 	tab_cmd = replace_tab_env(tab_cmd, envp);
 	tab_cmd = clean_tab_cmd(tab_cmd);
-	retv = execute_commands(tab_cmd);
+	retv = split_commands(tab_cmd);
 	ft_free_args(tab_cmd);
 	return (retv);
 }
 
-int		execute_commands(char **tab_cmd)
+int		split_commands(char **tab_cmd)
 {
 	t_cmd   *cmd;
 	char    **one_cmd;
@@ -39,8 +39,9 @@ int		execute_commands(char **tab_cmd)
 			one_cmd = ft_resize_tab(one_cmd, ft_strdup(tab_cmd[i]));
 		else if (one_cmd != NULL)
 		{
-			// fill command
+			//cmd = fill_command(one_cmd);
 			//execute command
+			//print_cmds(cmd);
 			ft_print_args(one_cmd);
 			ft_free_args(one_cmd);
 			one_cmd = NULL;
@@ -49,8 +50,16 @@ int		execute_commands(char **tab_cmd)
 	}
 	if (one_cmd != NULL)
 	{
+		//cmd = fill_command(one_cmd);
+		//print_cmds(cmd);
 		ft_print_args(one_cmd);
 		ft_free_args(one_cmd);
 	}
+	return (1);
+}
+
+int		execute_command(t_cmd *cmd)
+{
+
 	return (1);
 }

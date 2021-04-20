@@ -22,6 +22,9 @@ void			write_history(t_history *hist, char *line);
 t_history		read_history(int fd);
 
 int				parse_execute(char  *line, char **envp);
-int				execute_commands(char **tab_cmds);
+int				split_commands(char **tab_cmds);
+
+
+void			print_cmds(t_cmd *cmd);
 
 #endif

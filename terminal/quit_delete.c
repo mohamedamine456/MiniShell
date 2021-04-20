@@ -6,11 +6,15 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:05:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 11:37:43 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 16:03:20 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
+
+/*
+ * quit_delete function generate delete and ctrl+d keys
+*/
 
 char	*quit_delete(t_read_tools *rt, t_history *hist)
 {
@@ -27,6 +31,10 @@ char	*quit_delete(t_read_tools *rt, t_history *hist)
 		return (rt->line);
 	}
 }
+
+/*
+ * when ctrl+d hitted and buffer is empty free all and quit program
+*/
 
 void	quit_d(t_read_tools *rt, t_history *hist)
 {
