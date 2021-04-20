@@ -22,6 +22,8 @@ void	write_history(t_history *hist, char *line)
 		hist->size += 1;
 		hist->pos += 1;
 	}
+	else
+		free(line);
 }
 
 t_history	read_history(int fd)
@@ -44,6 +46,8 @@ t_history	read_history(int fd)
 			hist.tab_hist = ft_resize_tab(hist.tab_hist, line);
 			hist.size += 1;	
 		}
+		else
+			free(line);
 		hist.pos = hist.size;
 	}
 	return (hist);
