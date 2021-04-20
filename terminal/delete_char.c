@@ -6,11 +6,18 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 11:37:01 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:53:18 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
+
+/*
+ * delete_char: uses termcap capabilities to:
+ * move the cursor to left one character with 'le' capability
+ * delete character on right with 'dc' capability
+ * only if buffer contain enough characters
+*/
 
 void	delete_char(char **buff)
 {
@@ -28,6 +35,11 @@ void	delete_char(char **buff)
 		tputs(del_one, 1, ft_putchar);
 	}
 }
+
+/*
+ * clear_line: uses termcap to delete line from terminal
+ * and prompt again
+*/
 
 void	clear_line(void)
 {

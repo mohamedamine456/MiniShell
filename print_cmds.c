@@ -1,14 +1,12 @@
 #include "minishell.h"
 
-void	print_cmds(t_cmd *command)
+void	print_cmds(t_cmd *cmd)
 {
-	t_cmd		*cmd;
 	t_output	*out;
 	t_input	*in;
 	int			i;
 
-	cmd = command;
-	while (cmd != NULL)
+		while (cmd != NULL)
 	{
 		printf("{name: %s} ", cmd->name);
 		printf("{option: %s} ", cmd->option);
@@ -36,4 +34,5 @@ void	print_cmds(t_cmd *command)
 		printf("} + ");
 		cmd = cmd->next;
 	}
+	printf("\n");
 }

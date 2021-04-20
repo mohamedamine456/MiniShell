@@ -6,13 +6,18 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/19 16:40:31 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:50:46 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-int		check_flags(char c, t_flags *fl)
+/*
+ *	check_flags: check if the is esc followed by [ followed by letter
+ *	if so we go to historique
+*/
+
+int	check_flags(char c, t_flags *fl)
 {
 	if (c == 27)
 	{
@@ -38,6 +43,11 @@ int		check_flags(char c, t_flags *fl)
 		return (0);
 	}
 }
+
+/*
+ * apply_flags: check if esc+[+('A'|'B') is entered
+ * is so calls up or down functions
+*/
 
 void	apply_flags(char **buff, char *tmp, t_flags *fl, t_history *hist)
 {
