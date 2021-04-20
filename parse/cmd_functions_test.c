@@ -6,14 +6,14 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 12:19:57 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/03/31 15:35:53 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:48:24 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-int main()
-{
+//int main()
+//{
 	//t_cmd cmd;
 	//t_cmd *dub;
 	//t_cmd *tmp;
@@ -34,4 +34,4 @@ int main()
 	//	print_cmd(*tmp);
 	//	tmp = tmp->next;
 	//}
-}
+//}

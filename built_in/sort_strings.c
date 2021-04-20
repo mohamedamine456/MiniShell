@@ -27,7 +27,7 @@ void	sort_strings(char **tab)
 	{
 		j = index - 1;
 		tmp = tab[index];
-		while (j >= 0 && (ft_strcmp(tab[j], tab[index]) > 0))
+		while (j >= 0 && (ft_strcmp(tab[j], tmp) >= 0))
 		{
 			tab[j + 1] = tab[j];
 			j--;
@@ -43,18 +43,18 @@ void	sort_strings(char **tab)
 	}
 }
 
-//int main()
-//{
-//	char **tab = ft_split("kk Aaaa Caba AAAAAA", 32);
-//	sort_strings(tab);
-//	int i = 0;
-//	while (tab[i])
-//	{
-//		printf("%s\n", tab[i]);
-//		free(tab[i]);
-//		i++;
-//	}
-//	free(tab);
-//	return (0);
-//}
+// int main()
+// {
+// 	char **tab = ft_split("kk Aaaa Caba AAAAA", 32);
+// 	sort_strings(tab);
+// 	int i = 0;
+// 	// while (tab[i])
+// 	// {
+// 	// 	printf("%s\n", tab[i]);
+// 	// 	free(tab[i]);
+// 	// 	i++;
+// 	// }
+// 	free(tab);
+// 	return (0);
+// }
 

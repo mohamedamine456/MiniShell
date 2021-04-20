@@ -16,7 +16,7 @@ int	isvalid_var(char *str)
 {
 	int i;
 
-	if (ft_isdigit(str[0]) != 1 && str[0] != '_')
+	if (ft_isdigit(str[0]) == 1 && str[0] != '_')
 		return (-1);
 	i = 1;
 	while (str[i] != '\0')
@@ -38,38 +38,31 @@ char	*to_var(char *arg)
 	return (arg);
 }
 
+void	print_vars(char **vars)
+{
+	int i;
+
+	i = 0;
+	while (vars[i])
+	{
+		printf("declare -x %s", vars[i]);
+		i++;
+	}
+}
+
 void	ft_export(t_builtin_vars var, int *retv)
 {
-<<<<<<< HEAD
-	char	**sorted_env;
 	char	**tmp;
 	int		i;
 
 	i = 0;
-=======
-    char	**sorted_env;
-    char	**tmp;
-    int		i;
-
-    i = 0;
-    *retv = 0;
-    if (var.args == NULL)
-    {
-	sorted_env = sort_strings(*(var.envp));
-	ft_print_args(sorted_env);
->>>>>>> 57dc075c73b7b13e51514368dc14e621f9ecabb4
 	*retv = 0;
 	if (var.args == NULL)
 	{
-		sorted_env = ft_tabdup(*(var.envp));
-		sort_strings(sorted_env);
-		while (sorted_env[i])
-		{
-			printf("%s\n", sorted_env[i]);
-			i++;
-		}
+		tmp = *(var.envp);
+		sort_strings(tmp);
+		print_vars(tmp);
 		*retv = 0;
-		//free sorted args
 	}
 	else
 	{
@@ -79,7 +72,7 @@ void	ft_export(t_builtin_vars var, int *retv)
 			{
 				tmp = *(var.envp);
 				*(var.envp) = ft_jointabstr(*(var.envp), var.args[i]);
-				//free tmop
+				ft_free_args(tmp);
 				if (*retv != -1)
 					*retv = 0;
 			}
@@ -90,13 +83,22 @@ void	ft_export(t_builtin_vars var, int *retv)
 	}
 }
 
-int main(int argc, char *argv[], char *envp[])
+int main(int argc, char *argv[], char **env)
 {
 	t_builtin_vars vars;
-	int	retv;
-	vars.args = NULL;
-	var.envp
-	*vars.envp = ft_split("aaa baa bb", 32);
+	int	retv = 0;
+	
+	vars.args = ft_split("new_env=3", 32);
+	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
+	*(vars.envp) = ft_tabdup(env);
 	vars.option = NULL;
-	//ft_export(vars, &retv);
+	
+	ft_export(vars, &retv);
+	int i = 0;
+	char **tmp = *(vars.envp);
+	while (tmp[i])
+	{
+		printf("tmp[i] == %s\n", tmp[i]);
+		i++;
+	}
 }

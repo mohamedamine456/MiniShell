@@ -30,4 +30,3 @@ char **ft_tabdup(char **tab)
 	result[i] = NULL;
 	return (result);
 }
-
