@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 09:17:25 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/17 11:25:51 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 12:19:57 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <ctype.h>
 # include "../parse/cmd.h"
 int				ft_strlen(const char *s);
+int				ft_atoi(const char *str);
 void			ft_putnbr(int n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_strcmp(const char *s1, const char *s2);

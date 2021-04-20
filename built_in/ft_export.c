@@ -36,7 +36,7 @@ void	ft_export(t_builtin_vars var, int *retv)
     *retv = 0;
     if (var.args == NULL)
     {
-	sorted_env = sort_strings(var.envp);
+	sorted_env = sort_strings(*(var.envp));
 	ft_print_args(sorted_env);
 	*retv = 0;
 	//free sorted args

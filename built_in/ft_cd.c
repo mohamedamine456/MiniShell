@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/16 13:27:34 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/20 12:14:37 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		change_pwdenv(char ***envp)
 {
 	int		i;
 	char	**tab;
-	char	*tmp;
+	char	**tmp;
 	char	*curr_path;
 
 	i = 0;
