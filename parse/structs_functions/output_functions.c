@@ -49,6 +49,7 @@ t_output      *new_output()
 
     output = (t_output *)malloc(sizeof(t_output));
     output->file = NULL;
+	output->next = NULL;
     return (output);
 }
 

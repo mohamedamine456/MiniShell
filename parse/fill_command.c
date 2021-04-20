@@ -91,7 +91,7 @@ t_cmd	*fill_command(char **tab)
 int main()
 {
 	int i;
-	char *str = "echo";
+	char *str = "echo hello >file > file2 | grep word";
 	char **tab = ft_split(str, 32);
 	t_cmd *cmd;
 	cmd = fill_command(tab);
