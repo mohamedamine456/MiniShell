@@ -11,7 +11,7 @@ int		open_history(void)
 
 void	write_history(t_history *hist, char *line)
 {
-	if (ft_strcmp(line, ""))
+	if (ft_strcmp(line, "") && hist->wr == 1)
 	{
 		if (hist->fd != -1)
 		{

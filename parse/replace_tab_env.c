@@ -6,31 +6,17 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 19:53:47 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/09 17:52:15 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/21 15:54:48 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-char	**replace_tab_env(char **tab_cmd, char **envp)
-{
-	int		i;
-
-	i = 0;
-	if (envp == NULL)
-		return (tab_cmd);
-	while (tab_cmd != NULL && tab_cmd[i] != NULL)
-	{
-		tab_cmd[i] = trim_replace(tab_cmd[i], envp);
-		i++;
-	}
-	return (tab_cmd);
-}
-
 char	*trim_replace(char *str, char **envp)
 {
 	int			i;
 	t_escapes	escp;
+	char		*tmp;
 
 	i = 0;
 	escp = (t_escapes){0, 0, 0};
@@ -41,7 +27,7 @@ char	*trim_replace(char *str, char **envp)
 		{
 			if (ft_isalpha(str[i + 1]) || str[i + 1] == '_')
 				str = replace_env(str, envp, &i);
-            else if (str[i + 1] == '?')
+			else if (str[i + 1] == '?')
 				str = replace_return(str, &i);
 			else if (ft_char_in_string(str[i + 1], "\'\"") && escp.d_q % 2 == 0)
 			{
