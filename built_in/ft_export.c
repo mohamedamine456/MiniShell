@@ -59,9 +59,10 @@ void	ft_export(t_builtin_vars var, int *retv)
 	*retv = 0;
 	if (var.args == NULL)
 	{
-		tmp = *(var.envp);
+		tmp = ft_tabdup(*(var.envp));
 		sort_strings(tmp);
 		print_vars(tmp);
+		ft_free_args(tmp);
 		*retv = 0;
 	}
 	else
@@ -83,22 +84,23 @@ void	ft_export(t_builtin_vars var, int *retv)
 	}
 }
 
-int main(int argc, char *argv[], char **env)
-{
-	t_builtin_vars vars;
-	int	retv = 0;
+// int main(int argc, char *argv[], char **env)
+// {
+// 	t_builtin_vars vars;
+// 	int	retv = 0;
 	
-	vars.args = ft_split("new_env=3", 32);
-	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
-	*(vars.envp) = ft_tabdup(env);
-	vars.option = NULL;
+// 	vars.args = ft_split("new_env=3", 32);
+// 	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
+// 	*(vars.envp) = ft_tabdup(env);
+// 	vars.option = NULL;
 	
-	ft_export(vars, &retv);
-	int i = 0;
-	char **tmp = *(vars.envp);
-	while (tmp[i])
-	{
-		printf("tmp[i] == %s\n", tmp[i]);
-		i++;
-	}
-}
+// 	ft_export(vars, &retv);
+// 	int i = 0;
+// 	char **tmp = *(vars.envp);
+// 	while (tmp[i])
+// 	{
+// 		printf("tmp[i] == %s\n", tmp[i]);
+// 		i++;
+// 	}
+// 	sleep(30);
+// }
