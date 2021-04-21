@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:51:51 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 15:58:06 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:06:31 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	init_terminal_data(void)
  * set VMIN to 1 and VTIME: to wait till one character is entered
 */
 
-int	format_terminal(t_termios *orig)
+int	format_terminal(struct termios *orig)
 {
-	t_termios	term;
+	struct termios	term;
 
 	if (init_terminal_data() == -1)
 		return (-1);
@@ -61,14 +61,14 @@ int	format_terminal(t_termios *orig)
  *	reset terminal to old stat before format_terminal
 */
 
-int	rest_terminal(t_termios *orig)
+int	rest_terminal(struct termios *orig)
 {
 	if (!set_termios(orig, TCSANOW))
 		return (0);
 	return (-1);
 }
 
-int	get_termios(t_termios *term)
+int	get_termios(struct termios *term)
 {
 	if (tcgetattr(0, term) == -1)
 		return (-1);
@@ -76,7 +76,7 @@ int	get_termios(t_termios *term)
 		return (0);
 }
 
-int	set_termios(t_termios *term, int flag)
+int	set_termios(struct termios *term, int flag)
 {
 	if (tcsetattr(0, flag, term) == -1)
 		return (-1);

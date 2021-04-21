@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 16:03:56 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:08:45 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*read_line(t_history *hist)
 {
-	t_termios	orig;
-	char		*cmd_line;
+	struct termios	orig;
+	char			*cmd_line;
 
 	if (!format_terminal(&orig))
 	{

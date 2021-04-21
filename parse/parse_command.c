@@ -1,56 +1,16 @@
-#include "parse.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_command.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 16:56:29 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/21 16:57:09 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//int		parse_command(char *line, char **envp)
-//{
-//	char	**tab;
-//	int		ret;
-//
-//	tab = cut_line(line); // quotes error handling
-//	//handl ; | >>>>>>>>> <<<<<<<
-//	if (tab == NULL)
-//		return (-1);
-//    tab = replace_tab_env(tab, envp);
-//	if (tab == NULL)
-//		return (-1);
-//	tab = clean_tab_cmd(tab);
-//	if (tab == NULL)
-//		return (-1);
-//	ret = separate_command(tab);
-//	//ft_print_args(tab);
-//	ft_free_args(tab);
-//	return (0);
-//}
-//
-//int		separate_command(char **tab_cmd)
-//{
-//	t_cmd	*cmd;
-//	char	**one_cmd;
-//	int		i;
-//
-//	i = 0;
-//	one_cmd = NULL;
-//	while (tab_cmd != NULL && tab_cmd[i] != NULL)
-//	{
-//		if (ft_strcmp(tab_cmd[i], ";"))
-//			one_cmd = ft_resize_tab(one_cmd, ft_strdup(tab_cmd[i]));
-//		else if (one_cmd != NULL)
-//		{
-//			// fill command
-//			//execute command
-//			ft_print_args(one_cmd);
-//			write(1, "\n\n\n", 1);
-//			ft_free_args(one_cmd);
-//			one_cmd = NULL;
-//		}
-//		i++;
-//	}
-//	if (one_cmd != NULL)
-//	{
-//		ft_print_args(one_cmd);
-//		ft_free_args(one_cmd);
-//	}
-//	return (1);
-//}
+#include "parse.h"
 
 char	**cut_line(char *line)
 {

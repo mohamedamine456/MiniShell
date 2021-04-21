@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 17:00:15 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:07:44 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <curses.h>
 # include <term.h>
 # define TRUE 1
-
-typedef struct termios t_termios;
 
 typedef struct s_flags
 {
@@ -56,10 +54,10 @@ void	apply_flags(char **buff, char *tmp, t_flags *fl, t_history *hist);
  */
 
 int		init_terminal_data(void);
-int		format_terminal(t_termios *orig);
-int		reset_terminal(t_termios *orig);
-int		get_termios(t_termios *term);
-int		set_termios(t_termios *term, int flag);
+int		format_terminal(struct termios *orig);
+int		reset_terminal(struct termios *orig);
+int		get_termios(struct termios *term);
+int		set_termios(struct termios *term, int flag);
 
 /*
  * prototypes for delete_char.c file
