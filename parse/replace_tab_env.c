@@ -6,13 +6,13 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 19:53:47 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/21 15:54:48 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/21 16:15:53 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-char	*trim_replace(char *str, char **envp)
+char	*trim_replace(char *str, char **envp, int retv)
 {
 	int			i;
 	t_escapes	escp;
@@ -28,7 +28,7 @@ char	*trim_replace(char *str, char **envp)
 			if (ft_isalpha(str[i + 1]) || str[i + 1] == '_')
 				str = replace_env(str, envp, &i);
 			else if (str[i + 1] == '?')
-				str = replace_return(str, &i);
+				str = replace_return(str, &i, retv);
 			else if (ft_char_in_string(str[i + 1], "\'\"") && escp.d_q % 2 == 0)
 			{
 				str = ft_strjoin(ft_substr(str, 0, i),
@@ -70,9 +70,21 @@ char	*replace_env(char *str, char **envp, int *i)
 	return (new_str);
 }
 
-char	*replace_return(char *str, int *i)
+char	*replace_return(char *str, int *i, int retv)
 {
-	char *tmp_part;
+	char	*new_str;
+	char	*tmp;
 
-	return (str);
+	new_str = ft_substr(str, 0, *i);
+	if (retv == 1)
+		tmp = ft_strdup("1");
+	else
+		tmp = ft_strdup("0");
+	new_str = ft_strjoin(new_str, tmp);
+	free(tmp);
+	tmp = ft_substr(str, *i + 2, ft_strlen(str) - *i - 2);
+	new_str = ft_strjoin(new_str, tmp);
+	free(tmp);
+	free(str);
+	return (new_str);
 }

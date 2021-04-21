@@ -25,13 +25,9 @@ char		*name_to_option(char *name);
 int			is_option(char *str, char *name);
 
 char		**replace_tab_env(char **tab_cmd, char **envp);
-char		*trim_replace(char *str, char **envp);
+char		*trim_replace(char *str, char **envp, int retv);
 char        *replace_env(char *str, char **envp, int *i);
-char        *replace_return(char *str, int *i);
-
-char		*rep_spec(char *str, char **envp, int *i);
-char		*rep_alpha(char *str, char **envp, int *i);
-char		*rep_digit(char *str, char **envp, int *i);
+char        *replace_return(char *str, int *i, int retv);
 
 void		print_cmd(t_cmd cmd);
 

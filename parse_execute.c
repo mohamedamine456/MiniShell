@@ -6,27 +6,26 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/21 15:06:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/21 16:17:06 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		parse_execute(char	*line, char **envp)
+int		parse_execute(char	*line, char **envp, int retv)
 {
 	char	**tab_cmd;
-	int		retv;
 
-	line = trim_replace(line, envp);
+	line = trim_replace(line, envp, retv);
 	tab_cmd = cut_line(line);
 	tab_cmd = clean_tab_cmd(tab_cmd);
-	retv = split_commands(tab_cmd);
+	retv = split_commands(tab_cmd, envp, retv);
 	ft_free_args(tab_cmd);
 	free(line);
 	return (retv);
 }
 
-int		split_commands(char **tab_cmd)
+int		split_commands(char **tab_cmd, char **envp, int retv)
 {
 	t_cmd   *cmd;
 	char    **one_cmd;
@@ -56,11 +55,5 @@ int		split_commands(char **tab_cmd)
 		ft_print_args(one_cmd);
 		ft_free_args(one_cmd);
 	}
-	return (1);
-}
-
-int		execute_command(t_cmd *cmd)
-{
-
-	return (1);
+	return (retv);
 }
