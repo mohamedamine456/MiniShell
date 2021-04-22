@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:44:11 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 14:27:15 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/22 13:53:34 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_files.h"
 
-int		open_inputs(t_input *inputs, int *stdin_fd)
+int	open_inputs(t_input *inputs, int *stdin_fd)
 {
 	int	new_fd;
 	int	tmp_fd;

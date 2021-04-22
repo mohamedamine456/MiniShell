@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 16:11:24 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 16:19:50 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/22 13:55:21 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_files.h"
 
-int		close_files(int stdin_fd, int stdout_fd)
+int	close_files(int stdin_fd, int stdout_fd)
 {
 	if (dup2(0, stdin_fd) < 0)
 		return (-1);

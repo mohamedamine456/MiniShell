@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:25:29 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 14:38:49 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/22 13:55:05 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_files.h"
 
-int		open_outputs(t_output *outputs, int *stdout_fd)
+int	open_outputs(t_output *outputs, int *stdout_fd)
 {
 	int	new_fd;
 	int	tmp_fd;

@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:21:09 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 14:45:43 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/22 13:55:52 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_files.h"
 
-int		open_in_out_files(t_cmd *cmd, int *stdin_fd, int *stdout_fd)
+int	open_in_out_files(t_cmd *cmd, int *stdin_fd, int *stdout_fd)
 {
 	int		retv;
 
