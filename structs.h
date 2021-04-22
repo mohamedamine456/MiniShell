@@ -8,6 +8,8 @@ typedef struct	s_hisotry
 	char	**tab_hist;
 	int		size;
 	int		pos;
+	int		retv;
+	char	*command_line;
 }				t_history;
 
 #endif
