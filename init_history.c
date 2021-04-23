@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_line_errors.c                                :+:      :+:    :+:   */
+/*   init_history.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/23 09:46:54 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/23 09:54:26 by mlachheb         ###   ########.fr       */
+/*   Created: 2021/04/23 10:08:51 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/23 10:15:58 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "terminal.h"
+#include "minishell.h"
 
-int check_line_errors(char *line)
+t_history init_history()
 {
-	int i;
-	t_escapes escp;
+	t_history hist;
 
-	i = 0;
-	escp = (t_escapes){0, 0, 0};
-	while (line != NULL && line[i] != '\0')
-	{
-		escp = ft_check_escapes(escp, line[i]);
-		i++;
-	}
-	if (escp.b_s == 1 || escp.s_q % 2 != 0 || escp.d_q % 2 != 0)
-		return (-1);
-	return (0);
+	hist.retv = 0;
+	hist.fd = open_history();
+	hist = read_history(hist.fd);
+	return (hist);
 }

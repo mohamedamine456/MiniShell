@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/22 07:31:57 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/23 10:17:34 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ char	*read_line(t_history *hist)
 	{
 		write(1, "MiniShell $> ", 13);
 		cmd_line = just_read(hist);
+		if (check_line_errors(cmd_line) == -1)
+		{
+			free(cmd_line);
+			write(1, "\nerror in line!", 15);	//change error message
+			return (NULL);
+		}
 		return (cmd_line);
 	}
 	return (NULL);

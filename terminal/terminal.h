@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/22 08:18:26 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/23 09:53:46 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,11 @@ void	down_arrow(t_history *hist, char **buff);
 void	signal_handler(void);
 void	ctrl_c_handler(int sig);
 void	ctrl_bs_handler(int sig);
+
+/*
+ * prototypes for check_line_errors.c file
+ */
+
+int		check_line_errors(char *line);
+
 #endif
