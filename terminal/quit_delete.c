@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:05:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/21 17:08:07 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/25 14:59:46 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ void	quit_d(t_read_tools *rt, t_history *hist)
 	ft_free_args(hist->tab_hist);
 	close(hist->fd);
 	write(1, "exit\n", 5);
-	exit(0);
+	if (!reset_terminal(&(hist->orig)))
+		exit(0);
+	else
+		exit(1);
 }

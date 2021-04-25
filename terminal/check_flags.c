@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/21 17:07:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/25 14:59:13 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_flags(char c, t_flags *fl)
  * is so calls up or down functions
 */
 
-void	apply_flags(char **buff, char *tmp, t_flags *fl, t_history *hist)
+void	apply_flags(char **buff, t_flags *fl, t_history *hist)
 {
 	if (fl->esc == 1 && fl->l_br == 1 && ft_isalnum(fl->ltr))
 	{

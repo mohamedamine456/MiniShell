@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/23 09:53:46 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/25 14:59:24 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include "../libft/libft.h"
 # include "../structs.h"
 # include <fcntl.h>
-# include <termios.h>
 # include <curses.h>
 # include <term.h>
 # define TRUE 1
@@ -29,10 +28,10 @@ typedef struct s_flags
 
 typedef struct s_read_tools
 {
-	char		*line;
-	char		*tmp;
-	t_flags		fl;
-}				t_read_tools;
+	char	*line;
+	char	*tmp;
+	t_flags	fl;
+}			t_read_tools;
 
 /*
  * prototypes for read_line.c file
@@ -47,7 +46,7 @@ char	*add_buffer(t_read_tools *rt, t_history *hist);
  */
 
 int		check_flags(char c, t_flags *fl);
-void	apply_flags(char **buff, char *tmp, t_flags *fl, t_history *hist);
+void	apply_flags(char **buff, t_flags *fl, t_history *hist);
 
 /*
  * prototypes for format_terminal.c file

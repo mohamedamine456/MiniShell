@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:03:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/23 10:26:57 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/25 15:23:23 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int     main(int argc, char **argv, char **envp)
 			write(1, "\n", 1);
 			if (hist.command_line != NULL)
 			{
-				hist.retv = parse_execute(ft_strdup(hist.command_line), envp, hist.retv);
+				hist.retv = parse_execute(ft_strdup(hist.command_line), &envp, hist.retv);
 				//write(1, "\n", 1);
 				//write(1, command_line, ft_strlen(command_line));
 				if (ft_strcmp(hist.command_line, ""))

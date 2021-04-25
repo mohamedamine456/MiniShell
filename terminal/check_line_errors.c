@@ -6,16 +6,16 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 09:46:54 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/25 13:30:58 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/25 14:45:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-int check_line_errors(char *line)
+int	check_line_errors(char *line)
 {
-	int i;
-	t_escapes escp;
+	int			i;
+	t_escapes	escp;
 
 	i = 0;
 	escp = (t_escapes){0, 0, 0};

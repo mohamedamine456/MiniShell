@@ -42,7 +42,6 @@ char		*clean_str(char *str)
 char		**clean_tab_cmd(char **tab_cmd)
 {
 	int		i;
-	char	*tmp;
 
 	i = 0;
 	while (tab_cmd != NULL && tab_cmd[i] != NULL)

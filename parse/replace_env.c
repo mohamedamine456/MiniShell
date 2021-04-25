@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:00 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/21 16:56:19 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/25 15:01:13 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*trim_replace(char *str, char **envp, int retv)
 {
 	int			i;
 	t_escapes	escp;
-	char		*tmp;
 
 	i = 0;
 	escp = (t_escapes){0, 0, 0};

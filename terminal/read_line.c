@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/23 10:17:34 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/25 14:59:35 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 char	*read_line(t_history *hist)
 {
-	struct termios	orig;
 	char			*cmd_line;
 
-	if (!format_terminal(&orig))
+	if (!format_terminal(&(hist->orig)))
 	{
 		write(1, "MiniShell $> ", 13);
 		cmd_line = just_read(hist);
 		if (check_line_errors(cmd_line) == -1)
 		{
 			free(cmd_line);
-			write(1, "\nerror in line!", 15);	//change error message
+			write(1, "\nerror in line!", 15);//change error message
 			return (NULL);
 		}
 		return (cmd_line);
@@ -68,7 +67,7 @@ char	*add_buffer(t_read_tools *rt, t_history *hist)
 	}
 	else
 	{
-		apply_flags(&(rt->line), rt->tmp, &(rt->fl), hist);
+		apply_flags(&(rt->line), &(rt->fl), hist);
 		return (rt->line);
 	}
 }
