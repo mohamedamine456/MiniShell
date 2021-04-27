@@ -34,9 +34,15 @@ void	add_cmd_output(t_cmd *cmd, char *str, char *file)
 	add_output_back(&(cmd->output), tmp);
 }
 
-void	add_cmd_args(char ***args, char *tab)
+void	add_cmd_args(char ***args, char *cmd_name, char *tab)
 {
-	*args = ft_resize_tab(*args, tab);
+	if (*args == NULL)
+	{
+		*args = ft_split(cmd_name, '\0');
+		*args = ft_resize_tab(*args, tab);
+	}
+	else
+		*args = ft_resize_tab(*args, tab);
 }
 
 void	add_cmd_input(t_cmd *cmd, char *file)
@@ -81,22 +87,22 @@ t_cmd	*fill_command(char **tab)
 			pars = pars->next;
 		}
 		else
-			add_cmd_args(&(pars->args), ft_strdup(tab[i]));
+			add_cmd_args(&(pars->args), pars->name, ft_strdup(tab[i]));
 		if (tab[i] != NULL)
 			i++;
 	}
 	return (cmd);
 }
 
-//int main()
-//{
-//	int i;
-//	char *str = "echo hello >file > file2 | grep word";
-//	char **tab = ft_split(str, 32);
-//	t_cmd *cmd;
-//	cmd = fill_command(tab);
-//	//printf("%p ||| %p", cmd->output, cmd->output->next);
-//	//printf("%p\n", cmd->output);
-//	print_cmd(*cmd);
-//	//print_cmd(*(cmd->next));
-//}
+int main()
+{
+	int i;
+	char *str = "echo hello >file > file2 | grep word";
+	char **tab = ft_split(str, 32);
+	t_cmd *cmd;
+	cmd = fill_command(tab);
+	//printf("%p ||| %p", cmd->output, cmd->output->next);
+	//printf("%p\n", cmd->output);
+	print_cmd(*cmd);
+	print_cmd(*(cmd->next));
+}
