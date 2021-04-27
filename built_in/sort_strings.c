@@ -35,12 +35,6 @@ void	sort_strings(char **tab)
 		tab[j + 1] = tmp;
 		index++;
 	}
-	int i = 0;
-	while (tab[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
 }
 
 // int main()

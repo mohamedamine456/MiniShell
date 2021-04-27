@@ -41,12 +41,30 @@ char	*to_var(char *arg)
 void	print_vars(char **vars)
 {
 	int i;
+	int j;
+	int index;
 
 	i = 0;
+	index = 0;
 	while (vars[i])
 	{
-		printf("declare -x %s", vars[i]);
-		i++;
+		j = 0;
+		printf("declare -x ");
+		while (vars[i][j] != '\0')
+		{
+			if (vars[i][j] == '=')
+			{
+				printf("=%c", 34);	
+				index = 1;
+			}
+			else
+				printf("%c", vars[i][j]);
+			if(vars[i][j + 1] == '\0' && index != 0)
+				printf("%c", 34);
+			j++;
+		}
+		printf("\n");
+		i++;	
 	}
 }
 
@@ -84,23 +102,22 @@ void	ft_export(t_builtin_vars var, int *retv)
 	}
 }
 
-// int main(int argc, char *argv[], char **env)
-// {
-// 	t_builtin_vars vars;
-// 	int	retv = 0;
+int main(int argc, char *argv[], char **env)
+{
+	t_builtin_vars vars;
+	int	retv = 0;
 	
-// 	vars.args = ft_split("new_env=3", 32);
-// 	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
-// 	*(vars.envp) = ft_tabdup(env);
-// 	vars.option = NULL;
-	
-// 	ft_export(vars, &retv);
-// 	int i = 0;
-// 	char **tmp = *(vars.envp);
-// 	while (tmp[i])
-// 	{
-// 		printf("tmp[i] == %s\n", tmp[i]);
-// 		i++;
-// 	}
-// 	sleep(30);
-// }
+	vars.args = NULL;//ft_split("new_env=3", 32);
+	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
+	*(vars.envp) = ft_tabdup(env);
+	vars.option = NULL;
+	ft_export(vars, &retv);
+	// int i = 0;
+	// char **tmp = *(vars.envp);
+	// while (tmp[i])
+	// {
+	// 	printf("tmp[i] == %s\n", tmp[i]);
+	// 	i++;
+	// }
+	// sleep(30);
+}
