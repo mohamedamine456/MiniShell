@@ -4,13 +4,13 @@
 # include <errno.h>
 # include <stdio.h>
 # include <string.h>
-# define O_ECHO 20
-# define O_CD 21
-# define O_PWD 22
-# define O_UNSET 23
-# define O_EXPORT 24
-# define O_ENV 25
-# define O_EXIT 26
+# define B_ECHO 20
+# define B_CD 21
+# define B_PWD 22
+# define B_UNSET 23
+# define B_EXPORT 24
+# define B_ENV 25
+# define B_EXIT 26
 
 typedef struct	s_builtin_vars
 {
