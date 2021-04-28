@@ -16,7 +16,7 @@ int isbuilt_in(char *cmd)
 {
 	int i;
 
-	i = -1;
+	i = 0;
 	if ((i = ft_strcmp(cmd, "echo")) == 0)
 		return (B_ECHO);
 	else if ((i = ft_strcmp(cmd, "export")) == 0)
@@ -31,5 +31,5 @@ int isbuilt_in(char *cmd)
 		return (B_UNSET);
 	else if ((i = ft_strcmp(cmd, "pwd")) == 0)
 		return (B_PWD); 
-	return (-1);
+	return (0);
 }
