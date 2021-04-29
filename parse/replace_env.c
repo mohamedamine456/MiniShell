@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:00 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/25 15:01:13 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:11:48 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*replace_env(char *str, char **envp, int *i)
 		j++;
 	}
 	new_str = ft_substr(str, 0, *i);
-	tmp = ft_substr(str, *i + 1	, j - 1);
+	tmp = ft_substr(str, *i + 1, j - 1);
 	tmp = search_env(tmp, envp);
 	if (tmp == NULL)
 		tmp = ft_strdup("");

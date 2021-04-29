@@ -1,6 +1,18 @@
-# include "parse.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean_tab_cmd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/29 16:12:06 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/29 16:14:09 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char		*clean_str(char *str)
+#include "parse.h"
+
+char	*clean_str(char *str)
 {
 	char		*new;
 	int			i;
@@ -12,7 +24,7 @@ char		*clean_str(char *str)
 	escp = (t_escapes){0, 0, 0};
 	new = (char *)malloc(ft_strlen(str) + 1);
 	if (new == NULL)
-		return (NULL);		// prompt an allocation error and exit
+		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (!ft_isescape(str[i]))
@@ -24,10 +36,11 @@ char		*clean_str(char *str)
 				new[j++] = str[i];
 			else if (str[i] == '\'' && (escp.b_s == 1 || escp.d_q % 2 == 1))
 				new[j++] = str[i];
-			else if (str[i] == '\\' && ((escp.b_s == 0 && escp.d_q % 2 == 0) || escp.s_q % 2 == 1))
+			else if (str[i] == '\\' && ((escp.b_s == 0
+						&& escp.d_q % 2 == 0) || escp.s_q % 2 == 1))
 				new[j++] = str[i];
-			else if (str[i] == '\\' && escp.b_s == 1 &&
-					escp.d_q % 2 == 1 && !ft_char_in_string(str[i + 1], "\"`$"))
+			else if (str[i] == '\\' && escp.b_s == 1 && escp.d_q % 2 == 1
+				&& !ft_char_in_string(str[i + 1], "\"`$"))
 				new[j++] = str[i];
 		}
 		if (str[i] != '\\' && escp.b_s == 1)
@@ -39,7 +52,7 @@ char		*clean_str(char *str)
 	return (new);
 }
 
-char		**clean_tab_cmd(char **tab_cmd)
+char	**clean_tab_cmd(char **tab_cmd)
 {
 	int		i;
 

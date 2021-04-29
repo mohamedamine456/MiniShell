@@ -52,16 +52,16 @@ t_cmd	*last_cmd(t_cmd *cmd)
 
 t_cmd      *new_cmd()
 {
-    t_cmd *cmd;
+	t_cmd *cmd;
 
-    cmd = (t_cmd *)malloc(sizeof(t_cmd));
-    cmd->name = NULL;
-    cmd->option = NULL;
+	cmd = (t_cmd *)malloc(sizeof(t_cmd));
+	cmd->name = NULL;
+	cmd->option = NULL;
 	cmd->args = NULL;
-    cmd->input = NULL;
+	cmd->input = NULL;
 	cmd->output = NULL;
-    cmd->next = NULL;
-    return (cmd);
+	cmd->next = NULL;
+	return (cmd);
 }
 
 int		size_cmds(t_cmd *cmds)
