@@ -10,4 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	exec_built
+#include "built_in.h"
+
+//typedef int ft_builtin(t_builtin_vars var, int *retv);
+
+void ft_echo(t_builtin_vars vars, int *retv)
+{
+	printf("oefofubfvnfvfv");
+}
+
+t_builtin_vars cmd_to_builtin_vars(t_cmd *cmd, char ***envp)
+{
+	t_builtin_vars vars;
+	int *retv;
+
+	vars.args = ft_tabdup(cmd->args);
+	vars.envp = envp;
+	//vars.option = ft_strdup(cmd->option);
+	vars.ft_builtin[0] = ft_echo;
+	vars.ft_builtin[0](vars, retv);
+	return (vars);
+}
+
+int	exec_builtin(t_cmd *cmd, char ***env)
+{
+	t_builtin_vars vars;
+	int				*retv;
+
+	retv = 0;
+	vars = cmd_to_builtin_vars(cmd, env);
+	return (0);
+}
+int main(int argc, char *argv[], char *env[])
+{
+	t_cmd cmd;
+	cmd.name = ft_strdup("echo");
+	cmd.args = ft_split("okk okk", 32);
+	exec_builtin(&cmd, &env);
+	return (0);
+}

@@ -17,6 +17,8 @@ typedef struct	s_builtin_vars
 	 char	**args;
 	 char	*option;
 	 char	***envp;
+	void 	(*ft_builtin[7])(struct s_builtin_vars var, int *retv);
+
 }				t_builtin_vars;
 
 void			ft_echo(t_builtin_vars var, int *retv);
