@@ -23,6 +23,7 @@ void			ft_echo(t_builtin_vars var, int *retv);
 void			ft_pwd(t_builtin_vars var, int *retv);
 void			ft_cd(t_builtin_vars var, int *retv);
 void			ft_exit(t_builtin_vars var, int *retv);
+void			ft_exit_helper(t_builtin_vars var, int *retv);
 void			ft_unset(t_builtin_vars var, int *retv);
 void			ft_env(t_builtin_vars var, int *retv);
 void			ft_export(t_builtin_vars var, int *retv);

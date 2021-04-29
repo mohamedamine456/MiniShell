@@ -6,15 +6,15 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 13:27:36 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/10 11:36:55 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:27:57 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parse.h"
+#include "parse.h"
 
-int		check_by_options(char *str, char *options)
+int	check_by_options(char *str, char *options)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -40,10 +40,9 @@ char	*name_to_option(char *name)
 		return (EXPORT_OPTIONS);
 	else
 		return (UNSET_OPTIONS);
-
 }
 
-int		is_option(char *str, char *name)
+int	is_option(char *str, char *name)
 {
 	int		i;
 	char	**tab_cmds;

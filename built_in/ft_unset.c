@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/29 16:37:52 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/04/29 16:38:09 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "built_in.h"
 
-void    ft_unset(t_builtin_vars var, int *retv)
+void	ft_unset(t_builtin_vars var, int *retv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (var.args != NULL && *(var.envp) != NULL && var.args[i] != NULL)
@@ -42,20 +54,3 @@ char	**remove_env(char *str, char **envp)
 	}
 	return (envp);
 }
-
-//int main(int argc, char **args, char **envp)
-//{
-//	int i;
-//
-//	i = 0;
-//	if (argc > 1)
-//	{
-//		envp = remove_env(args[1], envp);
-//		while (envp[i] != NULL)
-//		{
-//			write(1, envp[i], ft_strlen(envp[i]));
-//			write(1, "\n", 1);
-//			i++;
-//		}
-//	}
-//}

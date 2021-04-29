@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:51:51 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/25 15:19:48 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:39:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	format_terminal(struct termios *orig)
 	if (!get_termios(&term))
 	{
 		*orig = term;
-		term.c_lflag &= ~(ICANON | ECHO);
+		term.c_lflag &= ~ (ICANON | ECHO);
 		term.c_cc[VMIN] = 1;
 		term.c_cc[VTIME] = 0;
 		if (!set_termios(&term, TCSAFLUSH))

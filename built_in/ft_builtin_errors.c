@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:49:12 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/16 13:34:56 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:37:02 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-void	ft_builtin_errors(const char *name ,int err, int *retv)
+void	ft_builtin_errors(const char *name, int err, int *retv)
 {
 	char	*error_str;
 
