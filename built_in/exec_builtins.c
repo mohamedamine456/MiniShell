@@ -14,10 +14,10 @@
 
 //typedef int ft_builtin(t_builtin_vars var, int *retv);
 
-void ft_echo(t_builtin_vars vars, int *retv)
-{
-	printf("oefofubfvnfvfv");
-}
+// void ft_echo(t_builtin_vars vars, int *retv)
+// {
+// 	printf("oefofubfvnfvfv");
+// }
 
 t_builtin_vars cmd_to_builtin_vars(t_cmd *cmd, char ***envp)
 {

@@ -30,3 +30,14 @@ void	ft_echo(t_builtin_vars var, int *retv)
 	else
 		*retv = 1;
 }
+int main(int argc, char *argv[], char **envp)
+{
+	t_builtin_vars vars;
+	int retv;
+
+	vars.args = ft_split("okk cc", 32);
+	vars.option = NULL;
+	vars.envp = &envp;
+	ft_echo(vars, &retv);
+}
+
