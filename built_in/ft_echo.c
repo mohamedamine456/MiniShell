@@ -22,6 +22,7 @@ void	ft_echo(t_builtin_vars var, int *retv)
 		write(1, var.args[i], ft_strlen(var.args[i]));
 		if (var.args[i + 1] != NULL)
 			write(1, " ", 1);
+        i++;
 	}
 	if (var.option != NULL)
 		write(1, "\n", 1);
