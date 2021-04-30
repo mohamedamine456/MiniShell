@@ -1,8 +1,8 @@
-# include "structs_functions.h"
+#include "structs_functions.h"
 
 void	add_output_back(t_output **output, t_output *new)
 {
-	t_output *tmp;
+	t_output	*tmp;
 
 	if (*output == NULL)
 		*output = new;
@@ -15,10 +15,10 @@ void	add_output_back(t_output **output, t_output *new)
 	}
 }
 
-void		clear_outputs(t_output **outputs)
+void	clear_outputs(t_output **outputs)
 {
-	t_output *output1;
-	t_output *output2;
+	t_output	*output1;
+	t_output	*output2;
 
 	output1 = *outputs;
 	while (output1 != NULL)
@@ -33,29 +33,29 @@ void		clear_outputs(t_output **outputs)
 	outputs = NULL;
 }
 
-t_output		*last_outputs(t_output *outputs)
+t_output	*last_outputs(t_output *outputs)
 {
 	if (outputs != NULL)
 	{
 		while (outputs->next != NULL)
-		   outputs = outputs->next;
+			outputs = outputs->next;
 	}
 	return (outputs);
 }
 
-t_output      *new_output()
+t_output	*new_output(void)
 {
-    t_output *output;
+	t_output	*output;
 
-    output = (t_output *)malloc(sizeof(t_output));
-    output->file = NULL;
+	output = (t_output *)malloc(sizeof(t_output));
+	output->file = NULL;
 	output->next = NULL;
-    return (output);
+	return (output);
 }
 
-int		size_outputs(t_output *outputs)
+int	size_outputs(t_output *outputs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (outputs != NULL)

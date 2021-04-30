@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/20 12:14:37 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:36:36 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	}
 }
 
-int		change_pwdenv(char ***envp)
+int	change_pwdenv(char ***envp)
 {
 	int		i;
 	char	**tab;

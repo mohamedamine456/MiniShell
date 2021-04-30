@@ -1,24 +1,24 @@
-# include "structs_functions.h"
+#include "structs_functions.h"
 
 void	add_input_back(t_input **input, t_input *new)
 {
-    t_input *tmp;
+	t_input	*tmp;
 
-    if (*input == NULL)
-	*input = new;
-    else
-    {
-	tmp = *input;
-	while (tmp->next != NULL)
-	    tmp = tmp->next;
-	tmp->next = new;
-    }
+	if (*input == NULL)
+		*input = new;
+	else
+	{
+		tmp = *input;
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
 }
 
-void		clear_inputs(t_input **inputs)
+void	clear_inputs(t_input **inputs)
 {
-	t_input *input1;
-	t_input *input2;
+	t_input	*input1;
+	t_input	*input2;
 
 	input1 = *inputs;
 	while (input1 != NULL)
@@ -33,18 +33,18 @@ void		clear_inputs(t_input **inputs)
 	inputs = NULL;
 }
 
-t_input      *new_input()
+t_input	*new_input(void)
 {
-    t_input *input;
+	t_input	*input;
 
-    input = (t_input *)malloc(sizeof(t_input));
-    input->file = NULL;
-    return (input);
+	input = (t_input *)malloc(sizeof(t_input));
+	input->file = NULL;
+	return (input);
 }
 
-int		size_inputs(t_input *inputs)
+int	size_inputs(t_input *inputs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (inputs != NULL)
