@@ -25,6 +25,7 @@ char		*cut_separator(char *line, int *i);
  */
 
 char		**clean_tab_cmd(char **tab_cmd);
+char		*clean_str_helper(char *str, char *new, t_clean *cl);
 char		*clean_str(char *str);
 
 /*
@@ -40,6 +41,8 @@ int			is_option(char *str, char *name);
  */
 
 char		*trim_replace(char *str, char **envp, int retv);
+char		*trim_replace_helper(char *str, t_repenv repen,
+				char **envp, int retv);
 char		*replace_env(char *str, char **envp, int *i);
 char		*replace_return(char *str, int *i, int retv);
 

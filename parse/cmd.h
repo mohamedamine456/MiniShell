@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:06:57 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/29 16:30:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/01 15:01:02 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,18 @@ typedef struct s_cmd
 	t_output		*output;
 	struct s_cmd	*next;
 }					t_cmd;
+
+typedef struct s_repenv
+{
+	int			*i;
+	t_escapes	escp;
+}				t_repenv;
+
+typedef struct s_clean
+{
+	int			i;
+	int			j;
+	t_escapes	escp;
+}				t_clean;
 
 #endif

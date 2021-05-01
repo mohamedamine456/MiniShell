@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/04/25 15:10:13 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/05/01 14:53:04 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MAIN = minishell.c
 
 PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c\
 			parse/add_cmd_option.c parse/parse_command.c\
-			parse/print_cmd.c parse/replace_env.c parse/fill_command.c\
+			parse/replace_env.c parse/fill_command.c\
 			parse/structs_functions/cmd_functions.c \
 			parse/structs_functions/input_functions.c\
 			parse/structs_functions/output_functions.c\
@@ -33,8 +33,8 @@ SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) rdwr_history.c parse_execute.c\
 
 
 
-PARSE_OBJSRC =	parse_command.o check_options.o print_cmd.o\
-				add_cmd_option.o replace_env.o clean_tab_cmd.o fill_command.o\
+PARSE_OBJSRC =	parse_command.o check_options.o add_cmd_option.o\
+				replace_env.o clean_tab_cmd.o fill_command.o\
 				cmd_functions.o input_functions.o output_functions.o
 
 TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\

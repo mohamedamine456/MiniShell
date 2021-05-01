@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:00 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/29 16:11:48 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/01 14:52:06 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*trim_replace(char *str, char **envp, int retv)
 {
 	int			i;
+	t_repenv	repen;
 	t_escapes	escp;
 
 	i = 0;
@@ -24,20 +25,31 @@ char	*trim_replace(char *str, char **envp, int retv)
 		escp = ft_check_escapes(escp, str[i]);
 		if (escp.s_q % 2 == 0 && escp.b_s == 0 && str[i] == '$')
 		{
-			if (ft_isalpha(str[i + 1]) || str[i + 1] == '_')
-				str = replace_env(str, envp, &i);
-			else if (str[i + 1] == '?')
-				str = replace_return(str, &i, retv);
-			else if (ft_char_in_string(str[i + 1], "\'\"") && escp.d_q % 2 == 0)
-			{
-				str = ft_strjoin(ft_substr(str, 0, i),
-						ft_substr(str, i + 1, ft_strlen(str) - i - 1));
-				i--;
-			}
+			repen.escp = (t_escapes){escp.d_q, escp.s_q, escp.b_s};
+			repen.i = &i;
+			str = trim_replace_helper(str, repen, envp, retv);
 		}
 		if (str[i] != '\\' && escp.b_s == 1)
 			escp.b_s = 0;
 		i++;
+	}
+	return (str);
+}
+
+char	*trim_replace_helper(char *str, t_repenv repen,
+		char **envp, int retv)
+{
+	if (ft_isalpha(str[*(repen.i) + 1]) || str[*(repen.i) + 1] == '_')
+		str = replace_env(str, envp, repen.i);
+	else if (str[*(repen.i) + 1] == '?')
+		str = replace_return(str, repen.i, retv);
+	else if (ft_char_in_string(str[*(repen.i) + 1], "\'\"")
+		&& repen.escp.d_q % 2 == 0)
+	{
+		str = ft_strjoin(ft_substr(str, 0, *(repen.i)),
+				ft_substr(str, *(repen.i) + 1,
+					ft_strlen(str) - *(repen.i) - 1));
+		*(repen.i) -= 1;
 	}
 	return (str);
 }

@@ -12,12 +12,12 @@
 # define B_ENV 25
 # define B_EXIT 26
 
-typedef struct	s_builtin_vars
+typedef struct s_builtin_vars
 {
 	 char	**args;
 	 char	*option;
 	 char	***envp;
-	void 	(*ft_builtin[7])(struct s_builtin_vars var, int *retv);
+	 void	(*ft_builtin[7])(struct s_builtin_vars var, int *retv);
 
 }				t_builtin_vars;
 
@@ -35,6 +35,6 @@ int				exec_builtin(t_cmd *cmd, char ***envp);
 char			**remove_env(char *str, char **envp);
 int				ft_look_path(char **envp);
 int				isbuilt_in(char *cmd);
-void			ft_builtin_errors(const char *name,int err, int *retv);
+void			ft_builtin_errors(const char *name, int err, int *retv);
 
 #endif
