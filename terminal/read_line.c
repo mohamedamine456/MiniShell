@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/25 14:59:35 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 10:54:28 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 char	*read_line(t_history *hist)
 {
-	char			*cmd_line;
-
 	if (!format_terminal(&(hist->orig)))
 	{
 		write(1, "MiniShell $> ", 13);
-		cmd_line = just_read(hist);
-		if (check_line_errors(cmd_line) == -1)
+		g_hist.command_line = just_read(hist);
+		if (check_line_errors(g_hist.command_line) == -1)
 		{
-			free(cmd_line);
-			write(1, "\nerror in line!", 15);//change error message
+			free(g_hist.command_line);
+			g_hist.command_line = NULL;
+			write(1, "\nClose all quotes, no backslash at the end of line!", 52);
 			return (NULL);
 		}
-		return (cmd_line);
+		return (g_hist.command_line);
 	}
 	return (NULL);
 }
@@ -37,6 +36,7 @@ char	*just_read(t_history *hist)
 
 	rt.fl = (t_flags){0, 0, 0};
 	rt.line = ft_strdup("");
+	g_hist.command_line = rt.line;
 	rt.tmp = malloc(2);
 	while (TRUE)
 	{
@@ -46,6 +46,7 @@ char	*just_read(t_history *hist)
 			if (rt.tmp[0] == '\n')
 				break ;
 			rt.line = add_buffer(&rt, hist);
+			g_hist.command_line = rt.line;
 		}
 		else
 			break ;

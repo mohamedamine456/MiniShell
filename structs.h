@@ -14,4 +14,6 @@ typedef struct s_hisotry
 	struct termios	orig;
 }					t_history;
 
+t_history			g_hist;
+
 #endif

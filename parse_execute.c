@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/25 15:24:06 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 10:33:30 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int		parse_execute(char	*line, char ***envp, int retv)
 	line = trim_replace(line, *envp, retv);
 	tab_cmd = cut_line(line);
 	tab_cmd = clean_tab_cmd(tab_cmd);
-	retv = split_commands(tab_cmd, envp, retv);
+	if (!parse_errors(tab_cmd))
+		retv = split_commands(tab_cmd, envp, retv);
 	ft_free_args(tab_cmd);
 	free(line);
 	return (retv);

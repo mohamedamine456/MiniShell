@@ -11,8 +11,8 @@ void	signal_handler(void)
 void	ctrl_c_handler(int sig)
 {
 	sig = 0;
-	//if (!ft_strcmp(hist.command_line, ""))
-	write(1, "\nMiniShell $> ", 14);//do  nothing when buffer is not empty
+	if (!ft_strcmp(g_hist.command_line, ""))
+		write(1, "\nMiniShell $> ", 14);
 	return ;
 }
 

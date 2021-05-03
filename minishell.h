@@ -16,7 +16,6 @@ typedef struct	s_general_data
 	char	**envp;
 }				t_general_data;
 
-
 int				open_history(void);
 void			write_history(t_history *hist, char *line);
 t_history		read_history(int fd);
