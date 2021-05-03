@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:33:15 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/14 17:33:19 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:26:27 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char **ft_jointabstr(char **tab, char *str)
 {
     char    **tmp_tab;
     char    **new_tab;
-    int	    i;
 
     tmp_tab = (char **)malloc(sizeof(char *) * 2);
     tmp_tab[0] = ft_strdup(str);

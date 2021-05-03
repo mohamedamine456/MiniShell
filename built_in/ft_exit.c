@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:33:31 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/03 12:58:30 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:39:41 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_exit(t_builtin_vars var, int *retv)
 	number = 0;
 	if (ft_size_args(var.args) == 0)
 		exit(0);
-	else if (ft_size_args(var.args) == 1 && ft_only_digits(var.args[0]))
+	else if (ft_size_args(var.args) == 1 && var.args[1] != NULL && ft_only_digits(var.args[1]))
 	{
-		number = ft_atoi(var.args[0]);
+		number = ft_atoi(var.args[1]);
 		//free alllllll
 		exit(number);
 	}
@@ -33,11 +33,11 @@ void	ft_exit_helper(t_builtin_vars var, int *retv)
 {
 	int number;
 
-	if (!ft_only_digits(var.args[0]))
+	if (var.args[1] != NULL && !ft_only_digits(var.args[1]))
 	{
 		number = 255;
 		write(1, "MiniShell: exit: ", 17);
-		write(1, var.args[0], ft_strlen(var.args[0]));
+		write(1, var.args[1], ft_strlen(var.args[1]));
 		write(1, ": numeric argument required", 27);
 		exit(number);
 	}

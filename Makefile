@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/05/03 10:34:57 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/05/03 14:29:31 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,14 @@ TERMINAL_SRC = terminal/check_flags.c terminal/delete_char.c terminal/format_ter
 			  terminal/read_line.c terminal/quit_delete.c terminal/history_functions.c\
 			  terminal/signal_handler.c terminal/check_line_errors.c
 
+BUILTINS_SRC = built_in/exec_builtins.c built_in/ft_cd.c built_in/ft_echo.c\
+			   built_in/ft_env.c built_in/ft_exit.c built_in/ft_export.c\
+			   built_in/ft_pwd.c built_in/ft_unset.c built_in/ft_builtin_errors.c\
+			   built_in/isbuilt_in.c built_in/sort_strings.c
+
 GNL_SRC = get_next_line/get_next_line.c
-SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) rdwr_history.c parse_execute.c\
-	  init_history.c print_cmds.c
+SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) $(BUILTINS_SRC)\
+	  rdwr_history.c parse_execute.c init_history.c print_cmds.c
 
 
 
@@ -43,9 +48,13 @@ TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\
 				  read_line.o quit_delete.o history_functions.o\
 				  signal_handler.o check_line_errors.o
 
+BUILTINS_OBJSRC = exec_builtins.o ft_cd.o ft_echo.o ft_env.o ft_exit.o ft_export.o\
+			   ft_pwd.o ft_unset.o isbuilt_in.o sort_strings.o ft_builtin_errors.o
+
+
 GNL_OBJSRC = get_next_line.o
-OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) rdwr_history.o parse_execute.o\
-		 init_history.o print_cmds.o
+OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) $(BUILTINS_OBJSRC)\
+		 rdwr_history.o parse_execute.o init_history.o print_cmds.o
 
 
 all: $(NAME)

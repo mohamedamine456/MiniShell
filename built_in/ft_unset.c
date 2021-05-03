@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:37:52 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/29 16:38:09 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:14:10 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_unset(t_builtin_vars var, int *retv)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (var.args != NULL && *(var.envp) != NULL && var.args[i] != NULL)
 	{
 		*(var.envp) = remove_env(var.args[i], *(var.envp));

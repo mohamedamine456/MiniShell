@@ -8,6 +8,7 @@
 # include "get_next_line/get_next_line.h"
 # include "parse/parse.h"
 # include "terminal/terminal.h"
+# include "built_in/built_in.h"
 # include "structs.h"
 
 typedef struct	s_general_data

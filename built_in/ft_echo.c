@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:31:41 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/03 13:06:59 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:10:51 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_echo(t_builtin_vars var, int *retv)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (var.args != NULL && var.args[i] != NULL)
 	{
 		write(1, var.args[i], ft_strlen(var.args[i]));

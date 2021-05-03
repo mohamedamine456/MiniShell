@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/29 16:36:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:50:36 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_cd(t_builtin_vars var, int *retv)
 {
 	char	*dest_path;
 
-	if (var.args != NULL && var.args[0] != NULL)
-		dest_path = ft_strdup(var.args[0]);
+	if (var.args != NULL && var.args[1] != NULL)
+		dest_path = ft_strdup(var.args[1]);
 	else
 		dest_path = search_env("HOME", *(var.envp));
 	if (dest_path != NULL)
