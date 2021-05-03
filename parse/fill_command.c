@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/20 14:03:57 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 13:11:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,15 @@ t_cmd	*fill_command(char **tab)
 	return (cmd);
 }
 
-int main()
-{
-	int i;
-	char *str = "echo hello >file > file2 | grep word";
-	char **tab = ft_split(str, 32);
-	t_cmd *cmd;
-	cmd = fill_command(tab);
-	//printf("%p ||| %p", cmd->output, cmd->output->next);
-	//printf("%p\n", cmd->output);
-	print_cmd(*cmd);
-	print_cmd(*(cmd->next));
-}
+//int main()
+//{
+//	int i;
+//	char *str = "echo hello >file > file2 | grep word";
+//	char **tab = ft_split(str, 32);
+//	t_cmd *cmd;
+//	cmd = fill_command(tab);
+//	//printf("%p ||| %p", cmd->output, cmd->output->next);
+//	//printf("%p\n", cmd->output);
+//	print_cmd(*cmd);
+//	print_cmd(*(cmd->next));
+//}

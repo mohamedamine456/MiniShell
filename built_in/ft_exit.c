@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:33:31 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/29 16:35:31 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 12:58:30 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	ft_exit(t_builtin_vars var, int *retv)
 
 void	ft_exit_helper(t_builtin_vars var, int *retv)
 {
+	int number;
+
 	if (!ft_only_digits(var.args[0]))
 	{
 		number = 255;
