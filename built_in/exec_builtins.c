@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:02:02 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/03 14:50:41 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/03 15:49:26 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ t_builtin_vars cmd_to_builtin_vars(t_cmd *cmd, char ***envp)
 	vars.ft_builtin[4] = ft_export;
 	vars.ft_builtin[5] = ft_env;
 	vars.ft_builtin[6] = ft_exit;
-	vars.ft_builtin[isbuilt_in(cmd->name) -20](vars, &retv);
-
+	vars.ft_builtin[isbuilt_in(cmd->name) - 20](vars, &retv);
 	return (vars);
 }
 

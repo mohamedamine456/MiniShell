@@ -52,3 +52,14 @@ t_history	read_history(int fd)
 	}
 	return (hist);
 }
+
+t_history init_history()
+{
+	t_history hist;
+
+	hist.retv = 0;
+	hist.fd = open_history();
+	hist = read_history(hist.fd);
+	hist.command_line = NULL;
+	return (hist);
+}

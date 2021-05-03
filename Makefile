@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/05/03 14:29:31 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/05/03 15:46:59 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ BUILTINS_SRC = built_in/exec_builtins.c built_in/ft_cd.c built_in/ft_echo.c\
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) $(BUILTINS_SRC)\
-	  rdwr_history.c parse_execute.c init_history.c print_cmds.c
+	  rdwr_history.c parse_execute.c print_cmds.c
 
 
 
@@ -54,7 +54,7 @@ BUILTINS_OBJSRC = exec_builtins.o ft_cd.o ft_echo.o ft_env.o ft_exit.o ft_export
 
 GNL_OBJSRC = get_next_line.o
 OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) $(BUILTINS_OBJSRC)\
-		 rdwr_history.o parse_execute.o init_history.o print_cmds.o
+		 rdwr_history.o parse_execute.o print_cmds.o
 
 
 all: $(NAME)
