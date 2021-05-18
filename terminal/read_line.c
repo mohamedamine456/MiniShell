@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/03 10:54:28 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:14:03 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ char	*just_read(t_history *hist)
 		{	
 			rt.tmp[1] = '\0';
 			if (rt.tmp[0] == '\n')
+			{
+				write(1, "\n", 1);
 				break ;
+			}
 			rt.line = add_buffer(&rt, hist);
 			g_hist.command_line = rt.line;
 		}

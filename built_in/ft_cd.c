@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/03 14:50:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:43:41 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	if (var.args != NULL && var.args[1] != NULL)
 		dest_path = ft_strdup(var.args[1]);
 	else
-		dest_path = search_env("HOME", *(var.envp));
+		dest_path = search_env(ft_strdup("HOME"), *(var.envp));
 	if (dest_path != NULL)
 	{
 		if (chdir(dest_path) != 0)
@@ -37,6 +37,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 		write(1, "MiniShell: cd: HOME not set", 27);
 		*retv = 1;
 	}
+	free(dest_path);
 }
 
 int	change_pwdenv(char ***envp)
@@ -58,6 +59,7 @@ int	change_pwdenv(char ***envp)
 			if (curr_path != NULL)
 			{
 				(*envp)[i] = ft_strjoin(ft_strdup("PWD="), curr_path);
+				free(curr_path);
 				return (1);
 			}
 		}

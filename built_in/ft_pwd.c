@@ -15,4 +15,5 @@ void	ft_pwd(t_builtin_vars var, int *retv)
 		free(curr_path);
 		*retv = 0;
 	}
+	write(1, "\n", 1);
 }
