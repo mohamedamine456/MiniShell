@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/03 14:45:57 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:11:15 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,22 +102,22 @@ void	ft_export(t_builtin_vars var, int *retv)
 	}
 }
 
-//int main(int argc, char *argv[], char **env)
-//{
-//	t_builtin_vars vars;
-//	int	retv = 0;
-//	
-//	vars.args = NULL;//ft_split("new_env=3", 32);
-//	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
-//	*(vars.envp) = ft_tabdup(env);
-//	vars.option = NULL;
-//	ft_export(vars, &retv);
-//	// int i = 0;
-//	// char **tmp = *(vars.envp);
-//	// while (tmp[i])
-//	// {
-//	// 	printf("tmp[i] == %s\n", tmp[i]);
-//	// 	i++;
-//	// }
-//	// sleep(30);
-//}
+int main(int argc, char *argv[], char **env)
+{
+	t_builtin_vars vars;
+	int	retv = 0;
+	
+	vars.args = ft_split("new_env=3", 32);
+	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
+	*(vars.envp) = ft_tabdup(env);
+	vars.option = NULL;
+	ft_export(vars, &retv);
+	// int i = 0;
+	// char **tmp = *(vars.envp);
+	// while (tmp[i])
+	// {
+	// 	printf("tmp[i] == %s\n", tmp[i]);
+	// 	i++;
+	// }
+	// sleep(30);
+}
