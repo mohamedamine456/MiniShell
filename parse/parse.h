@@ -60,5 +60,6 @@ void		add_cmd_options(char **old_option, char *new);
  */
 
 int			parse_errors(char **tab_cmd);
+int			print_parse_errors(char *error, char *error_plus);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/18 16:14:03 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/19 08:56:03 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*read_line(t_history *hist)
 		{
 			free(g_hist.command_line);
 			g_hist.command_line = NULL;
-			write(1, "\nClose all quotes, no backslash at the end of line!", 52);
+			write(1, "Close all quotes, no backslash at the end of line!\n", 52);
 			return (NULL);
 		}
 		return (g_hist.command_line);

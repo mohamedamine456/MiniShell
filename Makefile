@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/05/03 15:46:59 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/05/18 18:50:28 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,10 +80,10 @@ re: fclean all
 sanitize:
 	make fclean -C libft/
 	make -C libft/
-	gcc -Wall -Wextra -Werror -fsanitize=address -c $(SRC)
+	gcc -fsanitize=address -c $(SRC)
 	ar rc $(LIB_NAME) $(OBJSRC)
 	ranlib $(LIB_NAME)
-	gcc -g -Wall -Wextra -Werror -fsanitize=address $(MAIN) $(LIB_NAME) $(LIBFT) -o $(NAME)
+	gcc -fsanitize=address $(MAIN) $(LIB_NAME) $(LIBFT) -ltermcap -o $(NAME)
 
 noflags:
 	make fclean -C libft/

@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:02:02 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/18 17:36:09 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/05/19 16:43:21 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ t_builtin_vars cmd_to_builtin_vars(t_cmd *cmd, char ***envp)
 	t_builtin_vars vars;
 	int retv;
 
-	vars.args = cmd->args;//ft_tabdup(cmd->args);
-	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(*envp) + 1));
-	*(vars.envp) = ft_tabdup(*envp);
+	vars.args = cmd->args;//ft_tabdup(cmd->args);	
+	vars.envp = envp;
 	if (cmd->option != NULL)
 		vars.option = ft_strdup(cmd->option);
 	vars.ft_builtin[0] = ft_echo;

@@ -4,6 +4,7 @@ void	ft_pwd(t_builtin_vars var, int *retv)
 {
 	char	*curr_path;
 
+	var.option = NULL;
 	curr_path = getcwd(NULL, 0);
 	if (curr_path == NULL)
 	{
