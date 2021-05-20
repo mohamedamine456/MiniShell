@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:51:51 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/29 16:39:04 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/20 15:25:01 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ int	format_terminal(struct termios *orig)
 
 int	reset_terminal(struct termios *orig)
 {
-	if (!set_termios(orig, TCSAFLUSH))
-		return (0);
+	if (!init_terminal_data())
+	{
+		if (!set_termios(orig, TCSANOW))
+			return (0);
+	}
 	return (-1);
 }
 

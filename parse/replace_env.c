@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:00 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/01 14:52:06 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/20 15:42:07 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	*trim_replace_helper(char *str, t_repenv repen,
 {
 	if (ft_isalpha(str[*(repen.i) + 1]) || str[*(repen.i) + 1] == '_')
 		str = replace_env(str, envp, repen.i);
+	else if (ft_isdigit(str[*(repen.i) + 1]))
+		str = replace_num(str, repen.i);
 	else if (str[*(repen.i) + 1] == '?')
 		str = replace_return(str, repen.i, retv);
 	else if (ft_char_in_string(str[*(repen.i) + 1], "\'\"")
@@ -78,6 +80,22 @@ char	*replace_env(char *str, char **envp, int *i)
 	new_str = ft_strjoin(new_str, tmp);
 	free(str);
 	free(tmp);
+	return (new_str);
+}
+
+char	*replace_num(char *str, int *i)
+{
+	char	*new_str;
+	char	*tmp;
+
+	new_str = ft_substr(str, 0, *i);
+	tmp = ft_strdup("");
+	new_str = ft_strjoin(new_str, tmp);
+	free(tmp);
+	tmp = ft_substr(str, *i + 2, ft_strlen(str) - *i - 2);
+	new_str = ft_strjoin(new_str, tmp);
+	free(tmp);
+	free(str);
 	return (new_str);
 }
 

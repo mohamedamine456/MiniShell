@@ -44,6 +44,7 @@ char		*trim_replace(char *str, char **envp, int retv);
 char		*trim_replace_helper(char *str, t_repenv repen,
 				char **envp, int retv);
 char		*replace_env(char *str, char **envp, int *i);
+char		*replace_num(char *str, int *i);
 char		*replace_return(char *str, int *i, int retv);
 
 void		print_cmd(t_cmd cmd);
