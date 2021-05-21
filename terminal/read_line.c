@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/21 16:28:17 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/21 17:44:45 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ char	*just_read()
 	t_read_tools	rt;
 
 	rt.fl = (t_flags){0, 0, 0, 0};
-	//rt.line = ft_strdup("");
-	//g_hist.command_line = rt.line;
 	g_hist.command_line = ft_strdup("");
 	rt.tmp = malloc(2);
 	while (TRUE)

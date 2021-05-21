@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:05:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/21 16:31:56 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/21 17:45:08 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ char	*quit_delete(t_read_tools *rt)
 {
 	if (rt->tmp[0] == 4)
 	{
-		if (!ft_strcmp(rt->line, ""))
+		if (!ft_strcmp(g_hist.command_line, ""))
 			quit_d(rt);
-		return (rt->line);
+		return (g_hist.command_line);
 	}
 	else
 	{
 		g_hist.wr = 1;
-		delete_char(&(rt->line));
-		return (rt->line);
+		delete_char(&(g_hist.command_line));
+		return (g_hist.command_line);
 	}
 }
 
@@ -38,7 +38,6 @@ char	*quit_delete(t_read_tools *rt)
 
 void	quit_d(t_read_tools *rt)
 {
-	free(rt->line);
 	free(rt->tmp);
 	ft_free_args(g_hist.tab_hist);
 	close(g_hist.fd);
