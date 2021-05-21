@@ -6,11 +6,16 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/25 14:59:13 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/21 16:26:36 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
+
+int	check_ctrl(char c, t_flags *fl)
+{
+	return (0);
+}
 
 /*
  *	check_flags: check if the is esc followed by [ followed by letter
@@ -39,7 +44,7 @@ int	check_flags(char c, t_flags *fl)
 	}
 	else
 	{
-		*fl = (t_flags){0, 0, 0};
+		*fl = (t_flags){0, 0, 0, 0};
 		return (0);
 	}
 }
@@ -49,14 +54,14 @@ int	check_flags(char c, t_flags *fl)
  * is so calls up or down functions
 */
 
-void	apply_flags(char **buff, t_flags *fl, t_history *hist)
+void	apply_flags(char **buff, t_flags *fl)
 {
 	if (fl->esc == 1 && fl->l_br == 1 && ft_isalnum(fl->ltr))
 	{
 		if (fl->ltr == 'A')
-			up_arrow(hist, buff);
+			up_arrow(buff);
 		else if (fl->ltr == 'B')
-			down_arrow(hist, buff);
-		*fl = (t_flags){0, 0, 0};
+			down_arrow(buff);
+		*fl = (t_flags){0, 0, 0, 0};
 	}
 }

@@ -6,18 +6,18 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/19 08:56:03 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/21 16:28:17 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-char	*read_line(t_history *hist)
+char	*read_line()
 {
-	if (!format_terminal(&(hist->orig)))
+	if (!format_terminal(&(g_hist.orig)))
 	{
 		write(1, "MiniShell $> ", 13);
-		g_hist.command_line = just_read(hist);
+		g_hist.command_line = just_read();
 		if (check_line_errors(g_hist.command_line) == -1)
 		{
 			free(g_hist.command_line);
@@ -30,13 +30,14 @@ char	*read_line(t_history *hist)
 	return (NULL);
 }
 
-char	*just_read(t_history *hist)
+char	*just_read()
 {
 	t_read_tools	rt;
 
-	rt.fl = (t_flags){0, 0, 0};
-	rt.line = ft_strdup("");
-	g_hist.command_line = rt.line;
+	rt.fl = (t_flags){0, 0, 0, 0};
+	//rt.line = ft_strdup("");
+	//g_hist.command_line = rt.line;
+	g_hist.command_line = ft_strdup("");
 	rt.tmp = malloc(2);
 	while (TRUE)
 	{
@@ -48,30 +49,29 @@ char	*just_read(t_history *hist)
 				write(1, "\n", 1);
 				break ;
 			}
-			rt.line = add_buffer(&rt, hist);
-			g_hist.command_line = rt.line;
+			g_hist.command_line = add_buffer(&rt);
 		}
 		else
 			break ;
 	}
 	free(rt.tmp);
-	return (rt.line);
+	return (g_hist.command_line);
 }
 
-char	*add_buffer(t_read_tools *rt, t_history *hist)
+char	*add_buffer(t_read_tools *rt)
 {
 	if (rt->tmp[0] == 4 || rt->tmp[0] == 127)
-		return (quit_delete(rt, hist));
+		return (quit_delete(rt));
 	else if (!check_flags(rt->tmp[0], &(rt->fl)))
 	{
-		hist->wr = 1;
+		g_hist.wr = 1;
 		write(1, rt->tmp, 1);
-		rt->line = ft_strjoin(rt->line, rt->tmp);
-		return (rt->line);
+		g_hist.command_line = ft_strjoin(g_hist.command_line, rt->tmp);
+		return (g_hist.command_line);
 	}
 	else
 	{
-		apply_flags(&(rt->line), &(rt->fl), hist);
-		return (rt->line);
+		apply_flags(&(g_hist.command_line), &(rt->fl));
+		return (g_hist.command_line);
 	}
 }

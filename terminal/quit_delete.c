@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:05:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/20 16:32:49 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/21 16:31:56 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
  * quit_delete function generate delete and ctrl+d keys
 */
 
-char	*quit_delete(t_read_tools *rt, t_history *hist)
+char	*quit_delete(t_read_tools *rt)
 {
 	if (rt->tmp[0] == 4)
 	{
 		if (!ft_strcmp(rt->line, ""))
-			quit_d(rt, hist);
+			quit_d(rt);
 		return (rt->line);
 	}
 	else
 	{
-		hist->wr = 1;
+		g_hist.wr = 1;
 		delete_char(&(rt->line));
 		return (rt->line);
 	}
@@ -36,14 +36,14 @@ char	*quit_delete(t_read_tools *rt, t_history *hist)
  * when ctrl+d hitted and buffer is empty free all and quit program
 */
 
-void	quit_d(t_read_tools *rt, t_history *hist)
+void	quit_d(t_read_tools *rt)
 {
 	free(rt->line);
 	free(rt->tmp);
-	ft_free_args(hist->tab_hist);
-	close(hist->fd);
+	ft_free_args(g_hist.tab_hist);
+	close(g_hist.fd);
 	write(1, "exit\n", 5);
-	if (!reset_terminal(&(hist->orig)))
+	if (!reset_terminal(&(g_hist.orig)))
 		exit(0);
 	else
 		exit(1);

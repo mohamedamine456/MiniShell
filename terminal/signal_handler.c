@@ -11,8 +11,9 @@ void	signal_handler(void)
 void	ctrl_c_handler(int sig)
 {
 	sig = 0;
-	if (!ft_strcmp(g_hist.command_line, ""))
-		write(1, "\nMiniShell $> ", 14);
+	free(g_hist.command_line);
+	g_hist.command_line = ft_strdup("");
+	write(1, "\nMiniShell $> ", 14);
 	return ;
 }
 
