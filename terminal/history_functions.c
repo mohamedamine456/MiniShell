@@ -25,7 +25,7 @@ void	up_arrow(char **buff)
 	if (g_hist.pos > 0 && (g_hist.wr == 0 || len == 0))
 	{
 		g_hist.wr = 0;
-		clear_line();
+		clear_line(*buff);
 		write(1, g_hist.tab_hist[g_hist.pos - 1],
 			ft_strlen(g_hist.tab_hist[g_hist.pos - 1]));
 		free(*buff);
@@ -47,7 +47,7 @@ void	down_arrow(char **buff)
 	if (g_hist.pos < g_hist.size && (g_hist.wr == 0 || len == 0))
 	{
 		g_hist.wr = 0;
-		clear_line();
+		clear_line(*buff);
 		write(1, g_hist.tab_hist[g_hist.pos],
 			ft_strlen(g_hist.tab_hist[g_hist.pos]));
 		free(*buff);
@@ -57,7 +57,7 @@ void	down_arrow(char **buff)
 	else if (g_hist.pos == g_hist.size && (g_hist.wr == 0 || len == 0))
 	{
 		g_hist.wr = 0;
-		clear_line();
+		clear_line(*buff);
 		free(*buff);
 		*buff = ft_strdup("");
 	}

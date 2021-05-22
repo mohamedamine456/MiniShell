@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/22 10:57:13 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/22 15:34:47 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		set_termios(struct termios *term, int flag);
  */
 
 void	delete_char(char **buff);
-void	clear_line(void);
+void	clear_line(char *buff);
 
 /*
  * prototypes for quit_d.c file
