@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:29 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/20 15:42:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/22 15:19:09 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*cut_separator(char *line, int *i)
 			(*i)++;
 		else
 		{
-			if (line[*i] == '>' || line[*i] == '>')
+			if (line[*i] == '>' || line[*i] == '<')
 			{
 				c = line[*i];
 				while (line[*i + j] == c)

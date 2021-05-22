@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/22 10:59:55 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/22 11:20:44 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_ctrl(char c, t_flags *fl)
 
 int	check_flags(char c, t_flags *fl)
 {
-	if (c >= 0 && c <= 31 && c != 4)
+	if (c >= 0 && c <= 31 && c != 4 && c != 27)
 		return (1);
 	if (c == 27)
 	{

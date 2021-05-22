@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/20 15:42:38 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/22 11:59:56 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int		split_commands(char **tab_cmd, char ***envp, int retv)
 		{
 			cmd = fill_command(one_cmd);
 			retv = exec_builtin(cmd, envp);
-			//print_cmds(cmd);
-			//ft_print_args(one_cmd);
 			ft_free_args(one_cmd);
 			one_cmd = NULL;
 		}
@@ -53,8 +51,6 @@ int		split_commands(char **tab_cmd, char ***envp, int retv)
 	{
 		cmd = fill_command(one_cmd);
 		retv = exec_builtin(cmd, envp);
-		//print_cmds(cmd);
-		//ft_print_args(one_cmd);
 		ft_free_args(one_cmd);
 	}
 	return (retv);
