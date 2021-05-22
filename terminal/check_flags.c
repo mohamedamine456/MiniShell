@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/21 16:26:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/22 10:59:55 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	check_ctrl(char c, t_flags *fl)
 
 int	check_flags(char c, t_flags *fl)
 {
+	if (c >= 0 && c <= 31 && c != 4)
+		return (1);
 	if (c == 27)
 	{
 		if (fl->esc == 0)
@@ -44,7 +46,7 @@ int	check_flags(char c, t_flags *fl)
 	}
 	else
 	{
-		*fl = (t_flags){0, 0, 0, 0};
+		*fl = (t_flags){0, 0, 0};
 		return (0);
 	}
 }
@@ -62,6 +64,6 @@ void	apply_flags(char **buff, t_flags *fl)
 			up_arrow(buff);
 		else if (fl->ltr == 'B')
 			down_arrow(buff);
-		*fl = (t_flags){0, 0, 0, 0};
+		*fl = (t_flags){0, 0, 0};
 	}
 }

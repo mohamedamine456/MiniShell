@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/21 17:44:12 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/22 10:57:13 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_flags
 	int		esc;
 	int		l_br;
 	char	ltr;
-	int		ctrl_ltr;
 }				t_flags;
 
 typedef struct s_read_tools
