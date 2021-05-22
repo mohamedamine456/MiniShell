@@ -23,12 +23,13 @@ int	is_simple_cmd(t_cmd *cmd)
 		tmp = tmp->next;
 		i++;
 	}
-	return (i && is_builtin(cmd->name));
+	return (i && isbuilt_in(cmd->name));
 }
 
 int exec(t_cmd *cmd, char ***envp)
 {
 	if (is_simple_cmd(cmd) == 0)
 		return (exec_builtin(cmd, envp));
+	return (0);
 	//fork that shit
 }
