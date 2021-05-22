@@ -10,20 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built_in.h"
+#include "../minishell.h"
 
-int	is_simple_cmd(t_cmd *cmd)
+int 	is_simple_cmd(t_cmd *cmd)
 {
-	t_cmd	*tmp;
-	int		i;
-
-	tmp = cmd;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (i && isbuilt_in(cmd->name));
+	return (isbuilt_in(cmd->name) && (size_cmds(cmd) == 1));
 }
 
 int exec(t_cmd *cmd, char ***envp)

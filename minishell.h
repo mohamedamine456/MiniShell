@@ -9,6 +9,7 @@
 # include "parse/parse.h"
 # include "terminal/terminal.h"
 # include "built_in/built_in.h"
+# include "fork_commands/fork_commands.h"
 # include "structs.h"
 
 typedef struct	s_general_data

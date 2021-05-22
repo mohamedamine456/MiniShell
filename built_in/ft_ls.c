@@ -20,25 +20,25 @@ int list(char *dir)
     return (0);
 }
 
-int	main(int argc, char *argv[])
-{
-    char	    *buf;
-    int		    index;
-
-    index = 1;
-    if (argc == 1)
-    {
-	buf = malloc(sizeof(char) * PATH_MAX);
-	getcwd(buf, PATH_MAX);
-	list(buf);
-	free(buf);
-    }
-    else
-	while (index < argc)
-	{
-	    list(argv[index]);
-	    index++;
-	}
-    exit(0);
-}
+//int	main(int argc, char *argv[])
+//{
+//    char	    *buf;
+//    int		    index;
+//
+//    index = 1;
+//    if (argc == 1)
+//    {
+//	buf = malloc(sizeof(char) * PATH_MAX);
+//	getcwd(buf, PATH_MAX);
+//	list(buf);
+//	free(buf);
+//    }
+//    else
+//	while (index < argc)
+//	{
+//	    list(argv[index]);
+//	    index++;
+//	}
+//    exit(0);
+//}
 
