@@ -150,19 +150,20 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	in = 0;
 	out = 1;
 	i = 0;
-	pipe(fd);
 	while (tmp != NULL)
 	{
+		pipe(fd);
 		pid = fork();
 		if (pid == 0)
 		{
-			dup_pipes(tmp, fd[0], fd[1], std_in, std_out, i);
+			dup_pipes(tmp, in, fd[1], std_in, std_out, i);
 			//in = open_inputs(tmp->input, test_file);
 			//out = open_outputs(tmp->output, test_file);
 			path = command_path(tmp->name, *env);
 			execve(path, tmp->args, *env);
 			exit(0);
 		}
+		in = fd[0];
 		close(fd[1]);
 		wait(NULL);
 		tmp = tmp->next;
@@ -180,34 +181,33 @@ int main(int argc, char **argv, char **envp)
 	char **tap;
 
 	// // test_file = open("ff", O_RDWR |O_CREAT | O_APPEND, 0777);
-	// tap = ft_tabdup(envp);
-	// cmd	= (t_cmd *)malloc(sizeof(t_cmd));
-	// cmd->name = strdup("echo");
-	// cmd->args = ft_split("echo file file" ,32);
-	// //cmd->next = NULL;
-	// cmd->input = NULL;
-	// cmd->output = NULL;
-	// cmd->option = NULL;
-	// // cmd->input = (t_input *)malloc(sizeof(t_input));
-	// // cmd->input->file = ft_strdup("file2");
-	// // cmd->input->next = NULL;
+	tap = ft_tabdup(envp);
+	cmd	= (t_cmd *)malloc(sizeof(t_cmd));
+	cmd->name = strdup("echo");
+	cmd->args = ft_split("echo file file" ,32);
+	//cmd->next = NULL;
+	cmd->input = NULL;
+	cmd->output = NULL;
+	cmd->option = NULL;
+	// cmd->input = (t_input *)malloc(sizeof(t_input));
+	// cmd->input->file = ft_strdup("file2");
+	// cmd->input->next = NULL;
 	
-	// // cmd->output = (t_output *)malloc(sizeof(t_output));
-	// // cmd->output->file = ft_strdup("file");
-	// // cmd->output->type = SIMPLE_REDIRECTION;
-	// // cmd->output->next = NULL;
+	// cmd->output = (t_output *)malloc(sizeof(t_output));
+	// cmd->output->file = ft_strdup("file");
+	// cmd->output->type = SIMPLE_REDIRECTION;
+	// cmd->output->next = NULL;
 	
-	// cmd->next = (t_cmd *)malloc(sizeof(t_cmd));
-	// cmd->next->name = ft_strdup("grep");
-	// cmd->next->args = ft_split("grep f", 32);
-	// cmd->next->input = NULL;
-	// cmd->next->output = NULL;
-	// cmd->next->next = NULL;
-	// // cmd->next->input = (t_input *)malloc(sizeof(t_input));
-	// // cmd->next->input->file = ft_strdup("file3");
-	// // cmd->next->input->next = NULL;
-	// //cmd->next->next = NULL;
-	// ft_exec_nested_cmd(cmd, &tap);
+	cmd->next = (t_cmd *)malloc(sizeof(t_cmd));
+	cmd->next->name = ft_strdup("grep");
+	cmd->next->args = ft_split("grep f", 32);
+	cmd->next->input = NULL;
+	cmd->next->output = NULL;
+	cmd->next->next = NULL;
+	// cmd->next->input = (t_input *)malloc(sizeof(t_input));
+	// cmd->next->input->file = ft_strdup("file3");
+	// cmd->next->input->next = NULL;
+	//cmd->next->next = NULL;
+	ft_exec_nested_cmd(cmd, &tap);
 	// // close(te)
-	while (1);
 }
