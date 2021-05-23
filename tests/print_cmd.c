@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "../parse/parse.h"
 
 void print_cmd(t_cmd cmd)
 {
