@@ -15,7 +15,7 @@
 /*
  * parse_command.c prototypes
  */
-
+char		**split_line_commands(char *line);
 char		**cut_command(char *command);
 char		*cut_separator(char *command, int *i);
 
@@ -38,7 +38,7 @@ int			is_option(char *str, char *name);
 /*
  * replace_env.c prototypes
  */
-
+char		**replace_cmd_env(char **tab_cmd, char **envp, int retv);
 char		*trim_replace(char *str, char **envp, int retv);
 char		*trim_replace_helper(char *str, t_repenv repen,
 				char **envp, int retv);
