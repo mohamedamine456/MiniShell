@@ -117,12 +117,20 @@ int	open_outputs(t_output *outputs, int fd)
 	return (new_fd);
 }
 
-int		dup_pipes(t_cmd *cmd, int *fd, int i)
+int		dup_pipes(t_cmd *cmd, int in, int out, int std_out, int std_in, int i)
 {
 	if (cmd->next != NULL)
-		return (dup2(fd[1], 1));
+	{
+		write(2, "dup fd[1] with  std_out\n", ft_strlen("dup fd[1] with  std_out\n"));
+		dup2(out, 1);
+		close(out);
+	}
 	if (i != 0)
-		return (dup2(fd[0], 0));
+	{
+		write(2, "dup fd[0] with std_in\n", ft_strlen("dup fd[0] with std_in\n"));
+		dup2(in, 0);
+		close(in);
+	}
 	return (0);
 }
 
@@ -132,6 +140,8 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	int		fd[2];
 	int		in;
 	int		out;
+	int		std_in = dup(0);
+	int		std_out = dup(1);
 	char	*path;
 	int		i;
 	pid_t	pid;
@@ -140,23 +150,27 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	in = 0;
 	out = 1;
 	i = 0;
+	pipe(fd);
 	while (tmp != NULL)
 	{
-		pipe(fd);
 		pid = fork();
 		if (pid == 0)
 		{
-			if (dup_pipes(tmp, fd, 0) == -1)
-				print_error();
-			in = open_inputs(tmp->input, test_file);
-			out = open_outputs(tmp->output, test_file);
+			dup_pipes(tmp, fd[0], fd[1], std_in, std_out, i);
+			//in = open_inputs(tmp->input, test_file);
+			//out = open_outputs(tmp->output, test_file);
 			path = command_path(tmp->name, *env);
 			execve(path, tmp->args, *env);
-			return (0);
+			exit(0);
 		}
-		waitpid(pid, NULL, 0);
+		close(fd[1]);
+		wait(NULL);
 		tmp = tmp->next;
+		i++;
 	}
+	close(fd[0]);
+	// dup2(0, std_in);
+	// dup2(1, std_out);
 	return (0);
 }
 
@@ -165,32 +179,35 @@ int main(int argc, char **argv, char **envp)
 	t_cmd *cmd;
 	char **tap;
 
-	test_file = open("test_file", O_RDWR |O_CREAT | O_APPEND, 0777);
-	tap = ft_tabdup(envp);
-	cmd	= (t_cmd *)malloc(sizeof(t_cmd));
-	cmd->name = strdup("echo");
-	cmd->args = ft_split("echo test" ,32);
-	cmd->next = NULL;
-	cmd->input = NULL;
-	cmd->output = NULL;
-	cmd->option = NULL;
-	// cmd->input = (t_input *)malloc(sizeof(t_input));
-	// cmd->input->file = ft_strdup("file2");
-	// cmd->input->next = NULL;
+	// // test_file = open("ff", O_RDWR |O_CREAT | O_APPEND, 0777);
+	// tap = ft_tabdup(envp);
+	// cmd	= (t_cmd *)malloc(sizeof(t_cmd));
+	// cmd->name = strdup("echo");
+	// cmd->args = ft_split("echo file file" ,32);
+	// //cmd->next = NULL;
+	// cmd->input = NULL;
+	// cmd->output = NULL;
+	// cmd->option = NULL;
+	// // cmd->input = (t_input *)malloc(sizeof(t_input));
+	// // cmd->input->file = ft_strdup("file2");
+	// // cmd->input->next = NULL;
 	
-	// cmd->output = (t_output *)malloc(sizeof(t_output));
-	// cmd->output->file = ft_strdup("file");
-	// cmd->output->type = SIMPLE_REDIRECTION;
-	// cmd->output->next = NULL;
+	// // cmd->output = (t_output *)malloc(sizeof(t_output));
+	// // cmd->output->file = ft_strdup("file");
+	// // cmd->output->type = SIMPLE_REDIRECTION;
+	// // cmd->output->next = NULL;
 	
 	// cmd->next = (t_cmd *)malloc(sizeof(t_cmd));
 	// cmd->next->name = ft_strdup("grep");
-	// cmd->next->args = ft_split("grep t", 32);
-	
-	// cmd->next->input = (t_input *)malloc(sizeof(t_input));
-	// cmd->next->input->file = ft_strdup("file3");
-	// cmd->next->input->next = NULL;
-	
+	// cmd->next->args = ft_split("grep f", 32);
+	// cmd->next->input = NULL;
+	// cmd->next->output = NULL;
 	// cmd->next->next = NULL;
-	ft_exec_nested_cmd(cmd, &tap);
+	// // cmd->next->input = (t_input *)malloc(sizeof(t_input));
+	// // cmd->next->input->file = ft_strdup("file3");
+	// // cmd->next->input->next = NULL;
+	// //cmd->next->next = NULL;
+	// ft_exec_nested_cmd(cmd, &tap);
+	// // close(te)
+	while (1);
 }

@@ -1,0 +1,6 @@
+testdup fd[1] with  std_out
+testdup fd[0] with std_in
+testdup fd[1] with  std_out
+testdup fd[0] with std_in
+testdup fd[1] with  std_out
+tesƒtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
