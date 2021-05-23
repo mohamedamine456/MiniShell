@@ -1,7 +1,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define SEPARATORS " \t\v\b><|;"
+# define SEPARATORS " ><|"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

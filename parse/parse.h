@@ -1,6 +1,5 @@
 #ifndef PARSE_H
 # define PARSE_H
-# define SEPARATORS " \t\v\b><|;"
 # define DLR_SPECIALS "#?*@"
 # define ECHO_OPTIONS "n"
 # define PWD_OPTIONS "LP"
@@ -17,8 +16,8 @@
  * parse_command.c prototypes
  */
 
-char		**cut_line(char *line);
-char		*cut_separator(char *line, int *i);
+char		**cut_command(char *command);
+char		*cut_separator(char *command, int *i);
 
 /*
  * clean_tab_cmd.c prototypes
@@ -61,6 +60,7 @@ void		add_cmd_options(char **old_option, char *new);
  */
 
 int			parse_errors(char **tab_cmd);
+int			check_redirections(char *redir);
 int			print_parse_errors(char *error, char *error_plus);
 
 #endif

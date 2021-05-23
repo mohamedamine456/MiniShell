@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:20:14 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/19 16:37:32 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/23 09:23:41 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	parse_errors(char **tab_cmd)
 	{
 		if (ft_isseparator(tab_cmd[i][0]))
 		{
+			if (check_redirections(tab_cmd[i]))
+				return (print_parse_errors(tab_cmd[i], ""));
 			if (tab_cmd[i + 1] != NULL)
 			{
 				if (ft_isseparator(tab_cmd[i + 1][0]))
@@ -35,6 +37,28 @@ int	parse_errors(char **tab_cmd)
 		i++;
 	}
 	return (0);
+}
+
+int	check_redirections(char *redir)
+{
+	int i;
+	char c;
+
+	i = 0;
+	c = redir[0];
+	while (redir[i] != '\0')
+	{
+		if (redir[i] != c)
+			break;
+		i++;
+	}
+	if (i != ft_strlen(redir) && redir[i] != c)
+		return (1);
+	else if (c == '<' && i > 1)
+		return (1);
+	else if (c == '>' && i > 2)
+		return (1);
+	return (0);;
 }
 
 int	print_parse_errors(char *error, char *error_plus)
