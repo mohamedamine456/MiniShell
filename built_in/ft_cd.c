@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/18 16:43:41 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/23 20:42:14 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 			ft_builtin_errors("cd", errno, retv);
 		else
 		{
-			if (change_pwdenv(var.envp))
+			if (change_pwdenv(var.envp, "PWD"))
 				*retv = 0;
 			else
 				*retv = 1;
@@ -40,7 +40,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	free(dest_path);
 }
 
-int	change_pwdenv(char ***envp)
+int	change_pwdenv(char ***envp, char *name)
 {
 	int		i;
 	char	**tab;
@@ -52,13 +52,13 @@ int	change_pwdenv(char ***envp)
 	while (tab != NULL && tab[i] != NULL)
 	{
 		tmp = ft_split(tab[i], '=');
-		if (!ft_strcmp(tmp[0], "PWD"))
+		if (!ft_strcmp(tmp[0], name))
 		{
 			ft_free_args(tmp);
 			curr_path = getcwd(NULL, 0);
 			if (curr_path != NULL)
 			{
-				(*envp)[i] = ft_strjoin(ft_strdup("PWD="), curr_path);
+				(*envp)[i] = ft_strjoin(ft_strdup(name), curr_path);
 				free(curr_path);
 				return (1);
 			}
