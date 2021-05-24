@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 14:57:27 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/10 15:00:10 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/24 10:56:22 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_isenv(char *env)
 	int	i;
 
 	i = 0;
-	while (env[i] != '\0')
+	while (env != NULL && env[i] != '\0')
 	{
 		if (env[i] == '=')
 			return (1);
