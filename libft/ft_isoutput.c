@@ -17,6 +17,8 @@ int ft_isoutput(char *str)
 	int i;
 
 	i = 0;
+	if (ft_strlen(str) == 0)
+		return (-1);
 	while (str[i] != '\0')
 	{
 		if (str[i] != '>')
