@@ -27,7 +27,7 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRC)
+	gcc -Wall -Wextra -Werror -c -g $(SRC)
 	ar rc $(NAME) $(OBJ_SRC)
 	ranlib $(NAME)
 

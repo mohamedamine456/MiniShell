@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 09:45:33 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/24 10:08:20 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/24 11:08:31 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ char **ft_dup_env(char **envp)
 		ft_free_args(tab);
 		i++;
 	}
-	ft_resize_tab(new_envp, ft_strdup("OLDPWD"));
+	new_envp = ft_resize_tab(new_envp, ft_strdup("OLDPWD"));
 	return (new_envp);
 }

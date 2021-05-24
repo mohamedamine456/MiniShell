@@ -31,6 +31,7 @@ void			ft_env(t_builtin_vars var, int *retv);
 void			ft_export(t_builtin_vars var, int *retv);
 
 int				change_pwdenv(char ***envp, char *name);
+int				set_oldpwd(char ***envp);
 int				exec_builtin(t_cmd *cmd, char ***envp);
 char			**remove_env(char *str, char **envp);
 int				ft_look_path(char **envp);
