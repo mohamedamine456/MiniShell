@@ -64,8 +64,13 @@ void	print_vars(char **vars)
 			j++;
 		}
 		printf("\n");
-		i++;	
+		i++;
 	}
+}
+
+int		search_envp(char *arg, char **env)
+{
+	return (ft_str_in_args(arg, env));
 }
 
 void	ft_export(t_builtin_vars var, int *retv)
