@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/23 20:42:14 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/23 21:43:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 		dest_path = search_env(ft_strdup("HOME"), *(var.envp));
 	if (dest_path != NULL)
 	{
+		change_pwdenv(var.envp, "OLDPWD");
 		if (chdir(dest_path) != 0)
 			ft_builtin_errors("cd", errno, retv);
 		else

@@ -53,5 +53,6 @@ char			**ft_strjoin_tables(char **str1, char **str2);
 char			**ft_jointabstr(char **tab, char *str);
 void			sort_strings(char **tab);
 char			**ft_tabdup(char **tab);
+char			**ft_dup_env(char **envp);
 
 #endif

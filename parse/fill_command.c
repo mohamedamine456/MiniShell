@@ -34,15 +34,15 @@ void	add_cmd_output(t_cmd *cmd, char *str, char *file)
 	add_output_back(&(cmd->output), tmp);
 }
 
-void	add_cmd_args(t_cmd *cmd, char *tab)
+void	add_cmd_args(char ***args, char *cmd_name, char *tab)
 {
-	if (cmd->args == NULL)
+	if (*args == NULL)
 	{
-		cmd->args = ft_split(cmd->name, '\0');
-		cmd->args = ft_resize_tab(cmd->args, tab);
+		*args = ft_split(cmd_name, '\0');
+		*args = ft_resize_tab(*args, tab);
 	}
 	else
-		cmd->args = ft_resize_tab(cmd->args, tab);
+		*args = ft_resize_tab(*args, tab);
 }
 
 void	add_cmd_input(t_cmd *cmd, char *file)
@@ -56,72 +56,53 @@ void	add_cmd_input(t_cmd *cmd, char *file)
 	add_input_back(&(cmd->input), tmp);
 }
 
-// int	ft_check(t_cmd *cmd, char *tab)
-// {
-// 	char *tab;
-// 	int		i;
-
-// 	i = 0;
-// 	tab = ft_split_white_spaces(tab);
-// 	if (cmd->name == NULL && ft_strlen_tab(tab) > 1);
-// 	{
-// 		while (tab[i])
-// 		{
-
-// 		}
-// 	}
-// 	return (-1);
-// }
-
-
-t_cmd	*fill_command(char **args)
+t_cmd	*fill_command(char **tab)
 {
 	t_cmd	*cmd;
 	t_cmd	*pars;
-	char	**jj = NULL;
 	int		i;
 
 	i = 0;
 	pars = new_cmd();
 	cmd = pars;
-	while (jj[i] != NULL)
+	while (tab[i] != NULL)
 	{
-		if (ft_is_string(jj[i]) != -1 && pars->name == NULL)
-			add_cmd_name(&(pars->name), jj[i]);
-		else if (pars->name != NULL && is_option(jj[i], pars->name) != -1 && cmd->args == NULL) // hacker man
-			add_cmd_options(&(pars->option), jj[i]);
-		else if (ft_isoutput(jj[i]) != -1)
+		if (ft_is_string(tab[i]) != -1 && pars->name == NULL)
+			add_cmd_name(&(pars->name), tab[i]);
+		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1 && cmd->args == NULL) // hacker man
+			add_cmd_options(&(pars->option), tab[i]);
+		else if (ft_isoutput(tab[i]) != -1)
 		{
-			add_cmd_output(pars, jj[i], jj[i + 1]);
+			add_cmd_output(pars, tab[i], tab[i + 1]);
 			i++;
 		}
-		else if (ft_isinput(*jj[i]) != -1)
+		else if (ft_isinput(*tab[i]) != -1)
 		{
-			add_cmd_input(pars,jj[i + 1]);
+			add_cmd_input(pars,tab[i + 1]);
 			i++;
 		}
-		else if (ft_ispipe(jj[i]) != -1)
+		else if (ft_ispipe(tab[i]) != -1)
 		{
 			pars->next = new_cmd();
 			pars = pars->next;
 		}
 		else
-			add_cmd_args(pars, ft_strdup(jj[i]));
-		if (jj[i] != NULL)
+			add_cmd_args(&(pars->args), pars->name, ft_strdup(tab[i]));
+		if (tab[i] != NULL)
 			i++;
 	}
 	return (cmd);
 }
 
-int main()
-{
-	int i;
-	char *str = "echo hello > file > file2 | grep word";
-	char **tmp = ft_split(str, 32);
-	t_cmd *cmd;
-	cmd = fill_command(tmp);
-	//printf("%p ||| %p", cmd->output, cmd->output->next);
-	//printf("%p\n", cmd->output);
-	print_cmd(*cmd);
-	print_cmd(*(cmd->next));
-}
+//int main()
+//{
+//	int i;
+//	char *str = "echo hello >file > file2 | grep word";
+//	char **tab = ft_split(str, 32);
+//	t_cmd *cmd;
+//	cmd = fill_command(tab);
+//	//printf("%p ||| %p", cmd->output, cmd->output->next);
+//	//printf("%p\n", cmd->output);
+//	print_cmd(*cmd);
+//	print_cmd(*(cmd->next));
+//}

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:03:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/23 16:43:18 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/24 09:44:58 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int     main(int argc, char **argv, char **envp)
 
 	if (argc == 1 && argv != NULL && envp != NULL)
 	{
-		new_envp = ft_tabdup(envp);
+		new_envp = ft_dup_env(envp);
 		write(1, "\e[1;1H\e[2J", 11);
 		g_hist = init_history();
 		signal_handler();
