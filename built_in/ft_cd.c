@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/24 12:01:26 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/24 12:37:39 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int		set_oldpwd(char ***envp)
 	char	**tmp;
 
 	pwd = search_env(ft_strdup("PWD"), *envp);
-
     i = 0;
     tab = *envp;
     while (tab != NULL && tab[i] != NULL)
