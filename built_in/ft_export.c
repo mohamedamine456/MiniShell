@@ -44,7 +44,7 @@ void	print_vars(char **vars)
 	int j;
 	int index;
 
-	i = 0;
+	i = 1;
 	index = 0;
 	while (vars[i])
 	{
@@ -68,10 +68,8 @@ void	print_vars(char **vars)
 	}
 }
 
-int		search_envp(char *arg, char **env)
-{
-	return (ft_str_in_args(arg, env));
-}
+//export var
+//export var=
 
 void	ft_export(t_builtin_vars var, int *retv)
 {
