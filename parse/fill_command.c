@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/23 14:59:38 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/24 13:47:44 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,15 +127,15 @@ t_cmd	*fill_command(char **tab)
 	return (cmd);
 }
 
-int main()
-{
-	int i;
-	char *str = "ls -la file";
-	char **tmp = ft_split(str, '\0');
-	t_cmd *cmd;
-	cmd = fill_command(tmp);
-	//printf("%p ||| %p", cmd->output, cmd->output->next);
-	//printf("%p\n", cmd->output);
-	print_cmd(*cmd);
-	//print_cmd(*(cmd->next));
-}
+//int main()
+//{
+//	int i;
+//	char *str = "ls -la file";
+//	char **tmp = ft_split(str, '\0');
+//	t_cmd *cmd;
+//	cmd = fill_command(tmp);
+//	//printf("%p ||| %p", cmd->output, cmd->output->next);
+//	//printf("%p\n", cmd->output);
+//	print_cmd(*cmd);
+//	//print_cmd(*(cmd->next));
+//}

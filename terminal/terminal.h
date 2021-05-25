@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 11:19:40 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:57:45 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TERMINAL_H
 # include "../libft/libft.h"
 # include "../structs.h"
+# include <sys/ioctl.h>
 # include <fcntl.h>
 # include <curses.h>
 # include <term.h>
@@ -26,10 +27,20 @@ typedef struct s_flags
 	char	ltr;
 }				t_flags;
 
+typedef struct s_winsize
+{
+	int			w_row;
+	int			w_col;
+	int			w_xpixels;
+	int			w_ypixels;
+}				t_winsize;
+
 typedef struct s_read_tools
 {
-	char	*tmp;
-	t_flags	fl;
+	t_winsize	win_info;
+	int			nb_line;
+	char		*tmp;
+	t_flags		fl;
 }			t_read_tools;
 
 /*
@@ -37,7 +48,7 @@ typedef struct s_read_tools
  */
 
 char	*read_line();
-char	*just_read();
+char	*just_read(t_read_tools *rt);
 char	*add_buffer(t_read_tools *rt);
 
 /*
@@ -77,7 +88,7 @@ char	*quit_delete(t_read_tools *rt);
 
 void	up_arrow(char **buff);
 void	down_arrow(char **buff);
-void	write_history_line(char *tmp);
+int     get_wininfo(t_winsize *win_info);
 
 /*
  * prototypes for signal_handler.c file

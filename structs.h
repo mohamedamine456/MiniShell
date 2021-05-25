@@ -4,7 +4,6 @@
 
 typedef struct s_hisotry
 {
-	int				wr;
 	int				fd;
 	char			**tab_hist;
 	int				size;

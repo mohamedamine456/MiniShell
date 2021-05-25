@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/24 12:37:39 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 09:00:06 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 		write(1, "MiniShell: cd: HOME not set", 27);
 		*retv = 1;
 	}
+	write(1, "\n", 1);
 	free(dest_path);
 }
 

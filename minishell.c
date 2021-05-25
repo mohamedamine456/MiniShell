@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:03:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/24 11:09:24 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 09:06:06 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int     main(int argc, char **argv, char **envp)
 		while (TRUE)
 		{
 			g_hist.pos = g_hist.size;
-			g_hist.wr = 0;
 			g_hist.command_line = read_line(&g_hist);
 			if (g_hist.command_line != NULL)
 			{

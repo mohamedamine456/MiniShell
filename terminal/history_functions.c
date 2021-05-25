@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 11:27:50 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:46:22 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
  * printed the previous item in history
  * if buff is empty or the buff contain a history item
-*/
+ */
 
 void	up_arrow(char **buff)
 {
@@ -36,7 +36,7 @@ void	up_arrow(char **buff)
 /*
  * printed the next item in history
  * if buff is empty or the buff contain a history item
-*/
+ */
 
 void	down_arrow(char **buff)
 {
@@ -60,16 +60,10 @@ void	down_arrow(char **buff)
 	}
 }
 
-void	write_history_line(char *tmp)
+int		get_wininfo(t_winsize *win_info)
 {
-	if (!ft_strcmp(g_hist.command_line, ""))
-	{
-		g_hist.tab_hist = ft_resize_tab(g_hist.tab_hist, ft_strdup(tmp));
-		g_hist.pos += 1;
-		g_hist.size += 1;
-	}
+	if (ioctl(0, TIOCGWINSZ, win_info) == -1)
+		return (-1);
 	else
-	{
-		g_hist.tab_hist[g_hist.pos - 1] = ft_strjoin(g_hist.tab_hist[g_hist.pos - 1], tmp);
-	}
-}
+		return (0);
+}	
