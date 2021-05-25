@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 16:33:59 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:48:25 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_termcapab
 {
 	char		*move_left;
 	char		*del_one;
+	char		*up_line;
 	char		*clear_ln;
 	char		*clear_scr;
 }				t_termcapab;
@@ -49,6 +50,7 @@ typedef struct s_read_tools
 	t_termcapab	capab;
 	int			nb_line;
 	char		*tmp;
+	char		*save_line;
 	t_flags		fl;
 }			t_read_tools;
 

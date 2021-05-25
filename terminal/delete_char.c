@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 16:25:35 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:57:12 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,20 @@ void	delete_char(char **buff, t_termcapab capab)
 void	clear_line(char *buff, t_read_tools *rt)
 {
 	int		len;
+	int		i;
 
+	i = 0;
 	len = ft_strlen(buff);
+	while (i < rt->nb_line)
+	{
+		tputs(rt->capab.up_line, 1, ft_putchar);
+		len -= rt->win_info.w_col;
+		i++;
+	}
 	while (len > 0)
 	{
 		tputs(rt->capab.move_left, 1, ft_putchar);
 		len--;
 	}
-	tputs(rt->capab.clear_ln, 1, ft_putchar);
+	tputs(rt->capab.clear_scr, 1, ft_putchar);
 }
