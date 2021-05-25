@@ -88,7 +88,7 @@ int	is_duplicated_var(char **env, char *var)
 	{
 		tab = ft_split(env[i], '=');
 		if (strcmp(tab[0], var_key[0]) == 0)
-			is_duplicated = 0;
+			is_duplicated = i;
 		ft_free_args(tab);
 		i++;
 	}
@@ -99,6 +99,7 @@ int	is_duplicated_var(char **env, char *var)
 void	ft_export(t_builtin_vars var, int *retv)
 {
 	char	**tmp;
+	int index;
 	int		i;
 
 	i = 0;
@@ -117,9 +118,18 @@ void	ft_export(t_builtin_vars var, int *retv)
 		{
 			if (isvalid_var(var.args[i]) == 0)
 			{
-				tmp = *(var.envp);
-				*(var.envp) = ft_jointabstr(*(var.envp), var.args[i]);
-				ft_free_args(tmp);
+				index = is_duplicated_var(*(var.envp), var.args[i]);
+				if (index != -1)
+				{
+					free((*(var.envp))[index]);
+					(*(var.envp))[index] = ft_strdup(var.args[i]);
+				}
+				else
+				{
+					tmp = *(var.envp);
+					*(var.envp) = ft_jointabstr(*(var.envp), var.args[i]);
+					ft_free_args(tmp);
+				}
 				if (*retv != -1)
 					*retv = 0;
 			}
