@@ -43,28 +43,33 @@ void	print_vars(char **vars)
 	int i;
 	int j;
 	int index;
+	int is_equal;
+
 
 	i = 1;
 	index = 0;
 	while (vars[i])
 	{
-		j = 0;
-		printf("declare -x ");
-		while (vars[i][j] != '\0')
+		if (strcmp(vars[i], "export") == 0)
+			i++;
+		else
 		{
-			if (vars[i][j] == '=')
+			j = 0;
+			is_equal = ft_strstri((const char *)vars[i], "=");
+			printf("declare -x ");
+			while (vars[i][j] != '\0')
 			{
-				printf("=%c", 34);	
-				index = 1;
+				if (vars[i][j] == '=')
+					printf("=%c", 34);	
+				else
+					printf("%c", vars[i][j]);
+				if(vars[i][j + 1] == '\0' && is_equal != -1)
+					printf("%c", 34);
+				j++;
 			}
-			else
-				printf("%c", vars[i][j]);
-			if(vars[i][j + 1] == '\0' && index != 0)
-				printf("%c", 34);
-			j++;
+			printf("\n");
+			i++;
 		}
-		printf("\n");
-		i++;
 	}
 }
 
@@ -105,22 +110,24 @@ void	ft_export(t_builtin_vars var, int *retv)
 	}
 }
 
-//int main(int argc, char *argv[], char **env)
-//{
-//	t_builtin_vars vars;
-//	int	retv = 0;
-//	
-//	vars.args = ft_split("new_env=3", 32);
-//	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
-//	*(vars.envp) = ft_tabdup(env);
-//	vars.option = NULL;
-//	ft_export(vars, &retv);
-//	// int i = 0;
-//	// char **tmp = *(vars.envp);
-//	// while (tmp[i])
-//	// {
-//	// 	printf("tmp[i] == %s\n", tmp[i]);
-//	// 	i++;
-//	// }
-//	// sleep(30);
-//}
+// int main(int argc, char *argv[], char **env)
+// {
+// 	t_builtin_vars vars;
+// 	int	retv = 0;
+	
+// 	vars.args = ft_split("AAAA_env", 32);
+// 	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
+// 	*(vars.envp) = ft_tabdup(env);
+// 	vars.option = NULL;
+// 	ft_export(vars, &retv);
+// 	vars.args = NULL;
+// 	ft_export(vars, &retv);
+// 	// int i = 0;
+// 	// char **tmp = *(vars.envp);
+// 	// while (tmp[i])
+// 	// {
+// 	// 	printf("tmp[i] == %s\n", tmp[i]);
+// 	// 	i++;
+// 	// }
+// 	// sleep(30);
+// }
