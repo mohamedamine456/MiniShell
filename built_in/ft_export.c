@@ -73,8 +73,28 @@ void	print_vars(char **vars)
 	}
 }
 
-//export var
-//export var=
+int	is_duplicated_var(char **env, char *var)
+{
+	char 	**tab;
+	char	**var_key;
+	int		is_duplicated;
+	int		i;
+
+	is_duplicated = -1;
+	i = 0;
+	tab = NULL;
+	var_key = ft_split(var, '=');
+	while (env[i] && is_duplicated == -1)
+	{
+		tab = ft_split(env[i], '=');
+		if (strcmp(tab[0], var_key[0]) == 0)
+			is_duplicated = 0;
+		ft_free_args(tab);
+		i++;
+	}
+	ft_free_args(var_key);
+	return (is_duplicated);
+}
 
 void	ft_export(t_builtin_vars var, int *retv)
 {
@@ -115,13 +135,13 @@ void	ft_export(t_builtin_vars var, int *retv)
 // 	t_builtin_vars vars;
 // 	int	retv = 0;
 	
-// 	vars.args = ft_split("AAAA_env", 32);
-// 	vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
-// 	*(vars.envp) = ft_tabdup(env);
-// 	vars.option = NULL;
-// 	ft_export(vars, &retv);
-// 	vars.args = NULL;
-// 	ft_export(vars, &retv);
+// 	// vars.args = ft_split("AAAA_env", 32);
+// 	// vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
+// 	// *(vars.envp) = ft_tabdup(env);
+// 	// vars.option = NULL;
+// 	// ft_export(vars, &retv);
+// 	// vars.args = NULL;
+// 	// ft_export(vars, &retv);
 // 	// int i = 0;
 // 	// char **tmp = *(vars.envp);
 // 	// while (tmp[i])
@@ -130,4 +150,7 @@ void	ft_export(t_builtin_vars var, int *retv)
 // 	// 	i++;
 // 	// }
 // 	// sleep(30);
+// 	char *var = ft_strdup("LOGNAME=");
+// 	int is = is_duplicated_var(env, var);
+// 	printf("\n%d\n", is);
 // }
