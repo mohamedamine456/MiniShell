@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 14:57:39 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:40:46 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 char	*read_line()
 {
 	t_read_tools	rt;
-
-	rt.fl = (t_flags){0, 0, 0};
-	rt.nb_line = 0;
-	if (!format_terminal(&(g_hist.orig)) && !get_wininfo(&(rt.win_info)))
+	
+	if (!format_terminal(&(g_hist.orig)))
 	{
+		init_read_tools(&rt);
 		write(1, "MiniShell $> ", 13);
 		g_hist.command_line = just_read(&rt);
 		if (check_line_errors(g_hist.command_line) == -1)
@@ -33,13 +32,13 @@ char	*read_line()
 		reset_terminal(&(g_hist.orig));
 		return (g_hist.command_line);
 	}
+	free(rt.tmp);
 	return (NULL);
 }
 
 char	*just_read(t_read_tools *rt)
 {
 	g_hist.command_line = ft_strdup("");
-	rt->tmp = malloc(2);
 	while (TRUE)
 	{
 		if (read(0, rt->tmp, 1) > 0)
@@ -54,8 +53,7 @@ char	*just_read(t_read_tools *rt)
 		}
 		else
 			break ;
-	}
-	free(rt->tmp);
+	}	
 	return (g_hist.command_line);
 }
 
@@ -71,7 +69,7 @@ char	*add_buffer(t_read_tools *rt)
 	}
 	else
 	{
-		apply_flags(&(g_hist.command_line), &(rt->fl));
+		apply_flags(&(g_hist.command_line), rt);
 		return (g_hist.command_line);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 14:46:22 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:13:57 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
  * if buff is empty or the buff contain a history item
  */
 
-void	up_arrow(char **buff)
+void	up_arrow(char **buff, t_read_tools *rt)
 {
 	int	len;
 
 	len = ft_strlen(*buff);
 	if (g_hist.pos > 0)
 	{
-		clear_line(*buff);
+		clear_line(*buff, rt);
 		write(1, g_hist.tab_hist[g_hist.pos - 1],
 			ft_strlen(g_hist.tab_hist[g_hist.pos - 1]));
 		free(*buff);
@@ -38,14 +38,14 @@ void	up_arrow(char **buff)
  * if buff is empty or the buff contain a history item
  */
 
-void	down_arrow(char **buff)
+void	down_arrow(char **buff, t_read_tools *rt)
 {
 	int	len;
 
 	len = ft_strlen(*buff);
 	if (g_hist.pos < g_hist.size)
 	{
-		clear_line(*buff);
+		clear_line(*buff, rt);
 		write(1, g_hist.tab_hist[g_hist.pos],
 			ft_strlen(g_hist.tab_hist[g_hist.pos]));
 		free(*buff);
@@ -54,16 +54,8 @@ void	down_arrow(char **buff)
 	}
 	else if (g_hist.pos == g_hist.size)
 	{
-		clear_line(*buff);
+		clear_line(*buff, rt);
 		free(*buff);
 		*buff = ft_strdup("");
 	}
 }
-
-int		get_wininfo(t_winsize *win_info)
-{
-	if (ioctl(0, TIOCGWINSZ, win_info) == -1)
-		return (-1);
-	else
-		return (0);
-}	

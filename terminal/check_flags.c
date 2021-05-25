@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/22 11:20:44 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:07:53 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ int	check_flags(char c, t_flags *fl)
  * is so calls up or down functions
 */
 
-void	apply_flags(char **buff, t_flags *fl)
+void	apply_flags(char **buff, t_read_tools *rt)
 {
-	if (fl->esc == 1 && fl->l_br == 1 && ft_isalnum(fl->ltr))
+	if (rt->fl.esc == 1 && rt->fl.l_br == 1 && ft_isalnum(rt->fl.ltr))
 	{
-		if (fl->ltr == 'A')
-			up_arrow(buff);
-		else if (fl->ltr == 'B')
-			down_arrow(buff);
-		*fl = (t_flags){0, 0, 0};
+		if (rt->fl.ltr == 'A')
+			up_arrow(buff, rt);
+		else if (rt->fl.ltr == 'B')
+			down_arrow(buff, rt);
+		rt->fl = (t_flags){0, 0, 0};
 	}
 }
