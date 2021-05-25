@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 17:51:30 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:19:00 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,5 @@ void	down_arrow(char **buff, t_read_tools *rt)
 		free(*buff);
 		*buff = ft_strdup(g_hist.tab_hist[g_hist.pos]);
 		g_hist.pos += 1;
-	}
-	else if (g_hist.pos == g_hist.size)
-	{
-		clear_line(*buff, rt);
-		free(*buff);
-		*buff = ft_strdup("");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 17:57:12 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 20:12:44 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	clear_line(char *buff, t_read_tools *rt)
 	while (i < rt->nb_line)
 	{
 		tputs(rt->capab.up_line, 1, ft_putchar);
-		len -= rt->win_info.w_col;
+		len -= rt->win_info.ws_col;
 		i++;
 	}
 	while (len > 0)

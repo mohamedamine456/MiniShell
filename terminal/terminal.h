@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 17:48:25 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 20:12:27 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,6 @@ typedef struct s_flags
 	char	ltr;
 }				t_flags;
 
-typedef struct s_winsize
-{
-	int			w_row;
-	int			w_col;
-	int			w_xpixels;
-	int			w_ypixels;
-}				t_winsize;
-
 typedef struct s_termcapab
 {
 	char		*move_left;
@@ -46,13 +38,13 @@ typedef struct s_termcapab
 
 typedef struct s_read_tools
 {
-	t_winsize	win_info;
-	t_termcapab	capab;
-	int			nb_line;
-	char		*tmp;
-	char		*save_line;
-	t_flags		fl;
-}			t_read_tools;
+	struct winsize	win_info;
+	t_termcapab		capab;
+	int				nb_line;
+	char			*tmp;
+	char			*save_line;
+	t_flags			fl;
+}				t_read_tools;
 
 /*
  * prototypes for read_line.c file
@@ -105,7 +97,7 @@ void	down_arrow(char **buff, t_read_tools *rt);
  */
 
 void	init_read_tools(t_read_tools *rt);
-int		get_wininfo(t_winsize *win_info);
+int		get_wininfo(struct winsize *win_info);
 
 /*
  * prototypes for signal_handler.c file
