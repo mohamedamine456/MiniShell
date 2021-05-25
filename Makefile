@@ -6,14 +6,14 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/05/25 16:33:46 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/05/25 19:08:17 by eel-orch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIB_NAME = minishell.a
 LIBFT = libft/libft.a
 
-NAME = Minishell
+NAME = minishell
 MAIN = minishell.c
 
 PARSE_SRC = parse/check_options.c parse/clean_tab_cmd.c\
