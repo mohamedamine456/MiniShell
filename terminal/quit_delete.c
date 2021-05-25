@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:05:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/21 17:45:08 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:26:05 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ char	*quit_delete(t_read_tools *rt)
 	}
 	else
 	{
-		g_hist.wr = 1;
-		delete_char(&(g_hist.command_line));
+		delete_char(&(g_hist.command_line), rt->capab);
 		return (g_hist.command_line);
 	}
 }

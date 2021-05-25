@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/22 15:37:27 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:57:12 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,16 @@
  * only if buffer contain enough characters
 */
 
-void	delete_char(char **buff)
+void	delete_char(char **buff, t_termcapab capab)
 {
 	int		len;
-	char	*move_left;
-	char	*del_one;
 
 	len = ft_strlen(*buff);
-	move_left = tgetstr("le", 0);
-	del_one = tgetstr("dc", 0);
 	if (len > 0)
 	{
 		(*buff)[len - 1] = '\0';
-		tputs(move_left, 1, ft_putchar);
-		tputs(del_one, 1, ft_putchar);
+		tputs(capab.move_left, 1, ft_putchar);
+		tputs(capab.del_one, 1, ft_putchar);
 	}
 }
 
@@ -41,19 +37,23 @@ void	delete_char(char **buff)
  * and prompt again
 */
 
-void	clear_line(char *buff)
+void	clear_line(char *buff, t_read_tools *rt)
 {
 	int		len;
-	char	*move_left;
-	char	*delete;
-	
+	int		i;
+
+	i = 0;
 	len = ft_strlen(buff);
-	move_left = tgetstr("le", 0);
-	delete = tgetstr("ce", 0);
+	while (i < rt->nb_line)
+	{
+		tputs(rt->capab.up_line, 1, ft_putchar);
+		len -= rt->win_info.w_col;
+		i++;
+	}
 	while (len > 0)
 	{
-		tputs(move_left, 1, ft_putchar);
+		tputs(rt->capab.move_left, 1, ft_putchar);
 		len--;
 	}
-	tputs(delete, 1, ft_putchar);
+	tputs(rt->capab.clear_scr, 1, ft_putchar);
 }

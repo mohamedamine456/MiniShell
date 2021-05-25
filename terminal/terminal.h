@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/22 15:34:47 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:48:25 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TERMINAL_H
 # include "../libft/libft.h"
 # include "../structs.h"
+# include <sys/ioctl.h>
 # include <fcntl.h>
 # include <curses.h>
 # include <term.h>
@@ -26,10 +27,31 @@ typedef struct s_flags
 	char	ltr;
 }				t_flags;
 
+typedef struct s_winsize
+{
+	int			w_row;
+	int			w_col;
+	int			w_xpixels;
+	int			w_ypixels;
+}				t_winsize;
+
+typedef struct s_termcapab
+{
+	char		*move_left;
+	char		*del_one;
+	char		*up_line;
+	char		*clear_ln;
+	char		*clear_scr;
+}				t_termcapab;
+
 typedef struct s_read_tools
 {
-	char	*tmp;
-	t_flags	fl;
+	t_winsize	win_info;
+	t_termcapab	capab;
+	int			nb_line;
+	char		*tmp;
+	char		*save_line;
+	t_flags		fl;
 }			t_read_tools;
 
 /*
@@ -37,7 +59,7 @@ typedef struct s_read_tools
  */
 
 char	*read_line();
-char	*just_read();
+char	*just_read(t_read_tools *rt);
 char	*add_buffer(t_read_tools *rt);
 
 /*
@@ -45,7 +67,7 @@ char	*add_buffer(t_read_tools *rt);
  */
 
 int		check_flags(char c, t_flags *fl);
-void	apply_flags(char **buff, t_flags *fl);
+void	apply_flags(char **buff, t_read_tools *rt);
 
 /*
  * prototypes for format_terminal.c file
@@ -61,8 +83,8 @@ int		set_termios(struct termios *term, int flag);
  * prototypes for delete_char.c file
  */
 
-void	delete_char(char **buff);
-void	clear_line(char *buff);
+void	delete_char(char **buff, t_termcapab);
+void	clear_line(char *buff, t_read_tools *rt);
 
 /*
  * prototypes for quit_d.c file
@@ -75,8 +97,15 @@ char	*quit_delete(t_read_tools *rt);
  * prototypes for history_functions.c file
  */
 
-void	up_arrow(char **buff);
-void	down_arrow(char **buff);
+void	up_arrow(char **buff, t_read_tools *rt);
+void	down_arrow(char **buff, t_read_tools *rt);
+
+/*
+ * prototypes for init_read_tools.c file
+ */
+
+void	init_read_tools(t_read_tools *rt);
+int		get_wininfo(t_winsize *win_info);
 
 /*
  * prototypes for signal_handler.c file
