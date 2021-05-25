@@ -62,7 +62,7 @@ int	ft_check(t_cmd *cmd, char *str)
 	char **tab;
 	int		i;
 
-	i = 0;
+	i = -1;
 	tab = ft_split_white_spaces(str);
 	if (cmd->name == NULL && ft_strlen_tab(tab) > 1)
 		i = 0;
