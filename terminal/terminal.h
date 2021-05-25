@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 20:12:27 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 21:41:49 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_termcapab
 
 typedef struct s_read_tools
 {
-	struct winsize	win_info;
+	struct ttysize	win_info;
 	t_termcapab		capab;
 	int				nb_line;
 	char			*tmp;
@@ -97,7 +97,7 @@ void	down_arrow(char **buff, t_read_tools *rt);
  */
 
 void	init_read_tools(t_read_tools *rt);
-int		get_wininfo(struct winsize *win_info);
+int		get_wininfo(struct ttysize *win);
 
 /*
  * prototypes for signal_handler.c file

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 16:10:27 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 20:20:55 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 21:37:40 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	init_read_tools(t_read_tools *rt)
 	rt->capab.clear_scr = tgetstr("cd", 0);
 }
 
-int		get_wininfo(struct winsize *winsize)
+int		get_wininfo(struct ttysize *win)
 {
-	if (ioctl(0, TIOCGWINSZ, winsize) == -1)
+	if (ioctl(0, TIOCGWINSZ, win) == -1)
 		return (-1);
 	else
 		return (0);
