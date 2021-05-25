@@ -56,3 +56,4 @@ dkms.conf
 #exe file
 Minishell
 .vscode
+.DS_Store

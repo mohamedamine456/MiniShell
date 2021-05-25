@@ -39,10 +39,10 @@ void	add_cmd_args(t_cmd *cmd, char *tab)
 	if (cmd->args == NULL)
 	{
 		cmd->args = ft_split(cmd->name, '\0');
-		cmd->args = ft_resize_tab(cmd->args, tab);
+		cmd->args = ft_resize_tab(cmd->args, ft_strdup(tab));
 	}
 	else
-		cmd->args = ft_resize_tab(cmd->args, tab);
+		cmd->args = ft_resize_tab(cmd->args, ft_strdup(tab));
 }
 
 void	add_cmd_input(t_cmd *cmd, char *file)
@@ -56,6 +56,7 @@ void	add_cmd_input(t_cmd *cmd, char *file)
 	add_input_back(&(cmd->input), tmp);
 }
 
+
 int	ft_check(t_cmd *cmd, char *str)
 {
 	char **tab;
@@ -64,8 +65,9 @@ int	ft_check(t_cmd *cmd, char *str)
 	i = 0;
 	tab = ft_split_white_spaces(str);
 	if (cmd->name == NULL && ft_strlen_tab(tab) > 1)
-		return (1);
-	return (-1);
+		i = 0;
+	ft_free_args(tab);
+	return (i);
 }
 
 void	fill(t_cmd *cmd, char *str)
@@ -85,7 +87,9 @@ void	fill(t_cmd *cmd, char *str)
 			add_cmd_args(cmd, tab[i]);
 		i++;
 	}
+	ft_free_args(tab);
 }
+
 
 t_cmd	*fill_command(char **tab)
 {
@@ -122,7 +126,7 @@ t_cmd	*fill_command(char **tab)
 		else
 			add_cmd_args(pars, ft_strdup(tab[i]));
 		if (tab[i] != NULL)
-			i++;
+		i++;
 	}
 	return (cmd);
 }
@@ -134,8 +138,11 @@ int main()
 	char **tmp = ft_split(str, '\0');
 	t_cmd *cmd;
 	cmd = fill_command(tmp);
+	ft_free_args(tmp);
+	while (1)
+	{}
 	//printf("%p ||| %p", cmd->output, cmd->output->next);
 	//printf("%p\n", cmd->output);
-	print_cmd(*cmd);
+	//print_cmd(*cmd);
 	//print_cmd(*(cmd->next));
 }
