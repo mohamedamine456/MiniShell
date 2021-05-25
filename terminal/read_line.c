@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/22 10:59:57 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 11:27:52 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ char	*add_buffer(t_read_tools *rt)
 		return (quit_delete(rt));
 	else if (!check_flags(rt->tmp[0], &(rt->fl)))
 	{
-		g_hist.wr = 1;
 		write(1, rt->tmp, 1);
+		write_history_line(rt->tmp);
 		g_hist.command_line = ft_strjoin(g_hist.command_line, rt->tmp);
 		return (g_hist.command_line);
 	}

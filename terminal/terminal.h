@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/22 15:34:47 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/25 11:19:40 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char	*quit_delete(t_read_tools *rt);
 
 void	up_arrow(char **buff);
 void	down_arrow(char **buff);
+void	write_history_line(char *tmp);
 
 /*
  * prototypes for signal_handler.c file
