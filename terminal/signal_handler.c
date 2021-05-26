@@ -13,6 +13,7 @@ void	ctrl_c_handler(int sig)
 	sig = 0;
 	free(g_hist.command_line);
 	g_hist.command_line = ft_strdup("");
+	g_hist.nb_line = 0;
 	write(1, "\nMiniShell $> ", 14);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/26 14:00:40 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/26 16:46:44 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_read_tools
 {
 	struct ttysize	win_info;
 	t_termcapab		capab;
-	int				nb_line;
 	char			*tmp;
 	char			*save_line;
 	t_flags			fl;

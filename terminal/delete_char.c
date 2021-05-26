@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/26 13:22:53 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/26 17:13:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	delete_char(char **buff, t_read_tools *rt)
 		tputs(rt->capab.move_left, 1, ft_putchar);
 		tputs(rt->capab.del_one, 1, ft_putchar);
 	}
-	rt->nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
+	g_hist.nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
 }
 
 /*
@@ -45,13 +45,13 @@ void	clear_line(char *buff, t_read_tools *rt)
 
 	i = 0;
 	len = ft_strlen(buff);
-	while (i < rt->nb_line)
+	while (i < g_hist.nb_line)
 	{
 		tputs(rt->capab.up_line, 1, ft_putchar);
 		len -= rt->win_info.ts_cols;
 		i++;
 	}
-	rt->nb_line = 0;
+	g_hist.nb_line = 0;
 	while (len > 0)
 	{
 		tputs(rt->capab.move_left, 1, ft_putchar);

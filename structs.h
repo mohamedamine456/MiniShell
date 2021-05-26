@@ -9,6 +9,7 @@ typedef struct s_hisotry
 	int				size;
 	int				pos;
 	int				retv;
+	int				nb_line;
 	char			*command_line;
 	struct termios	orig;
 }					t_history;

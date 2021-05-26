@@ -6,16 +6,11 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 16:07:53 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/26 16:40:11 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
-
-int	check_ctrl(char c, t_flags *fl)
-{
-	return (0);
-}
 
 /*
  *	check_flags: check if the is esc followed by [ followed by letter

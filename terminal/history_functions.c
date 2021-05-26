@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/26 14:00:27 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/26 17:14:14 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,19 @@
 void	up_arrow(char **buff, t_read_tools *rt)
 {
 	int	len;
+	int	len2;
 
 	len = ft_strlen(*buff);
 	if (g_hist.pos > 0)
 	{
+		len2 = ft_strlen(g_hist.tab_hist[g_hist.pos - 1]);
 		clear_line(*buff, rt);
-		write(1, g_hist.tab_hist[g_hist.pos - 1],
-				ft_strlen(g_hist.tab_hist[g_hist.pos - 1]));
-		free(*buff);
-		*buff = ft_strdup(g_hist.tab_hist[g_hist.pos - 1]);
+		write(1, g_hist.tab_hist[g_hist.pos - 1], len2);
+		//free(*buff);
+		//*buff = ft_strdup(g_hist.tab_hist[g_hist.pos - 1]);
 		g_hist.pos -= 1;
 	}
-	rt->nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
+	g_hist.nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
 }
 
 /*
@@ -42,18 +43,19 @@ void	up_arrow(char **buff, t_read_tools *rt)
 void	down_arrow(char **buff, t_read_tools *rt)
 {
 	int	len;
+	int	len2;
 
 	len = ft_strlen(*buff);
 	if (g_hist.pos < g_hist.size)
 	{
+		len2 = ft_strlen(g_hist.tab_hist[g_hist.pos]);
 		clear_line(*buff, rt);
-		write(1, g_hist.tab_hist[g_hist.pos],
-				ft_strlen(g_hist.tab_hist[g_hist.pos]));
-		free(*buff);
-		*buff = ft_strdup(g_hist.tab_hist[g_hist.pos]);
+		write(1, g_hist.tab_hist[g_hist.pos], len2);
+		//free(*buff);
+		//*buff = ft_strdup(g_hist.tab_hist[g_hist.pos]);
 		g_hist.pos += 1;
 	}
-	rt->nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
+	g_hist.nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
 }
 
 void   write_history_line()
