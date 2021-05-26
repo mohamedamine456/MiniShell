@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 21:42:00 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/26 13:22:53 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * only if buffer contain enough characters
 */
 
-void	delete_char(char **buff, t_termcapab capab)
+void	delete_char(char **buff, t_read_tools *rt)
 {
 	int		len;
 
@@ -27,9 +27,10 @@ void	delete_char(char **buff, t_termcapab capab)
 	if (len > 0)
 	{
 		(*buff)[len - 1] = '\0';
-		tputs(capab.move_left, 1, ft_putchar);
-		tputs(capab.del_one, 1, ft_putchar);
+		tputs(rt->capab.move_left, 1, ft_putchar);
+		tputs(rt->capab.del_one, 1, ft_putchar);
 	}
+	rt->nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
 }
 
 /*
@@ -50,6 +51,7 @@ void	clear_line(char *buff, t_read_tools *rt)
 		len -= rt->win_info.ts_cols;
 		i++;
 	}
+	rt->nb_line = 0;
 	while (len > 0)
 	{
 		tputs(rt->capab.move_left, 1, ft_putchar);

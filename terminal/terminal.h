@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 21:41:49 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/26 14:00:40 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		set_termios(struct termios *term, int flag);
  * prototypes for delete_char.c file
  */
 
-void	delete_char(char **buff, t_termcapab);
+void	delete_char(char **buff, t_read_tools *rt);
 void	clear_line(char *buff, t_read_tools *rt);
 
 /*
@@ -91,6 +91,7 @@ char	*quit_delete(t_read_tools *rt);
 
 void	up_arrow(char **buff, t_read_tools *rt);
 void	down_arrow(char **buff, t_read_tools *rt);
+void	write_history_line();
 
 /*
  * prototypes for init_read_tools.c file

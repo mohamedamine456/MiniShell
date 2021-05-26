@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 21:01:53 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/26 14:04:52 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,20 @@ char	*add_buffer(t_read_tools *rt)
 	int	var;
 
 	if (rt->tmp[0] == 4 || rt->tmp[0] == 127)
-		return (quit_delete(rt));
+	{
+		write_history_line();
+		g_hist.command_line = quit_delete(rt);
+	}
 	else if (!check_flags(rt->tmp[0], &(rt->fl)))
 	{
 		write(1, rt->tmp, 1);
 		g_hist.command_line = ft_strjoin(g_hist.command_line, rt->tmp);
-		return (g_hist.command_line);
+		write_history_line();
+		rt->nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
 	}
 	else
 	{
 		apply_flags(&(g_hist.command_line), rt);
-		return (g_hist.command_line);
 	}
+	return (g_hist.command_line);
 }
