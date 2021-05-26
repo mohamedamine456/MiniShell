@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/26 17:14:14 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:27:59 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	up_arrow(char **buff, t_read_tools *rt)
 	len = ft_strlen(*buff);
 	if (g_hist.pos > 0)
 	{
-		len2 = ft_strlen(g_hist.tab_hist[g_hist.pos - 1]);
-		clear_line(*buff, rt);
-		write(1, g_hist.tab_hist[g_hist.pos - 1], len2);
-		//free(*buff);
-		//*buff = ft_strdup(g_hist.tab_hist[g_hist.pos - 1]);
 		g_hist.pos -= 1;
+		len2 = ft_strlen(g_hist.tab_hist[g_hist.pos]);
+		clear_line(*buff, rt);
+		write(1, g_hist.tab_hist[g_hist.pos], len2);
+		free(*buff);
+		*buff = ft_strdup(g_hist.tab_hist[g_hist.pos]);
 	}
 	g_hist.nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
 }
@@ -46,14 +46,14 @@ void	down_arrow(char **buff, t_read_tools *rt)
 	int	len2;
 
 	len = ft_strlen(*buff);
-	if (g_hist.pos < g_hist.size)
+	if (g_hist.pos < g_hist.size - 1)
 	{
+		g_hist.pos += 1;
 		len2 = ft_strlen(g_hist.tab_hist[g_hist.pos]);
 		clear_line(*buff, rt);
 		write(1, g_hist.tab_hist[g_hist.pos], len2);
-		//free(*buff);
-		//*buff = ft_strdup(g_hist.tab_hist[g_hist.pos]);
-		g_hist.pos += 1;
+		free(*buff);
+		*buff = ft_strdup(g_hist.tab_hist[g_hist.pos]);
 	}
 	g_hist.nb_line = (ft_strlen(g_hist.command_line) - 1) / rt->win_info.ts_cols;
 }
