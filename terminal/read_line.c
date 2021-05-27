@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/26 16:48:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/27 16:25:14 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ char	*read_line()
 char	*just_read(t_read_tools *rt)
 {
 	g_hist.command_line = ft_strdup("");
+	g_hist.tab_hist = ft_resize_tab(g_hist.tab_hist, ft_strdup(""));
+	g_hist.pos += 1;
+	g_hist.size += 1;
 	while (TRUE)
 	{
 		if (read(0, rt->tmp, 1) > 0)
