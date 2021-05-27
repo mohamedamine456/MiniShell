@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/27 16:23:43 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/27 17:52:07 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	down_arrow(char **buff, t_read_tools *rt)
 	int	len2;
 
 	len = ft_strlen(*buff);
-	if (g_hist.pos < g_hist.size)
+	if (g_hist.pos < g_hist.size - 1)
 	{
 		g_hist.pos += 1;
 		len2 = ft_strlen(g_hist.tab_hist[g_hist.pos]);
