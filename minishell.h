@@ -12,16 +12,10 @@
 # include "fork_commands/fork_commands.h"
 # include "structs.h"
 
-typedef struct	s_general_data
-{
-	int		return_value;
-	char	**envp;
-}				t_general_data;
-
 int				open_history(void);
-void			write_history(t_history *hist, char *line);
-t_history		read_history(int fd);
-t_history		init_history();
+void			write_history(t_general_data *hist, char *line);
+t_general_data	read_history(int fd);
+t_general_data	init_general_data();
 
 int				parse_execute(char  *line, char ***envp, int retv);
 int				split_commands(char **tab_cmds, char ***envp, int retv);

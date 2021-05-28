@@ -12,10 +12,10 @@
 
 #include "terminal.h"
 
-void	init_read_tools(t_read_tools *rt)
+void init_read_tools(t_read_tools *rt)
 {
 	rt->fl = (t_flags){0, 0, 0};
-	g_hist.nb_line = 0;
+	g_data.nb_line = 0;
 	rt->tmp = malloc(2);
 	get_wininfo(&(rt->win_info));
 	rt->capab.move_left = tgetstr("le", 0);
@@ -25,7 +25,7 @@ void	init_read_tools(t_read_tools *rt)
 	rt->capab.clear_scr = tgetstr("cd", 0);
 }
 
-int		get_wininfo(struct ttysize *win)
+int get_wininfo(struct ttysize *win)
 {
 	if (ioctl(0, TIOCGWINSZ, win) == -1)
 		return (-1);

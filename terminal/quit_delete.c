@@ -16,18 +16,18 @@
  * quit_delete function generate delete and ctrl+d keys
 */
 
-char	*quit_delete(t_read_tools *rt)
+char *quit_delete(t_read_tools *rt)
 {
 	if (rt->tmp[0] == 4)
 	{
-		if (!ft_strcmp(g_hist.command_line, ""))
+		if (!ft_strcmp(g_data.command_line, ""))
 			quit_d(rt);
-		return (g_hist.command_line);
+		return (g_data.command_line);
 	}
 	else
 	{
-		delete_char(&(g_hist.command_line), rt);
-		return (g_hist.command_line);
+		delete_char(&(g_data.command_line), rt);
+		return (g_data.command_line);
 	}
 }
 
@@ -35,13 +35,13 @@ char	*quit_delete(t_read_tools *rt)
  * when ctrl+d hitted and buffer is empty free all and quit program
 */
 
-void	quit_d(t_read_tools *rt)
+void quit_d(t_read_tools *rt)
 {
 	free(rt->tmp);
-	ft_free_args(g_hist.tab_hist);
-	close(g_hist.fd);
+	ft_free_args(g_data.tab_hist);
+	close(g_data.fd);
 	write(1, "exit\n", 5);
-	if (!reset_terminal(&(g_hist.orig)))
+	if (!reset_terminal(&(g_data.orig)))
 		exit(0);
 	else
 		exit(1);
