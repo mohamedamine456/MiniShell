@@ -9,7 +9,6 @@ int test_file;
 
 void	print_error()
 {
-
 	write(test_file, "error\n", 6);
 	exit(0);
 }
@@ -178,39 +177,8 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 int main(int argc, char **argv, char **envp)
 {
 	t_cmd *cmd;
-	char **tap;
+	char *str = "echo hello | grep hello | cat -e";
+	char **table = ft_split(str, 32);
 
-	tap = ft_tabdup(envp);
-	cmd	= (t_cmd *)malloc(sizeof(t_cmd));
-	cmd->name = strdup("cat");
-	cmd->args = ft_split("cat" ,32);
-	//cmd->next = NULL;
-	//cmd->input = NULL;
-	cmd->output = NULL;
-	cmd->option = NULL;
-	cmd->input = (t_input *)malloc(sizeof(t_input));
-	cmd->input->file = ft_strdup("ff");
-	cmd->input->next = NULL;
-	
-	//cmd->output = (t_output *)malloc(sizeof(t_output));
-	// cmd->output->file = ft_strdup("output_file");
-	// cmd->output->type = SIMPLE_REDIRECTION;
- 	// cmd->output->next = NULL;
-	
-	cmd->next = (t_cmd *)malloc(sizeof(t_cmd));
-	cmd->next->name = ft_strdup("grep");
-	cmd->next->args = ft_split("grep xf", 32);
-	
-	cmd->next->input = NULL;
-	cmd->next->input = (t_input *)malloc(sizeof(t_input));
-	cmd->next->input->file = ft_strdup("output_file2");
-	cmd->next->input->next = NULL;
-	
-	cmd->next->output = NULL;
-	cmd->next->output = (t_output *)malloc(sizeof(t_output));
-	cmd->next->output->file = ft_strdup("output_file");
-	cmd->next->output->type = SIMPLE_REDIRECTION;
-	cmd->next->output->next = NULL;
-	cmd->next->next = NULL;
-	ft_exec_nested_cmd(cmd, &tap);
+	ft_exec_nested_cmd(cmd, table);
 }
