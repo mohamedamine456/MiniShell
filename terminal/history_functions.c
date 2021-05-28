@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 12:08:05 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/28 15:21:41 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@
 
 void up_arrow(char **buff, t_read_tools *rt)
 {
-	int len;
 	int len2;
 
-	len = ft_strlen(*buff);
 	if (g_data.pos > 0)
 	{
-		g_data.pos -= 1;
 		len2 = ft_strlen(g_data.tab_hist[g_data.pos]);
 		clear_line(*buff, rt);
 		write(1, g_data.tab_hist[g_data.pos], len2);
@@ -42,10 +39,8 @@ void up_arrow(char **buff, t_read_tools *rt)
 
 void down_arrow(char **buff, t_read_tools *rt)
 {
-	int len;
 	int len2;
 
-	len = ft_strlen(*buff);
 	if (g_data.pos < g_data.size - 1)
 	{
 		g_data.pos += 1;
