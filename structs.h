@@ -6,17 +6,15 @@ typedef struct s_history
 {
 	char				*line_orig;
 	char				*line_chngd;
-	struct s_histroy	*next;
+	struct s_history	*next;
 	struct s_history	*previous;
 }						t_history;
 
 typedef struct s_general_data
 {
 	int				fd;
-	t_history		*line_hist;
-	char			**tab_hist;
+	t_history		*hists;
 	int				size;
-	int				pos;
 	int				retv;
 	int				nb_line;
 	char			*command_line;

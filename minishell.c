@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:03:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 13:07:29 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/28 16:34:48 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int main(int argc, char **argv, char **envp)
 		signal_handler();
 		while (TRUE)
 		{
-			g_data.pos = g_data.size;
 			g_data.command_line = read_line(&g_data);
 			if (g_data.command_line != NULL)
 			{

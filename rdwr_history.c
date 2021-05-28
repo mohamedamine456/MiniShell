@@ -11,46 +11,55 @@ int		open_history(void)
 
 void	write_history(t_general_data *data, char *line)
 {
-	if (ft_strcmp(line, "") && ft_strcmp(line, data->tab_hist[data->size - 1]))
+	t_history	*new;
+
+	if (ft_strcmp(line, ""))
 	{
 		if (data->fd != -1)
 		{
 			write(data->fd, line, ft_strlen(line));
 			write(data->fd, "\n", 1);
 		}
-		data->tab_hist = ft_resize_tab(data->tab_hist, line);
+		new = new_hist();
+		new->line_orig = ft_strdup(line);
+		add_back_hist(&(data->hists), new);
+		free(line);
+		line = NULL;
 		data->size += 1;
-		data->pos += 1;
 	}
 	else
 		free(line);
 }
 
-t_general_data	read_history(int fd)
+t_history	*read_hists(int fd, int *size)
 {
-	t_general_data	data;
+	t_history	*hists;
+	t_history	*new;
 	char		*line;
 
-	data.tab_hist  = NULL;
-	data.size = 0;
-	data.fd = fd;
-	if (data.fd != -1)
+	hists = NULL;
+	if (fd != -1)
 	{
-		while (get_next_line(data.fd, &line) > 0)
+		while (get_next_line(fd, &line) > 0)
 		{
-			data.tab_hist = ft_resize_tab(data.tab_hist, line);
-			data.size += 1;
+			new = new_hist();
+			new->line_orig = ft_strdup(line);
+			add_back_hist(&hists, new);
+			free(line);
+			line = NULL;
+			*size += 1;
 		}
 		if (ft_strcmp(line, ""))
 		{
-			data.tab_hist = ft_resize_tab(data.tab_hist, line);
-			data.size += 1;	
-		}
-		else
+			new = new_hist();
+			new->line_orig = ft_strdup(line);
+			add_back_hist(&hists, new);
 			free(line);
-		data.pos = data.size;
+			line = NULL;
+			*size += 1;
+		}
 	}
-	return (data);
+	return (hists);
 }
 
 t_general_data init_general_data()
@@ -59,7 +68,8 @@ t_general_data init_general_data()
 
 	data.retv = 0;
 	data.fd = open_history();
-	data = read_history(data.fd);
-	//hist.command_line = NULL;
+	data.hists = read_hists(data.fd, &(data.size));
+	data.hists = last_hist(data.hists);
+	data.command_line = NULL;
 	return (data);
 }
