@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 16:37:43 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/28 19:50:50 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ char *read_line()
 char *just_read(t_read_tools *rt)
 {
 	g_data.command_line = ft_strdup("");
-	//g_data.tab_hist = ft_resize_tab(g_data.tab_hist, ft_strdup(""));
-	//g_data.pos += 1;
-	//g_data.size += 1;
+	rt->new->line_orig = ft_strdup("");
+	add_back_hist(&(g_data.hists), rt->new);
+	g_data.hists = last_hist(g_data.hists);
 	while (TRUE)
 	{
 		if (read(0, rt->tmp, 1) > 0)
@@ -64,18 +64,14 @@ char *just_read(t_read_tools *rt)
 
 char *add_buffer(t_read_tools *rt)
 {
-	int var;
-
 	if (rt->tmp[0] == 4 || rt->tmp[0] == 127)
 	{
-		//write_history_line();
 		g_data.command_line = quit_delete(rt);
 	}
 	else if (!check_flags(rt->tmp[0], &(rt->fl)))
 	{
 		write(1, rt->tmp, 1);
 		g_data.command_line = ft_strjoin(g_data.command_line, rt->tmp);
-		//write_history_line();
 		g_data.nb_line = (ft_strlen(g_data.command_line) - 1) / rt->win_info.ts_cols;
 	}
 	else

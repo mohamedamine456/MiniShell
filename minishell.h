@@ -16,7 +16,7 @@ int				open_history(void);
 void			write_history(t_general_data *hist, char *line);
 t_general_data	read_history(int fd);
 t_general_data	init_general_data();
-t_history		*read_hists(int fd, int *size);
+t_history		*read_hists(int fd);
 
 int				parse_execute(char  *line, char ***envp, int retv);
 int				split_commands(char **tab_cmds, char ***envp, int retv);

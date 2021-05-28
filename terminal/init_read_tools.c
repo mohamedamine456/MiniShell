@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 16:10:27 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/26 16:46:29 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/28 18:46:52 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void init_read_tools(t_read_tools *rt)
 	rt->fl = (t_flags){0, 0, 0};
 	g_data.nb_line = 0;
 	rt->tmp = malloc(2);
+	rt->new = new_hist();
 	get_wininfo(&(rt->win_info));
 	rt->capab.move_left = tgetstr("le", 0);
 	rt->capab.del_one = tgetstr("dc", 0);

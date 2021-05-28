@@ -14,7 +14,6 @@ typedef struct s_general_data
 {
 	int				fd;
 	t_history		*hists;
-	int				size;
 	int				retv;
 	int				nb_line;
 	char			*command_line;

@@ -6,14 +6,14 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/26 16:46:44 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/28 19:09:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TERMINAL_H
 # define TERMINAL_H
-# include "../libft/libft.h"
 # include "../structs.h"
+# include "../minishell.h"
 # include <sys/ioctl.h>
 # include <fcntl.h>
 # include <curses.h>
@@ -41,7 +41,7 @@ typedef struct s_read_tools
 	struct ttysize	win_info;
 	t_termcapab		capab;
 	char			*tmp;
-	char			*save_line;
+	t_history		*new;
 	t_flags			fl;
 }				t_read_tools;
 
