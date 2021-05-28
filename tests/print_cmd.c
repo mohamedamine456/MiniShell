@@ -12,54 +12,60 @@
 
 #include "../parse/parse.h"
 
-void print_cmd(t_cmd cmd)
+void print_cmd(t_cmd *cmd)
 {
 	int i;
+	t_cmd  *tmp;
+	tmp = cmd;
 
-	i = 0;
-	printf("\n============================\n");
-	printf("cmd == [%s]\n", cmd.name);
-	printf("===inputs===\n");
-	if (cmd.input == NULL)
-		printf("NAN\n");
-	else
+	while (tmp)
 	{
 		i = 0;
-		t_input *in = cmd.input;
-		while (in != NULL)
+		printf("\n============ NEW CMD ================\n");
+		printf("cmd == [%s]\n", tmp->name);
+		printf("===inputs===\n");
+		if (tmp->input == NULL)
+			printf("NAN\n");
+		else
 		{
-			printf("class == %d [%s] ", i, in->file);
-			in = in->next;
-			i++;
+			i = 0;
+			t_input *in = tmp->input;
+			while (in != NULL)
+			{
+				printf("class == %d [%s] ", i, in->file);
+				in = in->next;
+				i++;
+			}
+			printf("\n");
 		}
-		printf("\n");
-	}
-	printf("===options===\n");
-	if (cmd.option == NULL)
-		printf("NAN\n");
-	else
-		printf(" == %s \n", cmd.option);
-	i = 0;
-	printf("===args===\n");
-	if (cmd.args == NULL)
-		printf("NAN");
-	else
-		while (cmd.args[i] != NULL)
+		printf("===options===\n");
+		if (tmp->option == NULL)
+			printf("NAN\n");
+		else
+			printf(" == %s \n", tmp->option);
+		i = 0;
+		printf("===args===\n");
+		if (tmp->args == NULL)
+			printf("NAN");
+		else
+			while (tmp->args[i] != NULL)
+			{
+				printf(" |%s|", tmp->args[i]);
+				i++;
+			}
+		printf("\n===outputs===\n");
+		if (tmp->output == NULL)
+			printf("NAN\n");
+		else
 		{
-			printf(" |%s|", cmd.args[i]);
-			i++;
+			t_output *out = tmp->output;
+			while (out != NULL)
+			{
+				printf("type == |%d| file == |%s| pointer value == %p\n", out->type, out->file, out->next);
+				out = out->next;
+			}
+			printf("\n");
 		}
-	printf("\n===outputs===\n");
-	if (cmd.output == NULL)
-		printf("NAN\n");
-	else
-	{
-		t_output *out = cmd.output;
-		while (out != NULL)
-		{
-			printf("type == |%d| file == |%s| pointer value == %p\n", out->type, out->file, out->next);
-			out = out->next;
-		}
-		printf("\n");
+		tmp = tmp->next;
 	}
 }

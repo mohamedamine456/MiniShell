@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:03:05 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/20 17:03:06 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/05/28 17:45:55 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ int exec(t_cmd *cmd, char ***envp)
 	if (is_simple_cmd(cmd) == 0)
 		return (exec_builtin(cmd, envp));
 	return (0);
-	//fork that shit
 }

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exec.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/05/28 18:26:30 by eel-orch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../minishell.h"
 #include <sys/types.h>
@@ -159,6 +170,8 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			dup_pipes(tmp, in, fd[1], std_in, std_out, i);
 			open_inputs(tmp->input);
 			open_outputs(tmp->output);
+			if (isbuilt_in(tmp->name))
+				return (exec_builtin(tmp, env));
 			path = command_path(tmp->name, *env);
 			execve(path, tmp->args, *env);
 			exit(0);
@@ -170,8 +183,6 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 		i++;
 	}
 	close(fd[0]);
-	// dup2(0, std_in);
-	// dup2(1, std_out);
 	return (0);
 }
 int main(int argc, char **argv, char **envp)
@@ -179,6 +190,8 @@ int main(int argc, char **argv, char **envp)
 	t_cmd *cmd;
 	char *str = "echo hello | grep hello | cat -e";
 	char **table = ft_split(str, 32);
-
-	ft_exec_nested_cmd(cmd, table);
+	cmd = fill_command(table);
+	//print_cmd(cmd);
+	char **dup_env = ft_tabdup(envp);
+	ft_exec_nested_cmd(cmd, &dup_env);
 }

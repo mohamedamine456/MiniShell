@@ -46,7 +46,7 @@ char		*replace_env(char *str, char **envp, int *i);
 char		*replace_num(char *str, int *i);
 char		*replace_return(char *str, int *i, int retv);
 
-void		print_cmd(t_cmd cmd);
+void		print_cmd(t_cmd *cmd);
 
 /*
  * fill_command.c prototypes
