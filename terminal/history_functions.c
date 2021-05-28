@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 15:21:41 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/28 19:52:34 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,19 @@ void up_arrow(char **buff, t_read_tools *rt)
 {
 	int len2;
 
-	if (g_data.pos > 0)
+	if(g_data.hists->previous != NULL)
 	{
-		len2 = ft_strlen(g_data.tab_hist[g_data.pos]);
+		g_data.hists = g_data.hists->previous;
 		clear_line(*buff, rt);
-		write(1, g_data.tab_hist[g_data.pos], len2);
 		free(*buff);
-		*buff = ft_strdup(g_data.tab_hist[g_data.pos]);
+		if (g_data.hists->line_chngd != NULL)
+			*buff = ft_strdup(g_data.hists->line_chngd);
+		else
+			*buff = ft_strdup(g_data.hists->line_orig);
+		len2 = ft_strlen(*buff);
+		write(1, *buff, len2);
+		g_data.nb_line = (ft_strlen(*buff) - 1) / rt->win_info.ts_cols;
 	}
-	g_data.nb_line = (ft_strlen(g_data.command_line) - 1) / rt->win_info.ts_cols;
 }
 
 /*
@@ -41,21 +45,17 @@ void down_arrow(char **buff, t_read_tools *rt)
 {
 	int len2;
 
-	if (g_data.pos < g_data.size - 1)
+	if (g_data.hists->next != NULL)
 	{
-		g_data.pos += 1;
-		len2 = ft_strlen(g_data.tab_hist[g_data.pos]);
+		g_data.hists = g_data.hists->next;
 		clear_line(*buff, rt);
-		write(1, g_data.tab_hist[g_data.pos], len2);
 		free(*buff);
-		*buff = ft_strdup(g_data.tab_hist[g_data.pos]);
+		if (g_data.hists->line_chngd != NULL)
+			*buff = ft_strdup(g_data.hists->line_chngd);
+		else
+			*buff = ft_strdup(g_data.hists->line_orig);
+		len2 = ft_strlen(*buff);
+		write(1, g_data.hists->line_orig, len2);
+		g_data.nb_line = (ft_strlen(*buff) - 1) / rt->win_info.ts_cols;
 	}
-	g_data.nb_line = (ft_strlen(g_data.command_line) - 1) / rt->win_info.ts_cols;
-}
-
-void write_history_line()
-{
-
-	free(g_data.tab_hist[g_data.pos - 1]);
-	g_data.tab_hist[g_data.pos - 1] = ft_strdup(g_data.command_line);
 }

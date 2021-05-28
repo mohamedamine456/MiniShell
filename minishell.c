@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:03:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 13:07:29 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/28 19:37:47 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int main(int argc, char **argv, char **envp)
 		signal_handler();
 		while (TRUE)
 		{
-			g_data.pos = g_data.size;
-			g_data.command_line = read_line(&g_data);
+			g_data.command_line = read_line();
 			if (g_data.command_line != NULL)
 			{
 				g_data.retv = parse_execute(ft_strdup(g_data.command_line), &new_envp, g_data.retv);
