@@ -14,7 +14,6 @@ void ctrl_c_handler(int sig)
 	free(g_data.command_line);
 	g_data.command_line = ft_strdup("");
 	g_data.nb_line = 0;
-	g_data.pos = g_data.size;
 	write(1, "\nMiniShell $> ", 14);
 	return;
 }
