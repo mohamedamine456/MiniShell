@@ -10,29 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "built_in.h"
 
-#include "../libft/libft.h"
-#include <string.h>
-
-void	sort_strings(char **tab)
+void	sort_strings(char **table)
 {
 	char    *tmp;
 	int	    index;
 	int	    j;
-	int	    tab_len;
+	int	    table_len;
 
 	index = 1;
-	tab_len = ft_strlen_tab(tab);
-	while (index < tab_len)
+	table_len = ft_strlen_tab(table);
+	while (index < table_len)
 	{
 		j = index - 1;
-		tmp = tab[index];
-		while (j >= 0 && (ft_strcmp(tab[j], tmp) >= 0))
+		tmp = table[index];
+		while (j >= 0 && (ft_strcmp(table[j], tmp) >= 0))
 		{
-			tab[j + 1] = tab[j];
+			table[j + 1] = table[j];
 			j--;
 		}
-		tab[j + 1] = tmp;
+		table[j + 1] = tmp;
 		index++;
 	}
 }

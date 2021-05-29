@@ -47,15 +47,15 @@ int		set_oldpwd(char ***envp)
 {
 	char	*pwd;
 	int     i;
-    char    **tab;
+    char    **table;
 	char	**tmp;
 
 	pwd = search_env(ft_strdup("PWD"), *envp);
     i = 0;
-    tab = *envp;
-    while (tab != NULL && tab[i] != NULL)
+    table = *envp;
+    while (table != NULL && table[i] != NULL)
     {
-        tmp = ft_split(tab[i], '=');
+        tmp = ft_split(table[i], '=');
         if (!ft_strcmp(tmp[0], "OLDPWD"))
         { 
             if (pwd != NULL)
@@ -75,15 +75,15 @@ int		set_oldpwd(char ***envp)
 int	change_pwdenv(char ***envp, char *name)
 {
 	int		i;
-	char	**tab;
+	char	**table;
 	char	**tmp;
 	char	*curr_path;
 
 	i = 0;
-	tab = *envp;
-	while (tab != NULL && tab[i] != NULL)
+	table = *envp;
+	while (table != NULL && table[i] != NULL)
 	{
-		tmp = ft_split(tab[i], '=');
+		tmp = ft_split(table[i], '=');
 		if (!ft_strcmp(tmp[0], name))
 		{
 			ft_free_args(tmp);

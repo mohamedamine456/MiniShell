@@ -6,11 +6,11 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:03:05 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/28 17:45:55 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/05/29 13:45:42 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "built_in.h"
 
 int 	is_simple_cmd(t_cmd *cmd)
 {

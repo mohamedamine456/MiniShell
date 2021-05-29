@@ -50,7 +50,7 @@ void	print_vars(char **vars)
 	index = 0;
 	while (vars[i])
 	{
-		if (strcmp(vars[i], "export") == 0)
+		if (ft_strcmp(vars[i], "export") == 0)
 			i++;
 		else
 		{
@@ -75,21 +75,21 @@ void	print_vars(char **vars)
 
 int	is_duplicated_var(char **env, char *var)
 {
-	char 	**tab;
+	char 	**table;
 	char	**var_key;
 	int		is_duplicated;
 	int		i;
 
 	is_duplicated = -1;
 	i = 0;
-	tab = NULL;
+	table = NULL;
 	var_key = ft_split(var, '=');
 	while (env[i] && is_duplicated == -1)
 	{
-		tab = ft_split(env[i], '=');
-		if (strcmp(tab[0], var_key[0]) == 0)
+		table = ft_split(env[i], '=');
+		if (ft_strcmp(table[0], var_key[0]) == 0)
 			is_duplicated = i;
-		ft_free_args(tab);
+		ft_free_args(table);
 		i++;
 	}
 	ft_free_args(var_key);

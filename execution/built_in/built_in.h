@@ -1,9 +1,5 @@
 #ifndef BUILT_IN_H
 # define BUILT_IN_H
-# include "../libft/libft.h"
-# include <errno.h>
-# include <stdio.h>
-# include <string.h>
 # define B_ECHO 20
 # define B_CD 21
 # define B_PWD 22
@@ -11,6 +7,8 @@
 # define B_EXPORT 24
 # define B_ENV 25
 # define B_EXIT 26
+
+#include "../execution.h"
 
 typedef struct s_builtin_vars
 {
