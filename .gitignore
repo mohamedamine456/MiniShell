@@ -54,6 +54,8 @@ dkms.conf
 
 .*.swp
 #exe file
-Minishell
+minishell
+
 .vscode
 .DS_Store
+.minishell_history
