@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:02:02 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/28 18:17:51 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/05/29 20:48:25 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	exec_builtin(t_cmd *cmd, char ***env)
 	t_builtin_vars vars;
 	int				*retv;
 
-	write(2, "this is builtin cmd\n", ft_strlen("this is builtin cmd\n"));
 	retv = 0;
 	vars = cmd_to_builtin_vars(cmd, env);
 	return (0);

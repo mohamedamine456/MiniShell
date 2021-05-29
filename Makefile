@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/05/29 20:32:09 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/05/29 20:45:15 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ TERMINAL_SRC = terminal/check_flags.c terminal/delete_char.c terminal/format_ter
 BUILTINS_SRC = execution/built_in/exec_builtins.c execution/built_in/ft_cd.c execution/built_in/ft_echo.c\
 			   execution/built_in/ft_env.c execution/built_in/ft_exit.c execution/built_in/ft_export.c\
 			   execution/built_in/ft_pwd.c execution/built_in/ft_unset.c execution/built_in/ft_builtin_errors.c\
-			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c execution/ft_exec.c
+			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c execution/ft_exec.c\
+			   execution/built_in/ft_execute.c fork_commands/search_commands.c
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) $(BUILTINS_SRC)\
@@ -49,7 +50,8 @@ TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\
 				  signal_handler.o check_line_errors.o init_read_tools.o
 
 BUILTINS_OBJSRC = exec_builtins.o ft_cd.o ft_echo.o ft_env.o ft_exit.o ft_export.o\
-			   ft_pwd.o ft_unset.o isbuilt_in.o sort_strings.o ft_builtin_errors.o
+			   ft_pwd.o ft_unset.o isbuilt_in.o sort_strings.o ft_builtin_errors.o\
+			   ft_execute.o ft_exec.o search_commands.o
 
 
 GNL_OBJSRC = get_next_line.o
