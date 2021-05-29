@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 19:52:34 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/29 20:21:59 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,12 @@ void down_arrow(char **buff, t_read_tools *rt)
 		write(1, g_data.hists->line_orig, len2);
 		g_data.nb_line = (ft_strlen(*buff) - 1) / rt->win_info.ts_cols;
 	}
+}
+
+void	write_history_line()
+{
+	if (g_data.hists->line_orig != NULL)
+		g_data.hists->line_chngd = ft_strdup(g_data.command_line);
+	else
+		g_data.hists->line_orig = ft_strdup(g_data.command_line);
 }
