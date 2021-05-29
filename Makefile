@@ -28,10 +28,10 @@ TERMINAL_SRC = terminal/check_flags.c terminal/delete_char.c terminal/format_ter
 			  terminal/read_line.c terminal/quit_delete.c terminal/history_functions.c\
 			  terminal/signal_handler.c terminal/check_line_errors.c terminal/init_read_tools.c
 
-BUILTINS_SRC = built_in/exec_builtins.c built_in/ft_cd.c built_in/ft_echo.c\
-			   built_in/ft_env.c built_in/ft_exit.c built_in/ft_export.c\
-			   built_in/ft_pwd.c built_in/ft_unset.c built_in/ft_builtin_errors.c\
-			   built_in/isbuilt_in.c built_in/sort_strings.c
+BUILTINS_SRC = execution/built_in/exec_builtins.c execution/built_in/ft_cd.c execution/built_in/ft_echo.c\
+			   execution/built_in/ft_env.c execution/built_in/ft_exit.c execution/built_in/ft_export.c\
+			   execution/built_in/ft_pwd.c execution/built_in/ft_unset.c execution/built_in/ft_builtin_errors.c\
+			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) $(BUILTINS_SRC)\
