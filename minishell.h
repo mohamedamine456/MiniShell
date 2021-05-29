@@ -5,11 +5,17 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <errno.h>
+# include <string.h>
 # include "get_next_line/get_next_line.h"
 # include "parse/parse.h"
 # include "terminal/terminal.h"
-# include "built_in/built_in.h"
+# include "execution/execution.h"
 # include "fork_commands/fork_commands.h"
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # include "structs.h"
 
 int				open_history(void);

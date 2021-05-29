@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
 int test_file;
 
@@ -185,13 +181,13 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	close(fd[0]);
 	return (0);
 }
-int main(int argc, char **argv, char **envp)
-{
-	t_cmd *cmd;
-	char *str = "echo hello | grep hello | cat -e";
-	char **table = ft_split(str, 32);
-	cmd = fill_command(table);
-	//print_cmd(cmd);
-	char **dup_env = ft_tabdup(envp);
-	ft_exec_nested_cmd(cmd, &dup_env);
-}
+// int main(int argc, char **argv, char **envp)
+// {
+// 	t_cmd *cmd;
+// 	char *str = "echo hello | grep hello | cat -e";
+// 	char **table = ft_split(str, 32);
+// 	cmd = fill_command(table);
+// 	//print_cmd(cmd);
+// 	char **dup_env = ft_tabdup(envp);
+// 	ft_exec_nested_cmd(cmd, &dup_env);
+// }
