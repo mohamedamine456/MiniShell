@@ -11,6 +11,7 @@
 # include "parse/parse.h"
 # include "terminal/terminal.h"
 # include "execution/execution.h"
+# include "execution/built_in/built_in.h"
 # include "fork_commands/fork_commands.h"
 # include <sys/types.h>
 # include <sys/wait.h>

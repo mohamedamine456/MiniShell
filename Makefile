@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/05/28 14:40:54 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/05/29 20:32:09 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ TERMINAL_SRC = terminal/check_flags.c terminal/delete_char.c terminal/format_ter
 BUILTINS_SRC = execution/built_in/exec_builtins.c execution/built_in/ft_cd.c execution/built_in/ft_echo.c\
 			   execution/built_in/ft_env.c execution/built_in/ft_exit.c execution/built_in/ft_export.c\
 			   execution/built_in/ft_pwd.c execution/built_in/ft_unset.c execution/built_in/ft_builtin_errors.c\
-			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c
+			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c execution/ft_exec.c
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) $(BUILTINS_SRC)\

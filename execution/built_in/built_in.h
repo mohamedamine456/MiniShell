@@ -37,5 +37,5 @@ int				isbuilt_in(char *cmd);
 void			ft_builtin_errors(const char *name, int err, int *retv);
 int				exec_builtin(t_cmd *cmd, char ***envp);
 int 			is_simple_cmd(t_cmd *cmd);
-
+int 			exec(t_cmd *cmd, char ***envp);
 #endif
