@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 19:09:43 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 12:01:24 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*add_buffer(t_read_tools *rt);
  */
 
 int		check_flags(char c, t_flags *fl);
-void	apply_flags(char **buff, t_read_tools *rt);
+void	apply_flags(t_read_tools *rt);
 
 /*
  * prototypes for format_terminal.c file
@@ -88,8 +88,8 @@ char	*quit_delete(t_read_tools *rt);
  * prototypes for history_functions.c file
  */
 
-void	up_arrow(char **buff, t_read_tools *rt);
-void	down_arrow(char **buff, t_read_tools *rt);
+void	up_arrow(t_read_tools *rt);
+void	down_arrow(t_read_tools *rt);
 void	write_history_line();
 
 /*
