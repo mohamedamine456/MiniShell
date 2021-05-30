@@ -1,6 +1,6 @@
 #include "terminal.h"
 
-void signal_handler(void)
+void	signal_handler(void)
 {
 	if (signal(SIGINT, ctrl_c_handler) == SIG_ERR)
 		exit(1);
@@ -8,7 +8,7 @@ void signal_handler(void)
 		exit(1);
 }
 
-void ctrl_c_handler(int sig)
+void	ctrl_c_handler(int sig)
 {
 	sig = 0;
 	free(g_data.command_line);
@@ -16,11 +16,11 @@ void ctrl_c_handler(int sig)
 	g_data.hists = last_hist(g_data.hists);
 	g_data.nb_line = 0;
 	write(1, "\nMiniShell $> ", 14);
-	return;
+	return ;
 }
 
-void ctrl_bs_handler(int sig)
+void	ctrl_bs_handler(int sig)
 {
 	sig = 0;
-	return;
+	return ;
 }

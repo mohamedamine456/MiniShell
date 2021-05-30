@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/30 12:01:24 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 18:08:38 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_read_tools
  * prototypes for read_line.c file
  */
 
-char	*read_line();
+char	*read_line(void);
 char	*just_read(t_read_tools *rt);
 char	*add_buffer(t_read_tools *rt);
 
@@ -90,7 +90,7 @@ char	*quit_delete(t_read_tools *rt);
 
 void	up_arrow(t_read_tools *rt);
 void	down_arrow(t_read_tools *rt);
-void	write_history_line();
+void	write_history_line(void);
 
 /*
  * prototypes for init_read_tools.c file

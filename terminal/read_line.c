@@ -6,15 +6,15 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/30 12:14:55 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 18:11:14 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-char *read_line()
+char	*read_line(void)
 {
-	t_read_tools rt;
+	t_read_tools	rt;
 
 	if (!format_terminal(&(g_data.orig)))
 	{
@@ -38,7 +38,7 @@ char *read_line()
 	return (NULL);
 }
 
-char *just_read(t_read_tools *rt)
+char	*just_read(t_read_tools *rt)
 {
 	g_data.command_line = ft_strdup("");
 	rt->new->line_orig = ft_strdup("");
@@ -52,17 +52,17 @@ char *just_read(t_read_tools *rt)
 			if (rt->tmp[0] == '\n')
 			{
 				write(1, "\n", 1);
-				break;
+				break ;
 			}
 			g_data.command_line = add_buffer(rt);
 		}
 		else
-			break;
+			break ;
 	}
 	return (g_data.command_line);
 }
 
-char *add_buffer(t_read_tools *rt)
+char	*add_buffer(t_read_tools *rt)
 {
 	if (rt->tmp[0] == 4 || rt->tmp[0] == 127)
 	{
@@ -73,7 +73,8 @@ char *add_buffer(t_read_tools *rt)
 		write(1, rt->tmp, 1);
 		g_data.command_line = ft_strjoin(g_data.command_line, rt->tmp);
 		write_history_line();
-		g_data.nb_line = (ft_strlen(g_data.command_line) - 1) / rt->win_info.ts_cols;
+		g_data.nb_line = (ft_strlen(g_data.command_line) - 1)
+			/ rt->win_info.ts_cols;
 	}
 	else
 	{

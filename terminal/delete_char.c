@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/30 13:55:34 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 18:07:09 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
  * only if buffer contain enough characters
 */
 
-void delete_char(char **buff, t_read_tools *rt)
+void	delete_char(char **buff, t_read_tools *rt)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(*buff);
 	if (len > 0)
@@ -41,10 +41,10 @@ void delete_char(char **buff, t_read_tools *rt)
  * and prompt again
 */
 
-void clear_line(char *buff, t_read_tools *rt)
+void	clear_line(char *buff, t_read_tools *rt)
 {
-	int len;
-	int i;
+	int	len;
+	int	i;
 
 	i = 0;
 	len = ft_strlen(buff);

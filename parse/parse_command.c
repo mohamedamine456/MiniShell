@@ -6,18 +6,18 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:29 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/23 12:11:39 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 18:48:41 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-char		**split_line_commands(char *line)
+char	**split_line_commands(char *line)
 {
-	char **tab;
-	int i;
-	int j;
-	t_escapes escp;
+	char		**tab;
+	int			i;
+	int			j;
+	t_escapes	escp;
 
 	i = 0;
 	j = 0;
@@ -26,7 +26,8 @@ char		**split_line_commands(char *line)
 	while (line[i] != '\0')
 	{
 		escp = ft_check_escapes(escp, line[i]);
-		if (escp.s_q % 2 == 0 && escp.d_q % 2 == 0 && line[i] == ';' && escp.b_s == 0)
+		if (escp.s_q % 2 == 0 && escp.d_q % 2 == 0
+			&& line[i] == ';' && escp.b_s == 0)
 		{
 			tab = ft_resize_tab(tab, ft_substr(line, j, i - j));
 			j = i + 1;

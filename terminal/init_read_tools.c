@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 16:10:27 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 18:46:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 18:12:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-void init_read_tools(t_read_tools *rt)
+void	init_read_tools(t_read_tools *rt)
 {
 	rt->fl = (t_flags){0, 0, 0};
 	g_data.nb_line = 0;
@@ -26,7 +26,7 @@ void init_read_tools(t_read_tools *rt)
 	rt->capab.clear_scr = tgetstr("cd", 0);
 }
 
-int get_wininfo(struct ttysize *win)
+int	get_wininfo(struct ttysize *win)
 {
 	if (ioctl(0, TIOCGWINSZ, win) == -1)
 		return (-1);
