@@ -21,14 +21,15 @@
 
 int				open_history(void);
 void			write_history(t_general_data *hist, char *line);
-t_general_data	read_history(int fd);
 t_general_data	init_general_data();
 t_history		*read_hists(int fd);
 
-int				parse_execute(char  *line, char ***envp, int retv);
-int				split_commands(char **tab_cmds, char ***envp, int retv);
+/*
+ * prototypes for parse_execute.c file
+ */
 
-void			print_cmds(t_cmd *cmd);
+int				parse_execute(char  *line, char ***envp, int retv);
+int				parse_execute_helper(char *tab_cmd, char ***envp, int retv);
 
 /*
  * prototypes for hist_functions.c file
