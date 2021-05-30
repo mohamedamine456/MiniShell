@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/26 17:13:04 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 13:55:34 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void delete_char(char **buff, t_read_tools *rt)
 		(*buff)[len - 1] = '\0';
 		tputs(rt->capab.move_left, 1, ft_putchar);
 		tputs(rt->capab.del_one, 1, ft_putchar);
+		if (g_data.hists->line_chngd != NULL)
+			free(g_data.hists->line_chngd);
+		g_data.hists->line_chngd = ft_strdup(*buff);
 	}
 	g_data.nb_line = (ft_strlen(g_data.command_line) - 1) / rt->win_info.ts_cols;
 }

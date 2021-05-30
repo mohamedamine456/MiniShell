@@ -18,6 +18,9 @@ void	write_history(t_general_data *data, char *line)
 			write(data->fd, line, ft_strlen(line));
 			write(data->fd, "\n", 1);
 		}
+		free(data->hists->line_chngd);
+		data->hists->line_chngd = NULL;
+		data->hists = last_hist(data->hists);
 		data->hists->line_orig = ft_strdup(line);
 		free(line);
 		line = NULL;

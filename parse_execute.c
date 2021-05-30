@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/29 20:39:45 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 14:08:13 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int		parse_execute(char	*line, char ***envp, int retv)
 		if (!parse_errors(cmd_tab))
 		{
 			cmd = fill_command(cmd_tab);
-			retv = ft_execute(cmd, envp);
+			//retv = ft_execute(cmd, envp);
+			retv = exec_builtin(cmd, envp);
 			ft_free_args(cmd_tab);
 		}
 		else
