@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:05:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/28 15:12:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 18:09:32 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * quit_delete function generate delete and ctrl+d keys
 */
 
-char *quit_delete(t_read_tools *rt)
+char	*quit_delete(t_read_tools *rt)
 {
 	if (rt->tmp[0] == 4)
 	{
@@ -35,10 +35,10 @@ char *quit_delete(t_read_tools *rt)
  * when ctrl+d hitted and buffer is empty free all and quit program
 */
 
-void quit_d(t_read_tools *rt)
+void	quit_d(t_read_tools *rt)
 {
 	free(rt->tmp);
-	//ft_free_args(g_data.tab_hist);
+	free(g_data.command_line);
 	close(g_data.fd);
 	write(1, "exit\n", 5);
 	if (!reset_terminal(&(g_data.orig)))
