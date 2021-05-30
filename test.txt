@@ -1,6 +1,0 @@
-hello
-MiniShell $> 
-MiniShell $> 
-MiniShell $> exut[P[P[Pexitdfjifjbfjbfjffjf
-MiniShell $> [Jecho hello > test.txt[Jecho hello world > filecklsnc
-MiniShell $> exit

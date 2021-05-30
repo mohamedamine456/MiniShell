@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:57:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/30 12:04:53 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/30 13:55:35 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void down_arrow(t_read_tools *rt)
 
 void	write_history_line()
 {
-	if (g_data.hists->line_orig == NULL)
+	if (g_data.hists->line_orig != NULL)
 		g_data.hists->line_chngd = ft_strdup(g_data.command_line);
 	else
 		g_data.hists->line_orig = ft_strdup(g_data.command_line);
