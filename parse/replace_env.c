@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:00 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/20 15:42:07 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/05/31 18:51:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,7 @@ char	*replace_return(char *str, int *i, int retv)
 	char	*tmp;
 
 	new_str = ft_substr(str, 0, *i);
-	if (retv == 1)
-		tmp = ft_strdup("1");
-	else
-		tmp = ft_strdup("0");
+	tmp = ft_itoa(retv);
 	new_str = ft_strjoin(new_str, tmp);
 	free(tmp);
 	tmp = ft_substr(str, *i + 2, ft_strlen(str) - *i - 2);
