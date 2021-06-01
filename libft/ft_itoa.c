@@ -13,7 +13,7 @@ int     ft_number_length(long number)
     return (len + 1);
 }
 
-char    ft_itoa(long number)
+char    *ft_itoa(long number)
 {
     char    *str;
     int     len;
