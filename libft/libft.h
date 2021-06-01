@@ -9,7 +9,11 @@
 # include "../parse/cmd.h"
 int				ft_strlen(const char *s);
 int				ft_atoi(const char *str);
+<<<<<<< HEAD
 char			*ft_itoa(long number);
+=======
+char            *ft_itoa(long number);
+>>>>>>> b150cd46a2d81da7cae28db984fe5e48081e54b4
 void			ft_putnbr(int n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_strcmp(const char *s1, const char *s2);
