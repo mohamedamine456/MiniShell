@@ -105,10 +105,7 @@ char	*replace_return(char *str, int *i, int retv)
 	char	*tmp;
 
 	new_str = ft_substr(str, 0, *i);
-	if (retv == 1)
-		tmp = ft_strdup("1");
-	else
-		tmp = ft_strdup("0");
+	tmp = ft_itoa(retv);
 	new_str = ft_strjoin(new_str, tmp);
 	free(tmp);
 	tmp = ft_substr(str, *i + 2, ft_strlen(str) - *i - 2);
