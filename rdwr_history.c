@@ -22,6 +22,11 @@ void	write_history(t_general_data *data, char *line)
 		data->hists->line_chngd = NULL;
 		data->hists = last_hist(data->hists);
 		data->hists->line_orig = ft_strdup(line);
+		if (data->hists->line_chngd != NULL)
+		{
+			free(data->hists->line_chngd);
+			data->hists->line_chngd = NULL;
+		}
 		free(line);
 		line = NULL;
 	}
