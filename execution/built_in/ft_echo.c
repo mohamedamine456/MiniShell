@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:31:41 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/31 13:29:32 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/02 19:20:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ void	ft_echo(t_builtin_vars var, int *retv)
 		if (var.args[i + 1] != NULL)
 			write(1, " ", 1);
         i++;
-	}
-	if (var.option == NULL)
-		write(1, "\n", 1);
+	}	
 	if (errno == 0)
 		*retv = 0;
 	else
 		*retv = 1;
+
+	if (var.option != NULL)
+		return ;
+	else
+		write(1, "\n", 1);
 }
 
 //int main(int argc, char *argv[], char **envp)

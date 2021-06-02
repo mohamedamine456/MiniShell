@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/25 09:00:06 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/02 21:15:29 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,59 +16,61 @@ void	ft_cd(t_builtin_vars var, int *retv)
 {
 	char	*dest_path;
 
-	if (var.args != NULL && var.args[1] != NULL)
+	if (var.args != NULL && var.args[1] != NULL && ft_strcmp(var.args[1], "--"))
 		dest_path = ft_strdup(var.args[1]);
 	else
 		dest_path = search_env(ft_strdup("HOME"), *(var.envp));
 	if (dest_path != NULL)
-	{
-		if (!set_oldpwd(var.envp))
-			change_pwdenv(var.envp, "OLDPWD");
-		if (chdir(dest_path) != 0)
-			ft_builtin_errors("cd", errno, retv);
-		else
-		{
-			if (change_pwdenv(var.envp, "PWD"))
-				*retv = 0;
-			else
-				*retv = 1;
-		}
-	}
+		ft_cd_helper(var, dest_path, retv);
 	else
 	{
-		write(1, "MiniShell: cd: HOME not set", 27);
+		write(1, "MiniShell: cd: HOME not set\n", 28);
 		*retv = 1;
 	}
-	write(1, "\n", 1);
 	free(dest_path);
+}
+
+void	ft_cd_helper(t_builtin_vars var, char *dest_path, int *retv)
+{
+	if (!set_oldpwd(var.envp))
+		change_pwdenv(var.envp, "OLDPWD");
+	if (chdir(dest_path) != 0)
+		ft_builtin_errors("cd", errno, retv);
+	else
+	{
+		if (change_pwdenv(var.envp, "PWD"))
+			*retv = 0;
+		else
+			*retv = 1;
+	}
 }
 
 int		set_oldpwd(char ***envp)
 {
 	char	*pwd;
 	int     i;
-    char    **table;
+	char    **table;
 	char	**tmp;
 
 	pwd = search_env(ft_strdup("PWD"), *envp);
-    i = 0;
-    table = *envp;
-    while (table != NULL && table[i] != NULL)
-    {
-        tmp = ft_split(table[i], '=');
-        if (!ft_strcmp(tmp[0], "OLDPWD"))
-        { 
-            if (pwd != NULL)
-            {
-                (*envp)[i] = ft_strjoin(ft_strdup("OLDPWD="), pwd);
+	i = 0;
+	table = *envp;
+	while (table != NULL && table[i] != NULL)
+	{
+		tmp = ft_split(table[i], '=');
+		if (!ft_strcmp(tmp[0], "OLDPWD"))
+		{ 
+			if (pwd != NULL)
+			{
+				(*envp)[i] = ft_strjoin(ft_strdup("OLDPWD="), pwd);
 				ft_free_args(tmp);
-            	free(pwd);
+				free(pwd);
 				return (1);
 			}
-        }
-        ft_free_args(tmp);
-        i++;
-    }
+		}
+		ft_free_args(tmp);
+		i++;
+	}
 	return (0);
 }
 
