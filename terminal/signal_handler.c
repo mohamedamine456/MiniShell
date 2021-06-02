@@ -15,12 +15,17 @@ void	ctrl_c_handler(int sig)
 	g_data.command_line = ft_strdup("");
 	g_data.hists = last_hist(g_data.hists);
 	g_data.nb_line = 0;
-	write(1, "\nMiniShell $> ", 14);
+	write(1, "\n", 1);
 	return ;
 }
 
 void	ctrl_bs_handler(int sig)
 {
 	sig = 0;
+	free(g_data.command_line);
+	g_data.command_line = ft_strdup("");
+	g_data.hists = last_hist(g_data.hists);
+	g_data.nb_line = 0;
+	write(1, "Quit: 3\n", 8);
 	return ;
 }
