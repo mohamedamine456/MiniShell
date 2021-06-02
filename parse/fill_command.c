@@ -6,11 +6,11 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/24 13:47:44 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/02 14:46:15 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parse.h"
+#include "parse.h"
 
 void	add_cmd_name(char **cmd_name, char *name)
 {
@@ -22,7 +22,7 @@ void	add_cmd_output(t_cmd *cmd, char *str, char *file)
 	int			i;
 	int			which_output;
 	t_output	*tmp;
-		
+
 	i = 0;
 	which_output = ft_isoutput(str);
 	tmp = new_output();
@@ -47,7 +47,7 @@ void	add_cmd_args(t_cmd *cmd, char *tab)
 
 void	add_cmd_input(t_cmd *cmd, char *file)
 {
-	t_input *tmp;
+	t_input	*tmp;
 
 	tmp = (t_input *)malloc(sizeof(t_input));
 	tmp = new_input();
@@ -56,10 +56,9 @@ void	add_cmd_input(t_cmd *cmd, char *file)
 	add_input_back(&(cmd->input), tmp);
 }
 
-
 int	ft_check(t_cmd *cmd, char *str)
 {
-	char **tab;
+	char	**tab;
 	int		i;
 
 	i = -1;
@@ -72,7 +71,7 @@ int	ft_check(t_cmd *cmd, char *str)
 
 void	fill(t_cmd *cmd, char *str)
 {
-	char 	**tab;
+	char	**tab;
 	int		i;
 
 	i = 0;
@@ -90,7 +89,6 @@ void	fill(t_cmd *cmd, char *str)
 	ft_free_args(tab);
 }
 
-
 t_cmd	*fill_command(char **tab)
 {
 	t_cmd	*cmd;
@@ -106,7 +104,7 @@ t_cmd	*fill_command(char **tab)
 			fill(cmd, tab[i]);
 		else if (ft_is_string(tab[i]) != -1 && pars->name == NULL)
 			add_cmd_name(&(pars->name), tab[i]);
-		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1 && cmd->args == NULL) // hacker man
+		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1 && cmd->args == NULL)
 			add_cmd_options(&(pars->option), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
 		{
@@ -115,7 +113,7 @@ t_cmd	*fill_command(char **tab)
 		}
 		else if (ft_isinput(*tab[i]) != -1)
 		{
-			add_cmd_input(pars,tab[i + 1]);
+			add_cmd_input(pars, tab[i + 1]);
 			i++;
 		}
 		else if (ft_ispipe(tab[i]) != -1)
@@ -126,20 +124,7 @@ t_cmd	*fill_command(char **tab)
 		else
 			add_cmd_args(pars, ft_strdup(tab[i]));
 		if (tab[i] != NULL)
-		i++;
+			i++;
 	}
 	return (cmd);
 }
-
-//int main()
-//{
-//	int i;
-//	char *str = "ls -la file";
-//	char **tmp = ft_split(str, '\0');
-//	t_cmd *cmd;
-//	cmd = fill_command(tmp);
-//	//printf("%p ||| %p", cmd->output, cmd->output->next);
-//	//printf("%p\n", cmd->output);
-//	print_cmd(*cmd);
-//	//print_cmd(*(cmd->next));
-//}

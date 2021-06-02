@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rdwr_history.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/01 19:35:24 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/06/02 10:26:18 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int		open_history(void)
+int	open_history(void)
 {
 	int		fd;
 
-	fd = open(".minishell_history", 
+	fd = open(".minishell_history",
 			O_RDWR | O_CREAT | O_APPEND, S_IWUSR | S_IRUSR);
 	return (fd);
 }
@@ -63,9 +75,9 @@ t_history	*read_hists(int fd)
 	return (hists);
 }
 
-t_general_data init_general_data()
+t_general_data	init_general_data(void)
 {
-	t_general_data data;
+	t_general_data	data;
 
 	data.retv = 0;
 	data.fd = open_history();

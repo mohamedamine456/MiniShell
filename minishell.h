@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/02 14:47:36 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/06/02 14:48:40 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # define TRUE 1
@@ -21,24 +33,24 @@
 
 int				open_history(void);
 void			write_history(t_general_data *hist, char *line);
-t_general_data	init_general_data();
+t_general_data	init_general_data(void);
 t_history		*read_hists(int fd);
 
 /*
  * prototypes for parse_execute.c file
  */
 
-int				parse_execute(char  *line, char ***envp, int retv);
+int				parse_execute(char *line, char ***envp, int retv);
 int				parse_execute_helper(char *tab_cmd, char ***envp, int retv);
 
 /*
  * prototypes for hist_functions.c file
  */
 
-void		add_back_hist(t_history **hists, t_history *new);
-void		clear_hist(t_history **hists);
-t_history	*last_hist(t_history *hist);
-t_history	*first_hist(t_history *hist);
-t_history	*new_hist(void);
+void			add_back_hist(t_history **hists, t_history *new);
+void			clear_hist(t_history **hists);
+t_history		*last_hist(t_history *hist);
+t_history		*first_hist(t_history *hist);
+t_history		*new_hist(void);
 
 #endif

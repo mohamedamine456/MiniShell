@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hist_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/02 14:46:41 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/06/02 14:47:10 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	add_back_hist(t_history **hists, t_history *new)
 {
-	t_history *hist;
-	
+	t_history	*hist;
+
 	hist = *hists;
 	if (hist == NULL)
 		*hists = new;
@@ -14,7 +26,6 @@ void	add_back_hist(t_history **hists, t_history *new)
 		hist->next = new;
 	}
 }
-
 
 void	clear_hist(t_history **hists)
 {
