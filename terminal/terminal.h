@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/30 18:08:38 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/02 17:28:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char	*add_buffer(t_read_tools *rt);
 
 int		check_flags(char c, t_flags *fl);
 void	apply_flags(t_read_tools *rt);
+void	intern_ctrl_c(void);
 
 /*
  * prototypes for format_terminal.c file
@@ -106,6 +107,7 @@ int		get_wininfo(struct ttysize *win);
 void	signal_handler(void);
 void	ctrl_c_handler(int sig);
 void	ctrl_bs_handler(int sig);
+void	ctrl_anon(int sig);
 
 /*
  * prototypes for check_line_errors.c file

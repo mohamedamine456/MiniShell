@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/01 16:20:44 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/02 16:18:15 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ char	*add_buffer(t_read_tools *rt)
 			/ rt->win_info.ts_cols;
 	}
 	else
-	{
 		apply_flags(rt);
-	}
 	return (g_data.command_line);
 }

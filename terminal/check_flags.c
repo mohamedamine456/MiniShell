@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/30 12:01:03 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/02 17:28:47 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_flags(char c, t_flags *fl)
 */
 
 void	apply_flags(t_read_tools *rt)
-{
+{	
 	if (rt->fl.esc == 1 && rt->fl.l_br == 1 && ft_isalnum(rt->fl.ltr))
 	{
 		if (rt->fl.ltr == 'A')
@@ -61,4 +61,16 @@ void	apply_flags(t_read_tools *rt)
 			down_arrow(rt);
 		rt->fl = (t_flags){0, 0, 0};
 	}
+	else if (rt->tmp[0] == 3)
+		intern_ctrl_c();
+}
+
+void	intern_ctrl_c(void)
+{
+	free(g_data.command_line);
+	g_data.command_line = ft_strdup("");
+	g_data.hists = last_hist(g_data.hists);
+	g_data.nb_line = 0;
+	write(1, "\nMinishell $> ", 14);
+	return ;
 }

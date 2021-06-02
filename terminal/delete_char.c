@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 13:45:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/30 18:07:09 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/02 15:11:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	delete_char(char **buff, t_read_tools *rt)
 			free(g_data.hists->line_chngd);
 		g_data.hists->line_chngd = ft_strdup(*buff);
 	}
-	g_data.nb_line = (ft_strlen(g_data.command_line) - 1) / rt->win_info.ts_cols;
+	g_data.nb_line = (ft_strlen(g_data.command_line) - 1)
+		/ rt->win_info.ts_cols;
 }
 
 /*
