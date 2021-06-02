@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:25:29 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/22 13:55:05 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/02 21:48:39 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,22 @@ int	open_outputs(t_output *outputs, int *stdout_fd)
 	*stdout_fd = dup(1);
 	if (*stdout_fd < 0)
 		return (-1);
+	new_fd = 0;
 	while (outputs != NULL)
 	{
+		if (new_fd != 0)
+			close(new_fd);
 		if (outputs->type == SIMPLE_REDIRECTION)
-			new_fd = open(outputs->file, O_WRONLY | O_CREAT, S_IWUSR);
+			new_fd = open(outputs->file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR);
 		else if (outputs->type == DOUBLE_REDIRECTION)
-			new_fd = open(outputs->file, O_WRONLY | O_APPEND | O_CREAT, S_IWUSR);
+			new_fd = open(outputs->file, O_WRONLY | O_CREAT | O_APPEND, S_IWUSR);
 		if (new_fd < 0)
 			return (-1);
 		tmp_fd = dup2(new_fd, 1);
 		if (tmp_fd < 0)
-		{
-			close(new_fd);
 			return (-1);
-		}
 		outputs = outputs->next;
 	}
-	return (0);
+	close(new_fd);
+	return (tmp_fd);
 }

@@ -5,28 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/23 19:24:33 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/29 13:54:29 by eel-orch         ###   ########.fr       */
+/*   Created: 2021/06/02 18:10:29 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/06/02 18:20:17 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-//void	add(t_cmd *cmd)
-//{
-//	cmd->args = ft_split("hello world hello hello eofjefefsf sfd fsff", 32);
-//}
-//
-//int main()
-//{
-//	t_cmd *cmd;
-//
-//	cmd = (t_cmd *)malloc(sizeof(cmd));
-//	cmd->args = ft_split("hello world", 32);
-//	add(cmd);
-//	while (*(cmd->args) != NULL)
-//	{
-//		printf("%s", *(cmd->args));
-//		*(cmd->args)++;
-//	}
-//}
+#include "built_in.h"
+int main()
+{
+	int file1 = open("file1", O_CREAT | O_WRONLY, 0777);	
+	int file2 = open("file2", O_CREAT | O_WRONLY, 0777);
+	dup2(file1, 1);
+	dup2(file2, 1);
+	close(file2);
+	printf("hello world");
+	while (1)
+	{}
+}
