@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/02 14:46:15 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/02 16:34:10 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	fill(t_cmd *cmd, char *str)
 	while (tab[i])
 	{
 		if (i == 0)
-			cmd->name = ft_strdup(tab[i]);
-		else if (is_option(tab[i], cmd->name) != -1)
+			cmd->args = ft_split(tab[i], '\0');
+		else if (is_option(tab[i], cmd->args[0]) != -1)
 			add_cmd_options(&(cmd->option), tab[i]);
 		else
 			add_cmd_args(cmd, tab[i]);
@@ -102,9 +102,9 @@ t_cmd	*fill_command(char **tab)
 	{
 		if (ft_check(pars, tab[i]) != -1)
 			fill(cmd, tab[i]);
-		else if (ft_is_string(tab[i]) != -1 && pars->name == NULL)
-			add_cmd_name(&(pars->name), tab[i]);
-		else if (pars->name != NULL && is_option(tab[i], pars->name) != -1 && cmd->args == NULL)
+		else if (ft_is_string(tab[i]) != -1 && pars->args == NULL)
+			cmd->args = ft_split(tab[i], '\0');
+		else if (pars->args != NULL && (is_option(tab[i], pars->args[0]) != -1) && pars->args[1] == NULL)
 			add_cmd_options(&(pars->option), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
 		{
@@ -128,3 +128,4 @@ t_cmd	*fill_command(char **tab)
 	}
 	return (cmd);
 }
+

@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/28 18:26:30 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/02 17:03:57 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,9 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			dup_pipes(tmp, in, fd[1], std_in, std_out, i);
 			open_inputs(tmp->input);
 			open_outputs(tmp->output);
-			if (isbuilt_in(tmp->name))
+			if (isbuilt_in(tmp->args[0]))
 				return (exec_builtin(tmp, env));
-			path = command_path(tmp->name, *env);
+			path = command_path(tmp->args[0], *env);
 			execve(path, tmp->args, *env);
 			exit(0);
 		}

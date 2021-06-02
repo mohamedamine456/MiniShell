@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:02:02 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/31 13:31:59 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/02 16:15:17 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,18 @@ int	exec_builtin(t_cmd *cmd, char ***env)
 
 	retv = 0;
 	vars = cmd_to_builtin_vars(cmd, env);	
-	vars.ft_builtin[isbuilt_in(cmd->name) - 20](vars, &retv);
+	vars.ft_builtin[isbuilt_in(cmd->args[0]) - 20](vars, &retv);
 	return (retv);
 }
 
 //int main(int argc, char *argv[], char *env[])
 //{
-//	test_file = open("test_file", O_RDWR | O_CREAT, 0443);
+//	//test_file = open("test_file", O_RDWR | O_CREAT, 0443);
 //	t_cmd *cmd = new_cmd(); 
-//	cmd->name = ft_strdup("echo");
-//	cmd->args = ft_split("echo hello", 32);
+//	cmd = fill_command(ft_split("echo hello", 32));
+//	//cmd->name = ft_strdup("echo");
+//	//cmd->args = ft_split("echo hello", 32);
 //	char **envp = ft_tabdup(env);
 //	exec_builtin(cmd, &envp);
 //}
+
