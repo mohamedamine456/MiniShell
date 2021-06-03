@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 16:19:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/02 21:11:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 16:54:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void			ft_env(t_builtin_vars var, int *retv);
 void			ft_export(t_builtin_vars var, int *retv);
 
 void			ft_cd_helper(t_builtin_vars var, char *dest_path, int *retv);
+void			ft_cd_oldpwd(t_builtin_vars var, int *retv);
 int				change_pwdenv(char ***envp, char *name);
 int				set_oldpwd(char ***envp);
 int				exec_builtin(t_cmd *cmd, char ***envp);
