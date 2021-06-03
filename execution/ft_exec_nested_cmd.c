@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/03 19:23:40 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/03 19:51:53 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,14 +187,14 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	return (0);
 }
 
-int main(int argc, char **argv, char **envp)
-{
- 	t_cmd *cmd;
- 	char *str = "echo hello | grep h";
- 	char **table = ft_split(str, 32);
- 	cmd = fill_command(table);
- 	print_cmd(cmd);
- 	char **dup_env = ft_tabdup(envp);
-	write(1, "\n", 1);
- 	ft_exec_nested_cmd(cmd, &dup_env);
-}
+//int main(int argc, char **argv, char **envp)
+//{
+// 	t_cmd *cmd;
+// 	char *str = "echo hello | grep h";
+// 	char **table = ft_split(str, 32);
+// 	cmd = fill_command(table);
+// 	print_cmd(cmd);
+// 	char **dup_env = ft_tabdup(envp);
+//	write(1, "\n", 1);
+// 	ft_exec_nested_cmd(cmd, &dup_env);
+//}
