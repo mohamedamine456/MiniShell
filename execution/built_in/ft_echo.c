@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:31:41 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/02 19:20:04 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 19:26:28 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_echo(t_builtin_vars var, int *retv)
 		*retv = 0;
 	else
 		*retv = 1;
-
 	if (var.option != NULL)
 		return ;
 	else

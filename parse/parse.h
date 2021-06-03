@@ -1,13 +1,5 @@
 #ifndef PARSE_H
 # define PARSE_H
-# define DLR_SPECIALS "#?*@"
-# define ECHO_OPTIONS "n"
-# define PWD_OPTIONS "LP"
-# define ENV_OPTIONS "iPSuv"
-# define CD_OPTIONS ""
-# define EXPORT_OPTIONS ""
-# define UNSET_OPTIONS ""
-# define COMMANDS "echo cd pwd export unset env exit"
 # include "../libft/libft.h"
 # include "cmd.h"
 # include "structs_functions/structs_functions.h"
@@ -31,8 +23,6 @@ char		*clean_str(char *str);
  * check_option.c prototypes
  */
 
-int			check_by_options(char *str, char *options);
-char		*name_to_option(char *name);
 int			is_option(char *str, char *name);
 
 /*

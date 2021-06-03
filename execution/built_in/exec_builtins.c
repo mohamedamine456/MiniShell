@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:02:02 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/02 17:58:14 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/03 19:26:30 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_builtin_vars cmd_to_builtin_vars(t_cmd *cmd, char ***envp)
 	vars.envp = envp;
 	if (cmd->option != NULL)
 		vars.option = ft_strdup(cmd->option);
+	else
+		vars.option = NULL;
 	vars.ft_builtin[0] = ft_echo;
 	vars.ft_builtin[1] = ft_cd;
 	vars.ft_builtin[2] = ft_pwd;

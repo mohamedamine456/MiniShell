@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 16:19:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/03 16:54:04 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 18:07:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define B_EXPORT 24
 # define B_ENV 25
 # define B_EXIT 26
-
-#include "../execution.h"
+# include "../../parse/parse.h"
+# include "../execution.h"
 
 typedef struct s_builtin_vars
 {
