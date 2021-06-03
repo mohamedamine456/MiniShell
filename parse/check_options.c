@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 13:27:36 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/29 16:27:57 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 17:36:42 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	check_by_options(char *str, char *options)
 	int	i;
 
 	i = 0;
+	if (str[i] == '\0')
+		return (0);
 	while (str[i] != '\0')
 	{
 		if (!ft_char_in_string(str[i], options))
