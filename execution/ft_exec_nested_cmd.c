@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/02 18:56:01 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/03 15:48:55 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,8 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 		wait(NULL);
 		tmp = tmp->next;
 		i++;
+		//dup2(std_out,1);
+		//dup2(std_in, 0);
 	}
 	close(fd[0]);
 	return (0);

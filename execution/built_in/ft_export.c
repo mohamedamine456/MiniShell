@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/19 16:49:35 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 15:42:01 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	ft_export(t_builtin_vars var, int *retv)
 
 	i = 0;
 	*retv = 0;
-	if (var.args == NULL)
+	if (var.args[1] == NULL)
 	{
 		tmp = ft_tabdup(*(var.envp));
 		sort_strings(tmp);
@@ -140,27 +140,14 @@ void	ft_export(t_builtin_vars var, int *retv)
 	}
 }
 
-// int main(int argc, char *argv[], char **env)
-// {
-// 	t_builtin_vars vars;
-// 	int	retv = 0;
-	
-// 	// vars.args = ft_split("AAAA_env", 32);
-// 	// vars.envp = (char ***)malloc(sizeof(char **) * (ft_strlen_tab(env) + 1));
-// 	// *(vars.envp) = ft_tabdup(env);
-// 	// vars.option = NULL;
-// 	// ft_export(vars, &retv);
-// 	// vars.args = NULL;
-// 	// ft_export(vars, &retv);
-// 	// int i = 0;
-// 	// char **tmp = *(vars.envp);
-// 	// while (tmp[i])
-// 	// {
-// 	// 	printf("tmp[i] == %s\n", tmp[i]);
-// 	// 	i++;
-// 	// }
-// 	// sleep(30);
-// 	char *var = ft_strdup("LOGNAME=");
-// 	int is = is_duplicated_var(env, var);
-// 	printf("\n%d\n", is);
-// }
+//int main(int argc, char **argv, char **env)
+//{
+//	t_builtin_vars vars;
+//	int retv;
+//	char **env_dup;
+//	vars.args = ft_split("ft_export");
+//	vars.option = NULL;
+//	vars.envp = (char ***)malloc(sizeof(char **));
+//	env_dup = ft_tabdup(env);
+//
+//}

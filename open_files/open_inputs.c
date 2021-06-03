@@ -6,22 +6,19 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:44:11 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/22 13:53:34 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 12:54:09 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_files.h"
 
-int	open_inputs(t_input *inputs, int *stdin_fd)
+int	open_inputs(t_input *inputs)
 {
 	int	new_fd;
 	int	tmp_fd;
 
 	if (inputs == NULL)
 		return (0);
-	*stdin_fd = dup(0);
-	if (*stdin_fd < 0)
-		return (-1);
 	while (inputs != NULL)
 	{
 		new_fd = open(inputs->file, O_RDONLY, S_IRUSR);

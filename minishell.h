@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 14:47:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/02 14:48:40 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 12:49:59 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "open_files/open_files.h"
 # include "structs.h"
 
 int				open_history(void);

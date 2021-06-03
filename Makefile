@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/06/02 10:34:55 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/06/03 12:53:28 by eel-orch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ BUILTINS_SRC = execution/built_in/exec_builtins.c execution/built_in/ft_cd.c exe
 			   execution/built_in/ft_env.c execution/built_in/ft_exit.c execution/built_in/ft_export.c\
 			   execution/built_in/ft_pwd.c execution/built_in/ft_unset.c execution/built_in/ft_builtin_errors.c\
 			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c execution/ft_exec_nested_cmd.c\
-			   execution/built_in/ft_execute.c fork_commands/search_commands.c
+			   execution/built_in/ft_execute.c fork_commands/search_commands.c\
+			   open_files/open_inputs.c open_files/open_outputs.c
+		
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) $(BUILTINS_SRC)\
@@ -51,8 +53,8 @@ TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\
 
 BUILTINS_OBJSRC = exec_builtins.o ft_cd.o ft_echo.o ft_env.o ft_exit.o ft_export.o\
 			   ft_pwd.o ft_unset.o isbuilt_in.o sort_strings.o ft_builtin_errors.o\
-			   ft_execute.o ft_exec_nested_cmd.o search_commands.o
-
+			   ft_execute.o ft_exec_nested_cmd.o search_commands.o open_outputs.o\
+			   open_inputs.o
 
 GNL_OBJSRC = get_next_line.o
 OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) $(BUILTINS_OBJSRC)\
