@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/03 19:21:48 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 21:00:30 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_cmd	*fill_command(char **tab)
 	cmd = pars;
 	while (tab[i] != NULL)
 	{
-		if (ft_check(pars, tab[i]) != -1)
+		if (ft_check(pars, tab[i]) != -1 && i == 0)
 			fill(pars, tab[i]);
 		else if (ft_is_string(tab[i]) != -1 && pars->args == NULL)
 			pars->args = ft_split(tab[i], '\0');
