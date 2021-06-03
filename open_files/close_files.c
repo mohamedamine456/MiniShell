@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 16:11:24 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/03 14:53:27 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/03 19:22:58 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ int	close_files(int stdin_fd, int stdout_fd)
 		return (-1);
 	if (close(stdout_fd) < 0)
 		return (-1);
+	return (0);
 }
