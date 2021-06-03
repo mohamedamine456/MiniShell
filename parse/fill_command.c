@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/02 16:34:10 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/03 17:24:48 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ t_cmd	*fill_command(char **tab)
 	while (tab[i] != NULL)
 	{
 		if (ft_check(pars, tab[i]) != -1)
-			fill(cmd, tab[i]);
+			fill(pars, tab[i]);
 		else if (ft_is_string(tab[i]) != -1 && pars->args == NULL)
-			cmd->args = ft_split(tab[i], '\0');
+			pars->args = ft_split(tab[i], '\0');
 		else if (pars->args != NULL && (is_option(tab[i], pars->args[0]) != -1) && pars->args[1] == NULL)
 			add_cmd_options(&(pars->option), tab[i]);
 		else if (ft_isoutput(tab[i]) != -1)
@@ -129,3 +129,9 @@ t_cmd	*fill_command(char **tab)
 	return (cmd);
 }
 
+//int main()
+//{
+//	char **tab = ft_split("export | grep l", 32);
+//	t_cmd *cmd = fill_command(tab);
+//	print_cmd(cmd);
+//}

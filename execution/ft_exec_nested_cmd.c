@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/03 15:48:55 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/03 17:42:39 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,28 +171,30 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			if (isbuilt_in(tmp->args[0]))
 				return (exec_builtin(tmp, env));
 			path = command_path(tmp->args[0], *env);
-			execve(path, tmp->args, *env);
-			exit(0);
+			//write(2, tmp->args[0], ft_strlen(tmp->args[0]));
+			if (execve(path, tmp->args, *env) == -1)
+				write(2, "execve fail", ft_strlen("execve fail"));
 		}
 		in = fd[0];
 		close(fd[1]);
 		wait(NULL);
 		tmp = tmp->next;
 		i++;
-		//dup2(std_out,1);
-		//dup2(std_in, 0);
+		dup2(std_out,1);
+		dup2(std_in, 0);
 	}
 	close(fd[0]);
 	return (0);
 }
 
-// int main(int argc, char **argv, char **envp)
-// {
+//int main(int argc, char **argv, char **envp)
+//{
 // 	t_cmd *cmd;
-// 	char *str = "echo hello | grep hello | cat -e";
+// 	char *str = "echo hello | grep h";
 // 	char **table = ft_split(str, 32);
 // 	cmd = fill_command(table);
-// 	//print_cmd(cmd);
+// 	print_cmd(cmd);
 // 	char **dup_env = ft_tabdup(envp);
+//	write(1, "\n", 1);
 // 	ft_exec_nested_cmd(cmd, &dup_env);
-// }
+//}

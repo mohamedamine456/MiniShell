@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:44:11 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/03 12:54:09 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/03 17:45:05 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ int	open_inputs(t_input *inputs)
 
 	if (inputs == NULL)
 		return (0);
+	new_fd = 0;
 	while (inputs != NULL)
 	{
+		if (new_fd != 0)
+			close(new_fd);
 		new_fd = open(inputs->file, O_RDONLY, S_IRUSR);
 		if (new_fd < 0)
 			return (-1);
@@ -32,5 +35,6 @@ int	open_inputs(t_input *inputs)
 		}
 		inputs = inputs->next;
 	}
+	close(new_fd);
 	return (0);
 }
