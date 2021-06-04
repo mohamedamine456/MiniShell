@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 18:05:21 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/02 18:05:22 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/04 11:00:29 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	signal_handler(void)
 	if (signal(SIGINT, ctrl_c_handler) == SIG_ERR)
 		exit(1);
 	if (signal(SIGQUIT, ctrl_bs_handler) == SIG_ERR)
+		exit(1);
+	if (signal(SIGTSTP, ctrl_z_handler) == SIG_IGN)
 		exit(1);
 }
 
@@ -40,4 +42,9 @@ void	ctrl_bs_handler(int sig)
 	g_data.nb_line = 0;
 	write(1, "Quit: 3\n", 8);
 	return ;
+}
+
+void	ctrl_z_handler(int sig)
+{
+	return;
 }

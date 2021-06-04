@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/02 17:28:04 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/04 11:01:25 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int		get_wininfo(struct ttysize *win);
 void	signal_handler(void);
 void	ctrl_c_handler(int sig);
 void	ctrl_bs_handler(int sig);
-void	ctrl_anon(int sig);
+void	ctrl_z_handler(int sig);
 
 /*
  * prototypes for check_line_errors.c file
