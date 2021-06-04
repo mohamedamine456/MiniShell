@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:23:44 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/16 12:12:46 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/04 14:55:49 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-int		ft_look_path(char **envp)
+int	ft_look_path(char **envp)
 {
 	int		i;
 	char	**tmp;

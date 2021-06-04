@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 16:19:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/03 18:07:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/04 14:54:19 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int				ft_look_path(char **envp);
 int				isbuilt_in(char *cmd);
 void			ft_builtin_errors(const char *name, int err, int *retv);
 int				exec_builtin(t_cmd *cmd, char ***envp);
-int 			is_simple_cmd(t_cmd *cmd);
-int 			ft_execute(t_cmd *cmd, char ***envp);
+int				is_simple_cmd(t_cmd *cmd);
+int				ft_execute(t_cmd *cmd, char ***envp);
 #endif

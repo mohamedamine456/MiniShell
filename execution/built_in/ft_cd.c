@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/03 17:05:44 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/04 14:57:57 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,13 @@ void	ft_cd_oldpwd(t_builtin_vars var, int *retv)
 		free(oldpwd);
 		return ;
 	}
-
 }
 
-int		set_oldpwd(char ***envp)
+int	set_oldpwd(char ***envp)
 {
 	char	*pwd;
-	int     i;
-	char    **table;
+	int		i;
+	char	**table;
 	char	**tmp;
 
 	pwd = search_env(ft_strdup("PWD"), *envp);
@@ -87,7 +86,7 @@ int		set_oldpwd(char ***envp)
 	{
 		tmp = ft_split(table[i], '=');
 		if (!ft_strcmp(tmp[0], "OLDPWD"))
-		{ 
+		{
 			if (pwd != NULL)
 			{
 				(*envp)[i] = ft_strjoin(ft_strdup("OLDPWD="), pwd);

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 18:05:21 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/04 11:00:29 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/04 14:51:03 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void	ctrl_bs_handler(int sig)
 
 void	ctrl_z_handler(int sig)
 {
-	return;
+	return ;
 }

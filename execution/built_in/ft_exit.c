@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:33:31 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/02 17:01:00 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/04 14:55:16 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	ft_exit(t_builtin_vars var, int *retv)
 	number = 0;
 	if (ft_size_args(var.args) == 1)
 		exit(0);
-	else if (ft_size_args(var.args) == 2 && var.args[1] != NULL && ft_only_digits(var.args[1]))
+	else if (ft_size_args(var.args) == 2 && var.args[1] != NULL
+		&& ft_only_digits(var.args[1]))
 	{
 		number = ft_atoi(var.args[1]);
 		//free alllllll
@@ -33,7 +34,7 @@ void	ft_exit(t_builtin_vars var, int *retv)
 
 void	ft_exit_helper(t_builtin_vars var, int *retv)
 {
-	int number;
+	int	number;
 
 	if (var.args[1] != NULL && !ft_only_digits(var.args[1]))
 	{
