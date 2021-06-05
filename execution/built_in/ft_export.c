@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/04 12:51:27 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/05 15:34:48 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	isvalid_var(char *str)
 	if (ft_isdigit(str[0]) == 1 && str[0] != '_')
 		return (-1);
 	i = 1;
-	while (str[i] != '\0')
+	while (str[i] != '\0' && str[i] != '=')
 	{
 		if (str[i] == '-' || str[i] == '*' || str[i] == '!')
 			return (-1);
@@ -143,11 +143,16 @@ void	ft_export(t_builtin_vars var, int *retv)
 //int main(int argc, char **argv, char **env)
 //{
 //	t_builtin_vars vars;
-//	int retv;
+//	int retv = 0;
 //	char **env_dup;
-//	vars.args = ft_split("ft_export");
+//	vars.args = (char **)malloc(sizeof(char *) * 3);
+//	vars.args[0] = ft_strdup("export");
+//	vars.args[1] = ft_strdup("AAA = ls -la");
+//	vars.args[2] = NULL;
 //	vars.option = NULL;
 //	vars.envp = (char ***)malloc(sizeof(char **));
 //	env_dup = ft_tabdup(env);
+//	*(vars.envp) = env_dup;
+//	ft_export(vars, &retv);
 //
 //}
