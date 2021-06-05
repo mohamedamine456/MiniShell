@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/05 15:34:48 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/05 16:02:38 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	isvalid_var(char *str)
 {
 	int i;
 
-	if (ft_isdigit(str[0]) == 1 && str[0] != '_')
+	if (ft_isalpha(str[0]) == 0 && str[0] != '_')
 		return (-1);
 	i = 1;
 	while (str[i] != '\0' && str[i] != '=')
 	{
-		if (str[i] == '-' || str[i] == '*' || str[i] == '!')
+		if (ft_isalnum(str[i]) == 0 && str[i] != '_')
 			return (-1);
 		i++;
 	}
@@ -134,7 +134,12 @@ void	ft_export(t_builtin_vars var, int *retv)
 					*retv = 0;
 			}
 			else
-				*retv = -1;//invalide identifier
+			{
+				write(2, "minishell: export ", ft_strlen("minishell: export "));
+				write(2, var.args[i], ft_strlen(var.args[i]));
+				write(2, ": not a valid identifier\n", ft_strlen(": not a valid identifier") + 1);
+				*retv = -1;
+			}
 			i++;
 		}
 	}
