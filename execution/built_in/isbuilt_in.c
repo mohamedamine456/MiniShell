@@ -14,22 +14,38 @@
 
 int isbuilt_in(char *cmd)
 {
-	int i;
+	int		i;
+	int 	index;
+	char	*str;
 
+	index = 0;
+	str = ft_strdup(cmd);
 	i = 0;
-	if ((i = ft_strcmp(cmd, "echo")) == 0)
+	while (str[index])
+	{
+		if(str[index] >= 'A' && str[index] <= 'Z')
+			str[index] = str[index] + 32;
+		index++;
+	}
+	if ((i = ft_strcmp(str, "echo")) == 0)
 		return (B_ECHO);
-	else if ((i = ft_strcmp(cmd, "export")) == 0)
+	else if ((i = ft_strcmp(str, "export")) == 0)
 		return (B_EXPORT);
-	else if ((i = ft_strcmp(cmd, "env")) == 0)
+	else if ((i = ft_strcmp(str, "env")) == 0)
 		return (B_ENV);
-	else if ((i = ft_strcmp(cmd, "exit")) == 0)
+	else if ((i = ft_strcmp(str, "exit")) == 0)
 		return (B_EXIT);
-	else if ((i = ft_strcmp(cmd, "cd")) == 0)
+	else if ((i = ft_strcmp(str, "cd")) == 0)
 		return (B_CD);
-	else if ((i = ft_strcmp(cmd, "unset")) == 0)
+	else if ((i = ft_strcmp(str, "unset")) == 0)
 		return (B_UNSET);
-	else if ((i = ft_strcmp(cmd, "pwd")) == 0)
+	else if ((i = ft_strcmp(str, "pwd")) == 0)
 		return (B_PWD); 
 	return (0);
 }
+
+// int main()
+// {
+// 	char *str = "Echo";
+// 	isbuilt_in(str);
+// }
