@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/03 19:51:53 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/05 16:05:53 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,9 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			//write(2, tmp->args[0], ft_strlen(tmp->args[0]));
 			if (execve(path, tmp->args, *env) == -1)
 			{
-				write(2, "execve fail", ft_strlen("execve fail"));
+				write(2, "minishell: ", ft_strlen("minishell: "));
+				write(2, tmp->args[0], ft_strlen(tmp->args[0]));
+				write(2, ": command not found\n", ft_strlen(": command not found") + 1);
 				exit(-1);
 			}
 		}
