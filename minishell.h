@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 14:47:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/03 12:49:59 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/05 20:23:15 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_history		*read_hists(int fd);
  */
 
 int				parse_execute(char *line, char ***envp, int retv);
-int				parse_execute_helper(char *tab_cmd, char ***envp, int retv);
+int				parse_execute_helper(char *tab_cmd, char ***envp, int *retv);
 
 /*
  * prototypes for hist_functions.c file
