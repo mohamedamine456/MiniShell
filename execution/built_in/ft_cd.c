@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/04 14:57:57 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/05 12:12:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_cd(t_builtin_vars var, int *retv)
 {
 	char	*dest_path;
 
-	if (var.args != NULL && var.args[1] != NULL && ft_strcmp(var.args[1], "--"))
+	if (var.args != NULL && var.args[1] != NULL
+		&& ft_strcmp(var.args[1], "--") && ft_strcmp(var.args[1], ""))
 	{
 		if (!ft_strcmp(var.args[1], "-"))
 		{
