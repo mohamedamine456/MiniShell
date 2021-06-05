@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:35:24 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/02 10:26:18 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/05 15:57:57 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	write_history(t_general_data *data, char *line)
 		free(data->hists->line_chngd);
 		data->hists->line_chngd = NULL;
 		data->hists = last_hist(data->hists);
+		free(data->hists->line_orig);
 		data->hists->line_orig = ft_strdup(line);
 		if (data->hists->line_chngd != NULL)
 		{
@@ -71,6 +72,8 @@ t_history	*read_hists(int fd)
 			free(line);
 			line = NULL;
 		}
+		else
+			free(line);
 	}
 	return (hists);
 }
@@ -80,7 +83,7 @@ t_general_data	init_general_data(void)
 	t_general_data	data;
 
 	data.retv = 0;
-	data.fd = open_history();
+	data.fd = open_history();	
 	data.hists = read_hists(data.fd);
 	data.hists = last_hist(data.hists);
 	data.command_line = NULL;
