@@ -173,7 +173,10 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			path = command_path(tmp->args[0], *env);
 			//write(2, tmp->args[0], ft_strlen(tmp->args[0]));
 			if (execve(path, tmp->args, *env) == -1)
+			{
 				write(2, "execve fail", ft_strlen("execve fail"));
+				exit(-1);
+			}
 		}
 		in = fd[0];
 		close(fd[1]);
