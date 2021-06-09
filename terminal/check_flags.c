@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/02 17:28:47 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/09 16:57:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void	intern_ctrl_c(void)
 	free(g_data.command_line);
 	g_data.command_line = ft_strdup("");
 	g_data.hists = last_hist(g_data.hists);
+	if (g_data.hists->line_orig != NULL)
+		free(g_data.hists->line_orig);
+	if (g_data.hists->line_chngd != NULL)
+		free(g_data.hists->line_chngd);
+	g_data.hists->line_orig = ft_strdup("");
+	g_data.hists->line_chngd = NULL;
 	g_data.nb_line = 0;
 	write(1, "\nMinishell $> ", 14);
 	return ;
