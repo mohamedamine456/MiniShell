@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/05 16:05:53 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/12 18:35:51 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,16 +168,23 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			dup_pipes(tmp, in, fd[1], i, last_in, last_out);
 			open_inputs(tmp->input);
 			open_outputs(tmp->output);
-			if (isbuilt_in(tmp->args[0]))
-				return (exec_builtin(tmp, env));
-			path = command_path(tmp->args[0], *env);
-			//write(2, tmp->args[0], ft_strlen(tmp->args[0]));
-			if (execve(path, tmp->args, *env) == -1)
+			if (contain_slaches(tmp->args[0]) == 1)
 			{
-				write(2, "minishell: ", ft_strlen("minishell: "));
-				write(2, tmp->args[0], ft_strlen(tmp->args[0]));
-				write(2, ": command not found\n", ft_strlen(": command not found") + 1);
-				exit(-1);
+				if (isbuilt_in(tmp->args[0]))
+					return (exec_builtin(tmp, env));
+				path = command_path(tmp->args[0], *env);
+				//write(2, tmp->args[0], ft_strlen(tmp->args[0]));
+				if (execve(path, tmp->args, *env) == -1)
+				{
+					write(2, "minishell: ", ft_strlen("minishell: "));
+					write(2, tmp->args[0], ft_strlen(tmp->args[0]));
+					write(2, ": command not found\n", ft_strlen(": command not found") + 1);
+					exit(-1);
+				}
+			}
+			else
+			{
+				
 			}
 		}
 		in = fd[0];
