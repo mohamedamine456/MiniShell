@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:28:12 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/12 16:33:54 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/13 15:20:36 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int contain_slaches(char *str)
 
 	i = 0;
 	if (str == NULL)
-		return (1);
+		return (0);
 	while (str[i])
 	{
 		if (str[i] == 47)
-			return (0);
+			return (1);
 		i++;
 	}
 	return (0);
