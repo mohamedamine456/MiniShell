@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/12 18:35:51 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/16 13:37:07 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int		**get_pipes(t_cmd *cmd)
 //	return (new_fd);
 //}
 
-int		dup_pipes(t_cmd *cmd, int in, int out, int last_in, int last_out, int i)
+int		dup_pipes(t_cmd *cmd, int in, int out, int i)
 {
 	if (cmd->next != NULL)
 	{
@@ -147,8 +147,6 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	int		fd[2];
 	int		in;
 	int		out;
-	int		last_in;
-	int		last_out;
 	int		std_in = dup(0);
 	int		std_out = dup(1);
 	char	*path;
@@ -165,27 +163,27 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 		pid = fork();
 		if (pid == 0)
 		{
-			dup_pipes(tmp, in, fd[1], i, last_in, last_out);
+			dup_pipes(tmp, in, fd[1], i);
 			open_inputs(tmp->input);
 			open_outputs(tmp->output);
-			if (contain_slaches(tmp->args[0]) == 1)
+			if (contain_slaches(tmp->args[0]) == 0)
 			{
 				if (isbuilt_in(tmp->args[0]))
 					return (exec_builtin(tmp, env));
 				path = command_path(tmp->args[0], *env);
-				//write(2, tmp->args[0], ft_strlen(tmp->args[0]));
 				if (execve(path, tmp->args, *env) == -1)
 				{
 					write(2, "minishell: ", ft_strlen("minishell: "));
 					write(2, tmp->args[0], ft_strlen(tmp->args[0]));
 					write(2, ": command not found\n", ft_strlen(": command not found") + 1);
-					exit(-1);
+					exit(126);
 				}
 			}
-			else
-			{
-				
-			}
+			//else
+			//{
+			//	// is a directory
+			//	// no sush a file or directory
+			//}
 		}
 		in = fd[0];
 		close(fd[1]);
