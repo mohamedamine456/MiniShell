@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:40:43 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/04/13 14:40:50 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/14 17:17:37 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*command_path(char *cmd_name, char **envp)
 	if (cmd_name == NULL || envp == NULL)
 		return (NULL);
 	paths = tab_paths(envp);
+	if (paths == NULL)
+		return (NULL);
 	paths = ft_strjoin_args(paths, ft_strdup("/"));
 	path = check_right_path(cmd_name, paths);
 	ft_free_args(paths);
@@ -47,9 +49,11 @@ char	**tab_paths(char **envp)
 			{
 				paths = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 4);
 				ft_free_args(tab);
+				tab = NULL;
 				break ;
 			}
 			ft_free_args(tab);
+			tab = NULL;
 		}
 		i++;
 	}
@@ -83,16 +87,16 @@ char	*check_right_path(char *cmd_name, char **paths)
 	return (NULL);
 }
 
-//int main(int argc, char **argv, char **envp)
-//{
-//	char	*path;
-//
-//	if (argv[1] != NULL)
-//	{
-//		path = command_path(argv[1], envp);
-//		printf("%s\n", path);
-//	}
-//	else
-//		printf("Enter a command to look for");
-//	return (0);
-//}
+int main(int argc, char **argv, char **envp)
+{
+	char	*path;
+
+	if (argv[1] != NULL)
+	{
+		path = command_path(argv[1], envp);
+		printf("%s\n", path);
+	}
+	else
+		printf("Enter a command to look for");
+	return (0);
+}
