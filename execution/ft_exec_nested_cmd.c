@@ -6,19 +6,11 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/16 13:37:07 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/16 20:40:24 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int test_file;
-
-void	print_error()
-{
-	write(test_file, "error\n", 6);
-	exit(0);
-}
 
 int		**get_pipes(t_cmd *cmd)
 {
@@ -37,93 +29,6 @@ int		**get_pipes(t_cmd *cmd)
 	return (pipes);
 }
 
-// -1 is for errors handling
-//int		open_inputs(t_input *inputs)
-//{
-//	t_input *tmp;
-//	int		fd;
-//
-//	tmp = inputs;
-//	if (inputs == NULL)
-//	{
-//		write(fd, "no input files\n", ft_strlen("no input files\n"));
-//		return (0);
-//	}
-//	while (tmp)
-//	{
-//		fd = open(tmp->file, O_RDWR |  O_APPEND | O_CREAT, 0777);;
-//		if (fd == -1)
-//		{
-//			print_error();
-//			return (-1);
-//		}
-//		if (dup2(fd, 0) == -1)
-//		{
-//			print_error();
-//			close(fd);
-//			return (-1);
-//		}
-//		tmp = tmp->next;
-//	}
-//	return (1);
-//}
-
-// int		open_outputs(t_output *outputs)
-// {
-// 	t_output	*tmp;
-// 	int			fd;
-
-// 	tmp = outputs;
-// 	if (tmp == NULL)
-// 		return (0);
-// 	while (tmp)
-// 	{
-// 		if (tmp->type == SIMPLE_REDIRECTION)
-// 		{
-
-// 		}
-// 		else
-// 		{
-
-// 		}
-// 	}
-// }
-
-//amiiiiiiines function
-//int	open_outputs(t_output *outputs)
-//{
-//	int	new_fd;
-//	int	tmp_fd;
-//
-//	if (outputs == NULL)
-//	{
-//		write(2, "no output files\n", ft_strlen("no output files\n"));
-//		return (0);
-//	}
-//	new_fd = 1;
-//	while (outputs != NULL)
-//	{
-//		if (outputs->type == SIMPLE_REDIRECTION)
-//			new_fd = open(outputs->file, O_RDWR | O_CREAT, 0777);
-//		else if (outputs->type == DOUBLE_REDIRECTION)
-//			new_fd = open(outputs->file, O_RDWR | O_APPEND | O_CREAT, 0777);
-//		if (new_fd < 0)
-//		{
-//			print_error();
-//			return (-1);
-//		}
-//		tmp_fd = dup2(new_fd, 1);
-//		if (tmp_fd < 0)
-//		{
-//			print_error();
-//			close(new_fd);
-//			return (-1);
-//		}
-//		outputs = outputs->next;
-//	}
-//	return (new_fd);
-//}
-
 int		dup_pipes(t_cmd *cmd, int in, int out, int i)
 {
 	if (cmd->next != NULL)
@@ -140,6 +45,64 @@ int		dup_pipes(t_cmd *cmd, int in, int out, int i)
 	}
 	return (0);
 }
+
+void	command_not_found(char *str)
+{
+	write(2, "minishell: ", ft_strlen("minishell: "));
+	write(2, str, ft_strlen(str));
+	write(2, ": command not found\n", ft_strlen(": command not found") + 1);
+	exit(127);
+}
+
+void	execve_error(void)
+{
+	char *error_msg;
+
+	error_msg = strerror(errno);
+	write(2, error_msg, ft_strlen(error_msg));
+	write(2, "\n", 1);
+}
+
+void	search_execute(t_cmd *cmd, char **env)
+{
+	char 	*path;
+	char	**path_env;
+	char	*curent_dir;
+	int 	is_duplicated;
+
+	is_duplicated = is_duplicated_var(env, "PATH");
+	if (is_duplicated != -1)
+	{
+		path = command_path(cmd->args[0], env);
+		//write(2, path, ft_strlen(path));
+		write(2, "error\n", 6);
+		execve(path, cmd->args, env);
+		execve_error();
+		exit(126);
+	}
+	curent_dir = NULL;
+	curent_dir = getcwd(curent_dir, 0);
+	path_env = ft_split(curent_dir, '\0');
+	path = command_path(cmd->args[0], path_env);
+	free(curent_dir);
+	ft_free_args(path_env);
+	if (path != NULL)
+	{
+		write(2, "error\n", 6);
+		execve(path, cmd->args, env);
+		execve_error();
+		exit(126);
+	}
+	command_not_found(cmd->args[0]);
+}
+
+				//SEARCH FOR THE COMMAND
+					//SUCCESSFUL SEARCH
+						// CALL EXECVE
+							//fails ==> execute _126
+							//succes ==> execute cmd and exit  with the right status
+					//UNSUCCECFULL SEARCH
+						//exit with status _127 (COMMAND NOT FOUND)
 
 int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 {
@@ -170,20 +133,11 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			{
 				if (isbuilt_in(tmp->args[0]))
 					return (exec_builtin(tmp, env));
-				path = command_path(tmp->args[0], *env);
-				if (execve(path, tmp->args, *env) == -1)
-				{
-					write(2, "minishell: ", ft_strlen("minishell: "));
-					write(2, tmp->args[0], ft_strlen(tmp->args[0]));
-					write(2, ": command not found\n", ft_strlen(": command not found") + 1);
-					exit(126);
-				}
+				search_execute(tmp, *env);
 			}
-			//else
-			//{
-			//	// is a directory
-			//	// no sush a file or directory
-			//}
+			execve(tmp->args[0], tmp->args, *env);
+			execve_error();
+			exit(126);
 		}
 		in = fd[0];
 		close(fd[1]);
