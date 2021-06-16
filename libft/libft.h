@@ -6,6 +6,7 @@
 # include <unistd.h>
 # include <ctype.h>
 # include "../parse/cmd.h"
+
 int				ft_strlen(const char *s);
 int				ft_atoi(const char *str);
 char			*ft_itoa(long number);
@@ -55,5 +56,5 @@ char			**ft_jointabstr(char **tab, char *str);
 void			sort_strings(char **tab);
 char			**ft_tabdup(char **tab);
 char			**ft_dup_env(char **envp);
-
+int				contain_slaches(char *str);
 #endif
