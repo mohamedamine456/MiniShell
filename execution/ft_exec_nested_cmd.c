@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/16 20:40:24 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/17 11:02:01 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,38 +61,29 @@ void	execve_error(void)
 	error_msg = strerror(errno);
 	write(2, error_msg, ft_strlen(error_msg));
 	write(2, "\n", 1);
+	exit(126);
 }
 
 void	search_execute(t_cmd *cmd, char **env)
 {
 	char 	*path;
-	char	**path_env;
-	char	*curent_dir;
 	int 	is_duplicated;
 
+	path = NULL;
+	curent_dir = NULL;
 	is_duplicated = is_duplicated_var(env, "PATH");
 	if (is_duplicated != -1)
 	{
 		path = command_path(cmd->args[0], env);
-		//write(2, path, ft_strlen(path));
-		write(2, "error\n", 6);
-		execve(path, cmd->args, env);
-		execve_error();
-		exit(126);
+		if (path != NULL)
+		{
+			execve(path, cmd->args, env);
+			execve_error();
+		}
 	}
-	curent_dir = NULL;
-	curent_dir = getcwd(curent_dir, 0);
-	path_env = ft_split(curent_dir, '\0');
-	path = command_path(cmd->args[0], path_env);
-	free(curent_dir);
-	ft_free_args(path_env);
-	if (path != NULL)
-	{
-		write(2, "error\n", 6);
-		execve(path, cmd->args, env);
+	execve(cmd->args[0], cmd->args, env);
+	if (errno == EACCES)
 		execve_error();
-		exit(126);
-	}
 	command_not_found(cmd->args[0]);
 }
 
@@ -137,7 +128,6 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			}
 			execve(tmp->args[0], tmp->args, *env);
 			execve_error();
-			exit(126);
 		}
 		in = fd[0];
 		close(fd[1]);
