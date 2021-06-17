@@ -57,4 +57,5 @@ void			sort_strings(char **tab);
 char			**ft_tabdup(char **tab);
 char			**ft_dup_env(char **envp);
 int				contain_slaches(char *str);
+int				is_duplicated_var(char **env, char *var);
 #endif

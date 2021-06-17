@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:40:43 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/14 17:17:37 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/17 10:25:27 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,16 @@ char	*check_right_path(char *cmd_name, char **paths)
 	return (NULL);
 }
 
-int main(int argc, char **argv, char **envp)
-{
-	char	*path;
-
-	if (argv[1] != NULL)
-	{
-		path = command_path(argv[1], envp);
-		printf("%s\n", path);
-	}
-	else
-		printf("Enter a command to look for");
-	return (0);
-}
+//int main(int argc, char **argv, char **envp)
+//{
+//	char	*path;
+//
+//	if (argv[1] != NULL)
+//	{
+//		path = command_path(argv[1], envp);
+//		printf("%s\n", path);
+//	}
+//	else
+//		printf("Enter a command to look for");
+//	return (0);
+//}
