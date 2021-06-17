@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:20:14 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/04 21:18:11 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/13 20:25:10 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	parse_errors(char **tab_cmd)
 				return (print_parse_errors(tab_cmd[i], ""));
 			if (tab_cmd[i + 1] != NULL)
 			{
-				if (ft_isseparator(tab_cmd[i + 1][0]))
+				if (ft_isseparator(tab_cmd[i + 1][0])
+						&& tab_cmd[i + 1][0] != '>' && tab_cmd[i + 1][0] != '<')
 					return (print_parse_errors(tab_cmd[i], tab_cmd[i + 1]));
 			}
 			else
