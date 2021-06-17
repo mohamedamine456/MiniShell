@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/17 11:02:01 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/17 15:11:57 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	search_execute(t_cmd *cmd, char **env)
 	int 	is_duplicated;
 
 	path = NULL;
-	curent_dir = NULL;
 	is_duplicated = is_duplicated_var(env, "PATH");
 	if (is_duplicated != -1)
 	{
@@ -87,51 +86,53 @@ void	search_execute(t_cmd *cmd, char **env)
 	command_not_found(cmd->args[0]);
 }
 
-				//SEARCH FOR THE COMMAND
-					//SUCCESSFUL SEARCH
-						// CALL EXECVE
-							//fails ==> execute _126
-							//succes ==> execute cmd and exit  with the right status
-					//UNSUCCECFULL SEARCH
-						//exit with status _127 (COMMAND NOT FOUND)
+void	redirect_std_in_out(t_cmd *cmd, int cmd_index, int in, int *fd)
+{
+	int error;
+
+	error = 0;
+	error = dup_pipes(cmd, in, fd[1], cmd_index);
+	error = open_inputs(cmd->input);
+	error = open_outputs(cmd->output);
+	if (error == -1)
+		exit (1);
+}
 
 int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 {
 	t_cmd	*tmp;
-	int		fd[2];
+	int		*fd;
 	int		in;
-	int		out;
 	int		std_in = dup(0);
 	int		std_out = dup(1);
-	char	*path;
 	int		i;
 	pid_t	pid;
 
 	tmp = cmd;
 	in = 0;
-	out = 1;
 	i = 0;
+	fd = (int *)malloc(sizeof(int) * 2);
 	while (tmp != NULL)
 	{
 		pipe(fd);
 		pid = fork();
 		if (pid == 0)
 		{
-			dup_pipes(tmp, in, fd[1], i);
-			open_inputs(tmp->input);
-			open_outputs(tmp->output);
+			redirect_std_in_out(tmp, i, in, fd);
+			if (tmp->args == NULL)
+				exit (0);
 			if (contain_slaches(tmp->args[0]) == 0)
 			{
 				if (isbuilt_in(tmp->args[0]))
-					return (exec_builtin(tmp, env));
+					exit(exec_builtin(tmp, env));
 				search_execute(tmp, *env);
 			}
 			execve(tmp->args[0], tmp->args, *env);
 			execve_error();
 		}
+		wait(NULL);
 		in = fd[0];
 		close(fd[1]);
-		wait(NULL);
 		tmp = tmp->next;
 		i++;
 		dup2(std_out,1);
@@ -141,14 +142,3 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	return (0);
 }
 
-//int main(int argc, char **argv, char **envp)
-//{
-// 	t_cmd *cmd;
-// 	char *str = "echo hello | grep h";
-// 	char **table = ft_split(str, 32);
-// 	cmd = fill_command(table);
-// 	print_cmd(cmd);
-// 	char **dup_env = ft_tabdup(envp);
-//	write(1, "\n", 1);
-// 	ft_exec_nested_cmd(cmd, &dup_env);
-//}
