@@ -6,32 +6,25 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/03 21:00:30 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/18 20:27:55 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-void	add_cmd_name(char **cmd_name, char *name)
+void	add_cmd_redirection(t_cmd *cmd, char *str, char *file, int *index)
 {
-	*cmd_name = ft_strdup(name);
-}
-
-void	add_cmd_output(t_cmd *cmd, char *str, char *file)
-{
-	int			i;
-	int			which_output;
-	t_output	*tmp;
+	int				i;
+	int				type;
+	t_redirection	*tmp;
 
 	i = 0;
-	which_output = ft_isoutput(str);
-	tmp = new_output();
+	type = is_redirection(str);
+	tmp = new_redirection();
+	tmp->type = type;
 	tmp->file = ft_strdup(file);
-	if (which_output == 2)
-		tmp->type = DOUBLE_REDIRECTION;
-	else
-		tmp->type = SIMPLE_REDIRECTION;
-	add_output_back(&(cmd->output), tmp);
+	add_redirection_back(&(cmd->redirection), tmp);
+	(*index)++;
 }
 
 void	add_cmd_args(t_cmd *cmd, char *tab)
@@ -45,16 +38,6 @@ void	add_cmd_args(t_cmd *cmd, char *tab)
 		cmd->args = ft_resize_tab(cmd->args, ft_strdup(tab));
 }
 
-void	add_cmd_input(t_cmd *cmd, char *file)
-{
-	t_input	*tmp;
-
-	tmp = (t_input *)malloc(sizeof(t_input));
-	tmp = new_input();
-	tmp->file = ft_strdup(file);
-	tmp->next = NULL;
-	add_input_back(&(cmd->input), tmp);
-}
 
 int	ft_check(t_cmd *cmd, char *str)
 {
@@ -106,16 +89,8 @@ t_cmd	*fill_command(char **tab)
 			pars->args = ft_split(tab[i], '\0');
 		else if (pars->args != NULL && (is_option(tab[i], pars->args[0]) != -1) && pars->args[1] == NULL)
 			add_cmd_options(&(pars->option), tab[i]);
-		else if (ft_isoutput(tab[i]) != -1)
-		{
-			add_cmd_output(pars, tab[i], tab[i + 1]);
-			i++;
-		}
-		else if (ft_isinput(*tab[i]) != -1)
-		{
-			add_cmd_input(pars, tab[i + 1]);
-			i++;
-		}
+		else if (is_redirection(tab[i]) != -1)
+			add_cmd_redirection(pars, tab[i], tab[i + 1], &i);
 		else if (ft_ispipe(tab[i]) != -1)
 		{
 			pars->next = new_cmd();
@@ -129,9 +104,9 @@ t_cmd	*fill_command(char **tab)
 	return (cmd);
 }
 
-//int main()
-//{
-//	char **tab = ft_split("export | grep l", 32);
-//	t_cmd *cmd = fill_command(tab);
-//	print_cmd(cmd);
-//}
+int main()
+{
+	char **tab = ft_split("export >> output1 <input1 | grep l", 32);
+	t_cmd *cmd = fill_command(tab);
+	print_cmd(cmd);
+}

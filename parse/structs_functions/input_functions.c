@@ -1,17 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_functions.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/18 15:36:13 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/06/18 20:27:25 by eel-orch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "structs_functions.h"
 
-void	add_input_back(t_input **input, t_input *new)
-{
-	t_input	*tmp;
 
-	if (*input == NULL)
-		*input = new;
+void	add_redirection_back(t_redirection **redirection, t_redirection *new)
+{
+	t_redirection *tmp;
+
+	if (*redirection == NULL)
+		*redirection = new;
 	else
 	{
-		tmp = *input;
+		tmp = *redirection;
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = new;
+	}
+}
+
+void	clear_redirection(t_redirection **redi)
+{
+	t_redirection *tmp;
+
+	tmp = *redi;
+	if (redi == NULL)
+		return ;
+	while (*redi)
+	{
+		tmp = *redi;
+		*redi = (*redi)->next;
+		if (tmp->file != NULL)
+			free(tmp->file);
+		free(tmp);
 	}
 }
 
@@ -33,24 +63,13 @@ void	clear_inputs(t_input **inputs)
 	inputs = NULL;
 }
 
-t_input	*new_input(void)
+t_redirection *new_redirection(void)
 {
-	t_input	*input;
+	t_redirection *redirection;
 
-	input = (t_input *)malloc(sizeof(t_input));
-	input->file = NULL;
-	return (input);
-}
-
-int	size_inputs(t_input *inputs)
-{
-	int	i;
-
-	i = 0;
-	while (inputs != NULL)
-	{
-		i++;
-		inputs = inputs->next;
-	}
-	return (i);
+	redirection = (t_redirection *)malloc(sizeof(t_redirection));
+	redirection->type = -1;
+	redirection->file = NULL;
+	redirection->next = NULL;
+	return (redirection);
 }

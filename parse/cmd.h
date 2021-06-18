@@ -6,15 +6,16 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:06:57 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/05/20 15:38:31 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/18 20:39:38 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CMD_H
 # define CMD_H
 
-# define SIMPLE_REDIRECTION 1
-# define DOUBLE_REDIRECTION 2
+# define TRUNC 1
+# define APPEND 2
+# define INPUT				3
 
 typedef struct s_escapes
 {
@@ -23,12 +24,12 @@ typedef struct s_escapes
 	int				b_s;
 }					t_escapes;
 
-typedef struct s_output
+typedef struct s_redirection
 {
-	int				type;
-	char			*file;
-	struct s_output	*next;
-}					t_output;
+	int						type;
+	char				 	*file;
+	struct s_redirection	*next;
+}					t_redirection;
 
 typedef struct s_input
 {
@@ -41,8 +42,7 @@ typedef struct s_cmd
 	char			*name;
 	char			*option;
 	char			**args;
-	t_input			*input;	
-	t_output		*output;
+	t_redirection	*redirection;
 	struct s_cmd	*next;
 }					t_cmd;
 

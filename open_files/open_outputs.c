@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:25:29 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/17 14:06:15 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/18 20:41:26 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,33 @@ int open_outputs_errors(char *str)
 	return (-1);
 }
 
-int	open_outputs(t_output *outputs)
+int	open_outputs(t_redirection *redirection)
 {
 	int	new_fd;
 	int	tmp_fd;
 
-	if (outputs == NULL)
+	if (redirection == NULL)
 		return (0);
 	new_fd = 0;
-	while (outputs != NULL)
+	while (redirection != NULL)
 	{
 		if (new_fd != 0)
 			close(new_fd);
-		if (outputs->type == SIMPLE_REDIRECTION)
-			new_fd = open(outputs->file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR | S_IRUSR);
-		else if (outputs->type == DOUBLE_REDIRECTION)
-			new_fd = open(outputs->file, O_WRONLY | O_CREAT | O_APPEND, S_IWUSR | S_IRUSR);
+		if (redirection->type == TRUNC)
+			new_fd = open(redirection->file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR | S_IRUSR);
+		else if (redirection->type == APPEND)
+			new_fd = open(redirection->file, O_WRONLY | O_CREAT | O_APPEND, S_IWUSR | S_IRUSR);
+		else
+			new_fd = open(inputs->file, O_RDONLY, S_IRUSR);
 		if (new_fd < 0)
-			open_outputs_errors(outputs->file);
-		tmp_fd = dup2(new_fd, 1);
+			open_outputs_errors(redirection->file);
+		if (redirection->type == TRUNC || redirection->type == APPEND)
+			tmp_fd = dup2(new_fd, 1);
+		else
+			tmp_fd = dup2(new_fd, 0);
 		if (tmp_fd < 0)
-			open_outputs_errors(outputs->file);
-		outputs = outputs->next;
+			open_outputs_errors(redirection->file);
+		redirection = redirection->next;
 	}
 	close(new_fd);
 	return (tmp_fd);

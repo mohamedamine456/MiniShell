@@ -44,6 +44,8 @@ void		print_cmd(t_cmd *cmd);
 
 t_cmd		*fill_command(char **tab);
 void		add_cmd_options(char **old_option, char *new);
+int 		is_redirection(char *str);
+
 
 /*
  * parse_errors.c prototypes

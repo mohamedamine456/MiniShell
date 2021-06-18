@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isoutput.c                                      :+:      :+:    :+:   */
+/*   is_redirection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/31 11:38:16 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/01 12:06:18 by eel-orch         ###   ########.fr       */
+/*   Created: 2021/06/18 14:56:10 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/06/18 15:27:08 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parse.h"
 
-int ft_isoutput(char *str)
+int is_redirection(char *str)
 {
-	int i;
+	int index;
 
-	i = 0;
+	index = 0;
 	if (ft_strlen(str) == 0)
 		return (-1);
-	while (str[i] != '\0')
+	if (str[0] == '<')
+		return (INPUT);
+	while (str[index] != '\0' && index < 2)
 	{
-		if (str[i] != '>')
+		if (str[index] != '>')
 			return (-1);
-		i++;
+		index++;
 	}
-	return (i);
+	return (index);
 }
+
