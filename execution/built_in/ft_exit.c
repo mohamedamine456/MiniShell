@@ -17,6 +17,7 @@ void	ft_exit(t_builtin_vars var, int *retv)
 	int	number;
 
 	number = 0;
+	write(1, "exit\n", 5);
 	if (ft_size_args(var.args) == 1)
 		exit(0);
 	else if (ft_size_args(var.args) == 2 && var.args[1] != NULL
@@ -24,7 +25,6 @@ void	ft_exit(t_builtin_vars var, int *retv)
 	{
 		number = ft_atoi(var.args[1]);
 		//free alllllll
-		write(1, "\n", 1);
 		exit(number);
 	}
 	else
