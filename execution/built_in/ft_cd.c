@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:01:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/05 12:12:43 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/18 09:52:06 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	char	*dest_path;
 
 	if (var.args != NULL && var.args[1] != NULL
-		&& ft_strcmp(var.args[1], "--") && ft_strcmp(var.args[1], ""))
+		&& ft_strcmp(var.args[1], "--"))
 	{
 		if (!ft_strcmp(var.args[1], "-"))
 		{
@@ -25,7 +25,14 @@ void	ft_cd(t_builtin_vars var, int *retv)
 			return ;
 		}
 		else
+		{
+			if (!ft_strcmp(var.args[1], ""))
+			{
+				free(var.args[1]);
+				var.args[1] = ft_strdup(".");
+			}
 			dest_path = ft_strdup(var.args[1]);
+		}
 	}
 	else
 		dest_path = search_env(ft_strdup("HOME"), *(var.envp));
@@ -68,6 +75,7 @@ void	ft_cd_oldpwd(t_builtin_vars var, int *retv)
 	else
 	{
 		ft_cd_helper(var, oldpwd, retv);
+		ft_pwd(var, retv);
 		free(oldpwd);
 		return ;
 	}
