@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/17 15:11:57 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/18 12:47:47 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,25 @@ void	redirect_std_in_out(t_cmd *cmd, int cmd_index, int in, int *fd)
 		exit (1);
 }
 
+int		get_exit_status(int status)
+{
+	int exit_status;
+
+	exit_status = WIFEXITED(status);
+	if (exit_status != 0)
+		return (WEXITSTATUS(status));
+	exit_status = WIFSIGNALED(status);
+	if (exit_status != 0)
+		return (128 + WTERMSIG(status));
+	return (0);
+}
+
 int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 {
 	t_cmd	*tmp;
 	int		*fd;
 	int		in;
+	int		status;
 	int		std_in = dup(0);
 	int		std_out = dup(1);
 	int		i;
@@ -130,7 +144,7 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			execve(tmp->args[0], tmp->args, *env);
 			execve_error();
 		}
-		wait(NULL);
+		wait(&status);
 		in = fd[0];
 		close(fd[1]);
 		tmp = tmp->next;
@@ -139,6 +153,6 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 		dup2(std_in, 0);
 	}
 	close(fd[0]);
-	return (0);
+	return (get_exit_status(status));
 }
 
