@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 15:46:17 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/03 14:25:13 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/20 19:06:55 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void print_cmd(t_cmd *cmd)
 {
 	int i;
 	t_cmd  *tmp;
+	t_redirection *redi;
 	tmp = cmd;
 
 	while (tmp)
@@ -26,18 +27,6 @@ void print_cmd(t_cmd *cmd)
 		printf("===inputs===\n");
 		if (tmp->input == NULL)
 			printf("NAN\n");
-		else
-		{
-			i = 0;
-			t_input *in = tmp->input;
-			while (in != NULL)
-			{
-				printf("class == %d [%s] ", i, in->file);
-				in = in->next;
-				i++;
-			}
-			printf("\n");
-		}
 		printf("===options===\n");
 		if (tmp->option == NULL)
 			printf("NAN\n");
@@ -53,19 +42,13 @@ void print_cmd(t_cmd *cmd)
 				printf(" |%s|", tmp->args[i]);
 				i++;
 			}
-		printf("\n===outputs===\n");
-		if (tmp->output == NULL)
-			printf("NAN\n");
-		else
+		redi = tmp->redirecction;
+		printf("==== redirection ===\n");
+		while(redi!= NULL)
 		{
-			t_output *out = tmp->output;
-			while (out != NULL)
-			{
-				printf("type == |%d| file == |%s| pointer value == %p\n", out->type, out->file, out->next);
-				out = out->next;
-			}
-			printf("\n");
+			printf("type == %d", redi->type);
+			printf("file == %s\n", redi->file);
+			redi = redi->next;
 		}
-		tmp = tmp->next;
 	}
 }

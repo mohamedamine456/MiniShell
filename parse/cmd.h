@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:06:57 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/18 20:39:38 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/20 19:05:31 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define TRUNC 1
 # define APPEND 2
-# define INPUT				3
+# define INPUT	3
 
 typedef struct s_escapes
 {

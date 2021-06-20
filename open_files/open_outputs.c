@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_outputs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 17:25:29 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/18 20:41:26 by eel-orch         ###   ########.fr       */
+/*   Created: 2021/06/20 19:50:20 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/06/20 20:00:49 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	open_outputs(t_redirection *redirection)
 		else if (redirection->type == APPEND)
 			new_fd = open(redirection->file, O_WRONLY | O_CREAT | O_APPEND, S_IWUSR | S_IRUSR);
 		else
-			new_fd = open(inputs->file, O_RDONLY, S_IRUSR);
+			new_fd = open(redirection->file, O_RDONLY, S_IRUSR);
 		if (new_fd < 0)
 			open_outputs_errors(redirection->file);
 		if (redirection->type == TRUNC || redirection->type == APPEND)
