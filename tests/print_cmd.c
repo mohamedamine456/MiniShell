@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 15:46:17 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/20 19:06:55 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/21 12:49:24 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ void print_cmd(t_cmd *cmd)
 		i = 0;
 		printf("\n============ NEW CMD ================\n");
 		printf("cmd == [%s]\n", tmp->name);
-		printf("===inputs===\n");
-		if (tmp->input == NULL)
-			printf("NAN\n");
 		printf("===options===\n");
 		if (tmp->option == NULL)
 			printf("NAN\n");
@@ -42,7 +39,8 @@ void print_cmd(t_cmd *cmd)
 				printf(" |%s|", tmp->args[i]);
 				i++;
 			}
-		redi = tmp->redirecction;
+		printf("\n");
+		redi = tmp->redirection;
 		printf("==== redirection ===\n");
 		while(redi!= NULL)
 		{
@@ -50,5 +48,6 @@ void print_cmd(t_cmd *cmd)
 			printf("file == %s\n", redi->file);
 			redi = redi->next;
 		}
+		tmp = tmp->next;
 	}
 }
