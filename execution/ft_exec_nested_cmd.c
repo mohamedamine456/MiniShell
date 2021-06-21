@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/20 19:54:48 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/21 13:28:28 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,4 +154,17 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	close(fd[0]);
 	return (get_exit_status(status));
 }
+
+//int main(int argc, char **argv, char **envp)
+//{
+// 	t_cmd *cmd;
+// 	char *str = "echo bonjour > test > je > suis";
+// 	char **table = ft_split(str, 32);
+// 	cmd = fill_command(table);
+// 	//print_cmd(cmd);
+// 	char **dup_env = ft_tabdup(envp);
+//	printf("\n");
+// 	write(1, "==== this is execcution result ====\n", ft_strlen("==== this is execcution result ====\n"));
+//	ft_exec_nested_cmd(cmd, &dup_env);
+//}
 
