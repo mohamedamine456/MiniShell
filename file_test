@@ -1,0 +1,70 @@
+[31mexit 1\n                                                                  [FAIL][0m
+[31mexit 2\n                                                                  [FAIL][0m
+[31mexit 3\n                                                                  [FAIL][0m
+[31mexit ' 3'\n                                                               [FAIL][0m
+[31mexit '\t3'\n                                                              [FAIL][0m
+[31mexit '\t\f\r 3'\n                                                         [FAIL][0m
+[31mexit '3 '\n                                                               [FAIL][0m
+[31mexit '3\t'\n                                                              [FAIL][0m
+[31mexit '3\r'\n                                                              [FAIL][0m
+[31mexit '3\t\f\r '\n                                                         [FAIL][0m
+[31mexit '3     a'\n                                                          [FAIL][0m
+[31mexit '3\t\t\ta'\n                                                         [FAIL][0m
+[31mexit -1\n                                                                 [FAIL][0m
+[31mexit 255\n                                                                [FAIL][0m
+[31mexit 2000000\n                                                            [FAIL][0m
+[31mexit -2000000\n                                                           [FAIL][0m
+[31mexit 2147483647\n                                                         [FAIL][0m
+[31mexit -2147483649\n                                                        [FAIL][0m
+[31mexit -3147483649\n                                                        [FAIL][0m
+[31mexit 4294967295\n                                                         [FAIL][0m
+[31mexit 9223372036854775807\n                                                [FAIL][0m
+[31mexit -9223372036854775809\n                                               [FAIL][0m
+[31mexit 9223372036854775808\n                                                [FAIL][0m
+[31mexit 18446744073709551615\n                                               [FAIL][0m
+[31mexit 18446744073709551616\n                                               [FAIL][0m
+[31mexit +1\n                                                                 [FAIL][0m
+[31mexit +2\n                                                                 [FAIL][0m
+[31mexit +3\n                                                                 [FAIL][0m
+[31mexit +255\n                                                               [FAIL][0m
+[31mexit +2000000\n                                                           [FAIL][0m
+[31mexit +2147483647\n                                                        [FAIL][0m
+[31mexit ++1\n                                                                [FAIL][0m
+[31mexit ++2\n                                                                [FAIL][0m
+[31mexit ++3\n                                                                [FAIL][0m
+[31mexit ++0\n                                                                [FAIL][0m
+[31mexit ++255\n                                                              [FAIL][0m
+[31mexit ++256\n                                                              [FAIL][0m
+[31mexit ++2000000\n                                                          [FAIL][0m
+[31mexit ++2147483647\n                                                       [FAIL][0m
+[31mexit --1\n                                                                [FAIL][0m
+[31mexit --2\n                                                                [FAIL][0m
+[31mexit --3\n                                                                [FAIL][0m
+[31mexit --0\n                                                                [FAIL][0m
+[31mexit --255\n                                                              [FAIL][0m
+[31mexit --256\n                                                              [FAIL][0m
+[31mexit --2000000\n                                                          [FAIL][0m
+[31mexit --2147483647\n                                                       [FAIL][0m
+[31mexit bonjour\n                                                            [FAIL][0m
+[31mexit 0_\n                                                                 [FAIL][0m
+[31mexit _0\n                                                                 [FAIL][0m
+[31mexit 0123456789\n                                                         [FAIL][0m
+[31mexit -0123456789\n                                                        [FAIL][0m
+[31mexit 00000000000000000000000000000000000000000000001\n                    [FAIL][0m
+[31mexit 00000000000000000000000000000000000000000000000000000000000000000... [FAIL][0m
+[31mexit -0000000000000000000000000000000000000000000000000000000000000000... [FAIL][0m
+[31mexit -9999999999999999999999999999999999999999999999999999999999999999... [FAIL][0m
+[31mexit 99999999999999999999999999999999999999999999999999999999999999999... [FAIL][0m
+[31mexit 0 bonjour\n                                                          [FAIL][0m
+[31mexit bonjour 0\n                                                          [FAIL][0m
+[31mexit 0 1\n                                                                [FAIL][0m
+[31mexit 0 1 2 3 4 5 6 7 8 9\n                                                [FAIL][0m
+[31mexit Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis f... [FAIL][0m
+[31mexit bonjoru; echo should have exited\n                                   [FAIL][0m
+[31mexit 99999999999999999999999999999999999999999999999999999; echo shoul... [FAIL][0m
+[31mexit 9999; echo should have exited\n                                      [FAIL][0m
+[31m[EXPORTS PATH='doesnotexits'] echo $PATH\n                                [FAIL][0m
+[31m[EXPORTS PATH='doesnotexits:asdfasdfas'] echo $PATH\n                     [FAIL][0m
+[31m[EXPORTS PATH='doesnotexits'] whoami\n                                    [FAIL][0m
+[31m[EXPORTS PATH='doesnotexits:asdfasdfas'] whoami\n                         [FAIL][0m
+builtin/exit ........................................... [32m  12 [PASS][0m [31m  69 [FAIL][0m

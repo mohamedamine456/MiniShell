@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:02:02 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/17 15:07:33 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/21 14:09:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_builtin_vars cmd_to_builtin_vars(t_cmd *cmd, char ***envp)
 {
 	t_builtin_vars vars;
-	int retv;
 
 	vars.args = cmd->args;//ft_tabdup(cmd->args);	
 	vars.envp = envp;

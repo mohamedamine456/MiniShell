@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:40:43 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/17 10:25:27 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/21 14:10:23 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*command_path(char *cmd_name, char **envp)
 {
 	char	**paths;
 	char	*path;
-	int		i;
 
 	if (cmd_name == NULL || envp == NULL)
 		return (NULL);

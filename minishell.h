@@ -6,14 +6,16 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 14:47:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/05 20:23:15 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/21 16:08:32 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # define TRUE 1
+# define _POSIX_SOURCE
 # include <unistd.h>
+# undef _POSIX_SOURCE
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>

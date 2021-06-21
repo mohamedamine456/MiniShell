@@ -3,13 +3,15 @@
 # define SEPARATORS " ><|\t"
 # include <stdio.h>
 # include <stdlib.h>
+# define _POSIX_SOURCE
 # include <unistd.h>
+# undef _POSIX_SOURCE
 # include <ctype.h>
+# include <limits.h>
 # include "../parse/cmd.h"
 
 int				ft_strlen(const char *s);
-int				ft_atoi(const char *str);
-char			*ft_itoa(long number);
+double			ft_atoi(const char *str);
 char            *ft_itoa(long number);
 void			ft_putnbr(int n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
