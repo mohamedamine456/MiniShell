@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:00 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/01 16:15:31 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/21 20:43:46 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*trim_replace(char *str, char **envp, int retv)
 			repen.escp = (t_escapes){escp.d_q, escp.s_q, escp.b_s};
 			repen.i = &i;
 			str = trim_replace_helper(str, repen, envp, retv);
+			i = 0;
+			continue ;
 		}
 		if (str[i] != '\\' && escp.b_s == 1)
 			escp.b_s = 0;
