@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/21 13:28:28 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/21 18:50:15 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,9 @@ void	redirect_std_in_out(t_cmd *cmd, int cmd_index, int in, int *fd)
 
 int		get_exit_status(int status)
 {
-	int exit_status;
-
-	exit_status = WIFEXITED(status);
-	if (exit_status != 0)
+	if (WIFEXITED(status) == true)
 		return (WEXITSTATUS(status));
-	exit_status = WIFSIGNALED(status);
-	if (exit_status != 0)
+	if (WIFSIGNALED(status) == true)
 		return (128 + WTERMSIG(status));
 	return (0);
 }
@@ -115,7 +111,7 @@ int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 	t_cmd	*tmp;
 	int		*fd;
 	int		in;
-	int		status;
+	int		status = 0;
 	int		std_in = dup(0);
 	int		std_out = dup(1);
 	int		i;
