@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 16:19:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/21 16:27:08 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/22 13:49:39 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			ft_export(t_builtin_vars var, int *retv);
 
 void			ft_cd_helper(t_builtin_vars var, char *dest_path, int *retv);
 void			ft_cd_oldpwd(t_builtin_vars var, int *retv);
-int				change_pwdenv(char ***envp, char *name);
+//int				change_pwdenv(char ***envp, char *name);
 int				set_oldpwd(char ***envp);
 int				exec_builtin(t_cmd *cmd, char ***envp);
 char			**remove_env(char *str, char **envp);
@@ -53,5 +53,9 @@ int				exec_builtin(t_cmd *cmd, char ***envp);
 int				is_simple_cmd(t_cmd *cmd);
 int				ft_execute(t_cmd *cmd, char ***envp);
 int				check_exit_arg(char *str);
+
+void    ft_cd_normal_case(t_builtin_vars var, char *dest_path, int *retv);
+int change_oldpwd(char ***envp);
+int change_pwd(char ***envp);
 
 #endif

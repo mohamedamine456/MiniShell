@@ -9,7 +9,7 @@ SRC = ft_char_in_string.c ft_char_to_func.c ft_check_escapes.c\
 	  ft_search_env.c ft_isenv.c ft_putchar.c ft_atoi.c\
 	  ft_jointabstr.c ft_only_digits.c ft_strlen_tab.c ft_tabdup.c\
 	  ft_strjoin_tables.c ft_dup_env.c ft_strjoin_args.c ft_itoa.c\
-	  contain_slaches.c is_duplicated_var.c
+	  contain_slaches.c is_duplicated_var.c ft_replace_envp.c
 
 OBJ_SRC = ft_char_in_string.o ft_char_to_func.o ft_check_escapes.o\
 		  ft_free_args.o ft_isalnum.o ft_isalpha.o ft_isdigit.o ft_ispipe.o\
@@ -22,7 +22,7 @@ OBJ_SRC = ft_char_in_string.o ft_char_to_func.o ft_check_escapes.o\
 		  ft_search_env.o ft_isenv.o ft_putchar.o ft_atoi.o\
 		  ft_jointabstr.o ft_only_digits.o ft_strlen_tab.o ft_tabdup.o\
 		  ft_strjoin_tables.o ft_dup_env.o ft_strjoin_args.o ft_itoa.o\
-		  contain_slaches.o is_duplicated_var.o
+		  contain_slaches.o is_duplicated_var.o ft_replace_envp.o
 
 NAME = libft.a
 
