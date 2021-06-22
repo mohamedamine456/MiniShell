@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:20:14 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/13 20:25:10 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/22 09:48:49 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	check_redirections(char *redir)
 	}
 	if (i != ft_strlen(redir) && redir[i] != c && (c == '>' || c == '<'))
 		return (1);
-	else if (c == '<' && i > 1)
+	else if (c == '<' && i > 2)
 		return (1);
 	else if (c == '>' && i > 2)
 		return (1);
