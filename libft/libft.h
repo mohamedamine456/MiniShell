@@ -60,4 +60,5 @@ char			**ft_tabdup(char **tab);
 char			**ft_dup_env(char **envp);
 int				contain_slaches(char *str);
 int				is_duplicated_var(char **env, char *var);
+int				ft_replace_envp(const char *name, char *value, char ***envp);
 #endif
