@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:20:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/22 13:55:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/23 10:38:52 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 		dest_path = search_env(ft_strdup("HOME"), *(var.envp));
 		if (dest_path == NULL)
 		{
-			write(STDOUT_FILENO, "MiniShell: cd: HOME not set\n", 28);
+			write(2, "MiniShell: cd: HOME not set\n", 28);
 			*retv = 1;
 			return ;
 		}
@@ -104,7 +104,7 @@ void    ft_cd_oldpwd(t_builtin_vars var, int *retv)
     oldpwd = search_env(ft_strdup("OLDPWD"), *(var.envp));
     if (oldpwd == NULL || !ft_strcmp(oldpwd, ""))
     {
-        write(1, "Minishell: cd: OLDPWD not set\n", 30);
+        write(2, "Minishell: cd: OLDPWD not set\n", 30);
         *retv = 1;
         return ;
     }

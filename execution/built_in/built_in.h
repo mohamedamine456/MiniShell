@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 16:19:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/22 13:49:39 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/23 11:34:15 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ int				is_simple_cmd(t_cmd *cmd);
 int				ft_execute(t_cmd *cmd, char ***envp);
 int				check_exit_arg(char *str);
 
-void    ft_cd_normal_case(t_builtin_vars var, char *dest_path, int *retv);
-int change_oldpwd(char ***envp);
-int change_pwd(char ***envp);
+void    		ft_cd_normal_case(t_builtin_vars var, char *dest_path, int *retv);
+int				change_oldpwd(char ***envp);
+int				change_pwd(char ***envp);
+
+int				valid_identifier(char *identifier);
+void			not_valid_identifier(char *identifier);
 
 #endif

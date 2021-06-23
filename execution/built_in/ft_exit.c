@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:33:31 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/21 17:25:31 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/23 10:38:24 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ void	ft_exit_helper(t_builtin_vars var, int *retv)
 	if (var.args[1] != NULL && check_exit_arg(var.args[1]))
 	{
 		number = 255;
-		write(1, "MiniShell: exit: ", 17);
-		write(1, var.args[1], ft_strlen(var.args[1]));
-		write(1, ": numeric argument required", 27);
+		write(2, "MiniShell: exit: ", 17);
+		write(2, var.args[1], ft_strlen(var.args[1]));
+		write(2, ": numeric argument required", 27);
 		exit(number);
 	}
 	else
 	{
 		number = 0;
 		*retv = 1;
-		write(1, "MiniShell: exit: too many arguments", 35);
+		write(2, "MiniShell: exit: too many arguments", 35);
 	}
 }
 
