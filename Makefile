@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/06/21 09:35:23 by eel-orch         ###   ########.fr        #
+#    Updated: 2021/06/23 15:20:24 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ BUILTINS_SRC = execution/built_in/exec_builtins.c execution/built_in/ft_cd.c exe
 			   open_files/open_outputs.c
 		
 
-GNL_SRC = get_next_line/get_next_line.c
-SRC = $(PARSE_SRC) $(GNL_SRC) $(TERMINAL_SRC) $(BUILTINS_SRC)\
+#GNL_SRC = get_next_line/get_next_line.c
+SRC = $(PARSE_SRC) $(TERMINAL_SRC) $(BUILTINS_SRC)\
 	  rdwr_history.c parse_execute.c print_cmds.c hist_functions.c
 
 
@@ -56,8 +56,8 @@ BUILTINS_OBJSRC = exec_builtins.o ft_cd.o ft_echo.o ft_env.o ft_exit.o ft_export
 			   ft_execute.o ft_exec_nested_cmd.o search_commands.o \
 			   open_outputs.o
 
-GNL_OBJSRC = get_next_line.o
-OBJSRC = $(PARSE_OBJSRC) $(GNL_OBJSRC) $(TERMINAL_OBJSRC) $(BUILTINS_OBJSRC)\
+#GNL_OBJSRC = get_next_line.o
+OBJSRC = $(PARSE_OBJSRC)  $(TERMINAL_OBJSRC) $(BUILTINS_OBJSRC)\
 		 rdwr_history.o parse_execute.o print_cmds.o hist_functions.o
 
 
