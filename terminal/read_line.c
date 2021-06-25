@@ -6,21 +6,21 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/05 16:01:14 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/25 15:52:02 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "terminal.h"
 
-char	*read_line(void)
+char	*read_line(char *prompt)
 {
 	t_read_tools	rt;
 
 	if (!format_terminal(&(g_data.orig)))
 	{
 		init_read_tools(&rt);
-		write(1, "MiniShell $> ", 13);
-		g_data.command_line = just_read(&rt);
+		write(1, prompt, ft_strlen(prompt));
+		g_data.command_line = just_read(&rt, prompt);
 		if (check_line_errors(g_data.command_line) == -1)
 		{
 			free(g_data.command_line);
@@ -39,7 +39,7 @@ char	*read_line(void)
 	return (NULL);
 }
 
-char	*just_read(t_read_tools *rt)
+char	*just_read(t_read_tools *rt, char *prompt)
 {
 	g_data.command_line = ft_strdup("");
 	rt->new->line_orig = ft_strdup("");
@@ -55,7 +55,7 @@ char	*just_read(t_read_tools *rt)
 				write(1, "\n", 1);
 				break ;
 			}
-			g_data.command_line = add_buffer(rt);
+			g_data.command_line = add_buffer(rt, prompt);
 		}
 		else
 			break ;
@@ -63,7 +63,7 @@ char	*just_read(t_read_tools *rt)
 	return (g_data.command_line);
 }
 
-char	*add_buffer(t_read_tools *rt)
+char	*add_buffer(t_read_tools *rt, char * prompt)
 {
 	if (rt->tmp[0] == 4 || rt->tmp[0] == 127)
 	{
@@ -78,6 +78,6 @@ char	*add_buffer(t_read_tools *rt)
 			/ rt->win_info.ts_cols;
 	}
 	else
-		apply_flags(rt);
+		apply_flags(rt, prompt);
 	return (g_data.command_line);
 }

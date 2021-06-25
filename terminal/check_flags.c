@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/18 10:50:59 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/25 15:49:41 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_flags(char c, t_flags *fl)
  * is so calls up or down functions
 */
 
-void	apply_flags(t_read_tools *rt)
+void	apply_flags(t_read_tools *rt, char *prompt)
 {	
 	if (rt->fl.esc == 1 && rt->fl.l_br == 1 && ft_isalnum(rt->fl.ltr))
 	{
@@ -62,10 +62,10 @@ void	apply_flags(t_read_tools *rt)
 		rt->fl = (t_flags){0, 0, 0};
 	}
 	else if (rt->tmp[0] == 3)
-		intern_ctrl_c();
+		intern_ctrl_c(prompt);
 }
 
-void	intern_ctrl_c(void)
+void	intern_ctrl_c(char *prompt)
 {
 	free(g_data.command_line);
 	g_data.command_line = ft_strdup("");
@@ -77,6 +77,7 @@ void	intern_ctrl_c(void)
 	g_data.hists->line_orig = ft_strdup("");
 	g_data.hists->line_chngd = NULL;
 	g_data.nb_line = 0;
-	write(1, "\nMinishell $> ", 14);
+	write(1, "\n", 1);
+	write(1, prompt, ft_strlen(prompt));
 	return ;
 }

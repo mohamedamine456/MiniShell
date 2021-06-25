@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/04 11:01:25 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/25 15:51:36 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ typedef struct s_read_tools
  * prototypes for read_line.c file
  */
 
-char	*read_line(void);
-char	*just_read(t_read_tools *rt);
-char	*add_buffer(t_read_tools *rt);
+char	*read_line(char *prompt);
+char	*just_read(t_read_tools *rt, char *prompt);
+char	*add_buffer(t_read_tools *rt, char *prompt);
 
 /*
  * prototypes for check_flags.c file
  */
 
 int		check_flags(char c, t_flags *fl);
-void	apply_flags(t_read_tools *rt);
-void	intern_ctrl_c(void);
+void	apply_flags(t_read_tools *rt, char *prompt);
+void	intern_ctrl_c(char *prompt);
 
 /*
  * prototypes for format_terminal.c file
