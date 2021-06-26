@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/25 15:52:02 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/26 14:35:22 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	*read_line(char *prompt)
 		free(rt.tmp);
 		return (g_data.command_line);
 	}
-	free(rt.tmp);
 	return (NULL);
 }
 
@@ -63,7 +62,7 @@ char	*just_read(t_read_tools *rt, char *prompt)
 	return (g_data.command_line);
 }
 
-char	*add_buffer(t_read_tools *rt, char * prompt)
+char	*add_buffer(t_read_tools *rt, char *prompt)
 {
 	if (rt->tmp[0] == 4 || rt->tmp[0] == 127)
 	{
