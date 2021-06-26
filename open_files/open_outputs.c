@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 19:50:20 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/20 20:00:49 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/26 15:37:08 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,41 @@ int open_outputs_errors(char *str)
 	return (-1);
 }
 
-int	open_outputs(t_redirection *redirection)
+int	open_redirecctions(t_redirection *redirection)
 {
 	int	new_fd;
 	int	tmp_fd;
+	int error;
 
 	if (redirection == NULL)
 		return (0);
 	new_fd = 0;
+	error = 0;
 	while (redirection != NULL)
 	{
-		if (new_fd != 0)
-			close(new_fd);
 		if (redirection->type == TRUNC)
 			new_fd = open(redirection->file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR | S_IRUSR);
 		else if (redirection->type == APPEND)
 			new_fd = open(redirection->file, O_WRONLY | O_CREAT | O_APPEND, S_IWUSR | S_IRUSR);
-		else
+		else if (redirection->type == INPUT)
 			new_fd = open(redirection->file, O_RDONLY, S_IRUSR);
-		if (new_fd < 0)
-			open_outputs_errors(redirection->file);
+		else
+			new_fd = open(redirection->file, O_RDWR | O_CREAT | S_IWUSR | S_IRUSR);
+		if (new_fd == -1)
+		{
+			error = open_outputs_errors(redirection->file);
+			redirection = redirection->next;
+			continue ;
+		}
 		if (redirection->type == TRUNC || redirection->type == APPEND)
 			tmp_fd = dup2(new_fd, 1);
 		else
 			tmp_fd = dup2(new_fd, 0);
+		close(new_fd);
 		if (tmp_fd < 0)
-			open_outputs_errors(redirection->file);
+			error = open_outputs_errors(redirection->file);
 		redirection = redirection->next;
 	}
 	close(new_fd);
-	return (tmp_fd);
+	return (error);
 }

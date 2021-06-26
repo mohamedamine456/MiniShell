@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/21 18:54:15 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/26 15:34:01 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	redirect_std_in_out(t_cmd *cmd, int cmd_index, int in, int *fd)
 
 	error = 0;
 	error = dup_pipes(cmd, in, fd[1], cmd_index);
-	error = open_outputs(cmd->redirection);
+	error = open_redirections(cmd->redirection);
 	if (error == -1)
 		exit (1);
 }

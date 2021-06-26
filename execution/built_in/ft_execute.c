@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:03:05 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/21 18:55:51 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/26 15:34:38 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int ft_execute(t_cmd *cmd, char ***envp)
 	{
 		std_in = dup(0);
 		std_out = dup(1);
-		open_outputs(cmd->redirection);
+		open_redirections(cmd->redirection);
 		retv = exec_builtin(cmd, envp);
 		dup2(std_in, 0);
 		dup2(std_out, 1);

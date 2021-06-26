@@ -8,6 +8,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-int		open_outputs(t_redirection *redirection);
+int		open_redirections(t_redirection *redirection);
 
 #endif
