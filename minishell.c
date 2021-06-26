@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:03:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/05 20:20:40 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/26 15:24:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **envp)
 		signal_handler();
 		while (TRUE)
 		{
-			g_data.command_line = read_line();
+			g_data.command_line = read_line("MiniShell %> ");
 			if (g_data.command_line != NULL)
 			{
 				g_data.retv = parse_execute(ft_strdup(g_data.command_line),
