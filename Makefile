@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/06/26 15:26:55 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/06/26 21:06:10 by eel-orch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ BUILTINS_SRC = execution/built_in/exec_builtins.c execution/built_in/ft_cd.c exe
 			   execution/built_in/ft_pwd.c execution/built_in/ft_unset.c execution/built_in/ft_builtin_errors.c\
 			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c execution/ft_exec_nested_cmd.c\
 			   execution/built_in/ft_execute.c fork_commands/search_commands.c\
-			   open_files/open_outputs.c
+			   open_files/open_outputs.c execution/get_exit_status.c execution/here_doc.c
 		
 
 GNL_SRC = get_next_line/get_next_line.c
@@ -54,7 +54,7 @@ TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\
 BUILTINS_OBJSRC = exec_builtins.o ft_cd.o ft_echo.o ft_env.o ft_exit.o ft_export.o\
 			   ft_pwd.o ft_unset.o isbuilt_in.o sort_strings.o ft_builtin_errors.o\
 			   ft_execute.o ft_exec_nested_cmd.o search_commands.o \
-			   open_outputs.o
+			   open_outputs.o get_exit_status.o here_doc.o
 
 GNL_OBJSRC = get_next_line.o
 OBJSRC = $(PARSE_OBJSRC)  $(TERMINAL_OBJSRC) $(GNL_OBJSRC) $(BUILTINS_OBJSRC)\
@@ -92,7 +92,7 @@ sanitize:
 noflags:
 	make fclean -C libft/
 	make -C libft/
-	gcc -c -g $(SRC)
+	gcc -c -g $(SRC) 
 	ar rc $(LIB_NAME) $(OBJSRC)
 	ranlib $(LIB_NAME)
-	gcc -g $(MAIN) $(LIB_NAME) $(LIBFT) -ltermcap -o $(NAME)
+	gcc -g $(MAIN) $(LIB_NAME) $(LIBFT) -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include -ltermcap  -o $(NAME)

@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 19:50:20 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/26 15:37:08 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/26 21:07:51 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int open_outputs_errors(char *str)
 	return (-1);
 }
 
-int	open_redirecctions(t_redirection *redirection)
+int	open_redirections(t_redirection *redirection)
 {
 	int	new_fd;
 	int	tmp_fd;
@@ -41,7 +41,7 @@ int	open_redirecctions(t_redirection *redirection)
 		else if (redirection->type == INPUT)
 			new_fd = open(redirection->file, O_RDONLY, S_IRUSR);
 		else
-			new_fd = open(redirection->file, O_RDWR | O_CREAT | S_IWUSR | S_IRUSR);
+			new_fd = here_doc(redirection->file);
 		if (new_fd == -1)
 		{
 			error = open_outputs_errors(redirection->file);

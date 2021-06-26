@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/26 15:34:01 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/26 20:08:38 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,6 @@ void	redirect_std_in_out(t_cmd *cmd, int cmd_index, int in, int *fd)
 	error = open_redirections(cmd->redirection);
 	if (error == -1)
 		exit (1);
-}
-
-int		get_exit_status(int status)
-{
-	if (WIFEXITED(status) == true)
-		return (WEXITSTATUS(status));
-	if (WIFSIGNALED(status) == true)
-		return (128 + WTERMSIG(status));
-	return (0);
 }
 
 int		ft_exec_nested_cmd(t_cmd *cmd, char ***env)

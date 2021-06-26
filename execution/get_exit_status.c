@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.h                                        :+:      :+:    :+:   */
+/*   get_exit_status.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 13:33:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/26 21:02:10 by eel-orch         ###   ########.fr       */
+/*   Created: 2021/06/26 20:07:44 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/06/26 20:08:01 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef EXECUTION_H
-# define EXECUTION_H
+#include "execution.h"
 
-# include "../minishell.h"
-# include "built_in/built_in.h"
-
-int ft_exec_nested_cmd(t_cmd *cmd, char ***env);
-int	get_exit_status(int status);
-int	here_doc(char *delimeter);
-#endif
+int		get_exit_status(int status)
+{
+	if (WIFEXITED(status) == true)
+		return (WEXITSTATUS(status));
+	if (WIFSIGNALED(status) == true)
+		return (128 + WTERMSIG(status));
+	return (0);
+}

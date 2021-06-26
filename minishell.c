@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:03:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/26 15:24:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/26 20:11:10 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv, char **envp)
 			{
 				g_data.retv = parse_execute(ft_strdup(g_data.command_line),
 						&new_envp, g_data.retv);
-				write_history(&g_data, ft_strdup(g_data.command_line));
+				write_hist(&g_data, ft_strdup(g_data.command_line));
 				free(g_data.command_line);
 			}
 		}

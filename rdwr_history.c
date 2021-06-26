@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:35:24 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/05 20:30:44 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/26 19:48:28 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	open_history(void)
 	return (fd);
 }
 
-void	write_history(t_general_data *data, char *line)
+void	write_hist(t_general_data *data, char *line)
 {
 	if (ft_strcmp(line, ""))
 	{

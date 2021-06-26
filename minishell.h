@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 14:47:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/21 16:08:32 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/26 20:40:41 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@
 # include <fcntl.h>
 # include "open_files/open_files.h"
 # include "structs.h"
+#include <readline/readline.h>
+#include <readline/history.h>
 
 int				open_history(void);
-void			write_history(t_general_data *hist, char *line);
+void			write_hist(t_general_data *hist, char *line);
 t_general_data	init_general_data(void);
 t_history		*read_hists(int fd);
 
