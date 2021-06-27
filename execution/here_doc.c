@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 15:41:19 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/27 20:08:13 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/27 20:20:18 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ void close_and_exit(int fd)
 	exit(fd);
 }
 
-int	here_doc(char *delimeter)
+int	here_doc(char *delimeter, char *file_name)
 {
 	int	fd;
 	char *line;
 	int	status;
 	pid_t pid;
 
-	fd = open("here_doc", O_RDWR | O_TRUNC | O_CREAT, S_IWUSR | S_IRUSR);
-	unlink("here_doc");
+	fd = open(file_name, O_RDWR | O_TRUNC | O_CREAT, S_IWUSR | S_IRUSR);
+	//unlink(file_name);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -58,6 +58,6 @@ int	here_doc(char *delimeter)
 	}
 	waitpid(pid, &status, 0);
 	close(fd);
-	return (get_exit_status(status));
+	return (0);
 }
 
