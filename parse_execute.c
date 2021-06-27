@@ -6,11 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/06/27 17:03:09 by eel-orch         ###   ########.fr       */
-=======
-/*   Updated: 2021/06/27 16:26:05 by mlachheb         ###   ########.fr       */
->>>>>>> 5e7f9549798bad8447692ed31a91b0070c5e2338
+/*   Updated: 2021/06/27 19:12:52 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +24,6 @@ int	parse_execute(char	*line, char ***envp, int retv)
 	if (!parse_errors(cmd_tab))
 	{	
 		cmd = fill_command(cmd_tab);
-		sleep(10);
 		retv = ft_execute(cmd, envp);
 		ft_free_args(cmd_tab);
 		clear_cmds(&cmd);
