@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 19:50:20 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/27 18:31:15 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/27 20:10:55 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,6 @@ int open_outputs_errors(char *str)
 	write(2, strerror(errno), ft_strlen(strerror(errno)));
 	write(2, "\n", 1);
 	return (-1);
-}
-
-int	open_here_doc(char *file)
-{
-	int fd;
-
-	fd = here_doc(file);
-	if (fd == 2)
-		return (-2);
-	fd = open("here_doc", O_RDONLY , S_IWUSR | S_IRUSR); 
-	return (fd);
 }
 
 int	open_redirections(t_redirection *redirection)
@@ -53,10 +42,6 @@ int	open_redirections(t_redirection *redirection)
 			new_fd = open(tmp_redirec->file, O_WRONLY | O_CREAT | O_APPEND, S_IWUSR | S_IRUSR);
 		else if (tmp_redirec->type == INPUT)
 			new_fd = open(tmp_redirec->file, O_RDONLY, S_IRUSR);
-		else
-			new_fd = open_here_doc(tmp_redirec->file);
-		if (new_fd == -2)
-			return (-2);
 		if (new_fd == -1)
 		{
 			error = open_outputs_errors(tmp_redirec->file);
