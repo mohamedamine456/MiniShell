@@ -61,4 +61,5 @@ char			**ft_dup_env(char **envp);
 int				contain_slaches(char *str);
 int				is_duplicated_var(char **env, char *var);
 int				ft_replace_envp(const char *name, char *value, char ***envp);
+char			*ft_random_name();
 #endif
