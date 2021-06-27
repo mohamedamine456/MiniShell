@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 13:33:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/26 21:02:10 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/27 20:12:42 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 
 int ft_exec_nested_cmd(t_cmd *cmd, char ***env);
 int	get_exit_status(int status);
-int	here_doc(char *delimeter);
+int	here_doc(char *delimeter, char *file_name);
 #endif

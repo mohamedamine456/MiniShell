@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 14:47:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/27 16:25:54 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/27 20:12:10 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_history		*read_hists(int fd);
  */
 
 int				parse_execute(char *line, char ***envp, int retv);
+int				read_heredocs(char **cmd_tab);
 //int				parse_execute_helper(char *tab_cmd, char ***envp, int *retv);
 
 /*

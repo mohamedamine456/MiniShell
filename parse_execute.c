@@ -6,11 +6,8 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/06/27 17:03:09 by eel-orch         ###   ########.fr       */
-=======
+/*   Updated: 2021/06/27 20:10:30 by mlachheb         ###   ########.fr       */
 /*   Updated: 2021/06/27 16:26:05 by mlachheb         ###   ########.fr       */
->>>>>>> 5e7f9549798bad8447692ed31a91b0070c5e2338
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +23,13 @@ int	parse_execute(char	*line, char ***envp, int retv)
 	cmd_tab = replace_cmd_env(cmd_tab, *envp, retv);
 	cmd_tab = clean_tab_cmd(cmd_tab);
 	if (!parse_errors(cmd_tab))
-	{	
+	{
+		if (read_heredocs(cmd_tab))
+		{
+			ft_free_args(cmd_tab);
+			return (1);
+		}
 		cmd = fill_command(cmd_tab);
-		sleep(10);
 		retv = ft_execute(cmd, envp);
 		ft_free_args(cmd_tab);
 		clear_cmds(&cmd);
@@ -41,6 +42,34 @@ int	parse_execute(char	*line, char ***envp, int retv)
 	}
 	free(line);
 	return (retv);
+}
+
+int	read_heredocs(char **cmd_tab)
+{
+	int		i;
+	char	*filename;
+	
+	i = 0;
+	while (cmd_tab != NULL && cmd_tab[i] != NULL)
+	{
+		if(!ft_strcmp(cmd_tab[i], "<<") && cmd_tab[i + 1] != NULL)
+		{
+			filename = ft_random_name();
+			if (here_doc(cmd_tab[i + 1], filename))
+			{
+				free(filename);
+				return (1);
+			}
+			free(cmd_tab[i]);
+			cmd_tab[i] = ft_strdup("<");
+			free(cmd_tab[i + 1]);
+			cmd_tab[i + 1] = ft_strdup(filename);
+			free(filename);
+			filename = NULL;
+		}
+		i++;
+	}
+	return (0);
 }
 
 //int	parse_execute_helper(char *tab_cmd, char ***envp, int *retv)
