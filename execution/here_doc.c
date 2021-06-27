@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 15:41:19 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/26 21:07:08 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/27 17:30:33 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,29 @@
 
 void	ctrl_handler(int sig)
 {
-	exit(1);
+	exit(sig);
 }
 
 void	signals(void)
 {
 	if (signal(SIGINT, ctrl_handler) == SIG_ERR)
-		exit(1);
+		exit(SIGINT);
+}
+
+void close_and_exit(int fd)
+{
+	close(fd);
+	exit(fd);
 }
 
 int	here_doc(char *delimeter)
 {
-	int fd;
+	int	fd;
 	char *line;
+	int	status;
 	pid_t pid;
 
-	fd = open("here_doc", O_RDWR | O_TRUNC, S_IWUSR | S_IRUSR);
+	fd = open("here_doc", O_RDWR | O_TRUNC | O_CREAT, S_IWUSR | S_IRUSR);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -39,16 +46,16 @@ int	here_doc(char *delimeter)
 			line = NULL;
 			line = readline(">");
 			if (line == NULL)
-				exit(fd);
+				close_and_exit(fd);
 			if (ft_strcmp(line, delimeter) == 0)
-					break;
+				close_and_exit(fd);
 			write(fd, line, ft_strlen(line));
 			write(fd, "\n", 1);
 			free(line);
 		}
-		exit(fd);
+		close_and_exit(fd);
 	}
-	wait(NULL);
-	return (fd);
+	waitpid(pid, &status, 0);
+	return (get_exit_status(status));
 }
 
