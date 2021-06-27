@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:33:31 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/26 15:36:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/27 21:36:12 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_exit(t_builtin_vars var, int *retv)
 		&& !check_exit_arg(var.args[1]))
 	{
 		number = ft_atoi(var.args[1]);
-		//free alllllll
+		ft_free_builtin_vars(&var);
 		exit(number);
 	}
 	else
@@ -71,4 +71,23 @@ int		check_exit_arg(char *str)
 	if (number > LLONG_MAX || number < LLONG_MIN)
 		return (1);
     return (0);
+}
+
+void	ft_free_builtin_vars(t_builtin_vars *var)
+{
+	if (var->args != NULL)
+	{
+		ft_free_args(var->args);
+		var->args = NULL;
+	}
+	if (var->option != NULL)
+	{
+		free(var->option);
+		var->option = NULL;
+	}
+	if (*(var->envp) != NULL)
+	{
+		ft_free_args(*(var->envp));
+		*(var->envp) = NULL;
+	}
 }
