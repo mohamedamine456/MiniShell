@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 19:50:20 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/26 21:07:51 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/27 18:31:15 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,55 @@ int open_outputs_errors(char *str)
 	return (-1);
 }
 
+int	open_here_doc(char *file)
+{
+	int fd;
+
+	fd = here_doc(file);
+	if (fd == 2)
+		return (-2);
+	fd = open("here_doc", O_RDONLY , S_IWUSR | S_IRUSR); 
+	return (fd);
+}
+
 int	open_redirections(t_redirection *redirection)
 {
 	int	new_fd;
 	int	tmp_fd;
 	int error;
+	t_redirection *tmp_redirec;
 
 	if (redirection == NULL)
 		return (0);
+	tmp_redirec = redirection;
 	new_fd = 0;
 	error = 0;
-	while (redirection != NULL)
+	while (tmp_redirec != NULL)
 	{
-		if (redirection->type == TRUNC)
-			new_fd = open(redirection->file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR | S_IRUSR);
-		else if (redirection->type == APPEND)
-			new_fd = open(redirection->file, O_WRONLY | O_CREAT | O_APPEND, S_IWUSR | S_IRUSR);
-		else if (redirection->type == INPUT)
-			new_fd = open(redirection->file, O_RDONLY, S_IRUSR);
+		if (tmp_redirec->type == TRUNC)
+			new_fd = open(tmp_redirec->file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR | S_IRUSR);
+		else if (tmp_redirec->type == APPEND)
+			new_fd = open(tmp_redirec->file, O_WRONLY | O_CREAT | O_APPEND, S_IWUSR | S_IRUSR);
+		else if (tmp_redirec->type == INPUT)
+			new_fd = open(tmp_redirec->file, O_RDONLY, S_IRUSR);
 		else
-			new_fd = here_doc(redirection->file);
+			new_fd = open_here_doc(tmp_redirec->file);
+		if (new_fd == -2)
+			return (-2);
 		if (new_fd == -1)
 		{
-			error = open_outputs_errors(redirection->file);
-			redirection = redirection->next;
+			error = open_outputs_errors(tmp_redirec->file);
+			tmp_redirec = tmp_redirec->next;
 			continue ;
 		}
-		if (redirection->type == TRUNC || redirection->type == APPEND)
+		if (tmp_redirec->type == TRUNC || tmp_redirec->type == APPEND)
 			tmp_fd = dup2(new_fd, 1);
 		else
 			tmp_fd = dup2(new_fd, 0);
 		close(new_fd);
 		if (tmp_fd < 0)
-			error = open_outputs_errors(redirection->file);
-		redirection = redirection->next;
+			error = open_outputs_errors(tmp_redirec->file);
+		tmp_redirec = tmp_redirec->next;
 	}
-	close(new_fd);
 	return (error);
 }
