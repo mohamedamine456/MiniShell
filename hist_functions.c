@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 14:46:41 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/02 14:47:10 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/27 12:42:44 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,13 @@ void	clear_hist(t_history **hists)
 	hist1 = *hists;
 	while (hist1 != NULL)
 	{
-		hist2 = hist1->next;
+		hist2 = hist1->previous;
 		if (hist1->line_orig != NULL)
 			free(hist1->line_orig);
 		if (hist1->line_chngd != NULL)
 			free(hist1->line_chngd);
 		free(hist1);
 		hist1 = NULL;
-		hist2->previous = NULL;
 		hist1 = hist2;
 	}
 	hists = NULL;
