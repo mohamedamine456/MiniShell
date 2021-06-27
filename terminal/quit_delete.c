@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:05:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/05 13:57:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/27 17:50:16 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	quit_d(t_read_tools *rt)
 	free(rt->tmp);
 	free(g_data.command_line);
 	close(g_data.fd);
+	clear_hist(&(g_data.hists));
 	write(1, "exit\n", 5);
 	if (!reset_terminal(&(g_data.orig)))
 	{
-		//system("leaks minishell");
 		exit(0);
 	}
 	else
