@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 16:19:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/27 21:32:33 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 13:43:45 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,74 @@ typedef struct s_builtin_vars
 
 }				t_builtin_vars;
 
+/*
+ * ft_echo.c prototypes
+ */
+
 void			ft_echo(t_builtin_vars var, int *retv);
+
+/*
+ * ft_pwd.c prototypes
+ */
+
 void			ft_pwd(t_builtin_vars var, int *retv);
+
+/*
+ * ft_cd.c prototypes
+ */
+
 void			ft_cd(t_builtin_vars var, int *retv);
-void			ft_exit(t_builtin_vars var, int *retv);
-void			ft_exit_helper(t_builtin_vars var, int *retv);
-void			ft_unset(t_builtin_vars var, int *retv);
-void			ft_env(t_builtin_vars var, int *retv);
-void			ft_export(t_builtin_vars var, int *retv);
-
-void			ft_cd_helper(t_builtin_vars var, char *dest_path, int *retv);
-void			ft_cd_oldpwd(t_builtin_vars var, int *retv);
-int				set_oldpwd(char ***envp);
-int				exec_builtin(t_cmd *cmd, char ***envp);
-char			**remove_env(char *str, char **envp);
-int				ft_look_path(char **envp);
-int				isbuilt_in(char *cmd);
-void			ft_builtin_errors(const char *name, int err, int *retv);
-int				exec_builtin(t_cmd *cmd, char ***envp);
-int				is_simple_cmd(t_cmd *cmd);
-int				ft_execute(t_cmd *cmd, char ***envp);
-int				check_exit_arg(char *str);
-
-void    		ft_cd_normal_case(t_builtin_vars var, char *dest_path, int *retv);
+void			ft_cd_normal_case(t_builtin_vars var,
+					char *dest_path, int *retv);
 int				change_oldpwd(char ***envp);
 int				change_pwd(char ***envp);
+void			ft_cd_oldpwd(t_builtin_vars var, int *retv);
 
+/*
+ * ft_exit.c prototypes
+ */
+
+void			ft_exit(t_builtin_vars var, int *retv);
+void			ft_exit_helper(t_builtin_vars var, int *retv);
+int				check_exit_arg(char *str);
+void			ft_free_builtin_vars(t_builtin_vars *var);
+
+/*
+ * ft_unset.c prototypes
+ */
+
+void			ft_unset(t_builtin_vars var, int *retv);
+char			**remove_env(char *str, char **envp);
 int				valid_identifier(char *identifier);
 void			not_valid_identifier(char *identifier);
 
-void			ft_free_builtin_vars(t_builtin_vars *var);
+/*
+ * ft_env.c prototypes
+ */
+
+void			ft_env(t_builtin_vars var, int *retv);
+
+/*
+ * ft_export.c prototypes
+ */
+
+void			ft_export(t_builtin_vars var, int *retv);
+
+/*
+ * ft_builtin_errors.c prototypes
+ */
+
+void			ft_builtin_errors(const char *name, int err, int *retv);
+
+/*
+ * ft_builtin_errors.c prototypes
+ */
+
+int				exec_builtin(t_cmd *cmd, char ***envp);
+
+int				isbuilt_in(char *cmd);
+int				exec_builtin(t_cmd *cmd, char ***envp);
+int				is_simple_cmd(t_cmd *cmd);
+int				ft_execute(t_cmd *cmd, char ***envp);
 
 #endif

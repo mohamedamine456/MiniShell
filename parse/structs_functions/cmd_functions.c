@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 16:01:49 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/18 20:23:28 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 13:49:54 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	clear_cmds(t_cmd **cmds)
 		if (cmd1->args != NULL)
 			ft_free_args(cmd1->args);
 		if (cmd1->redirection != NULL)
-			clear_redirection(&(cmd1->redirection));		
+			clear_redirection(&(cmd1->redirection));
 		free(cmd1);
 		cmd1 = NULL;
 		cmd1 = cmd2;

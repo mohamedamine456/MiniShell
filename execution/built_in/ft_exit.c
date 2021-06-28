@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:33:31 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/27 21:36:12 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 13:37:47 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_exit(t_builtin_vars var, int *retv)
 	double	number;
 
 	number = 0;
-	write(1, "exit\n", 5);
+	write(2, "exit\n", 5);
 	if (ft_size_args(var.args) == 1)
 		exit(0);
 	else if (ft_size_args(var.args) == 2 && var.args[1] != NULL
@@ -52,25 +52,25 @@ void	ft_exit_helper(t_builtin_vars var, int *retv)
 	}
 }
 
-int		check_exit_arg(char *str)
+int	check_exit_arg(char *str)
 {
-    int		i;
+	int		i;
 	double	number;
 
-    i = 0;
+	i = 0;
 	str = ft_remove_spaces(ft_strdup(str));
 	if (str[i] == '-' || str[i] == '+')
 		i = 1;
-    while (str[i] != '\0')
-    {
-        if (!ft_char_in_string(str[i], "0123456789"))
-            return (1);
-        i++;
-    }
+	while (str[i] != '\0')
+	{
+		if (!ft_char_in_string(str[i], "0123456789"))
+			return (1);
+		i++;
+	}
 	number = ft_atoi(str);
 	if (number > LLONG_MAX || number < LLONG_MIN)
 		return (1);
-    return (0);
+	return (0);
 }
 
 void	ft_free_builtin_vars(t_builtin_vars *var)

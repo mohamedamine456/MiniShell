@@ -6,16 +6,15 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 15:36:13 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/18 20:27:25 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 13:51:37 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs_functions.h"
 
-
 void	add_redirection_back(t_redirection **redirection, t_redirection *new)
 {
-	t_redirection *tmp;
+	t_redirection	*tmp;
 
 	if (*redirection == NULL)
 		*redirection = new;
@@ -30,7 +29,7 @@ void	add_redirection_back(t_redirection **redirection, t_redirection *new)
 
 void	clear_redirection(t_redirection **redi)
 {
-	t_redirection *tmp;
+	t_redirection	*tmp;
 
 	tmp = *redi;
 	if (redi == NULL)
@@ -63,9 +62,9 @@ void	clear_inputs(t_input **inputs)
 	inputs = NULL;
 }
 
-t_redirection *new_redirection(void)
+t_redirection	*new_redirection(void)
 {
-	t_redirection *redirection;
+	t_redirection	*redirection;
 
 	redirection = (t_redirection *)malloc(sizeof(t_redirection));
 	redirection->type = -1;

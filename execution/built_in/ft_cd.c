@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:20:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/23 10:38:52 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 13:36:19 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_cd(t_builtin_vars var, int *retv)
 
 	dest_path = NULL;
 	if (var.args != NULL && (var.args[1] == NULL
-		|| (var.args[1] != NULL && !ft_strcmp(var.args[1], "--"))))
+			|| (var.args[1] != NULL && !ft_strcmp(var.args[1], "--"))))
 	{
 		dest_path = search_env(ft_strdup("HOME"), *(var.envp));
 		if (dest_path == NULL)
@@ -97,22 +97,22 @@ int	change_pwd(char ***envp)
 	return (1);
 }
 
-void    ft_cd_oldpwd(t_builtin_vars var, int *retv)
+void	ft_cd_oldpwd(t_builtin_vars var, int *retv)
 {
-    char    *oldpwd;
+	char	*oldpwd;
 
-    oldpwd = search_env(ft_strdup("OLDPWD"), *(var.envp));
-    if (oldpwd == NULL || !ft_strcmp(oldpwd, ""))
-    {
-        write(2, "Minishell: cd: OLDPWD not set\n", 30);
-        *retv = 1;
-        return ;
-    }
-    else
-    {
-        ft_cd_normal_case(var, oldpwd, retv);
-        ft_pwd(var, retv);
-        free(oldpwd);
-        return ;
-    }
+	oldpwd = search_env(ft_strdup("OLDPWD"), *(var.envp));
+	if (oldpwd == NULL || !ft_strcmp(oldpwd, ""))
+	{
+		write(2, "Minishell: cd: OLDPWD not set\n", 30);
+		*retv = 1;
+		return ;
+	}
+	else
+	{
+		ft_cd_normal_case(var, oldpwd, retv);
+		ft_pwd(var, retv);
+		free(oldpwd);
+		return ;
+	}
 }

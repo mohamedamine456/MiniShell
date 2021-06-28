@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/28 13:45:15 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/06/28 13:46:12 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSE_H
 # define PARSE_H
 # include "../libft/libft.h"
@@ -44,8 +56,7 @@ void		print_cmd(t_cmd *cmd);
 
 t_cmd		*fill_command(char **tab);
 void		add_cmd_options(char **old_option, char *new);
-int 		is_redirection(char *str);
-
+int			is_redirection(char *str);
 
 /*
  * parse_errors.c prototypes
