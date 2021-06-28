@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:35:24 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/26 19:48:28 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:26:14 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,19 @@ void	write_hist(t_general_data *data, char *line)
 		free(line);
 }
 
+void	fill_hist(t_history **hists, char *line)
+{
+	t_history	*new;
+
+	new = new_hist();
+	new->line_orig = ft_strdup(line);
+	add_back_hist(hists, new);
+	free(line);
+}
+
 t_history	*read_hists(int fd)
 {
 	t_history	*hists;
-	t_history	*new;
 	char		*line;
 
 	hists = NULL;
@@ -58,18 +67,12 @@ t_history	*read_hists(int fd)
 	{
 		while (get_next_line(fd, &line) > 0)
 		{
-			new = new_hist();
-			new->line_orig = ft_strdup(line);
-			add_back_hist(&hists, new);
-			free(line);
+			fill_hist(&hists, line);
 			line = NULL;
 		}
 		if (ft_strcmp(line, ""))
 		{
-			new = new_hist();
-			new->line_orig = ft_strdup(line);
-			add_back_hist(&hists, new);
-			free(line);
+			fill_hist(&hists, line);
 			line = NULL;
 		}
 		else
@@ -83,7 +86,7 @@ t_general_data	init_general_data(void)
 	t_general_data	data;
 
 	data.retv = 0;
-	data.fd = open_history();	
+	data.fd = open_history();
 	data.hists = read_hists(data.fd);
 	data.hists = last_hist(data.hists);
 	data.command_line = NULL;

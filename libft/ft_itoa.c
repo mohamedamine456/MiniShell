@@ -6,15 +6,15 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 16:12:18 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/01 16:12:21 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:52:38 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_number_length(long number)
+int	ft_number_length(long number)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (number > 9)

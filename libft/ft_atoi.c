@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 12:19:17 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/21 17:25:10 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:44:54 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double	number(const char *str, int neg)
 	res = 0;
 	while (str[i] >= 48 && str[i] <= 57)
 	{
-		res = res * 10 + str[i] - 48;	
+		res = res * 10 + str[i] - 48;
 		i++;
 	}
 	return (res * neg);

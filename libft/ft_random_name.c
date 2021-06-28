@@ -6,19 +6,19 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:48:10 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/27 21:23:36 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:02:48 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_random_name()
+char	*ft_random_name(void)
 {
-	static int nb = 0;
-	char *name;
-	char *str_nb;
-	char *str_modulo;
-	char *tmp;
+	static int	nb = 0;
+	char		*name;
+	char		*str_nb;
+	char		*str_modulo;
+	char		*tmp;
 
 	nb++;
 	str_nb = ft_itoa(nb);

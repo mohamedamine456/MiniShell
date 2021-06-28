@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 09:45:33 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/24 11:08:31 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:47:41 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char **ft_dup_env(char **envp)
+char	**ft_dup_env(char **envp)
 {
 	char	**new_envp;
 	char	**tab;

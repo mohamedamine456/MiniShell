@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 16:35:35 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/03/29 16:37:49 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:51:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isseparator(int c)
+int	ft_isseparator(int c)
 {
 	if (ft_char_in_string(c, SEPARATORS))
 		return (1);
