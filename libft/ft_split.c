@@ -6,11 +6,11 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:51:46 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/14 09:41:56 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:58:27 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
 char	**ft_split(char const *s, char c)
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/28 16:00:10 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/06/28 16:00:41 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*check_h_n(const char *h, const char *n)
@@ -9,9 +21,9 @@ char	*check_h_n(const char *h, const char *n)
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int i;
-	int found;
-	int j;
+	int	i;
+	int	found;
+	int	j;
 	int	len;
 
 	i = -1;
@@ -28,9 +40,8 @@ char	*ft_strstr(const char *haystack, const char *needle)
 			{
 				if (haystack[i + j] != needle[j])
 					found = 0;
-				if (j == (ft_strlen((char *)needle) - 1) && found == 1)
+				if (j++ == (ft_strlen((char *)needle) - 1) && found == 1)
 					return ((char *)haystack + i);
-				j++;
 			}
 		}
 	}
