@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/17 10:21:34 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:53:27 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,30 +113,9 @@ void	ft_export(t_builtin_vars var, int *retv)
 					*retv = 0;
 			}
 			else
-			{
-				write(2, "minishell: export ", ft_strlen("minishell: export "));
-				write(2, var.args[i], ft_strlen(var.args[i]));
-				write(2, ": not a valid identifier\n", ft_strlen(": not a valid identifier") + 1);
-				*retv = -1;
-			}
+				ft_export_errors(var.args[i], retv);			
 			i++;
 		}
 	}
 }
 
-//int main(int argc, char **argv, char **env)
-//{
-//	t_builtin_vars vars;
-//	int retv = 0;
-//	char **env_dup;
-//	vars.args = (char **)malloc(sizeof(char *) * 3);
-//	vars.args[0] = ft_strdup("export");
-//	vars.args[1] = ft_strdup("AAA = ls -la");
-//	vars.args[2] = NULL;
-//	vars.option = NULL;
-//	vars.envp = (char ***)malloc(sizeof(char **));
-//	env_dup = ft_tabdup(env);
-//	*(vars.envp) = env_dup;
-//	ft_export(vars, &retv);
-//
-//}
