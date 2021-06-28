@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:56:34 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 15:05:07 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:19:13 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,30 @@ void sort_and_print(char **env, int *retv)
 	print_vars(tmp);
 	ft_free_args(tmp);
 	*retv = 0;
+}
+
+int add_env(t_builtin_vars var, int *retv, int i)
+{
+	int		env_index;
+	char	**tmp;
+
+	if (isvalid_var(var.args[i]) == 0)
+	{
+		env_index = is_duplicated_var(*(var.envp), var.args[i]);
+		if (env_index != -1)
+		{
+			free((*(var.envp))[env_index]);
+			(*(var.envp))[env_index] = ft_strdup(var.args[i]);
+		}
+		else
+		{
+			tmp = *(var.envp);
+			*(var.envp) = ft_jointabstr(*(var.envp), var.args[i]);
+			ft_free_args(tmp);
+		}
+		if (*retv != -1)
+			*retv = 0;
+		return (0);
+	}
+	return (-1);
 }
