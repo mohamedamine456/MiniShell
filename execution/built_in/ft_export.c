@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 14:53:27 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:03:57 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,7 @@ void	ft_export(t_builtin_vars var, int *retv)
 	i = 0;
 	*retv = 0;
 	if (var.args[1] == NULL)
-	{
-		tmp = ft_tabdup(*(var.envp));
-		sort_strings(tmp);
-		print_vars(tmp);
-		ft_free_args(tmp);
-		*retv = 0;
-	}
+		sort_and_print(*(var.envp), retv);
 	else
 	{
 		while (var.args[i] != NULL)
