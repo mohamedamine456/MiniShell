@@ -6,15 +6,15 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:28:12 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/13 15:20:36 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 18:50:56 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int contain_slaches(char *str)
+int	contain_slaches(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str == NULL)

@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 10:21:49 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/17 10:22:16 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 18:49:33 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_duplicated_var(char **env, char *var)
 {
-	char 	**table;
+	char	**table;
 	char	**var_key;
 	int		is_duplicated;
 	int		i;

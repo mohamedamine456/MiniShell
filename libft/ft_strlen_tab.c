@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen_tab.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/28 18:45:39 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/06/28 18:46:09 by eel-orch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int ft_strlen_tab(char **tab)
+int	ft_strlen_tab(char **tab)
 {
-    int len;
+	int	len;
 
-    len = 0;
-    if (tab == NULL)
-      return (0);
-    while (tab[len] != NULL)
-		  len++;
-    return (len);
+	len = 0;
+	if (tab == NULL)
+		return (0);
+	while (tab[len] != NULL)
+		len++;
+	return (len);
 }
