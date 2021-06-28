@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/27 18:34:10 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 19:51:33 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,6 @@ void	add_cmd_redirection(t_cmd *cmd, char *str, char *file, int *index)
 	tmp->file = ft_strdup(file);
 	add_redirection_back(&(cmd->redirection), tmp);
 	(*index)++;
-}
-
-void	add_cmd_args(t_cmd *cmd, char *tab)
-{
-	if (cmd->args == NULL)
-	{
-		cmd->args = ft_split(cmd->name, '\0');
-		cmd->args = ft_resize_tab(cmd->args, ft_strdup(tab));
-	}
-	else
-		cmd->args = ft_resize_tab(cmd->args, ft_strdup(tab));
-}
-
-
-int	ft_check(t_cmd *cmd, char *str)
-{
-	char	**tab;
-	int		i;
-
-	i = -1;
-	tab = ft_split_white_spaces(str);
-	if (cmd->name == NULL && ft_strlen_tab(tab) > 1)
-		i = 0;
-	ft_free_args(tab);
-	return (i);
 }
 
 void	fill(t_cmd *cmd, char *str)
@@ -72,6 +47,12 @@ void	fill(t_cmd *cmd, char *str)
 	ft_free_args(tab);
 }
 
+void	next_parse_cmd(t_cmd **parse_cmd)
+{
+	(*parse_cmd)->next = new_cmd();
+	*parse_cmd = (*parse_cmd)->next;
+}
+
 t_cmd	*fill_command(char **tab)
 {
 	t_cmd	*cmd;
@@ -92,10 +73,7 @@ t_cmd	*fill_command(char **tab)
 		else if (is_redirection(tab[i]) != -1)
 			add_cmd_redirection(pars, tab[i], tab[i + 1], &i);
 		else if (ft_ispipe(tab[i]) != -1)
-		{
-			pars->next = new_cmd();
-			pars = pars->next;
-		}
+			next_parse_cmd(&pars);
 		else
 			add_cmd_args(pars, ft_strdup(tab[i]));
 		if (tab[i] != NULL)
@@ -106,7 +84,8 @@ t_cmd	*fill_command(char **tab)
 
 //int main()
 //{
-//	char **tab = ft_split("export >> output1 << input1 > ff | grep l < grep_input > grep_output", 32);
+//	char **tab = ft_split("export >> output1 << input1 > ff 
+//	| grep l < grep_input > grep_output", 32);
 //	t_cmd *cmd = fill_command(tab);
 //	print_cmd(cmd);
 //}

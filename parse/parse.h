@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 13:45:15 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 13:46:12 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 19:37:59 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void		print_cmd(t_cmd *cmd);
 t_cmd		*fill_command(char **tab);
 void		add_cmd_options(char **old_option, char *new);
 int			is_redirection(char *str);
+void		add_cmd_args(t_cmd *cmd, char *tab);
+int			ft_check(t_cmd *cmd, char *str);
 
 /*
  * parse_errors.c prototypes
