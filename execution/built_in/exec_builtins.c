@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:02:02 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 17:10:37 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 17:25:19 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_builtin_vars	cmd_to_builtin_vars(t_cmd *cmd, char ***envp)
 {
 	t_builtin_vars	vars;
 
-	vars.args = cmd->args;//ft_tabdup(cmd->args);	
+	vars.args = cmd->args;
 	vars.envp = envp;
 	if (cmd->option != NULL)
 		vars.option = ft_strdup(cmd->option);
@@ -40,5 +40,7 @@ int	exec_builtin(t_cmd *cmd, char ***env)
 	retv = 0;
 	vars = cmd_to_builtin_vars(cmd, env);
 	vars.ft_builtin[isbuilt_in(cmd->args[0]) - 20](vars, &retv);
+	if (vars.option != NULL)
+		free(vars.option);
 	return (retv);
 }
