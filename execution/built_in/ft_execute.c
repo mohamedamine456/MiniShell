@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/20 17:03:05 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/27 17:15:48 by eel-orch         ###   ########.fr       */
+/*   Created: 2021/06/28 17:06:23 by eel-orch          #+#    #+#             */
+/*   Updated: 2021/06/28 17:06:30 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int 	is_simple_cmd(t_cmd *cmd)
 	return (2);
 }
 
-int ft_execute(t_cmd *cmd, char ***envp)
+int	ft_execute(t_cmd *cmd, char ***envp)
 {
-	int retv;
+	int	retv;
 	int	std_in;
-	int std_out;
+	int	std_out;
 
 	if (is_simple_cmd(cmd) == 1)
 	{
