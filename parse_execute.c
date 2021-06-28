@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 14:37:13 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 16:28:59 by mlachheb         ###   ########.fr       */
 /*   Updated: 2021/06/27 16:26:05 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -25,10 +25,7 @@ int	parse_execute(char	*line, char ***envp, int retv)
 	if (!parse_errors(cmd_tab))
 	{
 		if (read_heredocs(cmd_tab))
-		{
-			ft_free_args(cmd_tab);
 			return (1);
-		}
 		cmd = fill_command(cmd_tab);
 		retv = ft_execute(cmd, envp);
 		ft_free_args(cmd_tab);
@@ -58,6 +55,7 @@ int	read_heredocs(char **cmd_tab)
 			if (here_doc(cmd_tab[i + 1], filename))
 			{
 				free(filename);
+				ft_free_args(cmd_tab);
 				return (1);
 			}
 			free(cmd_tab[i]);

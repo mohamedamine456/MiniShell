@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:48:10 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 15:02:48 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 16:29:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char	*ft_random_name(void)
 	nb++;
 	str_nb = ft_itoa(nb);
 	str_modulo = ft_itoa(nb % 3);
-	tmp = ft_strdup("/tmp");
+	tmp = ft_strdup("/tmp/");
 	tmp = ft_strjoin(tmp, str_nb);
 	name = ft_strjoin(tmp, str_modulo);
-	free(str_modulo);
+	free(str_nb);
 	free(str_modulo);
 	return (name);
 }
