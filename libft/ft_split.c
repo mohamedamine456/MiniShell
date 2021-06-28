@@ -6,11 +6,37 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:51:46 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 15:58:27 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 16:06:11 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	count_s(char *s, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s != NULL && s[i] != '\0')
+	{
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int	car_s(char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s != NULL && s[i] != c && s[i] != '\0')
+		i++;
+	return (i);
+}
 
 char	**ft_split(char const *s, char c)
 {
@@ -38,30 +64,4 @@ char	**ft_split(char const *s, char c)
 	}
 	words[i] = 0;
 	return (words);
-}
-
-int	count_s(char *s, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (s != NULL && s[i] != '\0')
-	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-int	car_s(char *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s != NULL && s[i] != c && s[i] != '\0')
-		i++;
-	return (i);
 }
