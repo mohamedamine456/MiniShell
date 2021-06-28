@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 14:47:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/27 20:12:10 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:32:40 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # include <fcntl.h>
 # include "open_files/open_files.h"
 # include "structs.h"
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
 int				open_history(void);
 void			write_hist(t_general_data *hist, char *line);
@@ -47,7 +47,6 @@ t_history		*read_hists(int fd);
 
 int				parse_execute(char *line, char ***envp, int retv);
 int				read_heredocs(char **cmd_tab);
-//int				parse_execute_helper(char *tab_cmd, char ***envp, int *retv);
 
 /*
  * prototypes for hist_functions.c file

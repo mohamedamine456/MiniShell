@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split_white_spaces.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/28 15:07:21 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/06/28 15:11:23 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int		count_words(char *str)
+int	count_words(char *str)
 {
-	int i;
-	int nb_words;
-	t_escapes escp;
+	int			i;
+	int			nb_words;
+	t_escapes	escp;
 
 	i = 0;
 	escp = (t_escapes){0, 0, 0};
@@ -16,21 +28,22 @@ int		count_words(char *str)
 		escp = ft_check_escapes(escp, str[i]);
 		if (escp.b_s == 0 && escp.d_q % 2 == 0 && escp.s_q % 2 == 0)
 		{
-			if (!ft_isspace(str[i]) && (ft_isspace(str[i + 1]) || str[i + 1] == '\0'))
+			if (!ft_isspace(str[i]) && (ft_isspace(str[i + 1])
+					|| str[i + 1] == '\0'))
 				nb_words++;
-			if (str[i + 1] == '\0')		// in case all quotes are closed
+			if (str[i + 1] == '\0')
 				return (nb_words);
 		}
 		if (str[i] != '\\' && escp.b_s == 1)
 			escp.b_s = 0;
 		i++;
 	}
-	return (nb_words + 1); // if a quote is not closed
+	return (nb_words + 1);
 }
 
-int		is_word(char *str, int begin)
+int	is_word(char *str, int begin)
 {
-	int		i;
+	int			i;
 	t_escapes	escp;
 
 	i = begin;
@@ -38,8 +51,9 @@ int		is_word(char *str, int begin)
 	while (str[i] != '\0')
 	{
 		escp = ft_check_escapes(escp, str[i]);
-		if (ft_isspace(str[i + 1]) && escp.b_s == 0 && escp.d_q % 2 == 0 && escp.s_q % 2 == 0)
-			break;
+		if (ft_isspace(str[i + 1]) && escp.b_s == 0
+			&& escp.d_q % 2 == 0 && escp.s_q % 2 == 0)
+			break ;
 		if (str[i] != '\\' && escp.b_s == 1)
 			escp.b_s = 0;
 		i++;

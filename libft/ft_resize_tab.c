@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 11:05:47 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/04/01 11:05:49 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:04:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
  * This function to simply add a string to table of strings
 */
 
-char		**ft_resize_tab(char **old, char *chaine)
+char	**ft_resize_tab(char **old, char *chaine)
 {
-	char **new;
-	int i;
-	int len;
+	char	**new;
+	int		i;
+	int		len;
 
 	i = 0;
 	if (old == NULL)

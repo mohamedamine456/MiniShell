@@ -1,4 +1,16 @@
-# include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_remove_spaces.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/28 15:03:08 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/06/28 15:03:32 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 /**
  * This Function Remove Additional spaces from a string
@@ -32,5 +44,5 @@ char	*ft_remove_spaces(char *str)
 	if (new[ft_strlen(new) - 1] == ' ')
 		new[ft_strlen(new) - 1] = '\0';
 	free(str);
-	return(new);
+	return (new);
 }

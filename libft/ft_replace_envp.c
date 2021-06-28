@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 12:50:03 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/22 13:30:11 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:04:06 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_replace_envp(const char *name, char *value, char ***envp)
+int	ft_replace_envp(const char *name, char *value, char ***envp)
 {
 	int		i;
 	char	**tab;

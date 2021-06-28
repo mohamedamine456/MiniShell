@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_only_digits.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/28 14:59:25 by mlachheb          #+#    #+#             */
+/*   Updated: 2021/06/28 14:59:36 by mlachheb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int		ft_only_digits(char *str)
+int	ft_only_digits(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        if (!ft_char_in_string(str[i], "0123456789"))
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!ft_char_in_string(str[i], "0123456789"))
+			return (0);
+		i++;
+	}
+	return (1);
 }

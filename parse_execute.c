@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/27 20:14:51 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:37:13 by mlachheb         ###   ########.fr       */
 /*   Updated: 2021/06/27 16:26:05 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -48,11 +48,11 @@ int	read_heredocs(char **cmd_tab)
 {
 	int		i;
 	char	*filename;
-	
+
 	i = 0;
 	while (cmd_tab != NULL && cmd_tab[i] != NULL)
 	{
-		if(!ft_strcmp(cmd_tab[i], "<<") && cmd_tab[i + 1] != NULL)
+		if (!ft_strcmp(cmd_tab[i], "<<") && cmd_tab[i + 1] != NULL)
 		{
 			filename = ft_random_name();
 			if (here_doc(cmd_tab[i + 1], filename))

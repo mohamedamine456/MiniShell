@@ -6,13 +6,13 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 17:34:08 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 17:35:51 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:34:14 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	char			*str;
 	static char		*grd = 0;
@@ -38,7 +38,7 @@ int			get_next_line(int fd, char **line)
 	return (make_line(&grd, line));
 }
 
-int			make_line(char **grd, char **line)
+int	make_line(char **grd, char **line)
 {
 	int		i;
 	char	*tmp;
@@ -64,7 +64,7 @@ int			make_line(char **grd, char **line)
 	return (0);
 }
 
-char		*ft_resize(char *s1, char *s2)
+char	*ft_resize(char *s1, char *s2)
 {
 	char	*s;
 	int		i;
@@ -93,17 +93,19 @@ char		*ft_resize(char *s1, char *s2)
 	return (s);
 }
 
-int			check_end_line(char *str)
+int	check_end_line(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str != 0)
+	{
 		while (str[i] != '\0')
 		{
 			if (str[i] == '\n')
 				return (1);
 			i++;
 		}
+	}
 	return (0);
 }
