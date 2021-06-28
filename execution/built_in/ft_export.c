@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 15:03:57 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:19:25 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	print_vars(char **vars)
 void	ft_export(t_builtin_vars var, int *retv)
 {
 	char	**tmp;
-	int index;
+	int		is_added;
 	int		i;
 
 	i = 0;
@@ -89,24 +89,8 @@ void	ft_export(t_builtin_vars var, int *retv)
 	{
 		while (var.args[i] != NULL)
 		{
-			if (isvalid_var(var.args[i]) == 0)
-			{
-				index = is_duplicated_var(*(var.envp), var.args[i]);
-				if (index != -1)
-				{
-					free((*(var.envp))[index]);
-					(*(var.envp))[index] = ft_strdup(var.args[i]);
-				}
-				else
-				{
-					tmp = *(var.envp);
-					*(var.envp) = ft_jointabstr(*(var.envp), var.args[i]);
-					ft_free_args(tmp);
-				}
-				if (*retv != -1)
-					*retv = 0;
-			}
-			else
+			is_added = add_env(var, retv, i);
+			if (is_added != 0)
 				ft_export_errors(var.args[i], retv);			
 			i++;
 		}
