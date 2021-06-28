@@ -12,7 +12,7 @@
 
 int				ft_strlen(const char *s);
 double			ft_atoi(const char *str);
-char            *ft_itoa(long number);
+char			*ft_itoa(long number);
 void			ft_putnbr(int n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_strcmp(const char *s1, const char *s2);
@@ -61,5 +61,6 @@ char			**ft_dup_env(char **envp);
 int				contain_slaches(char *str);
 int				is_duplicated_var(char **env, char *var);
 int				ft_replace_envp(const char *name, char *value, char ***envp);
-char			*ft_random_name();
+char			*ft_random_name(void);
+
 #endif
