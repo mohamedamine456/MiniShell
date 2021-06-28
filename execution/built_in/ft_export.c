@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 15:19:25 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/28 16:09:59 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,30 @@ char	*to_var(char *arg)
 	return (arg);
 }
 
+void	ft_print(char *var, int is_equal)
+{
+	int j;
+
+	j = 0;
+	while (var[j] != '\0')
+	{
+		if (var[j] == '=')
+			printf("=%c", 34);	
+		else
+			printf("%c", var[j]);
+		if (var[j + 1] == '\0' && is_equal != -1)
+			printf("%c", 34);
+		j++;
+	}
+	printf("\n");
+}
+
 void	print_vars(char **vars)
 {
 	int i;
 	int j;
 	int index;
 	int is_equal;
-
 
 	i = 0;
 	index = 0;
@@ -57,17 +74,7 @@ void	print_vars(char **vars)
 			j = 0;
 			is_equal = ft_strstri((const char *)vars[i], "=");
 			printf("declare -x ");
-			while (vars[i][j] != '\0')
-			{
-				if (vars[i][j] == '=')
-					printf("=%c", 34);	
-				else
-					printf("%c", vars[i][j]);
-				if(vars[i][j + 1] == '\0' && is_equal != -1)
-					printf("%c", 34);
-				j++;
-			}
-			printf("\n");
+			ft_print(vars[i], is_equal);
 			i++;
 		}
 	}
