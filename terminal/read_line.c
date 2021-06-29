@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:03:45 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/26 14:35:22 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 12:51:29 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,7 @@ char	*read_line(char *prompt)
 		g_data.command_line = just_read(&rt, prompt);
 		if (check_line_errors(g_data.command_line) == -1)
 		{
-			free(g_data.command_line);
-			g_data.command_line = NULL;
-			reset_terminal(&(g_data.orig));
-			free(rt.tmp);
-			write(1, "Close all quotes, no backslash at the end of line!\n", 52);
-			g_data.retv = 1;
+			line_error(rt);
 			return (NULL);
 		}
 		reset_terminal(&(g_data.orig));

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 11:17:07 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/25 15:51:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 12:34:29 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ void	ctrl_z_handler(int sig);
  */
 
 int		check_line_errors(char *line);
+void	line_error(t_read_tools rt);
 
 #endif
