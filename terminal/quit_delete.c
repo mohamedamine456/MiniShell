@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:05:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/27 17:50:16 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 19:28:10 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	quit_d(t_read_tools *rt)
 	write(1, "exit\n", 5);
 	if (!reset_terminal(&(g_data.orig)))
 	{
-		exit(0);
+		system("leaks minishell");
+		exit(g_data.retv);
 	}
 	else
 		exit(1);

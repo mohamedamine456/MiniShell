@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/06/29 15:34:47 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/06/29 15:38:59 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ all: $(NAME)
 $(NAME):
 	make fclean -C libft/
 	make -C libft/
+	make clean -C libft/
 	gcc -Wall -Wextra -Werror $(SRC) $(MAIN) $(LIBFT) -lreadline -L ~/.brew/opt/readline/lib\
 		-I ~/.brew/opt/readline/include -ltermcap -o $(NAME)
 
@@ -62,10 +63,12 @@ re: fclean rmexec all
 sanitize:
 	make fclean -C libft/
 	make -C libft/
+	make clean -C libft/
 	gcc -fsanitize=address $(SRC) $(MAIN) $(LIBFT) -lreadline -L ~/.brew/opt/readline/lib\
 		-I ~/.brew/opt/readline/include -ltermcap -o $(NAME)
 
 noflags:
 	make fclean -C libft/
 	make -C libft/
+	make clean -C libft/
 	gcc -g $(SRC) $(MAIN) $(LIBFT) -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include -ltermcap -o $(NAME)

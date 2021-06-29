@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/29 10:31:43 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 19:35:19 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,3 @@ t_cmd	*fill_command(char **tab)
 	}
 	return (cmd);
 }
-
-//int main()
-//{
-//	char **tab = ft_split("export >> output1 << input1 > ff 
-//	| grep l < grep_input > grep_output", 32);
-//	t_cmd *cmd = fill_command(tab);
-//	print_cmd(cmd);
-//}

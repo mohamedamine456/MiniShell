@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/25 15:49:41 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 18:24:48 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	intern_ctrl_c(char *prompt)
 	g_data.hists->line_orig = ft_strdup("");
 	g_data.hists->line_chngd = NULL;
 	g_data.nb_line = 0;
+	g_data.retv = 1;
 	write(1, "\n", 1);
 	write(1, prompt, ft_strlen(prompt));
 	return ;
