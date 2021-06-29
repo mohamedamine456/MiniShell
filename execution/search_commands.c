@@ -6,11 +6,11 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:40:43 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/21 14:10:23 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:29:16 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fork_commands.h"
+# include "execution.h"
 
 char	*command_path(char *cmd_name, char **envp)
 {
@@ -30,38 +30,38 @@ char	*command_path(char *cmd_name, char **envp)
 
 char	**tab_paths(char **envp)
 {
-	char	**tab;
+	char	**tab_path;
 	char	*paths;
 	int		i;
 
 	i = 0;
 	paths = NULL;
-	tab = NULL;
+	tab_path = NULL;
 	if (envp == NULL)
 		return (NULL);
 	while (envp[i])
 	{
-		tab = ft_split(envp[i], '=');
-		if (tab != NULL && tab[0] != NULL)
+		tab_path = ft_split(envp[i], '=');
+		if (tab_path != NULL && tab_path[0] != NULL)
 		{
-			if (!ft_strcmp(tab[0], "PATH"))
+			if (!ft_strcmp(tab_path[0], "PATH"))
 			{
 				paths = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 4);
-				ft_free_args(tab);
-				tab = NULL;
+				ft_free_args(tab_path);
+				tab_path = NULL;
 				break ;
 			}
-			ft_free_args(tab);
-			tab = NULL;
+			ft_free_args(tab_path);
+			tab_path = NULL;
 		}
 		i++;
 	}
 	if (paths != NULL)
 	{
-		tab = ft_split(paths, ':');
+		tab_path = ft_split(paths, ':');
 		free(paths);
 	}
-	return (tab);
+	return (tab_path);
 }
 
 char	*check_right_path(char *cmd_name, char **paths)
@@ -85,17 +85,3 @@ char	*check_right_path(char *cmd_name, char **paths)
 	}
 	return (NULL);
 }
-
-//int main(int argc, char **argv, char **envp)
-//{
-//	char	*path;
-//
-//	if (argv[1] != NULL)
-//	{
-//		path = command_path(argv[1], envp);
-//		printf("%s\n", path);
-//	}
-//	else
-//		printf("Enter a command to look for");
-//	return (0);
-//}

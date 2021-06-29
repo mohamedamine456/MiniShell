@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/06/28 19:36:15 by eel-orch         ###   ########.fr        #
+#    Updated: 2021/06/29 13:23:48 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ BUILTINS_SRC = execution/built_in/exec_builtins.c execution/built_in/ft_cd.c exe
 			   execution/built_in/ft_env.c execution/built_in/ft_exit.c execution/built_in/ft_export.c\
 			   execution/built_in/ft_pwd.c execution/built_in/ft_unset.c execution/built_in/ft_builtin_errors.c\
 			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c execution/ft_exec_nested_cmd.c\
-			   execution/built_in/ft_execute.c fork_commands/search_commands.c\
+			   execution/built_in/ft_execute.c execution/search_commands.c\
 			   open_files/open_outputs.c execution/get_exit_status.c execution/here_doc.c\
 			   execution/built_in/ft_export_utils.c
 

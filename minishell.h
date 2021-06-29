@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 14:47:36 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 14:32:40 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:27:29 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,19 @@
 # include <stdio.h>
 # include <errno.h>
 # include <string.h>
-# include "get_next_line/get_next_line.h"
-# include "parse/parse.h"
-# include "terminal/terminal.h"
-# include "execution/execution.h"
-# include "execution/built_in/built_in.h"
-# include "fork_commands/fork_commands.h"
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "open_files/open_files.h"
-# include "structs.h"
 # include <readline/readline.h>
 # include <readline/history.h>
+# include "structs.h"
+# include "get_next_line/get_next_line.h"
+# include "parse/parse.h"
+# include "terminal/terminal.h"
+# include "execution/built_in/built_in.h"
+# include "open_files/open_files.h"
+# include "execution/execution.h"
 
 int				open_history(void);
 void			write_hist(t_general_data *hist, char *line);
