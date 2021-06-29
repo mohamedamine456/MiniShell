@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/06/29 15:38:59 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/06/29 20:34:20 by eel-orch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ BUILTINS_SRC = execution/built_in/exec_builtins.c execution/built_in/ft_cd.c exe
 			   execution/built_in/isbuilt_in.c execution/built_in/sort_strings.c execution/ft_exec_nested_cmd.c\
 			   execution/built_in/ft_execute.c execution/search_commands.c\
 			   open_files/open_outputs.c execution/get_exit_status.c execution/here_doc.c\
-			   execution/built_in/ft_export_utils.c
+			   execution/built_in/ft_export_utils.c execution/dup_pipes.c \
+			   execution/execution_errors.c execution/redirect_std_in_out.c
 
 GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(TERMINAL_SRC) $(GNL_SRC) $(BUILTINS_SRC)\
