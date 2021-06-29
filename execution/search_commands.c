@@ -6,11 +6,11 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:40:43 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/29 13:29:16 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 14:25:22 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "execution.h"
+#include "execution.h"
 
 char	*command_path(char *cmd_name, char **envp)
 {
@@ -28,6 +28,26 @@ char	*command_path(char *cmd_name, char **envp)
 	return (path);
 }
 
+int	tab_path_helper(char **paths, char **envp, int i)
+{
+	char	**tab_path;
+
+	tab_path = ft_split(envp[i], '=');
+	if (tab_path != NULL && tab_path[0] != NULL)
+	{
+		if (!ft_strcmp(tab_path[0], "PATH"))
+		{
+			*paths = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 4);
+			ft_free_args(tab_path);
+			tab_path = NULL;
+			return (0);
+		}
+		ft_free_args(tab_path);
+		tab_path = NULL;
+	}
+	return (1);
+}
+
 char	**tab_paths(char **envp)
 {
 	char	**tab_path;
@@ -41,19 +61,8 @@ char	**tab_paths(char **envp)
 		return (NULL);
 	while (envp[i])
 	{
-		tab_path = ft_split(envp[i], '=');
-		if (tab_path != NULL && tab_path[0] != NULL)
-		{
-			if (!ft_strcmp(tab_path[0], "PATH"))
-			{
-				paths = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 4);
-				ft_free_args(tab_path);
-				tab_path = NULL;
-				break ;
-			}
-			ft_free_args(tab_path);
-			tab_path = NULL;
-		}
+		if (!tab_path_helper(&paths, envp, i))
+			break ;
 		i++;
 	}
 	if (paths != NULL)
