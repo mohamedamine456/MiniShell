@@ -6,23 +6,23 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/29 19:35:19 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 20:06:04 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-void	add_cmd_redirection(t_cmd *cmd, char *str, char *file, int *index)
+void	add_cmd_redirection(t_cmd *cmd, char **tab_cmd, int *index)
 {
 	int				i;
 	int				type;
 	t_redirection	*tmp;
 
 	i = 0;
-	type = is_redirection(str);
+	type = is_redirection(tab_cmd[*index]);
 	tmp = new_redirection();
 	tmp->type = type;
-	tmp->file = ft_strdup(file);
+	tmp->file = ft_strdup(tab_cmd[*index + 1]);
 	add_redirection_back(&(cmd->redirection), tmp);
 	(*index)++;
 }
@@ -68,16 +68,16 @@ t_cmd	*fill_command(char **tab)
 			fill(pars, tab[i]);
 		else if (ft_is_string(tab[i]) != -1 && pars->args == NULL)
 			pars->args = ft_split(tab[i], '\0');
-		else if (pars->args != NULL && (is_option(tab[i], pars->args[0]) != -1) && pars->args[1] == NULL)
+		else if (pars->args != NULL && (is_option(tab[i],
+					pars->args[0]) != -1) && pars->args[1] == NULL)
 			add_cmd_options(&(pars->option), tab[i]);
 		else if (is_redirection(tab[i]) != -1)
-			add_cmd_redirection(pars, tab[i], tab[i + 1], &i);
+			add_cmd_redirection(pars, tab, &i);
 		else if (ft_ispipe(tab[i]) != -1)
 			next_parse_cmd(&pars);
 		else
 			add_cmd_args(pars, ft_strdup(tab[i]));
-		if (tab[i] != NULL)
-			i++;
+		i++;
 	}
 	return (cmd);
 }
