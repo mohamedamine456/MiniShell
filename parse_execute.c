@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:48:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/29 13:31:17 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:27:10 by mlachheb         ###   ########.fr       */
 /*   Updated: 2021/06/27 16:26:05 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -15,7 +15,6 @@
 
 int	parse_execute(char	*line, char ***envp, int retv)
 {
-	char	**tab_cmds;
 	char	**cmd_tab;
 	t_cmd	*cmd;
 

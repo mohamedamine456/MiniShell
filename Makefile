@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/06/29 13:23:48 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/06/29 15:34:47 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,60 +40,32 @@ GNL_SRC = get_next_line/get_next_line.c
 SRC = $(PARSE_SRC) $(TERMINAL_SRC) $(GNL_SRC) $(BUILTINS_SRC)\
 	  rdwr_history.c parse_execute.c print_cmds.c hist_functions.c
 
-
-
-PARSE_OBJSRC =	parse_command.o check_options.o add_cmd_option.o\
-				replace_env.o clean_tab_cmd.o fill_command.o\
-				cmd_functions.o input_functions.o \
-				parse_errors.o replace_tab_env.o is_redirection.o\
-				fill_command_utils.o
-
-TERMINAL_OBJSRC = check_flags.o delete_char.o format_terminal.o\
-				  read_line.o quit_delete.o history_functions.o\
-				  signal_handler.o check_line_errors.o init_read_tools.o
-
-BUILTINS_OBJSRC = exec_builtins.o ft_cd.o ft_echo.o ft_env.o ft_exit.o ft_export.o\
-			   ft_pwd.o ft_unset.o isbuilt_in.o sort_strings.o ft_builtin_errors.o\
-			   ft_execute.o ft_exec_nested_cmd.o search_commands.o \
-			   open_outputs.o get_exit_status.o here_doc.o ft_export_utils.o 
-
-GNL_OBJSRC = get_next_line.o
-OBJSRC = $(PARSE_OBJSRC)  $(TERMINAL_OBJSRC) $(GNL_OBJSRC) $(BUILTINS_OBJSRC)\
-		 rdwr_history.o parse_execute.o print_cmds.o hist_functions.o
-
-
 all: $(NAME)
 
 $(NAME):
 	make fclean -C libft/
 	make -C libft/
-	gcc -Wall -Wextra -Werror -c $(SRC)
-	ar rc $(LIB_NAME) $(OBJSRC)
-	ranlib $(LIB_NAME)
-	gcc -g -Wall -Wextra -Werror $(MAIN) $(LIB_NAME) $(LIBFT) -ltermcap -o $(NAME)
+	gcc -Wall -Wextra -Werror $(SRC) $(MAIN) $(LIBFT) -lreadline -L ~/.brew/opt/readline/lib\
+		-I ~/.brew/opt/readline/include -ltermcap -o $(NAME)
 
 clean:
 	make clean -C libft/
-	rm -f $(OBJSRC)
 
 fclean:
 	make fclean -C libft/
-	rm -f $(LIB_NAME)
 
-re: fclean all
+rmexec:
+	rm -rf $(NAME)
+
+re: fclean rmexec all
 
 sanitize:
 	make fclean -C libft/
 	make -C libft/
-	gcc -fsanitize=address -c $(SRC)
-	ar rc $(LIB_NAME) $(OBJSRC)
-	ranlib $(LIB_NAME)
-	gcc -fsanitize=address $(MAIN) $(LIB_NAME) $(LIBFT) -ltermcap -o $(NAME)
+	gcc -fsanitize=address $(SRC) $(MAIN) $(LIBFT) -lreadline -L ~/.brew/opt/readline/lib\
+		-I ~/.brew/opt/readline/include -ltermcap -o $(NAME)
 
 noflags:
 	make fclean -C libft/
 	make -C libft/
-	gcc -c -g $(SRC) 
-	ar rc $(LIB_NAME) $(OBJSRC)
-	ranlib $(LIB_NAME)
-	gcc -g $(MAIN) $(LIB_NAME) $(LIBFT) -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include -ltermcap  -o $(NAME)
+	gcc -g $(SRC) $(MAIN) $(LIBFT) -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include -ltermcap -o $(NAME)
