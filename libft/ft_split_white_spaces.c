@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:07:21 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 15:11:23 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 09:56:07 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,6 @@ int	is_word(char *str, int begin)
 	return (i - begin + 1);
 }
 
-void	free_all(char **words, int i)
-{
-	while (i >= 0)
-	{
-		free(words[i]);
-		i--;
-	}
-	free(words);
-}
-
 char	**ft_split_white_spaces(char *str)
 {
 	char	**words;
@@ -91,8 +81,6 @@ char	**ft_split_white_spaces(char *str)
 		else
 		{
 			words[word] = ft_substr(str, i, is_word(str, i));
-			if (words[word] == NULL)
-				free_all(words, word);
 			i += is_word(str, i);
 			word++;
 		}

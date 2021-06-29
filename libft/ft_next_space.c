@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:54:35 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 14:56:30 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:02:52 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,10 @@ int	ft_next_space(char *str)
 	t_escapes	escp;
 
 	i = 0;
-	tmp = NULL;
 	escp = (t_escapes){0, 0, 0};
 	while (str[i] != '\0')
 	{
-		if (str[i] == '\\')
-		{
-			if (escp.b_s == 1)
-				escp.b_s = 0;
-			else
-				escp.b_s = 1;
-		}
-		if (str[i] == '\"' && escp.b_s == 0 && escp.s_q % 2 == 0)
-			escp.d_q++;
-		if (str[i] == '\'' && escp.b_s == 0 && escp.d_q % 2 == 0)
-			escp.s_q++;
+		escp = ft_check_escapes(escp, str[i]);
 		if (ft_isspace(str[i]) && escp.s_q % 2 == 0
 			&& escp.d_q % 2 == 0 && escp.b_s == 0)
 		{

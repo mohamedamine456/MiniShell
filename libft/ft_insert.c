@@ -1,11 +1,11 @@
 #include "libft.h"
 
-char **insert_string(char **tab, char *str, int index)
+char	**insert_string(char **tab, char *str, int index)
 {
-	char    **new_tab;
-	int	    tab_len;
-	int	    i;
-	int	    j;
+	char	**new_tab;
+	int		tab_len;
+	int		i;
+	int		j;
 
 	tab_len = 0;
 	i = 0;

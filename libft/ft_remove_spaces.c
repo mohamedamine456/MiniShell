@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:03:08 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 15:03:32 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:28:10 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,28 @@
 
 /**
  * This Function Remove Additional spaces from a string
-*/
+ */
+
+void	remove_spaces_helper(char **new, char *str, int *i)
+{
+	char	*tmp;
+	int		n_s;
+
+	n_s = ft_next_space(str + *i);
+	tmp = ft_substr(str, *i, n_s);
+	*new = ft_strjoin(*new, tmp);
+	*i += n_s;
+	if (str[*i] != '\0')
+		*new = ft_strjoin(*new, " ");
+	free(tmp);
+}
 
 char	*ft_remove_spaces(char *str)
 {
 	int		i;
-	int		n_s;
-	char	*tmp;
 	char	*new;
 
 	i = 0;
-	n_s = 0;
 	new = ft_strdup("");
 	while (str[i] != '\0')
 	{
@@ -32,13 +43,7 @@ char	*ft_remove_spaces(char *str)
 			i++;
 		else
 		{
-			n_s = ft_next_space(str + i);
-			tmp = ft_substr(str, i, n_s);
-			new = ft_strjoin(new, tmp);
-			i += n_s;
-			if (str[i] != '\0')
-				new = ft_strjoin(new, " ");
-			free(tmp);
+			remove_spaces_helper(&new, str, &i);
 		}
 	}
 	if (new[ft_strlen(new) - 1] == ' ')
