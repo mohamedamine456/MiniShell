@@ -6,12 +6,11 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/29 20:36:41 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/30 15:16:14 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 
 void	search_execute(t_cmd *cmd, char **env)
 {
@@ -50,21 +49,15 @@ void	exec_child(t_cmd *tmp, char ***env)
 	execve_error();
 }
 
-int	ft_exec_nested_cmd(t_cmd *cmd, char ***env)
+void	fork_and_execute(t_cmd *cmd, char ***env, int *fd)
 {
-	t_cmd	*tmp;
-	int		*fd;
-	int		in;
-	int		status = 0;
-	int		std_in = dup(0);
-	int		std_out = dup(1);
-	int		i;
-	pid_t	pid;
-
-	tmp = cmd;
-	in = 0;
+	int i;
+	int in;
+	t_cmd *tmp;
+	int pid;
 	i = 0;
-	fd = (int *)malloc(sizeof(int) * 2);
+	in = 0;
+	tmp = cmd;
 	while (tmp != NULL)
 	{
 		pipe(fd);
@@ -74,14 +67,43 @@ int	ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 			redirect_std_in_out(tmp, i, in, fd);
 			exec_child(tmp, env);
 		}
-		wait(&status);
 		in = fd[0];
 		close(fd[1]);
 		tmp = tmp->next;
 		i++;
-		dup2(std_out,1);
-		dup2(std_in, 0);
 	}
+}
+
+int	ft_exec_nested_cmd(t_cmd *cmd, char ***env)
+{
+	//t_cmd	*tmp;
+	int		*fd;
+	//int		in;
+	int		status;
+	//int		i;
+	pid_t	pid;
+
+	//tmp = cmd;
+	//in = 0;
+	//i = 0;
+	fd = (int *)malloc(sizeof(int) * 2);
+	fork_and_execute(cmd, env, fd);
+	//while (tmp != NULL)
+	//{
+	//	pipe(fd);
+	//	pid = fork();
+	//	if (pid == 0)
+	//	{
+	//		redirect_std_in_out(tmp, i, in, fd);
+	//		exec_child(tmp, env);
+	//	}
+	//	in = fd[0];
+	//	close(fd[1]);
+	//	tmp = tmp->next;
+	//	i++;
+	//}
+	while (waitpid(-1, &status, 0) > 0)
+		continue;
 	close(fd[0]);
 	free(fd);
 	return (get_exit_status(status));
