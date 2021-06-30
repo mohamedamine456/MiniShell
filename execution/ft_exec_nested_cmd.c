@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/30 19:04:37 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/30 19:50:03 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ void	exec_child(t_cmd *tmp, char ***env)
 
 int	fork_and_execute(t_cmd *cmd, char ***env, int *fd)
 {
-	int i;
-	int in;
-	t_cmd *tmp;
-	int pid;
+	int		i;
+	int		in;
+	t_cmd	*tmp;
+	int		pid;
+
 	i = 0;
 	in = 0;
 	tmp = cmd;

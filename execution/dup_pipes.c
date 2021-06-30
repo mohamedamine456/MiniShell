@@ -6,13 +6,13 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:22:47 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/30 19:02:25 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/30 19:50:34 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-int	dup_pipes(t_cmd *cmd, int in, int out, int i, int *fd)
+int	dup_pipes(t_cmd *cmd, int in, int i, int *fd)
 {
 	if (cmd->next != NULL)
 	{
