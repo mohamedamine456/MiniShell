@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 13:33:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/29 20:29:23 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/30 18:08:44 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*check_right_path(char *cmd_name, char **paths);
  * ft_exec_nested_cmd.c helpers
  */
 
-int		dup_pipes(t_cmd *cmd, int in, int out, int i);
+int		dup_pipes(t_cmd *cmd, int in, int out, int i, int *fd);
 void	redirect_std_in_out(t_cmd *cmd, int cmd_index, int in, int *fd);
 
 /*

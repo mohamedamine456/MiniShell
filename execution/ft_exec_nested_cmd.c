@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/30 15:16:14 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/30 19:04:37 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	exec_child(t_cmd *tmp, char ***env)
 	execve_error();
 }
 
-void	fork_and_execute(t_cmd *cmd, char ***env, int *fd)
+int	fork_and_execute(t_cmd *cmd, char ***env, int *fd)
 {
 	int i;
 	int in;
@@ -67,44 +67,28 @@ void	fork_and_execute(t_cmd *cmd, char ***env, int *fd)
 			redirect_std_in_out(tmp, i, in, fd);
 			exec_child(tmp, env);
 		}
-		in = fd[0];
 		close(fd[1]);
+		if (i > 0)
+			close(in);
+		in = fd[0];
 		tmp = tmp->next;
 		i++;
 	}
+	return (pid);
 }
 
 int	ft_exec_nested_cmd(t_cmd *cmd, char ***env)
 {
-	//t_cmd	*tmp;
 	int		*fd;
-	//int		in;
 	int		status;
-	//int		i;
 	pid_t	pid;
 
-	//tmp = cmd;
-	//in = 0;
-	//i = 0;
+	status = 0;
 	fd = (int *)malloc(sizeof(int) * 2);
-	fork_and_execute(cmd, env, fd);
-	//while (tmp != NULL)
-	//{
-	//	pipe(fd);
-	//	pid = fork();
-	//	if (pid == 0)
-	//	{
-	//		redirect_std_in_out(tmp, i, in, fd);
-	//		exec_child(tmp, env);
-	//	}
-	//	in = fd[0];
-	//	close(fd[1]);
-	//	tmp = tmp->next;
-	//	i++;
-	//}
-	while (waitpid(-1, &status, 0) > 0)
-		continue;
-	close(fd[0]);
+	pid = fork_and_execute(cmd, env, fd);
+	waitpid(pid, &status, 0);
+	while (wait(NULL) > 0)
+		;
 	free(fd);
 	return (get_exit_status(status));
 }
