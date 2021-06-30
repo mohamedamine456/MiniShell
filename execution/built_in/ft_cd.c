@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:20:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 13:36:19 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:44:38 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_cd_normal_case(t_builtin_vars var, char *dest_path, int *retv)
 			*retv = 0;
 		else
 			*retv = 1;
+		free(dest_path);
 	}
 }
 
@@ -110,7 +111,7 @@ void	ft_cd_oldpwd(t_builtin_vars var, int *retv)
 	}
 	else
 	{
-		ft_cd_normal_case(var, oldpwd, retv);
+		ft_cd_normal_case(var, ft_strdup(oldpwd), retv);
 		ft_pwd(var, retv);
 		free(oldpwd);
 		return ;
