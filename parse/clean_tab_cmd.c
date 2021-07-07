@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:12:06 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/05/01 15:11:04 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/07/07 14:57:09 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ char	*clean_str_helper(char *str, char *new, t_clean *cl)
 		else if (str[cl->i] == '\\' && ((cl->escp.b_s == 0
 					&& cl->escp.d_q % 2 == 0) || cl->escp.s_q % 2 == 1))
 			new[cl->j++] = str[cl->i];
-		else if (str[cl->i] == '\\' && cl->escp.b_s == 1 && cl->escp.d_q % 2 == 1
+		else if (str[cl->i] == '\\' && cl->escp.b_s == 1
+			&& cl->escp.d_q % 2 == 1
 			&& !ft_char_in_string(str[cl->i + 1], "\"`$"))
 			new[cl->j++] = str[cl->i];
 	}

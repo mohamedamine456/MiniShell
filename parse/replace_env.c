@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:00 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/21 20:43:46 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:33:44 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*trim_replace(char *str, char **envp, int retv)
 	while (str[i] != '\0')
 	{
 		escp = ft_check_escapes(escp, str[i]);
-		if (escp.s_q % 2 == 0 && escp.b_s == 0 && str[i] == '$')
+		if (escp.s_q % 2 == 0 && escp.b_s == 0 && str[i] == '$'
+			&& str[i + 1] != '$' && str[i + 1] != '\0')
 		{
 			repen.escp = (t_escapes){escp.d_q, escp.s_q, escp.b_s};
 			repen.i = &i;

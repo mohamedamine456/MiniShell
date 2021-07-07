@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 12:30:21 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/29 20:15:59 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/30 20:37:32 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	tolow(char *str)
 
 int	isbuilt_in(char *str)
 {
-	int		i;
-
 	if (ft_strcmp(str, "echo") == 0)
 		return (B_ECHO);
 	else if (ft_strcmp(str, "export") == 0)

@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 16:19:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 15:20:35 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:42:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void			ft_env(t_builtin_vars var, int *retv);
 
 /*
  * ft_export.c prototypes
+		
  */
 
 void			ft_export(t_builtin_vars var, int *retv);
@@ -92,6 +93,7 @@ int				isvalid_var(char *str);
  */
 
 void			ft_builtin_errors(const char *name, int err, int *retv);
+void			home_not_set(char *error, int *retv);
 void			ft_export_errors(char *identifier, int *retv);
 
 /*

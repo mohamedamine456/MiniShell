@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:20:49 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/30 11:44:38 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:44:23 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	ft_cd(t_builtin_vars var, int *retv)
 	char	*dest_path;
 
 	dest_path = NULL;
-	if (var.args != NULL && (var.args[1] == NULL
-			|| (var.args[1] != NULL && !ft_strcmp(var.args[1], "--"))))
+	if (var.args != NULL && (var.args[1] == NULL || (var.args[1] != NULL
+				&& (!ft_strcmp(var.args[1], "--")
+					|| !ft_strcmp(var.args[1], "~")))))
 	{
 		dest_path = search_env(ft_strdup("HOME"), *(var.envp));
 		if (dest_path == NULL)
 		{
-			write(2, "MiniShell: cd: HOME not set\n", 28);
-			*retv = 1;
+			home_not_set("MiniShell: cd: HOME not set\n", retv);
 			return ;
 		}
 		ft_cd_normal_case(var, dest_path, retv);
@@ -105,8 +105,7 @@ void	ft_cd_oldpwd(t_builtin_vars var, int *retv)
 	oldpwd = search_env(ft_strdup("OLDPWD"), *(var.envp));
 	if (oldpwd == NULL || !ft_strcmp(oldpwd, ""))
 	{
-		write(2, "Minishell: cd: OLDPWD not set\n", 30);
-		*retv = 1;
+		home_not_set("Minishell: cd: OLDPWD not set\n", retv);
 		return ;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:20:14 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/22 09:48:49 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/07/02 12:59:26 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ int	parse_errors(char **tab_cmd)
 	i = 0;
 	while (tab_cmd != NULL && tab_cmd[i] != NULL)
 	{
-		if (ft_isseparator(tab_cmd[i][0]) && tab_cmd[i][0] != ' ')
+		if (tab_cmd[i][0] == '|')
+		{
+			if (i == 0)
+				return (print_parse_errors(tab_cmd[i], ""));
+			else if (tab_cmd[i + 1] != NULL && tab_cmd[i + 1][0] == '|')
+				return (print_parse_errors(tab_cmd[i], tab_cmd[i + 1]));
+		}
+		else if (tab_cmd[i][0] == '>' || tab_cmd[i][0] == '<')
 		{
 			if (check_redirections(tab_cmd[i]))
 				return (print_parse_errors(tab_cmd[i], ""));
-			if (tab_cmd[i + 1] != NULL)
-			{
-				if (ft_isseparator(tab_cmd[i + 1][0])
-						&& tab_cmd[i + 1][0] != '>' && tab_cmd[i + 1][0] != '<')
-					return (print_parse_errors(tab_cmd[i], tab_cmd[i + 1]));
-			}
-			else
-			{
-				if (tab_cmd[i][0] != ';')
-					return (print_parse_errors(tab_cmd[i], ""));
-			}
+			if (tab_cmd[i + 1] == NULL)
+				return (print_parse_errors("newline", ""));
+			else if (tab_cmd[i + 1] != NULL && (tab_cmd[i + 1][0] == '>'
+				|| tab_cmd[i + 1][0] == '<' || tab_cmd[i + 1][0] == '|'))
+				return (print_parse_errors(tab_cmd[i], ""));
 		}
 		i++;
 	}
@@ -64,10 +65,10 @@ int	check_redirections(char *redir)
 
 int	print_parse_errors(char *error, char *error_plus)
 {
-	write(1, "MiniShell: ", 11);
-	write(1, "syntax error near unexpected token '", 36);
-	write(1, error, ft_strlen(error));
-	write(1, error_plus, ft_strlen(error_plus));
-	write(1, "'\n", 2);
+	write(2, "MiniShell: ", 11);
+	write(2, "syntax error near unexpected token '", 36);
+	write(2, error, ft_strlen(error));
+	write(2, error_plus, ft_strlen(error_plus));
+	write(2, "'\n", 2);
 	return (1);
 }

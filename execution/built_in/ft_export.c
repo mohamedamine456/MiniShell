@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 14:22:42 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 16:44:10 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/30 20:38:06 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	print_vars(char **vars)
 
 void	ft_export(t_builtin_vars var, int *retv)
 {
-	char	**tmp;
 	int		is_added;
 	int		i;
 

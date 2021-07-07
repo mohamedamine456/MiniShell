@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 15:41:19 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/28 17:39:30 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/06/30 20:38:47 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	here_doc(char *delimeter, char *file_name)
 {
 	int		fd;
 	char	*line;
-	int		status;
 	pid_t	pid;
 
 	fd = open(file_name, O_RDWR | O_TRUNC | O_CREAT, S_IWUSR | S_IRUSR);

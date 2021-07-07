@@ -6,13 +6,13 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:06:23 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/29 20:18:02 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:12:47 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-int 	is_simple_cmd(t_cmd *cmd)
+int	is_simple_cmd(t_cmd *cmd)
 {
 	if (cmd->args != NULL)
 		return (isbuilt_in(cmd->args[0]) && (size_cmds(cmd) == 1));

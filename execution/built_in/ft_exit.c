@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:33:31 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/28 13:37:47 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/06/30 20:32:25 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_exit(t_builtin_vars var, int *retv)
 		&& !check_exit_arg(var.args[1]))
 	{
 		number = ft_atoi(var.args[1]);
-		ft_free_builtin_vars(&var);
 		exit(number);
 	}
 	else

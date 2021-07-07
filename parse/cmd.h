@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:06:57 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/22 13:19:53 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:13:21 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_escapes
 typedef struct s_redirection
 {
 	int						type;
-	char				 	*file;
+	char					*file;
 	struct s_redirection	*next;
 }					t_redirection;
 

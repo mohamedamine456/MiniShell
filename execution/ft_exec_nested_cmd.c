@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:47:37 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/30 19:50:03 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/07/01 21:28:26 by eel-orch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,16 @@ void	search_execute(t_cmd *cmd, char **env)
 			execve(path, cmd->args, env);
 			execve_error();
 		}
+		command_not_found(cmd->args[0]);
 	}
 	execve(cmd->args[0], cmd->args, env);
-	if (errno == EACCES)
-		execve_error();
-	command_not_found(cmd->args[0]);
+	execve_error();
 }
 
 void	exec_child(t_cmd *tmp, char ***env)
 {
 	if (tmp->args == NULL)
-		exit (0);
+		exit(0);
 	if (contain_slaches(tmp->args[0]) == 0)
 	{
 		if (isbuilt_in(tmp->args[0]))

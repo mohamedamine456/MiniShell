@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 09:46:54 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/29 12:52:04 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/07/01 12:02:43 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ int	check_line_errors(char *line)
 	while (line != NULL && line[i] != '\0')
 	{
 		escp = ft_check_escapes(escp, line[i]);
+		if (escp.s_q % 2 == 0 && escp.d_q % 2 == 0
+			&& escp.b_s == 0 && line[i] == ';')
+		{
+			return (-1);
+		}
 		if (line[i] != '\\' && escp.b_s == 1)
 			escp.b_s = 0;
 		i++;
@@ -54,6 +59,7 @@ void	line_error(t_read_tools rt)
 	if (!ft_strcmp(g_data.hists->line_orig, "")
 		&& g_data.hists->line_chngd == NULL)
 		free_last_hist();
-	write(1, "Close all quotes, no backslash at the end of line!\n", 52);
+	write(1, "Close all quotes, No MultiCommands,", 35);
+	write(1, " No backslash at the end of line!\n", 34);
 	g_data.retv = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:49:12 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/06/23 10:40:09 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:44:22 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,10 @@ void	ft_builtin_errors(const char *name, int err, int *retv)
 	write(2, ": ", 2);
 	write(2, error_str, ft_strlen(error_str));
 	write(2, "\n", 1);
+}
+
+void	home_not_set(char *error, int *retv)
+{
+	write(2, error, ft_strlen(error));
+	*retv = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: eel-orch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:18:50 by eel-orch          #+#    #+#             */
-/*   Updated: 2021/06/29 20:06:04 by eel-orch         ###   ########.fr       */
+/*   Updated: 2021/07/01 15:15:14 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_cmd	*fill_command(char **tab)
 	i = 0;
 	pars = new_cmd();
 	cmd = pars;
-	while (tab[i] != NULL)
+	while (tab != NULL && tab[i] != NULL)
 	{
 		if (ft_check(pars, tab[i]) != -1 && i == 0)
 			fill(pars, tab[i]);
