@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:56:00 by mlachheb          #+#    #+#             */
-/*   Updated: 2021/07/07 17:33:44 by mlachheb         ###   ########.fr       */
+/*   Updated: 2021/07/12 14:57:54 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*trim_replace(char *str, char **envp, int retv)
 	{
 		escp = ft_check_escapes(escp, str[i]);
 		if (escp.s_q % 2 == 0 && escp.b_s == 0 && str[i] == '$'
-			&& str[i + 1] != '$' && str[i + 1] != '\0')
+			&& str[i + 1] != '\0')
 		{
 			repen.escp = (t_escapes){escp.d_q, escp.s_q, escp.b_s};
 			repen.i = &i;
@@ -44,7 +44,7 @@ char	*trim_replace_helper(char *str, t_repenv repen,
 {
 	if (ft_isalpha(str[*(repen.i) + 1]) || str[*(repen.i) + 1] == '_')
 		str = replace_env(str, envp, repen.i);
-	else if (ft_isdigit(str[*(repen.i) + 1]))
+	else if (ft_isdigit(str[*(repen.i) + 1]) || str[*(repen.i) + 1] == '$')
 		str = replace_num(str, repen.i);
 	else if (str[*(repen.i) + 1] == '?')
 		str = replace_return(str, repen.i, retv);

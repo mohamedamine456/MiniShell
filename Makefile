@@ -6,7 +6,7 @@
 #    By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 18:04:32 by mlachheb          #+#    #+#              #
-#    Updated: 2021/07/01 15:08:48 by mlachheb         ###   ########.fr        #
+#    Updated: 2021/07/12 14:52:48 by mlachheb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ clean:
 
 fclean:
 	make fclean -C libft/
+	rm -rf $(NAME)
 
 rmexec:
 	rm -rf $(NAME)
